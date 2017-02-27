@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 19:47:48
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-02-20 09:42:24
+# @Last Modified time: 2017-02-27 19:26:16
 
 # Script to get the required basic packages after installing the base system
 
@@ -26,10 +26,10 @@ cd ..
 git clone https://aur.archlinux.org/yaourt.git
 cd yaourt
 makepkg -si
-cd ~
+cd ~/shared/wrf/scripts/wrf_non_arch
 
-# Fortran compiler
+# Installing required packages
 yaourt -S gcc-fortran
 yaourt -S tcsh
 yaourt -S openmpi
-sudo pacman -S mpich
+yaourt -S time
