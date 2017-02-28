@@ -2,13 +2,21 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 19:47:48
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-02-27 19:26:16
+# @Last Modified time: 2017-02-28 21:57:20
+
+# define terminal colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+LIGHT_BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
 
 # Script to get the required basic packages after installing the base system
 
 # Start from home directory
 cd ~
 
+printf "${YELLOW}Installing yaourt and its requirements... \n${NC}"
 # Prepare git package
 sudo pacman -S git
 
@@ -28,8 +36,8 @@ cd yaourt
 makepkg -si
 cd ~/shared/wrf/scripts/wrf_non_arch
 
+printf "${YELLOW}Installing basic packages... ${NC}"
 # Installing required packages
 yaourt -S gcc-fortran
 yaourt -S tcsh
-yaourt -S openmpi
 yaourt -S time
