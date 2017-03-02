@@ -2,10 +2,10 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-01 18:50:18
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-03-01 18:55:46
+# @Last Modified time: 2017-03-02 21:57:22
 
 # Setting required environment variables for the session
-export DIR="/home/raziel/Build_WRF/libraries"
+export DIR="/path/to/folder/libraries"
 export CC="gcc"
 export CXX="g++"
 export FC="gfortran"
