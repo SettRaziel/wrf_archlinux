@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 19:47:48
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-02-28 21:57:20
+# @Last Modified time: 2017-03-03 21:18:28
 
 # define terminal colors
 RED='\033[0;31m'
@@ -34,7 +34,6 @@ cd ..
 git clone https://aur.archlinux.org/yaourt.git
 cd yaourt
 makepkg -si
-cd ~/shared/wrf/scripts/wrf_non_arch
 
 printf "${YELLOW}Installing basic packages... ${NC}"
 # Installing required packages
