@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-19 13:25:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-03-11 16:08:34
+# @Last Modified time: 2017-03-12 10:38:47
 
 # define terminal colors
 RED='\033[0;31m'
@@ -12,7 +12,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 BUILD_PATH="<wrf path>"
-HOME_PATH="/home/<user>/$BUILD_PATH"
+WRF_ROOT_PATH="/home/<user>/$BUILD_PATH"
 SCRIPT_PATH=$(pwd)
 
 # Preaparing files and folder
@@ -23,7 +23,7 @@ sh ./linux/basics.sh
 
 # Setting required environment variables
 cd $SCRIPT_PATH
-source ./linux/set_env.sh $HOME_PATH
+source ./linux/set_env.sh $WRF_ROOT_PATH
 
 # Compiling netcdf bindings
 sh ./wrf_preparation/netcdf.sh $BUILD_PATH
@@ -51,7 +51,7 @@ sh ./wrf_pre_test/wrf_precompile_tests.sh $BUILD_PATH
 # Compiling the wrf-model
 printf "${YELLOW}Starting WRF compilation. Press any key ... ${NC}"
 read
-sh ./wrf_compile/compile_wrf.sh $BUILD_PATH $HOME_PATH
+sh ./wrf_compile/compile_wrf.sh $BUILD_PATH $WRF_ROOT_PATH
 
 # Compiling the wps modulue
 printf "${YELLOW}Starting WPS compilation in 5 seconds ... ${NC}"
