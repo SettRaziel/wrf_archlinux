@@ -22,6 +22,12 @@ folders for subsidiary license files.
     should be installed
   - WRF_ROOT_PATH: the absolute path to the home folder of the used user plus
     the $BUILD_PATH to the wrf model root
+* libraries: adjust the number of used cores by changing the -j parameter
+
+# Compile Options, that worked for me
+* WPS: 1 gfortran serial
+* WRF: 35 gfortran dm+sm
+* UPP (if used): 7 gfortran serial
 
 # Todo
 * generic file paths will be added later as shell parameters
