@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-07 19:02:57
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-03-20 18:44:11
+# @Last Modified time: 2017-03-23 20:51:22
 
 # define terminal colors
 RED='\033[0;31m'
@@ -14,6 +14,11 @@ NC='\033[0m' # No Color
 # Script to run the preprocessing operations
 # $1: the path to the wrf root folder
 # $2: the path to the geodata
+
+# logging time stamp
+SCRIPT_PATH=$(pwd)
+now=$(date +"%T")
+printf "Starting preprocessing at ${now}.\n" >> $SCRIPT_PATH/log.info
 
 # opening wps folder
 cd $1/WPS
@@ -36,5 +41,13 @@ ln -sf ../../../WPS/met_em.* ./
 ./real.exe
 cp rsl.error.0000 real_error.log
 
+# logging time stamp
+now=$(date +"%T")
+printf "Starting wrf run at ${now}.\n" >> $SCRIPT_PATH/log.info
+
 printf "${YELLOW}starting wrf run ... ${NC}\n"
 mpirun ./wrf.exe
+
+# logging time stamp
+now=$(date +"%T")
+printf "Finished wrf run at ${now}.\n" >> $SCRIPT_PATH/log.info
