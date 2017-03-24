@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-03 17:20:53
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-03-04 17:22:45
+# @Last Modified time: 2017-03-24 21:21:21
 
 # Setting required environment variables for the session
 export DIR="$1/libraries"
@@ -20,3 +20,6 @@ export PATH="$PATH:$DIR/mpich/bin"
 export WRFIO_NCD_LARGE_FILE_SUPPORT=1
 export JASPERLIB="$DIR/grib2/lib"
 export JASPERINC="$DIR/grib2/include"
+
+# required when using ncl unpacked in the library folder
+export NCARG_ROOT="$DIR/ncl"
