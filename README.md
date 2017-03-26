@@ -16,6 +16,13 @@ The scripts are licensed under the given license file. 3rd party software and
 scripts are marked and can have different license conditions. Please check the
 folders for subsidiary license files.
 
+## Software components
+* Network Common Data Form (NetCDF): [Source](https://www.unidata.ucar.edu/software/netcdf/) and [Terms of use](https://www2.ucar.edu/terms-of-use)
+* NetCDF-Fortran Library: [Source](https://www.unidata.ucar.edu/software/netcdf/) and [Terms of use](https://www2.ucar.edu/terms-of-use)
+* Message Passing Interface (mpich): [Source](https://www.mpich.org/) and [License](http://git.mpich.org/mpich.git/blob/HEAD:/COPYRIGHT)
+* PNG reference library (libpng): [Source](http://www.libpng.org/pub/png/libpng.html) and [License](http://www.libpng.org/pub/png/src/libpng-LICENSE.txt)
+* A Massively Spiffy Yet Delicately Unobtrusive Compression Library (zlib): [Source](www.zlib.net) and [License](http://www.zlib.net/zlib_license.html)
+
 # Additional configurations
 * install_wrf.sh: Set the correct file paths
   - BUILD_PATH: the path relative from the home folder, where the model data
