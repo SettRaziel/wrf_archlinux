@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-03-25 22:38:53
+# @Last Modified time: 2017-03-27 20:28:34
 
 # define terminal colors
 RED='\033[0;31m'
@@ -42,7 +42,7 @@ printf "${YELLOW}\nSetting start date to: ${START_YEAR}-${START_MONTH}-${START_D
 printf "${YELLOW}\nSetting end date to: ${END_YEAR}-${END_MONTH}-${END_DAY} ${END_HOUR}:00${NC}\n"
 printf "${YELLOW}\nSetting grid to $GRID_X x $GRID_Y${NC}\n"
 printf "${YELLOW}\nSetting step size to $DX x $DY${NC}\n"
-printf "${YELLOW}\nSetting time step $DT x $DY${NC}\n"
+printf "${YELLOW}\nSetting time step $DT${NC}\n"
 
 # Adjust values in namelist.wps in the wps folder
 cd ${HOME}/Build_WRF/WPS
@@ -66,6 +66,9 @@ sed -r -i "s/end_year                            = [0-9]+/end_year              
 sed -r -i "s/end_month                           = [0-9]+/end_month                           = $END_MONTH/g" namelist.input
 sed -r -i "s/end_day                             = [0-9]+/end_day                             = $END_DAY/g" namelist.input
 sed -r -i "s/end_hour                            = [0-9]+/end_hour                            = $END_HOUR/g" namelist.input
+
+sed -r -i "s/e\_we                                = [0-9]+/e\_we                                = $GRID_X/g" namelist.input
+sed -r -i "s/e\_sn                                = [0-9]+/e\_sn                                = $GRID_Y/g" namelist.input
 
 sed -r -i "s/time_step                           = [0-9]+/time_step                           = $DT/g" namelist.input
 sed -r -i "s/dx                                  = [0-9]+/dx                                  = $DX/g" namelist.input
