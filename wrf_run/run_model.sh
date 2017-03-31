@@ -2,21 +2,34 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-03-30 21:17:24
+# @Last Modified time: 2017-03-31 18:44:36
 
-GFS_PATH="~/gfs_data"
-BUILD_PATH="~/Build_WRF"
-SCRIPT_PATH=$(pwd)
+GFS_PATH=${HOME}/gfs_data
+SCRIPT_PATH=${HOME}/scripts
 
-source ../wrf_install/linux/set_env.sh
+source ${SCRIPT_PATH}/set_env.sh
+
+DATE_VALUE=`date '+%F-%H'`
+IFS='-' read -ra DATE_ARRAY <<< "${DATE_VALUE}"
+YEAR=${DATE_ARRAY[0]}
+MONTH=${DATE_ARRAY[1]}
+DAY=${DATE_ARRAY[2]}
+HOUR=$1
 
 # adjusting namelist for next run
-sh ./prepare_namelist.sh $1 $2 $3 $4
+cd $SCRIPT_PATH
+sh prepare_namelist.sh ${YEAR} ${MONTH} ${DAY} ${HOUR}
 
 # fetching input data
 cd $SCRIPT_PATH
-sh ./data_fetch/gfs_fetch.sh "$1$2$3" $4 $GFS_PATH
+sh gfs_fetch.sh "${YEAR}${MONTH}${DAY}" $HOUR $GFS_PATH
 
 # start model run
 cd $SCRIPT_PATH
-sh ./model_run/pre_processing.sh $BUILD_PATH $GFS_PATH
+sh pre_processing.sh ${HOME}/Build_WRF $GFS_PATH
+
+# move output files
+rm ${HOME}/wrf_output/wrfout_d01_*
+rm ${HOME}/wrf_output/Han.*
+mv ${HOME}/Build_WRF/WRFV3/test/em_real/wrfout_d01_* ${HOME}/wrf_output
+mv ${HOME}/Build_WRF/WRFV3/test/em_real/Han.* ${HOME}/wrf_output
