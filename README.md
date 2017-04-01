@@ -23,6 +23,9 @@ folders for subsidiary license files.
 * PNG reference library (libpng): [Source](http://www.libpng.org/pub/png/libpng.html) and [License](http://www.libpng.org/pub/png/src/libpng-LICENSE.txt), used version: 1.6.28
 * A Massively Spiffy Yet Delicately Unobtrusive Compression Library (zlib): [Source](www.zlib.net) and [License](http://www.zlib.net/zlib_license.html), used version: 1.2.11
 * JasPer Project (JasPer): [Source](https://www.ece.uvic.ca/~frodo/jasper/) and [License](https://www.ece.uvic.ca/~frodo/jasper/LICENSE), used version: 1.900.1
+* Optional postprocessing tools:
+  - Unified Post Processor (UPP): [Source](http://www.dtcenter.org/wrf-nmm/users/downloads/index.php), needs email validation
+  - NCAR Command Language (NCL): [Source](https://www.ncl.ucar.edu/Download/) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 6.4.0 Binaries
 
 # Additional configurations
 * install_wrf.sh: Set the correct file paths
