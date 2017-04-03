@@ -40,5 +40,9 @@ folders for subsidiary license files.
 * WRF: 35 gfortran dm+sm
 * UPP (if used): 7 gfortran serial
 
-# Todo
+# Todos:
 * generic file paths will be added later as shell parameters
+* ncl examples for output
+* cronjob details
+* intermediate results during wrf_run
+* installation details
