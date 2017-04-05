@@ -6,6 +6,9 @@ ArchLinux. The descriptions will grow together with the uploaded files.
 # Folder Overview
 * wrf_install: contains scripts to install and configure the wrf model and its
   requirements
+* wrf_run: contains scripts to fetch the required input data, prepare the
+  start values and execute a model run
+* additions: additional scripts and files that can help running the model
 
 # Sources
 * basic system: [here](https://wiki.archlinux.org/index.php/Installation_guide)
