@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-07 19:02:57
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-04-08 22:00:54
+# @Last Modified time: 2017-05-01 14:51:49
 
 # define terminal colors
 RED='\033[0;31m'
@@ -43,11 +43,4 @@ cp rsl.error.0000 real_error.log
 
 # logging time stamp
 now=$(date +"%T")
-printf "Starting wrf run at ${now}.\n" >> $SCRIPT_PATH/log.info
-
-printf "${YELLOW}starting wrf run ... ${NC}\n"
-mpirun ./wrf.exe
-
-# logging time stamp
-now=$(date +"%T")
-printf "Finished wrf run at ${now}.\n" >> $SCRIPT_PATH/log.info
+printf "Finished preprocessing at ${now}.\n" >> $SCRIPT_PATH/log.info
