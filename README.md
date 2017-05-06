@@ -2,6 +2,8 @@
 
 Scripts and documentation to run your own WRF model forecast system on
 ArchLinux. The descriptions will grow together with the uploaded files.
+A description that summarizes the requried steps and gives additional
+information will be available shortly.
 
 # Folder Overview
 * wrf_install: contains scripts to install and configure the wrf model and its
