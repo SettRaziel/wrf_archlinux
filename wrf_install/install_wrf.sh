@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-19 13:25:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-03-12 10:38:47
+# @Last Modified time: 2017-05-20 22:30:27
 
 # define terminal colors
 RED='\033[0;31m'
@@ -12,48 +12,48 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 BUILD_PATH="<wrf path>"
-WRF_ROOT_PATH="/home/<user>/$BUILD_PATH"
+WRF_ROOT_PATH="/home/<user>/${BUILD_PATH}"
 SCRIPT_PATH=$(pwd)
 
 # Preaparing files and folder
-sh ./linux/preparations.sh $BUILD_PATH $SCRIPT_PATH/../../libs
+sh ./linux/preparations.sh ${BUILD_PATH} ${SCRIPT_PATH}/../../libs
 
 # Install required basic packages
 sh ./linux/basics.sh
 
 # Setting required environment variables
-cd $SCRIPT_PATH
-source ./linux/set_env.sh $WRF_ROOT_PATH
+cd ${SCRIPT_PATH}
+source ./linux/set_env.sh ${WRF_ROOT_PATH}
 
 # Compiling netcdf bindings
-sh ./wrf_preparation/netcdf.sh $BUILD_PATH
+sh ./wrf_preparation/netcdf.sh ${BUILD_PATH}
 
 # Compiling fortran binding for netcdf
 printf "${YELLOW}Starting fortran bindings in 5 seconds ... ${NC}"
 sleep 5
-sh ./wrf_preparation/fortran_bindings.sh $BUILD_PATH
+sh ./wrf_preparation/fortran_bindings.sh ${BUILD_PATH}
 
 # Compiling required libraries
 printf "${YELLOW}Starting library compilation in 5 seconds ... ${NC}"
 sleep 5
-sh ./wrf_preparation/install_libraries.sh $BUILD_PATH
+sh ./wrf_preparation/install_libraries.sh ${BUILD_PATH}
 
 # Running System environment test
 printf "${YELLOW}Starting fortran tests. Press any key ... ${NC}"
 read
-sh ./wrf_pre_test/fortran_tests.sh $BUILD_PATH
+sh ./wrf_pre_test/fortran_tests.sh ${BUILD_PATH}
 
 # Running Library compatibility test
 printf "${YELLOW}Starting precompile tests. Press any key ... ${NC}"
 read
-sh ./wrf_pre_test/wrf_precompile_tests.sh $BUILD_PATH
+sh ./wrf_pre_test/wrf_precompile_tests.sh ${BUILD_PATH}
 
 # Compiling the wrf-model
 printf "${YELLOW}Starting WRF compilation. Press any key ... ${NC}"
 read
-sh ./wrf_compile/compile_wrf.sh $BUILD_PATH $WRF_ROOT_PATH
+sh ./wrf_compile/compile_wrf.sh ${BUILD_PATH} ${WRF_ROOT_PATH}
 
 # Compiling the wps modulue
 printf "${YELLOW}Starting WPS compilation in 5 seconds ... ${NC}"
 sleep 5
-sh ./wrf_compile/wps_compile.sh $BUILD_PATH
+sh ./wrf_compile/wps_compile.sh ${BUILD_PATH}
