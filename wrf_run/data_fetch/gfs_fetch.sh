@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-06 19:18:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-04-02 18:31:29
+# @Last Modified time: 2017-05-22 18:09:05
 
 # This script loads the required input data for a 180 h forecast run
 # $1 matches the required date yyyymmdd
@@ -11,12 +11,12 @@
 
 # logging time stamp
 now=$(date +"%T")
-printf "Starting preprocessing at ${now}.\n" > ./log.info
+printf "Starting preprocessing at ${now}.\n" > ../log.info
 
 # Remove old files
-rm $3/gfs.*
+rm ${3}/gfs.*
 
 # Fetch the new ones
 for i in $(seq -f %03g 0 3 180); do
-wget -q -P $3 http://www.ftp.ncep.noaa.gov/data/nccf/com/gfs/prod/gfs.$1$2/gfs.t$2z.pgrb2.0p50.f$i
+wget -q -P ${3} http://www.ftp.ncep.noaa.gov/data/nccf/com/gfs/prod/gfs.${1}${2}/gfs.t${2}z.pgrb2.0p50.f${i}
 done
