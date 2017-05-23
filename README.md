@@ -38,6 +38,7 @@ folders for subsidiary license files.
     should be installed
   - WRF_ROOT_PATH: the absolute path to the home folder of the used user plus
     the $BUILD_PATH to the wrf model root
+  - the path to the required libraries
 * libraries: adjust the number of used cores by changing the -j parameter
 
 # Compile Options, that worked for me
@@ -45,8 +46,14 @@ folders for subsidiary license files.
 * WRF: 35 gfortran dm+sm
 * UPP (if used): 7 gfortran serial
 
+# Troubleshooting
+* If one of the mpi test fails with a naming error, check if you have set the
+hostname from your /etc/hostname in your file /etc/hosts. Since mpi can run
+on a cluster it needs a valid name to work with several machines.
+
 # Todos:
 * generic file paths will be added later as shell parameters
+* archive cleanup after installation
 * ncl examples for output
 * cronjob details
 * intermediate results during wrf_run
