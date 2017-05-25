@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-19 13:25:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-05-20 22:30:27
+# @Last Modified time: 2017-05-25 18:24:33
 
 # define terminal colors
 RED='\033[0;31m'
@@ -12,11 +12,11 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 BUILD_PATH="<wrf path>"
-WRF_ROOT_PATH="/home/<user>/${BUILD_PATH}"
+WRF_ROOT_PATH="${HOME}/${BUILD_PATH}"
 SCRIPT_PATH=$(pwd)
 
 # Preaparing files and folder
-sh ./linux/preparations.sh ${BUILD_PATH} ${SCRIPT_PATH}/../../libs
+sh ./linux/preparations.sh ${BUILD_PATH} path/to/libs
 
 # Install required basic packages
 sh ./linux/basics.sh
@@ -51,7 +51,7 @@ sh ./wrf_pre_test/wrf_precompile_tests.sh ${BUILD_PATH}
 # Compiling the wrf-model
 printf "${YELLOW}Starting WRF compilation. Press any key ... ${NC}"
 read
-sh ./wrf_compile/compile_wrf.sh ${BUILD_PATH} ${WRF_ROOT_PATH}
+sh ./wrf_compile/wrf_compile.sh ${BUILD_PATH} ${WRF_ROOT_PATH}
 
 # Compiling the wps modulue
 printf "${YELLOW}Starting WPS compilation in 5 seconds ... ${NC}"
