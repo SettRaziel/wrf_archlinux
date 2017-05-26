@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 19:47:48
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-03-03 21:18:28
+# @Last Modified time: 2017-05-26 18:16:30
 
 # define terminal colors
 RED='\033[0;31m'
@@ -14,7 +14,7 @@ NC='\033[0m' # No Color
 # Script to get the required basic packages after installing the base system
 
 # Start from home directory
-cd ~
+cd ${HOME}
 
 printf "${YELLOW}Installing yaourt and its requirements... \n${NC}"
 # Prepare git package
