@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-01 20:09:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-03-09 21:56:00
+# @Last Modified time: 2017-05-27 09:56:42
 
 # define terminal colors
 RED='\033[0;31m'
@@ -11,14 +11,18 @@ LIGHT_BLUE='\033[0;34m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-# Script to compile the required netcdf package
-cd ~/$1
+# Script to compile the wps module, after setting up all dependencies
+# and paths
+# $1: the path to the folder where the wps should be installed
 
-# Unpacking netcdf files
+# Script to compile the required netcdf package
+cd ${HOME}/${1}
+
+# Unpacking wps files
 printf "${YELLOW}\nUnpacking wps.tar files: ${NC}\n"
 tar xfv wps-3.8.1.tar.bz2
 
-# Installing netcdf library
+# Installing wps
 printf "${YELLOW}\nInstaling wps: ${NC}\n"
 cd WPS
 ./configure
