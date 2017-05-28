@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-18 15:49:25
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-03-13 20:56:26
+# @Last Modified time: 2017-05-28 20:22:23
 
 # define terminal colors
 RED='\033[0;31m'
@@ -17,7 +17,7 @@ NC='\033[0m' # No Color
 # $2: the path to the folder where the wrf files has been unpacked
 
 # Jump in folder and extract tar
-cd ~/$1
+cd ${HOME}/${1}
 printf "${YELLOW}\nUnpacking wrf.tar files: ${NC}\n"
 tar -xf wrf-3.8.1.tar.bz2
 
@@ -27,7 +27,7 @@ printf "${YELLOW}\nInstaling wrf: ${NC}\n"
 # Change the path according to the used user; configure requires an absolute
 # path here or it fails with an error
 sudo ln -s /bin/cpp /lib/cpp
-ln -s $2/WRFV3/frame/ $2/WRFV3/external/
+ln -s ${2}/WRFV3/frame/ ${2}/WRFV3/external/
 ./configure
 ./clean
 ./compile -j 1 em_real >& ./compile.log
