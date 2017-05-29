@@ -2,7 +2,7 @@
 # @Author: Benjamin Held; based on the WRF OnlineTutorial
 # @Date:   2017-02-18 21:23:08
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-03-03 21:24:43
+# @Last Modified time: 2017-05-29 21:26:17
 
 # define terminal colors
 RED='\033[0;31m'
@@ -16,9 +16,9 @@ printf "${LIGHT_BLUE}http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tut
 printf "${RED}Requires: gfortran, cpp, gcc, tcsh, perl and sh.${NC}\n"
 
 # Creating required folders
-mkdir ~/$1/fortran_test
-cp ~/$1/Fortran_C_tests.tar ~/$1/fortran_test/
-cd ~/$1/fortran_test
+mkdir ${HOME}/${1}/fortran_test
+cp ${HOME}/${1}/Fortran_C_tests.tar ${HOME}/${1}/fortran_test/
+cd ${HOME}/${1}/fortran_test
 
 # Unpacking test files
 printf "${YELLOW}\nUnpacking test files: ${NC}\n"
@@ -67,4 +67,4 @@ printf "${LIGHT_BLUE}finished test. ${NC}\n"
 
 # Cleaning up
 cd ..
-rm -r ~/$1/fortran_test
+rm -r ${HOME}/${1}/fortran_test
