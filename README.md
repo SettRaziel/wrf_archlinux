@@ -50,6 +50,18 @@ folders for subsidiary license files.
 * If one of the mpi test fails with a naming error, check if you have set the
 hostname from your /etc/hostname in your file /etc/hosts. Since mpi can run
 on a cluster it needs a valid name to work with several machines.
+* Installing and running the model should be done with gcc/gcc-libs/gcc-gfortran
+  6.3.1-2. During the wrf compilation an error occurs like:
+   ```
+   CALL RANDOM_SEED(PUT=count)
+                     1
+   Error: Size of 'put' argument of 'random_seed' intrinsic at (1) too small (12/33)
+    ```
+    This can be avoided by editing phys/module_cu_g3.F and setting the dimension of seed
+    to the required value.
+    When running the model it breaks (last check: 2017/05/30) since the model needs libgfortran.so.3
+    which cannot be found after upgrading the gcc-gfortran to 7.1.1-2. Even compiling WRFV3.9 and
+    WPSV3.9 does not resolve this issue.
 
 # Todos:
 * generic file paths will be added later as shell parameters
