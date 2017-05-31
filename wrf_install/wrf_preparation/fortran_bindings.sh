@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-18 15:39:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-03-07 19:22:24
+# @Last Modified time: 2017-05-31 22:12:37
 
 # define terminal colors
 RED='\033[0;31m'
@@ -12,9 +12,10 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 # Script to compile the required netcdf package
+# $1: path to the installation folder
 
 # Jump in folder and extract tar
-cd ~/$1
+cd ${HOME}/${1}
 printf "${YELLOW}\nUnpacking netcdf-fortran.tar files: ${NC}\n"
 tar -xf netcdf-fortran-4.4.4.tar.gz
 
