@@ -2,7 +2,10 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 21:06:12
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-03-06 22:00:53
+# @Last Modified time: 2017-06-01 16:57:49
+
+# installation of the netcdf package
+# $1: path to the installation folder
 
 # define terminal colors
 RED='\033[0;31m'
@@ -12,7 +15,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 # Script to compile the required netcdf package
-cd ~/$1
+cd ${HOME}/${1}
 
 # Unpacking netcdf files
 printf "${YELLOW}\nUnpacking netcdf.tar files: ${NC}\n"
