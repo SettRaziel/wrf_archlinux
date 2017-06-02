@@ -2,7 +2,10 @@
 # @Author: Benjamin Held; based on the WRF OnlineTutorial
 # @Date:   2017-02-18 21:23:08
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-03-05 20:13:08
+# @Last Modified time: 2017-06-02 22:31:59
+
+# installation of the netcdf package
+# $1: path to the installation folder
 
 # define terminal colors
 RED='\033[0;31m'
@@ -16,9 +19,9 @@ printf "${LIGHT_BLUE}http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tut
 printf "${RED}Requires: netcdf and openmpi.${NC}\n"
 
 # Creating required folders
-mkdir ~/$1/lib_test
-cp ~/$1/Fortran_C_NETCDF_MPI_tests.tar ~/$1/lib_test/
-cd ~/$1/lib_test
+mkdir ${HOME}/${1}/lib_test
+cp ${HOME}/${1}/Fortran_C_NETCDF_MPI_tests.tar ~/${1}/lib_test/
+cd ${HOME}/${1}/lib_test
 
 # Unpacking test files
 printf "${YELLOW}Unpacking test files: ${NC}\n"
@@ -44,4 +47,4 @@ printf "${LIGHT_BLUE}finished test. ${NC}\n"
 
 # Cleaning up
 cd ..
-rm -r ~/$1/lib_test
+rm -r ${HOME}/${1}/lib_test
