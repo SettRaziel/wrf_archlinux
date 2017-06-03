@@ -2,7 +2,10 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 21:06:12
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-03-28 17:30:48
+# @Last Modified time: 2017-06-03 22:04:16
+
+# Script to compile the required libraries
+# $1: path to the installation folder
 
 # define terminal colors
 RED='\033[0;31m'
@@ -11,7 +14,7 @@ LIGHT_BLUE='\033[0;34m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-cd ~/$1
+cd ${HOME}/${1}
 
 # Unpacking mpich files
 printf "${YELLOW}\nUnpacking mpich.tar files: ${NC}\n"

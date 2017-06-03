@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-18 15:39:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-05-31 22:12:37
+# @Last Modified time: 2017-06-03 22:04:02
 
 # define terminal colors
 RED='\033[0;31m'
@@ -11,7 +11,7 @@ LIGHT_BLUE='\033[0;34m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-# Script to compile the required netcdf package
+# Script to compile the required netcdf-fortran package
 # $1: path to the installation folder
 
 # Jump in folder and extract tar
