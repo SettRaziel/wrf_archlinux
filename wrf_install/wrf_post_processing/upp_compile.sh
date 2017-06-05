@@ -2,7 +2,10 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-05 17:52:09
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-03-14 21:14:29
+# @Last Modified time: 2017-06-05 20:51:37
+
+# Script to compile the upp library for output visualization
+# $1: the path to the folder where the upp program should be installed
 
 # define terminal colors
 RED='\033[0;31m'
@@ -12,7 +15,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 # Script to compile the optional upp package for postprocessing
-cd ~/$1
+cd ${HOME}/${1}
 
 # Unpacking upp files
 printf "${YELLOW}\nUnpacking upp.tar files: ${NC}\n"
