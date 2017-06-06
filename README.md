@@ -70,3 +70,5 @@ on a cluster it needs a valid name to work with several machines.
 * cronjob details
 * intermediate results during wrf_run
 * installation details
+
+created by: Benjamin Held
