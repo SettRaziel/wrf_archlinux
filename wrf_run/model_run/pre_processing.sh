@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-07 19:02:57
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-05-01 14:51:49
+# @Last Modified time: 2017-06-07 18:52:28
 
 # define terminal colors
 RED='\033[0;31m'
@@ -18,21 +18,21 @@ NC='\033[0m' # No Color
 # logging time stamp
 SCRIPT_PATH=$(pwd)
 now=$(date +"%T")
-printf "Starting preprocessing at ${now}.\n" >> $SCRIPT_PATH/log.info
+printf "Starting preprocessing at ${now}.\n" >> ${SCRIPT_PATH}/log.info
 
 # opening wps folder
-cd $1/WPS
+cd ${1}/WPS
 
 # preprocessing static data: elevation data and geo data
 printf "${YELLOW}preprocessing static data (geogrid.exe): ${NC}\n"
-./geogrid.exe > $SCRIPT_PATH/debug.log
+./geogrid.exe > ${SCRIPT_PATH}/debug.log
 
 # processing initial data and boundary data
 printf "${YELLOW}preprocessing initial and boundary data: ${NC}\n"
 ./link_grib.csh $2/gfs.*.pgrb2.0p50.f*
 ln -sf ungrib/Variable_Tables/Vtable.GFS ./Vtable
-LD_LIBRARY_PATH=$DIR/grib2/lib ./ungrib.exe >> $SCRIPT_PATH/debug.log
-./metgrid.exe >> $SCRIPT_PATH/debug.log
+LD_LIBRARY_PATH=$DIR/grib2/lib ./ungrib.exe >> ${SCRIPT_PATH}/debug.log
+./metgrid.exe >> ${SCRIPT_PATH}/debug.log
 
 # vertical interpolation preprocessing
 printf "${YELLOW}doing vertical interpolation (real.exe): ${NC}\n"
@@ -43,4 +43,11 @@ cp rsl.error.0000 real_error.log
 
 # logging time stamp
 now=$(date +"%T")
-printf "Finished preprocessing at ${now}.\n" >> $SCRIPT_PATH/log.info
+printf "Starting wrf run at ${now}.\n" >> ${SCRIPT_PATH}/log.info
+
+printf "${YELLOW}starting wrf run ... ${NC}\n"
+mpirun ./wrf.exe
+
+# logging time stamp
+now=$(date +"%T")
+printf "Finished wrf run at ${now}.\n" >> ${SCRIPT_PATH}/log.info
