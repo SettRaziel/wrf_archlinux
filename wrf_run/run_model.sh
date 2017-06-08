@@ -2,10 +2,11 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-06-07 19:46:04
+# @Last Modified time: 2017-06-08 21:24:56
 
 GFS_PATH=${HOME}/gfs_data
 SCRIPT_PATH=${HOME}/scripts
+RESOLUTION="0p50"
 
 source ${SCRIPT_PATH}/set_env.sh
 
@@ -21,7 +22,7 @@ HOUR=${1}
 
 # adjusting namelist for next run
 cd ${SCRIPT_PATH}
-sh prepare_namelist.sh ${YEAR} ${MONTH} ${DAY} ${HOUR}
+sh gfs_fetch.sh "${YEAR}${MONTH}${DAY}" ${HOUR} ${GFS_PATH} ${RESOLUTION}
 
 # fetching input data
 cd ${SCRIPT_PATH}
