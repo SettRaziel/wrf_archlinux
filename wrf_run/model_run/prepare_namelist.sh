@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-06-06 19:05:14
+# @Last Modified time: 2017-06-15 22:24:09
 
 # define terminal colors
 RED='\033[0;31m'
@@ -27,7 +27,7 @@ END_YEAR=`date '+%Y' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HO
 END_MONTH=`date '+%m' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +180 hours"`
 END_DAY=`date '+%d' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +180 hours"`
 
-DT=100
+DT=90
 DX=10000
 DY=10000
 
