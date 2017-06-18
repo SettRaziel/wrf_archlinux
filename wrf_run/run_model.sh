@@ -2,10 +2,12 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-06-13 21:28:44
+# @Last Modified time: 2017-06-18 17:01:28
 
+# default variables
 GFS_PATH=${HOME}/gfs_data
 SCRIPT_PATH=${HOME}/scripts
+BUILD_PATH=${HOME}/Build_WRF
 RESOLUTION="0p50"
 
 source ${SCRIPT_PATH}/set_env.sh
@@ -22,7 +24,7 @@ HOUR=${1}
 
 # adjusting namelist for next run
 cd ${SCRIPT_PATH}/model_run
-sh prepare_namelist.sh ${YEAR} ${MONTH} ${DAY} ${HOUR}
+sh prepare_namelist.sh ${BUILD_PATH} ${YEAR} ${MONTH} ${DAY} ${HOUR}
 
 # fetching input data
 cd ${SCRIPT_PATH}/data_fetch
@@ -30,13 +32,13 @@ sh gfs_fetch.sh "${YEAR}${MONTH}${DAY}" ${HOUR} ${GFS_PATH} ${RESOLUTION}
 
 # start model run
 cd ${SCRIPT_PATH}/model_run
-sh run_preprocessing.sh ${HOME}/Build_WRF ${GFS_PATH}
+sh run_preprocessing.sh ${BUILD_PATH} ${GFS_PATH}
 
 # move output files
 cd ${SCRIPT_PATH}/model_run
 sh clean_up_output.sh
-mv ${HOME}/Build_WRF/WRFV3/test/em_real/wrfout_d01_* ${HOME}/wrf_output
-mv ${HOME}/Build_WRF/WRFV3/test/em_real/Han.* ${HOME}/wrf_output
+mv ${BUILD_PATH}/WRFV3/test/em_real/wrfout_d01_* ${HOME}/wrf_output
+mv ${BUILD_PATH}/WRFV3/test/em_real/Han.* ${HOME}/wrf_output
 
 # run output script
 cd ${SCRIPT_PATH}/post_processing
