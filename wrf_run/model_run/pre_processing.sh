@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-07 19:02:57
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-06-11 13:54:54
+# @Last Modified time: 2017-06-19 12:12:02
 
 # define terminal colors
 RED='\033[0;31m'
@@ -25,7 +25,7 @@ cd ${1}/WPS
 
 # preprocessing static data: elevation data and geo data
 printf "${YELLOW}preprocessing static data (geogrid.exe): ${NC}\n"
-./geogrid.exe > ${SCRIPT_PATH}/debug.log
+./geogrid.exe > ${SCRIPT_PATH}/../debug.log
 
 # processing initial data and boundary data
 printf "${YELLOW}preprocessing initial and boundary data: ${NC}\n"
