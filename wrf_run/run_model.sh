@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-06-18 17:01:28
+# @Last Modified time: 2017-06-20 16:24:05
 
 # default variables
 GFS_PATH=${HOME}/gfs_data
@@ -32,7 +32,7 @@ sh gfs_fetch.sh "${YEAR}${MONTH}${DAY}" ${HOUR} ${GFS_PATH} ${RESOLUTION}
 
 # start model run
 cd ${SCRIPT_PATH}/model_run
-sh run_preprocessing.sh ${BUILD_PATH} ${GFS_PATH}
+sh run_preprocessing.sh ${BUILD_PATH} ${GFS_PATH} ${RESOLUTION}
 
 # move output files
 cd ${SCRIPT_PATH}/model_run
