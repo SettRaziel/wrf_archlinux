@@ -32,7 +32,7 @@ folders for subsidiary license files.
   - Unified Post Processor (UPP): [Source](http://www.dtcenter.org/wrf-nmm/users/downloads/index.php), needs email validation
   - NCAR Command Language (NCL): [Source](https://www.ncl.ucar.edu/Download/) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 6.4.0 Binaries
 
-# Additional configurations
+# Additional install configurations
 * install_wrf.sh: Set the correct file paths
   - BUILD_PATH: the path relative from the home folder, where the model data
     should be installed
@@ -45,6 +45,13 @@ folders for subsidiary license files.
 * WPS: 1 gfortran serial
 * WRF: 35 gfortran dm+sm
 * UPP (if used): 7 gfortran serial
+
+# Run options
+* grid parameter (namelists)
+  - horizontal grid size: grid_dx, grid_dy
+  - vertical grid size: grid_dz
+  - horitontal grid resolution: dx, dy
+  - start time stamp
 
 # Troubleshooting
 * If one of the mpi test fails with a naming error, check if you have set the
