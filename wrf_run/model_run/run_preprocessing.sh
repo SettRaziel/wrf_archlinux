@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 09:26:31
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-06-20 16:23:49
+# @Last Modified time: 2017-06-23 20:31:34
 
 # define terminal colors
 RED='\033[0;31m'
@@ -67,4 +67,4 @@ ln -sf ../../../WPS/met_em.* .
 cp rsl.error.0000 real_error.log
 
 cd ${SCRIPT_PATH}
-sh ./pre_processing.sh
+sh ./pre_processing.sh ${BUILD_PATH}
