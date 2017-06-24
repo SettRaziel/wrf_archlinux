@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-06-17 09:04:14
+# @Last Modified time: 2017-06-24 16:57:03
 
 # define terminal colors
 RED='\033[0;31m'
@@ -11,8 +11,9 @@ LIGHT_BLUE='\033[0;34m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-if [ "$#" -ne 5 ]; then # no argument, run whole script
-  echo "Wrong number of arguments. Must be one for <BUILD_PATH> <YEAR> <MONTH> <DAY> <HOUR>."
+# error handling for input parameter
+if [ "$#" -ne 6 ]; then
+  echo "Wrong number of arguments. Must be one for <BUILD_PATH> <YEAR> <MONTH> <DAY> <HOUR> <PERIOD>."
   exit 1
 fi
 
@@ -25,10 +26,10 @@ START_MONTH=${3}
 START_DAY=${4}
 START_HOUR=${5}
 
-END_HOUR=`date '+%H' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +180 hours"`
-END_YEAR=`date '+%Y' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +180 hours"`
-END_MONTH=`date '+%m' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +180 hours"`
-END_DAY=`date '+%d' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +180 hours"`
+END_HOUR=`date '+%H' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${6} hours"`
+END_YEAR=`date '+%Y' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${6} hours"`
+END_MONTH=`date '+%m' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${6} hours"`
+END_DAY=`date '+%d' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${6} hours"`
 
 DT=90
 DX=10000

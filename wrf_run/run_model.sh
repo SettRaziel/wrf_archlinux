@@ -2,21 +2,24 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-06-20 16:24:05
+# @Last Modified time: 2017-06-24 16:56:58
 
 # default variables
 GFS_PATH=${HOME}/gfs_data
 SCRIPT_PATH=${HOME}/scripts
 BUILD_PATH=${HOME}/Build_WRF
+PERIOD=180
 RESOLUTION="0p50"
 
 source ${SCRIPT_PATH}/set_env.sh
 
-if [ "$#" -ne 1 ]; then # no argument, run whole script
+# error handling for input parameter
+if [ "$#" -ne 1 ]; then
   echo "Wrong number of arguments. Must be one for <HOUR>."
   exit 1
 fi
 
+# determine start date
 YEAR=`date '+%Y'`
 MONTH=`date '+%m'`
 DAY=`date '+%d'`
@@ -24,11 +27,11 @@ HOUR=${1}
 
 # adjusting namelist for next run
 cd ${SCRIPT_PATH}/model_run
-sh prepare_namelist.sh ${BUILD_PATH} ${YEAR} ${MONTH} ${DAY} ${HOUR}
+sh prepare_namelist.sh ${BUILD_PATH} ${YEAR} ${MONTH} ${DAY} ${HOUR} ${PERIOD}
 
 # fetching input data
 cd ${SCRIPT_PATH}/data_fetch
-sh gfs_fetch.sh "${YEAR}${MONTH}${DAY}" ${HOUR} ${GFS_PATH} ${RESOLUTION}
+sh gfs_fetch.sh "${YEAR}${MONTH}${DAY}" ${HOUR} ${GFS_PATH} ${RESOLUTION} ${PERIOD}
 
 # start model run
 cd ${SCRIPT_PATH}/model_run
