@@ -2,7 +2,15 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-06-24 16:57:03
+# @Last Modified time: 2017-06-26 19:49:22
+
+# script to update the input parameter for a model run
+# $1: the path to the wrf root folder
+# $2: the year for the model run
+# $3: the month for the model run
+# $4: the day for the model run
+# $5: the hour of the model run
+# $6: the timespan for the model run
 
 # define terminal colors
 RED='\033[0;31m'
@@ -31,6 +39,7 @@ END_YEAR=`date '+%Y' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HO
 END_MONTH=`date '+%m' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${6} hours"`
 END_DAY=`date '+%d' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${6} hours"`
 
+# grid parameters
 DT=90
 DX=10000
 DY=10000
