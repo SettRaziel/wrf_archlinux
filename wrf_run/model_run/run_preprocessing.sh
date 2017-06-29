@@ -2,7 +2,12 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 09:26:31
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-06-23 20:31:34
+# @Last Modified time: 2017-06-29 17:00:46
+
+# script to run the necessary preprocessing steps before starting the wrf run
+# $1: the path to the wrf root folder
+# $2: the path to the gfs input data
+# $3: the resolution of the input data
 
 # define terminal colors
 RED='\033[0;31m'
