@@ -2,7 +2,12 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-19 13:25:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-05-25 18:24:33
+# @Last Modified time: 2017-06-29 17:42:28
+
+# main installation script: start the installation of the wrf model on a
+# minimal arch linux installation
+# Version 0.1.0
+# created by Benjamin Held and other sources, June 2017
 
 # define terminal colors
 RED='\033[0;31m'
