@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-06-29 17:43:07
+# @Last Modified time: 2017-06-30 20:34:19
 
 # main script for starting a wrf model run
 # Version 0.1.0
@@ -20,16 +20,21 @@ PERIOD=180                    # the time period of the forecast
 RESOLUTION="0p50"             # the resolution of the input data
 
 # error handling for input parameter
-if [ "$#" -ne 1 ]; then
-  echo "Wrong number of arguments. Must be one for <HOUR>."
+if [ "$#" -eq 1 ]; then
+  YEAR=`date '+%Y'`
+  MONTH=`date '+%m'`
+  DAY=`date '+%d'`
+  HOUR=${1}
+elif [ "$#" -eq 4 ]; then
+  YEAR=${1}
+  MONTH=${2}
+  DAY=${3}
+  HOUR=${4}
+else
+  echo "Wrong number of arguments."
+  echo "Must either be one for <HOUR> or four for <YEAR> <MONTH> <DAY> <HOUR>"
   exit 1
 fi
-
-# determine start date
-YEAR=`date '+%Y'`
-MONTH=`date '+%m'`
-DAY=`date '+%d'`
-HOUR=${1}
 
 # adjusting namelist for next run
 cd ${SCRIPT_PATH}/model_run
