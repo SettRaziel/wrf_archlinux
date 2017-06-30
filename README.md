@@ -84,4 +84,4 @@ on a cluster it needs a valid name to work with several machines.
 * intermediate results during wrf_run
 * installation details
 
-created by: Benjamin Held
+created by: Benjamin Held, March 2017
