@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-06-26 19:49:22
+# @Last Modified time: 2017-07-01 17:23:41
 
 # script to update the input parameter for a model run
 # $1: the path to the wrf root folder
@@ -13,11 +13,7 @@
 # $6: the timespan for the model run
 
 # define terminal colors
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-LIGHT_BLUE='\033[0;34m'
-YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+source ../terminal_color.sh
 
 # error handling for input parameter
 if [ "$#" -ne 6 ]; then

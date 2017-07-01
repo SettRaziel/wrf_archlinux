@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 09:26:31
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-06-29 17:00:46
+# @Last Modified time: 2017-07-01 17:24:25
 
 # script to run the necessary preprocessing steps before starting the wrf run
 # $1: the path to the wrf root folder
@@ -10,11 +10,7 @@
 # $3: the resolution of the input data
 
 # define terminal colors
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-LIGHT_BLUE='\033[0;34m'
-YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+source ../terminal_color.sh
 
 BUILD_PATH=${1}
 GFS_PATH=${2}
