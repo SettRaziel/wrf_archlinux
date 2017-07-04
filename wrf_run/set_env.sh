@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-03 17:20:53
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-06-22 20:13:41
+# @Last Modified time: 2017-07-04 19:54:04
 
 # Script that sets the required variables for the model run
 # $1: the build path where the required wrf files are installed
@@ -26,3 +26,4 @@ export JASPERINC="${DIR}/grib2/include"
 
 # optional: required when using ncl unpacked in the library folder
 export NCARG_ROOT="${DIR}/ncl"
+export PATH="${PATH}:${NCARG_ROOT}/bin"
