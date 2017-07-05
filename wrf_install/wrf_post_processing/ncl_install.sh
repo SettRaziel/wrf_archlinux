@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-26 17:34:20
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-06-04 23:25:11
+# @Last Modified time: 2017-07-05 17:39:50
 
 # Script to compile the ncar command language for output visualization
 # $1: the path to the folder where the ncl program should be installed
@@ -21,8 +21,9 @@ cd ${HOME}/${1}
 # Unpacking ncl files
 printf "${YELLOW}\nUnpacking ncl.tar files: ${NC}\n"
 mkdir ncl
+mv ncl_ncarg-6.4.0-Debian8.6_64bit_nodap_gnu492.tag.gz
 cd ncl
-tar xfv ncl_ncarg-6.4.0-Debian8.6_64bit_gnu492.tar.gz
+tar ncl_ncarg-6.4.0-Debian8.6_64bit_nodap_gnu492.tag.gz
 
 # Installing additional library
 printf "${YELLOW}\nInstaling additional libraries: ${NC}\n"

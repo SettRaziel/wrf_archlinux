@@ -36,7 +36,7 @@ folders for subsidiary license files.
 * JasPer Project (JasPer): [Source](https://www.ece.uvic.ca/~frodo/jasper/) and [License](https://www.ece.uvic.ca/~frodo/jasper/LICENSE), used version: 1.900.1
 * Optional postprocessing tools:
   - Unified Post Processor (UPP): [Source](http://www.dtcenter.org/wrf-nmm/users/downloads/index.php), needs email validation
-  - NCAR Command Language (NCL): [Source](https://www.ncl.ucar.edu/Download/) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 6.4.0 Binaries
+  - NCAR Command Language (NCL): [Source](https://www.ncl.ucar.edu/Download/) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 6.4.0_nodap Binaries
 
 # Additional install configurations
 * install_wrf.sh: Set the correct file paths
@@ -75,6 +75,7 @@ on a cluster it needs a valid name to work with several machines.
     When running the model it breaks (last check: 2017/05/30) since the model needs libgfortran.so.3
     which cannot be found after upgrading the gcc-gfortran to 7.1.1-2. Even compiling WRFV3.9 and
     WPSV3.9 does not resolve this issue.
+* NCL: If you have problems with ncl and missing ssl libraries, use the nodap binaries
 
 # Todos:
 * generic file paths will be added later as shell parameters
