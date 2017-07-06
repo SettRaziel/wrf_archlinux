@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-07-01 17:23:41
+# @Last Modified time: 2017-07-06 16:13:46
 
 # script to update the input parameter for a model run
 # $1: the path to the wrf root folder
@@ -11,6 +11,8 @@
 # $4: the day for the model run
 # $5: the hour of the model run
 # $6: the timespan for the model run
+
+set -e
 
 # define terminal colors
 source ../terminal_color.sh

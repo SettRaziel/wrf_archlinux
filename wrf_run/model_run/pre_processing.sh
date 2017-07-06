@@ -2,10 +2,12 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-07 19:02:57
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-07-01 17:24:21
+# @Last Modified time: 2017-07-06 16:13:57
 
 # Script to start the model run
 # $1: the path to the wrf root folder
+
+set -e
 
 # define terminal colors
 source ../terminal_color.sh
