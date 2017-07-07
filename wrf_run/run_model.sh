@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-07-03 17:53:49
+# @Last Modified time: 2017-07-07 20:01:57
 
 # main script for starting a wrf model run
 # Version 0.1.0
@@ -67,6 +67,8 @@ printf "Starting model run and preparation.\n" >> ${STATUS_FILE}
 sh run_preprocessing.sh ${BUILD_PATH} ${GFS_PATH} ${RESOLUTION}; ret=${?}
 cd ${SCRIPT_PATH}
 if ! [ ${ret} == 0 ]; then
+    cd ${BUILD_PATH}/WRFV3/test/em_real/
+    rm wrfout_d1_*
     error_exit "Failed to run the model"
 fi
 
