@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-07-07 20:01:57
+# @Last Modified time: 2017-07-08 14:30:13
 
 # main script for starting a wrf model run
 # Version 0.1.0
@@ -80,5 +80,11 @@ mv ${BUILD_PATH}/WRFV3/test/em_real/Han.* ${HOME}/wrf_output
 
 # run output script
 cd ${SCRIPT_PATH}/post_processing
-sh draw_plots.sh ${YEAR} ${MONTH} ${DAY} ${HOUR}
-sh create_ini.sh ${YEAR} ${MONTH} ${DAY} ${HOUR} ${PERIOD}
+printf "Starting postprocessing.\n" >> ${STATUS_FILE}
+if sh draw_plots.sh ${YEAR} ${MONTH} ${DAY} ${HOUR}; then
+  sh create_ini.sh ${YEAR} ${MONTH} ${DAY} ${HOUR} ${PERIOD}
+else
+    error_exit "Error while creating output files"
+fi
+
+printf "Finished model run without error.\n" >> ${STATUS_FILE}
