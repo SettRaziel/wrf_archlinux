@@ -1,0 +1,6 @@
+# place in the folder where your model runs
+#-----------------------------------------------#
+# 24 characters for name | pfx |  LAT  |   LON  |
+#-----------------------------------------------#
+Hannover                  Han    52.35   9.75
+Ith                       Ith    51.96   9.64
