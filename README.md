@@ -28,6 +28,7 @@ scripts are marked and can have different license conditions. Please check the
 folders for subsidiary license files.
 
 ## Software components
+* WRF Model / WPS: [Source](http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php), used version: 3.8.1
 * Network Common Data Form (NetCDF): [Source](https://www.unidata.ucar.edu/software/netcdf/) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.4.1.1
 * NetCDF-Fortran Library: [Source](https://www.unidata.ucar.edu/software/netcdf/) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.4.4
 * Message Passing Interface (mpich): [Source](https://www.mpich.org/) and [License](http://git.mpich.org/mpich.git/blob/HEAD:/COPYRIGHT), used version: 3.2
@@ -84,5 +85,6 @@ on a cluster it needs a valid name to work with several machines.
 * cronjob details
 * intermediate results during wrf_run
 * installation details
+* testing of newer wrf version, e.g. WRFV3.9
 
 created by: Benjamin Held, March 2017
