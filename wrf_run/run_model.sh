@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-07-08 14:30:13
+# @Last Modified time: 2017-07-27 18:31:39
 
 # main script for starting a wrf model run
 # Version 0.1.0
@@ -11,7 +11,7 @@
 
 function error_exit {
   now=$(date +"%T")
-  printf "${1} at: ${now}.\n" >> ${SCRIPT_PATH}/error.log
+  printf "${1} at: ${now}.\n" >> ${ERROR_LOG}
   printf "Error: ${1} at: ${now}.\n" >> ${STATUS_FILE}
   echo "${1}" 1>&2
   exit 1
@@ -24,9 +24,10 @@ source ${SCRIPT_PATH}/set_env.sh
 GFS_PATH=${HOME}/gfs_data
 SCRIPT_PATH=${HOME}/scripts
 BUILD_PATH=${HOME}/Build_WRF
-STATUS_FILE=./status.log      # customize path if required
-PERIOD=180                    # the time period of the forecast
-RESOLUTION="0p50"             # the resolution of the input data
+STATUS_FILE=./status.log                     # customize path if required
+ERROR_LOG=${SCRIPT_PATH}/error_$(date +"%m_%d").log # path to error log
+PERIOD=180                                   # the time period of the forecast
+RESOLUTION="0p50"                            # the resolution of the input data
 
 # error handling for input parameter
 if [ "$#" -eq 1 ]; then
