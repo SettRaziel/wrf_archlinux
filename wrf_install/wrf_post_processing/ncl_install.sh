@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-26 17:34:20
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-07-05 17:39:50
+# @Last Modified time: 2017-08-15 20:21:54
 
 # Script to compile the ncar command language for output visualization
 # $1: the path to the folder where the ncl program should be installed
@@ -28,5 +28,7 @@ tar ncl_ncarg-6.4.0-Debian8.6_64bit_nodap_gnu492.tag.gz
 # Installing additional library
 printf "${YELLOW}\nInstaling additional libraries: ${NC}\n"
 yaourt -S fontconfig
+# Installing optipng to optimize png output size
+yaourt -S optipng
 
 printf "${LIGHT_BLUE}\nFinished ncl preparations. ${NC}\n"
