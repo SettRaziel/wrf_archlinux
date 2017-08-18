@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-07-06 16:13:46
+# @Last Modified time: 2017-08-18 18:24:44
 
 # script to update the input parameter for a model run
 # $1: the path to the wrf root folder
@@ -38,7 +38,7 @@ END_MONTH=`date '+%m' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_H
 END_DAY=`date '+%d' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${6} hours"`
 
 # grid parameters
-DT=90
+DT=80
 DX=10000
 DY=10000
 
