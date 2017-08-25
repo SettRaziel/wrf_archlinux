@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-08-18 18:24:44
+# @Last Modified time: 2017-08-25 17:55:08
 
 # script to update the input parameter for a model run
 # $1: the path to the wrf root folder
@@ -31,11 +31,16 @@ START_YEAR=${2}
 START_MONTH=${3}
 START_DAY=${4}
 START_HOUR=${5}
+PERIOD=${6}
 
-END_HOUR=`date '+%H' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${6} hours"`
-END_YEAR=`date '+%Y' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${6} hours"`
-END_MONTH=`date '+%m' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${6} hours"`
-END_DAY=`date '+%d' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${6} hours"`
+END_HOUR=`date '+%H' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${PERIOD} hours"`
+END_YEAR=`date '+%Y' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${PERIOD} hours"`
+END_MONTH=`date '+%m' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${PERIOD} hours"`
+END_DAY=`date '+%d' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${PERIOD} hours"`
+
+# calculating run time
+RUN_DAYS=`expr ${PERIOD} / 24`
+RUN_HOURS=`expr ${PERIOD} % 24`
 
 # grid parameters
 DT=80
@@ -47,6 +52,7 @@ GRID_Y=300
 
 printf "${YELLOW}\nSetting start date to: ${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR}:00${NC}\n"
 printf "${YELLOW}\nSetting end date to: ${END_YEAR}-${END_MONTH}-${END_DAY} ${END_HOUR}:00${NC}\n"
+printf "${YELLOW}\nForcasting for: ${RUN_DAYS} days and ${RUN_HOURS} hours${NC}\n"
 printf "${YELLOW}\nSetting grid to $GRID_X x $GRID_Y${NC}\n"
 printf "${YELLOW}\nSetting step size to $DX x $DY${NC}\n"
 printf "${YELLOW}\nSetting time step $DT${NC}\n"
@@ -64,6 +70,10 @@ sed -r -i "s/dy = [0-9]+/dy = ${DY}/g" namelist.wps
 
 # Adjust values in namelist.input in the wrf folder
 cd ${BUILD_PATH}/WRFV3/test/em_real
+
+sed -r -i "s/run_days                            = [0-9]+/run_days                            = ${RUN_DAYS}/g" namelist.input
+sed -r -i "s/run_hours                           = [0-9]+/run_days                            = ${RUN_HOURS}/g" namelist.input
+
 sed -r -i "s/start_year                          = [0-9]+/start_year                          = ${START_YEAR}/g" namelist.input
 sed -r -i "s/start_month                         = [0-9]+/start_month                         = ${START_MONTH}/g" namelist.input
 sed -r -i "s/start_day                           = [0-9]+/start_day                           = ${START_DAY}/g" namelist.input
