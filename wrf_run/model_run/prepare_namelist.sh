@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-08-25 17:55:08
+# @Last Modified time: 2017-08-26 15:53:49
 
 # script to update the input parameter for a model run
 # $1: the path to the wrf root folder
@@ -72,7 +72,7 @@ sed -r -i "s/dy = [0-9]+/dy = ${DY}/g" namelist.wps
 cd ${BUILD_PATH}/WRFV3/test/em_real
 
 sed -r -i "s/run_days                            = [0-9]+/run_days                            = ${RUN_DAYS}/g" namelist.input
-sed -r -i "s/run_hours                           = [0-9]+/run_days                            = ${RUN_HOURS}/g" namelist.input
+sed -r -i "s/run_hours                           = [0-9]+/run_hours                           = ${RUN_HOURS}/g" namelist.input
 
 sed -r -i "s/start_year                          = [0-9]+/start_year                          = ${START_YEAR}/g" namelist.input
 sed -r -i "s/start_month                         = [0-9]+/start_month                         = ${START_MONTH}/g" namelist.input
