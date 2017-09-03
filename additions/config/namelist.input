@@ -77,7 +77,7 @@
  /
 
  &dynamics
- w_damping                           = 0,
+ w_damping                           = 1,
  diff_opt                            = 1,      1,      1,
  km_opt                              = 4,      4,      4,
  diff_6th_opt                        = 0,      0,      0,
