@@ -2,17 +2,19 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-07-28 16:25:50
+# @Last Modified time: 2017-09-23 13:51:52
 
 # main script for starting a wrf model run
 # Version 0.1.0
 # created by Benjamin Held and other sources, June 2017
 # $1: the starting hour of the model run
 
-function error_exit {
+function error_exit () {
   now=$(date +"%T")
-  printf "${1} at: ${now}.\n" >> ${ERROR_LOG}
+  ERROR_STATUS="${1} at: ${now}."
+  printf "${ERROR_STATUS}\n" >> ${ERROR_LOG}
   printf "Error: ${1} at: ${now}.\n" >> ${STATUS_FILE}
+  cd ${SCRIPT_PATH}
   echo "${1}" 1>&2
   exit 1
 }
@@ -26,23 +28,24 @@ SCRIPT_PATH=${HOME}/scripts
 BUILD_PATH=${HOME}/Build_WRF
 STATUS_FILE=./status.log                     # customize path if required
 ERROR_LOG=${SCRIPT_PATH}/error_$(date +"%m_%d").log # path to error log
-PERIOD=180                                   # the time period of the forecast
-RESOLUTION="0p50"                            # the resolution of the input data
 
-# error handling for input parameter
-if [ "$#" -eq 1 ]; then
+if [ "$#" -eq 3 ]; then # no argument, run whole script
   YEAR=`date '+%Y'`
   MONTH=`date '+%m'`
   DAY=`date '+%d'`
   HOUR=${1}
-elif [ "$#" -eq 4 ]; then
+  PERIOD=${2}
+  RESOLUTION=${3}
+elif [ "$#" -eq 6 ]; then
   YEAR=${1}
   MONTH=${2}
   DAY=${3}
   HOUR=${4}
+  PERIOD=${5}
+  RESOLUTION=${6}
 else
   echo "Wrong number of arguments."
-  echo "Must either be one for <HOUR> or four for <YEAR> <MONTH> <DAY> <HOUR>"
+  echo "Must either be two for <HOUR> <PERIOD> or five for <YEAR> <MONTH> <DAY> <HOUR> <PERIOD>"
   exit 1
 fi
 
@@ -77,13 +80,16 @@ fi
 cd ${SCRIPT_PATH}/model_run
 sh clean_up_output.sh
 mv ${BUILD_PATH}/WRFV3/test/em_real/wrfout_d01_* ${HOME}/wrf_output
-mv ${BUILD_PATH}/WRFV3/test/em_real/Han.* ${HOME}/wrf_output
 
 # run output script
-cd ${SCRIPT_PATH}/post_processing
+cd ${SCRIPT_PATH}
 printf "Starting postprocessing.\n" >> ${STATUS_FILE}
-if sh draw_plots.sh ${YEAR} ${MONTH} ${DAY} ${HOUR}; then
-  sh create_ini.sh ${YEAR} ${MONTH} ${DAY} ${HOUR} ${PERIOD}
+sh draw_plots.sh ${YEAR} ${MONTH} ${DAY} ${HOUR} ${PERIOD}; ret=${?}
+if [ ${ret} == 0 ]; then
+  printf "Starting archive generation.\n" >> ${STATUS_FILE}
+  cd ${HOME}/wrf_output
+  tar czf wrfout_${YEAR}_${MONTH}_${DAY}_${HOUR}.tar.gz wrfout_d01_* Han.d01.* Ith.d01.*
+  mv wrfout_${YEAR}_${MONTH}_${DAY}_${HOUR}.tar.gz history/
 else
     error_exit "Error while creating output files"
 fi
