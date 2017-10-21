@@ -29,7 +29,7 @@
  !
  !!!!!!!!!!!!!!!!!!!!!!!!!!!! IMPORTANT NOTE !!!!!!!!!!!!!!!!!!!!!!!!!!!!
  ! the used geo data for the calculation; high resolution
- geog_data_res = '2deg+topo_gmted2010_30s+landuse_30s_with_lakes+10m+greenfrac','2deg+topo_gmted2010_30s+landuse_30s_with_lakes+10m+greenfrac',
+ geog_data_res = '2deg+topo_gmted2010_30s+landuse_30s_with_lakes+30s+greenfrac','2deg+topo_gmted2010_30s+landuse_30s_with_lakes+30s+greenfrac',
  dx = 10000,
  dy = 10000,
  map_proj = 'lambert',
