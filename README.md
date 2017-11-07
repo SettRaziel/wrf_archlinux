@@ -21,6 +21,7 @@ Current version: v0.1.0
 # Sources
 * basic system: [here](https://wiki.archlinux.org/index.php/Installation_guide)
 * wrf tutorial: [here](http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php)
+* ncl output: [here](https://www.ncl.ucar.edu/Applications/)
 
 # License
 The scripts are licensed under the given license file. 3rd party software and
