@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 19:47:48
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-05-26 18:16:30
+# @Last Modified time: 2017-11-16 18:14:44
 
 # define terminal colors
 RED='\033[0;31m'
@@ -40,3 +40,4 @@ printf "${YELLOW}Installing basic packages... ${NC}"
 yaourt -S gcc-fortran
 yaourt -S tcsh
 yaourt -S time
+yaourt -S wget
