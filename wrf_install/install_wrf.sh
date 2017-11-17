@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-19 13:25:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-06-29 17:42:28
+# @Last Modified time: 2017-11-17 22:30:35
 
 # main installation script: start the installation of the wrf model on a
 # minimal arch linux installation
@@ -20,15 +20,15 @@ BUILD_PATH="<wrf path>"
 WRF_ROOT_PATH="${HOME}/${BUILD_PATH}"
 SCRIPT_PATH=$(pwd)
 
-# Preaparing files and folder
-sh ./linux/preparations.sh ${BUILD_PATH} path/to/libs
+# Setting required environment variables
+source ./linux/set_env.sh ${WRF_ROOT_PATH}
 
 # Install required basic packages
 sh ./linux/basics.sh
 
-# Setting required environment variables
+# Preaparing files and folder
 cd ${SCRIPT_PATH}
-source ./linux/set_env.sh ${WRF_ROOT_PATH}
+sh ./linux/preparations.sh ${BUILD_PATH} path/to/libs
 
 # Compiling netcdf bindings
 sh ./wrf_preparation/netcdf.sh ${BUILD_PATH}
