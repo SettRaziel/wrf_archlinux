@@ -2,7 +2,10 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-18 15:39:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-06-03 22:04:02
+# @Last Modified time: 2017-11-21 21:35:20
+
+# Script to compile the required netcdf-fortran package
+# $1: path to the installation folder
 
 # define terminal colors
 RED='\033[0;31m'
@@ -11,16 +14,13 @@ LIGHT_BLUE='\033[0;34m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-# Script to compile the required netcdf-fortran package
-# $1: path to the installation folder
-
 # Jump in folder and extract tar
 cd ${HOME}/${1}
 printf "${YELLOW}\nUnpacking netcdf-fortran.tar files: ${NC}\n"
-tar -xf netcdf-fortran-4.4.4.tar.gz
+tar xfv netcdf-fortran-${NETCDF_FORTRAN_VERSION}.tar.gz
 
 # Build netcdf-fortran bindings
-cd netcdf-fortran-4.4.4
+cd netcdf-fortran-${NETCDF_FORTRAN_VERSION}
 # Change the path according to the used user; configure requires an absolute
 # path here or it fails with an error
 CPPFLAGS="-I$DIR/netcdf/include" ./configure --prefix=$NETCDF --disable-shared

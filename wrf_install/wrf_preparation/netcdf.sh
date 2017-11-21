@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 21:06:12
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-06-01 16:57:49
+# @Last Modified time: 2017-11-21 21:35:28
 
 # installation of the netcdf package
 # $1: path to the installation folder
@@ -19,11 +19,11 @@ cd ${HOME}/${1}
 
 # Unpacking netcdf files
 printf "${YELLOW}\nUnpacking netcdf.tar files: ${NC}\n"
-tar xfv netcdf-4.4.1.1.tar.gz
+tar xfv netcdf-${NETCDF_VERSION}.tar.gz
 
 # Installing netcdf library
-printf "${YELLOW}\nInstaling netcdf: ${NC}\n"
-cd netcdf-4.4.1.1
+printf "${YELLOW}\nInstalling netcdf: ${NC}\n"
+cd netcdf-${NETCDF_VERSION}
 ./configure --prefix=$DIR/netcdf --disable-dap --disable-netcdf-4 --disable-shared
 make -j 2 &&  make install -j 2
 
