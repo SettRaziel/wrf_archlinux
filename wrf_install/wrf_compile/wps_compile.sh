@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-01 20:09:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-05-27 09:56:42
+# @Last Modified time: 2017-11-22 18:55:02
 
 # define terminal colors
 RED='\033[0;31m'
@@ -20,7 +20,7 @@ cd ${HOME}/${1}
 
 # Unpacking wps files
 printf "${YELLOW}\nUnpacking wps.tar files: ${NC}\n"
-tar xfv wps-3.8.1.tar.bz2
+tar xfv WPSV${WPS_VERSION}.tar.gz
 
 # Installing wps
 printf "${YELLOW}\nInstaling wps: ${NC}\n"

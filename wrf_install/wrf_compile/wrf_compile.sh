@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-18 15:49:25
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-05-28 20:22:23
+# @Last Modified time: 2017-11-22 18:54:53
 
 # define terminal colors
 RED='\033[0;31m'
@@ -19,7 +19,7 @@ NC='\033[0m' # No Color
 # Jump in folder and extract tar
 cd ${HOME}/${1}
 printf "${YELLOW}\nUnpacking wrf.tar files: ${NC}\n"
-tar -xf wrf-3.8.1.tar.bz2
+tar xfv WRFV${WRF_VERSION}.tar.gz
 
 # Build wrf
 cd WRFV3
