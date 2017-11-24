@@ -61,6 +61,23 @@ folders for subsidiary license files.
   - horitontal grid resolution: dx, dy
   - start time stamp
 
+# Working setup and testing setups
+This section describes the current working setup based under the condition that the installation is
+successful and a model run is starting for a given time stamp of input data. It does not consider 
+runtime errors due to broken input data, numerical instabilities or other problems occuring during 
+a model run. Additionally all setups use gcc/gcc-libs/gcc-gfortran 6.3.1-2 until described 
+otherwise.
+* current setup:
+  - WRF Model and WPS v3.8.1
+  - NetCDF v4.4.1.1 / NetCDF-Fortran Library v4.4.4
+  - mpi v3.2, libpng v1.6.28, zlib v1.2.11, JasPer v1.900.1
+* testing setup:
+  - WRF Model and WPS v3.9
+  - NetCDF v4.5.0 / NetCDF-Fortran Library v4.4.4
+  - mpi v3.2.1, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.1
+* tested setups:
+  - none at the moment 
+
 # Troubleshooting
 * If one of the mpi test fails with a naming error, check if you have set the
 hostname from your /etc/hostname in your file /etc/hosts. Since mpi can run
