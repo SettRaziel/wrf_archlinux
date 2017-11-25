@@ -2,7 +2,10 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-26 14:21:00
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-11-20 17:58:48
+# @Last Modified time: 2017-11-25 14:18:24
+
+# ${1}: the folder relative to the home path where the files should be installed
+# ${2}: storage folder where the libraries are stored or where they should be loaded
 
 # loads the majority of the required library, no jasper since version 2 has other buildsystem
 function load_libraries() {
