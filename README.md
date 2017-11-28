@@ -48,6 +48,8 @@ folders for subsidiary license files.
     the $BUILD_PATH to the wrf model root
   - the path to the required libraries
 * libraries: adjust the number of used cores by changing the -j parameter
+* starting with WRF v3.9 the model can use a hybrid approach for the vertical coordinate
+  (see manual for details); atm the corresponding parameter -hyb needs to be set manually
 
 # Compile Options, that worked for me
 * WPS: 1 gfortran serial
@@ -72,11 +74,13 @@ otherwise.
   - NetCDF v4.4.1.1 / NetCDF-Fortran Library v4.4.4
   - mpi v3.2, libpng v1.6.28, zlib v1.2.11, JasPer v1.900.1
 * testing setup:
-  - WRF Model and WPS v3.9
+  - WRF Model and WPS v3.9 (with hybrid vertical coordinates)
   - NetCDF v4.5.0 / NetCDF-Fortran Library v4.4.4
   - mpi v3.2.1, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.1
 * tested setups:
-  - none at the moment 
+  - WRF Model and WPS v3.9 (no hybrid vertical coordinates)
+    - NetCDF v4.5.0 / NetCDF-Fortran Library v4.4.4
+    - mpi v3.2.1, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.1 
 
 # Troubleshooting
 * If one of the mpi test fails with a naming error, check if you have set the
@@ -104,5 +108,6 @@ on a cluster it needs a valid name to work with several machines.
 * intermediate results during wrf_run
 * installation details
 * testing of newer wrf version, e.g. WRFV3.9
+* testing the new hybrid vertical coordinate for WRFV3.9 and higher
 
 created by: Benjamin Held, March 2017
