@@ -65,20 +65,24 @@ folders for subsidiary license files.
 
 # Working setup and testing setups
 This section describes the current working setup based under the condition that the installation is
-successful and a model run is starting for a given time stamp of input data. It does not consider 
-runtime errors due to broken input data, numerical instabilities or other problems occuring during 
-a model run. Additionally all setups use gcc/gcc-libs/gcc-gfortran 6.3.1-2 until described 
+successful and a model run is starting for a given time stamp of input data. Unstable means that for
+the current namelist-files some model runs end preliminary with an error.
+The different setups will be categorized in
+* {compiling, not_compiling}
+* {debug_build, normal_build, hybrid_build, combined_build}
+* {running, unstable, not_running}
+Additionally all setups use gcc/gcc-libs/gcc-gfortran 6.3.1-2 until described 
 otherwise.
 * current setup:
-  - WRF Model and WPS v3.8.1
+  - WRF Model and WPS v3.8.1 [compiling, normal_build, unstable]
   - NetCDF v4.4.1.1 / NetCDF-Fortran Library v4.4.4
   - mpi v3.2, libpng v1.6.28, zlib v1.2.11, JasPer v1.900.1
 * testing setup:
-  - WRF Model and WPS v3.9 (with hybrid vertical coordinates)
+  - WRF Model and WPS v3.9 [not_compiling, hybrid_build, not_running]
   - NetCDF v4.5.0 / NetCDF-Fortran Library v4.4.4
   - mpi v3.2.1, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.1
 * tested setups:
-  - WRF Model and WPS v3.9 (no hybrid vertical coordinates)
+  - WRF Model and WPS v3.9 [compiling, normal_build, unstable]
     - NetCDF v4.5.0 / NetCDF-Fortran Library v4.4.4
     - mpi v3.2.1, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.1 
 
