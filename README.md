@@ -71,6 +71,7 @@ The different setups will be categorized in
 * {compiling, not_compiling}
 * {debug_build, normal_build, hybrid_build, combined_build}
 * {running, unstable, not_running}
+
 Additionally all setups use gcc/gcc-libs/gcc-gfortran 6.3.1-2 until described 
 otherwise.
 * current setup:
