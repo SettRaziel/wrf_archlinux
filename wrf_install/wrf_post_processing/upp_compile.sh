@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-05 17:52:09
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-06-05 20:51:37
+# @Last Modified time: 2017-12-23 18:06:21
 
 # Script to compile the upp library for output visualization
 # $1: the path to the folder where the upp program should be installed
@@ -22,7 +22,7 @@ printf "${YELLOW}\nUnpacking upp.tar files: ${NC}\n"
 tar xfv upp-3.1.tar.bz2
 
 # Installing upp library
-printf "${YELLOW}\nInstaling wps: ${NC}\n"
+printf "${YELLOW}\nInstaling upp: ${NC}\n"
 cd UPPV3.1
 ./configure
 
