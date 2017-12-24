@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 21:06:12
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-11-23 21:03:56
+# @Last Modified time: 2017-12-24 22:32:59
 
 # Script to compile the required libraries
 # $1: path to the installation folder
@@ -78,3 +78,9 @@ make -j 2 && make install -j 2
 cd ..
 
 printf "${LIGHT_BLUE}\nFinished installing jasper. ${NC}\n"
+
+# cleanup
+rm mpich-${MPI_VERSION}.tar.gz
+rm zlib-${ZLIB_VERSION}.tar.gz
+rm libpng-${LIBPNG_VERSION}.tar.gz
+rm jasper-${JASPER_VERSION}.tar.gz
