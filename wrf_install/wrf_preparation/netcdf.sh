@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 21:06:12
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-11-21 21:35:28
+# @Last Modified time: 2017-12-25 14:15:36
 
 # installation of the netcdf package
 # $1: path to the installation folder
@@ -28,5 +28,8 @@ cd netcdf-${NETCDF_VERSION}
 make -j 2 &&  make install -j 2
 
 cd ..
+
+# cleanup
+rm netcdf-${NETCDF_VERSION}.tar.gz
 
 printf "${LIGHT_BLUE}\nFinished installing netcdf. ${NC}\n"
