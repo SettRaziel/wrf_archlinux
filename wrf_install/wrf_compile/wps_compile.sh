@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-01 20:09:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-11-22 18:55:02
+# @Last Modified time: 2017-12-26 21:58:56
 
 # define terminal colors
 RED='\033[0;31m'
@@ -32,5 +32,8 @@ sed -r -i 's/-L\$\(NETCDF\)\/lib -lnetcdff -lnetcdf/-L\$\(NETCDF\)\/lib -lnetcdf
 ./compile >& ./compile.log
 
 cd ..
+
+# cleanup
+rm WPSV${WPS_VERSION}.tar.gz
 
 printf "${LIGHT_BLUE}\nFinished installing wps. ${NC}\n"
