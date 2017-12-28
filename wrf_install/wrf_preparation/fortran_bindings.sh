@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-18 15:39:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-11-21 21:35:20
+# @Last Modified time: 2017-12-28 19:07:13
 
 # Script to compile the required netcdf-fortran package
 # $1: path to the installation folder
@@ -27,5 +27,8 @@ CPPFLAGS="-I$DIR/netcdf/include" ./configure --prefix=$NETCDF --disable-shared
 make -j 2 && make -j 2 install
 
 cd ..
+
+# clean up
+rm netcdf-fortran-${NETCDF_FORTRAN_VERSION}.tar.gz
 
 printf "${LIGHT_BLUE}\nFinished installing netcdf fortran bindings. ${NC}\n"
