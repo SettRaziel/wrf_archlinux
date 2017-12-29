@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-18 15:49:25
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-11-22 18:54:53
+# @Last Modified time: 2017-12-29 22:05:09
 
 # define terminal colors
 RED='\033[0;31m'
@@ -33,5 +33,9 @@ ln -s ${2}/WRFV3/frame/ ${2}/WRFV3/external/
 ./compile -j 1 em_real >& ./compile.log
 
 cd ..
+
+#clean up
+rm WRFV${WRF_VERSION}.tar.gz
+
 printf "${LIGHT_BLUE}\nFinished installing wrf. ${NC}"
-printf "${LIGHT_BLUE}Check compile.log for details ${NC}\n"
+printf "${LIGHT_BLUE}Check compile.log for details. ${NC}\n"
