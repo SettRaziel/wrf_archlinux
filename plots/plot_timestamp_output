@@ -1,0 +1,58 @@
+load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_code.ncl"
+load "$NCARG_ROOT/lib/ncarg/nclscripts/wrf/WRFUserARW.ncl"
+load "3hr_rain_lib.ncl"
+load "comp_lib.ncl"
+load "thunderstorm_lib.ncl"
+
+begin
+  FILES = systemfunc (" ls -1 " + "wrfout_d01_*") ; read all input files
+  numFILES = dimsizes(FILES)
+  print("numFILES = " + numFILES)
+  print(FILES)
+  print (" ")
+
+  ; Set basic resources
+  res = True
+  res@MainTitle = "WRF: Multidiagram"          ; Give plot a main title
+  res@gsnFrame            = False          ; don't advance frame yet
+  res@gsnMaximize         = True           ; maximize plot in frame
+
+  pltres = True                                ; Plotting resources
+  mpres = True                                      ; Map resources
+  mpres@mpGeophysicalLineColor = "Black"
+  mpres@mpGeophysicalLineThicknessF = "2"
+  mpres@mpFillBoundarySets = "AllBoundaries"
+  mpres@mpNationalLineColor    = "Black"
+  mpres@mpGridLineColor        = "Black"
+  mpres@mpLimbLineColor        = "Black"
+  mpres@mpPerimLineColor       = "Black"
+  mpres@mpDataBaseVersion      = "HighRes"
+  print("Starting addfiles.")
+
+  a = addfiles(FILES+".nc","r")
+  times = wrf_user_getvar(a,"times",-1)  ; get all times in the file
+  ntimes = dimsizes(times)               ; number of times in the file
+
+  slp = get_sea_level_pressure(a)
+  tc2 = get_surface_temperature(a)
+  u10 = get_latitude_wind(a)
+  v10 = get_longitude_wind(a)
+  
+  rain_tot_tend = create_3hr_rainsums(a, ntimes)
+
+  tend_int = 1
+
+  do it = 0,ntimes-1,tend_int
+    print("Working on timestep: " + times(it) )
+    
+    ; generate output for the composition at the given timestep
+    print_comp_for_timestamp(times(it), a[it], mpres, tc2(it,:,:), slp(it,:,:), u10(it,:,:), v10(it,:,:))
+
+    ; generate output for the cape energy at the given timestep
+    print_cape_energy_for_timestamp(times(it), a[it], mpres, get_cape_energy(a[it]))
+
+    ; generate output for 3 hr rain at the given timestep
+    print_3hr_rain_for_timestamp(times(it), a[it], mpres, slp(it,:,:), rain_tot_tend(it,:,:))
+ end do
+
+end
