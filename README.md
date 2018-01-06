@@ -76,12 +76,12 @@ Additionally all setups use gcc/gcc-libs/gcc-gfortran 6.3.1-2 until described
 otherwise.
 * current setup:
   - WRF Model and WPS v3.8.1 [compiling, normal_build, unstable]
-  - NetCDF v4.4.1.1 / NetCDF-Fortran Library v4.4.4
-  - mpi v3.2, libpng v1.6.28, zlib v1.2.11, JasPer v1.900.1
+    - NetCDF v4.4.1.1 / NetCDF-Fortran Library v4.4.4
+    - mpi v3.2, libpng v1.6.28, zlib v1.2.11, JasPer v1.900.1
 * testing setup:
   - WRF Model and WPS v3.9 [not_compiling, hybrid_build, not_running]
-  - NetCDF v4.5.0 / NetCDF-Fortran Library v4.4.4
-  - mpi v3.2.1, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.1
+    - NetCDF v4.5.0 / NetCDF-Fortran Library v4.4.4
+    - mpi v3.2.1, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.1
 * tested setups:
   - WRF Model and WPS v3.9 [compiling, normal_build, unstable]
     - NetCDF v4.5.0 / NetCDF-Fortran Library v4.4.4
@@ -104,6 +104,13 @@ on a cluster it needs a valid name to work with several machines.
     which cannot be found after upgrading the gcc-gfortran to 7.1.1-2. Even compiling WRFV3.9 and
     WPSV3.9 does not resolve this issue.
 * NCL: If you have problems with ncl and missing ssl libraries, use the nodap binaries
+* My model instability seems to result from the choosen model area. Considering posts from the WRF 
+  forum it is most likely caused by high orography near the model borders. Consider trying a model
+  area with an island or a whole continent if your model runs fails shortly after the wrf.exe starts
+  running. So you will have water near the boundaries.
+* Sometimes the virtual machine freezes when trying to make a model run. Looking on the last entries
+  of the system log most of the time the machine freezes while loading input data via wget. I will
+  investigate that further to correct that behavior. If you know more, feel free to contact me.
 
 # Todos:
 * generic file paths will be added later as shell parameters
