@@ -111,6 +111,10 @@ on a cluster it needs a valid name to work with several machines.
 * Sometimes the virtual machine freezes when trying to make a model run. Looking on the last entries
   of the system log most of the time the machine freezes while loading input data via wget. I will
   investigate that further to correct that behavior. If you know more, feel free to contact me.
+  - switched to curl; in testing
+* Using different resolutions for x and y seems to lead to an error, that file informations do not
+  concur with the settings from the namelist file. Only the value of dx seems to be used. This
+  needs to be reviewed.
 
 # Todos:
 * generic file paths will be added later as shell parameters
@@ -121,5 +125,8 @@ on a cluster it needs a valid name to work with several machines.
 * installation details
 * testing of newer wrf version, e.g. WRFV3.9
 * testing the new hybrid vertical coordinate for WRFV3.9 and higher
+* more error checks:
+  - e.g. checks that the run time of the model need to be a multiple of three
+    (as long as the output interval is static and set to 3 hours)
 
 created by: Benjamin Held, March 2017
