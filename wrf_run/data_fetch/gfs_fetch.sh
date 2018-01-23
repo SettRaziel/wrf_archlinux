@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-06 19:18:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-01-01 17:49:25
+# @Last Modified time: 2018-01-23 17:04:09
 
 # This script loads the required input data for a 180 h forecast run
 # $1 matches the required date yyyymmdd
@@ -20,10 +20,5 @@ rm ${3}/gfs.*
 
 # Fetch the new ones
 for i in $(seq -f %03g 0 3 ${5}); do
-wget -q -P ${3} http://www.ftp.ncep.noaa.gov/data/nccf/com/gfs/prod/gfs.${1}${2}/gfs.t${2}z.pgrb2.${4}.f${i}
-done
-
-# Check and continue broken files
-for i in $(seq -f %03g 0 3 ${5}); do
-wget -c -q -P ${3} http://www.ftp.ncep.noaa.gov/data/nccf/com/gfs/prod/gfs.${1}${2}/gfs.t${2}z.pgrb2.${4}.f${i}
+	curl -o ${3}/gfs.t${2}z.pgrb2.${4}.f${i} http://www.ftp.ncep.noaa.gov/data/nccf/com/gfs/prod/gfs.${1}${2}/gfs.t${2}z.pgrb2.${4}.f${i}
 done
