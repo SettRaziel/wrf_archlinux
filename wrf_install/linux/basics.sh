@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 19:47:48
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-11-19 14:00:10
+# @Last Modified time: 2018-01-24 21:07:48
 
 # define terminal colors
 RED='\033[0;31m'
@@ -38,4 +38,4 @@ makepkg -si
 printf "${YELLOW}Installing basic packages... ${NC}"
 # Installing required packages
 yaourt -S gcc-fortran
-yaourt -S tcsh time wget
+yaourt -S tcsh time curl
