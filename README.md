@@ -109,9 +109,8 @@ on a cluster it needs a valid name to work with several machines.
   area with an island or a whole continent if your model runs fails shortly after the wrf.exe starts
   running. So you will have water near the boundaries.
 * Sometimes the virtual machine freezes when trying to make a model run. Looking on the last entries
-  of the system log most of the time the machine freezes while loading input data via wget. I will
-  investigate that further to correct that behavior. If you know more, feel free to contact me.
-  - switched to curl; in testing
+  of the system log most of the time the machine freezes while loading input data via wget.
+  - switched to curl; virtual machine seems stable at the moment
 * Using different resolutions for x and y seems to lead to an error, that file informations do not
   concur with the settings from the namelist file. Only the value of dx seems to be used. This
   needs to be reviewed.
