@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-08-26 15:53:49
+# @Last Modified time: 2018-02-14 11:08:22
 
 # script to update the input parameter for a model run
 # $1: the path to the wrf root folder
@@ -50,6 +50,9 @@ DY=10000
 GRID_X=300
 GRID_Y=300
 
+REF_LAT=42.0
+REF_LON=-7.0
+
 printf "${YELLOW}\nSetting start date to: ${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR}:00${NC}\n"
 printf "${YELLOW}\nSetting end date to: ${END_YEAR}-${END_MONTH}-${END_DAY} ${END_HOUR}:00${NC}\n"
 printf "${YELLOW}\nForcasting for: ${RUN_DAYS} days and ${RUN_HOURS} hours${NC}\n"
@@ -67,6 +70,10 @@ sed -r -i "s/e\_sn              =  [0-9]+/e\_sn              =  ${GRID_Y}/g" nam
 
 sed -r -i "s/dx = [0-9]+/dx = ${DX}/g" namelist.wps
 sed -r -i "s/dy = [0-9]+/dy = ${DY}/g" namelist.wps
+
+sed -r -i "s/ref_lat   =  (\-|)[0-9]+\.[0-9]+/ref_lat   =  ${REF_LAT}/g" namelist.wps
+sed -r -i "s/truelat1   =  (\-|)[0-9]+\.[0-9]+/truelat1   =  ${REF_LAT}/g" namelist.wps
+sed -r -i "s/ref_lon   =  (\-|)[0-9]+\.[0-9]+/ref_lon   =  ${REF_LON}/g" namelist.wps
 
 # Adjust values in namelist.input in the wrf folder
 cd ${BUILD_PATH}/WRFV3/test/em_real
