@@ -105,10 +105,14 @@ on a cluster it needs a valid name to work with several machines.
     WPSV3.9 does not resolve this issue.
 * NCL: If you have problems with ncl and missing ssl libraries, use the nodap binaries
 * My model instability seems to result from the choosen model area. Considering posts from the WRF 
-  forum it is most likely caused by high orography near the model borders. Consider trying a model
-  area with an island or a whole continent if your model runs fails shortly after the wrf.exe starts
-  running. So you will have water near the boundaries.
-* Sometimes the virtual machine freezes when trying to make a model run. Looking on the last entries
+  forum it can be caused by high orography near the model borders or CFL violations in the vertical wind
+  interpolation. Consider trying a model area with an island or a whole continent if your model runs 
+  fail shortly after the wrf.exe starts running. So you will have water near the boundaries.
+  - even the model area around Iceland does crash occasionally. Not clear if that is caused by CFL 
+    violations or faulty GFS data. Setting the model area to central europe results in crahes at
+    the first model iteration. Setting additional dampening parameters and settings for the vertical
+    interpolation does not improve the problem. If you have a solution please write me an e-mail.
+* Sometimes the virtual machine freezes when trying to make a model run. Looking on the last entries  
   of the system log most of the time the machine freezes while loading input data via wget.
   - switched to curl; virtual machine seems stable at the moment
 * Using different resolutions for x and y seems to lead to an error, that file informations do not
