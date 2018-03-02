@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-07-11 22:48:38
+# @Last Modified time: 2018-03-02 19:10:26
 
 function generate_meteogram () {
   METEO_TITLE=${1}
@@ -26,10 +26,10 @@ printf "Starting meteograms at ${now}.\n" >> ${SCRIPT_PATH}/log.info
 cd ${HOME}/<output_folder>
 
 DATE=$1-$2-$3
-START_DATE=$(date +\(%d/%m/%Y_%HUTC\) -d "${DATE}T${4}:00")
-DATE_FORMAT="+%d-%b"
+START_DATE=$(LC_ALL=en_UTF-8 date +\(%Y-%m-%d-%HUTC\) -d "${DATE}T${4}:00")
+DATE_FORMAT="+%b-%d_00:00"
 # create an array with date stamps to show at the time axis
-LEGEND_ARRAY="(/\"$(date $DATE_FORMAT -d "$DATE + 1 day")\""
+LEGEND_ARRAY="(/\"$(LC_ALL=en_UTF-8 date $DATE_FORMAT -d "$DATE + 1 day")\""
 
 # create array for major tick mark positions at the beginning of a day
 # add the first position based on the starting hour of the model run
@@ -44,7 +44,7 @@ STICK_ARRAY="(/${SEC_HOURS}"
 # add the tick mark positions and time stamps for the following days
 for i in {2..8}
 do
-  NEXT_DATE=$(date $DATE_FORMAT -d "$DATE + $i day")
+  NEXT_DATE=$(LC_ALL=en_UTF-8 date $DATE_FORMAT -d "$DATE + $i day")
   SEC_HOURS=`expr $MAIN_HOURS + 12`
   STICK_ARRAY+=","
   STICK_ARRAY+="${SEC_HOURS}"
