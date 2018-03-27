@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-03-02 19:10:26
+# @Last Modified time: 2018-03-27 19:45:46
 
 function generate_meteogram () {
   METEO_TITLE=${1}
@@ -27,7 +27,7 @@ cd ${HOME}/<output_folder>
 
 DATE=$1-$2-$3
 START_DATE=$(LC_ALL=en_UTF-8 date +\(%Y-%m-%d-%HUTC\) -d "${DATE}T${4}:00")
-DATE_FORMAT="+%b-%d_00:00"
+DATE_FORMAT="+%b-%d/00"
 # create an array with date stamps to show at the time axis
 LEGEND_ARRAY="(/\"$(LC_ALL=en_UTF-8 date $DATE_FORMAT -d "$DATE + 1 day")\""
 
