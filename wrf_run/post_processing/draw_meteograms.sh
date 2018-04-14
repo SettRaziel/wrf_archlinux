@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-03-27 19:45:46
+# @Last Modified time: 2018-04-14 19:32:46
 
 function generate_meteogram () {
   METEO_TITLE=${1}
@@ -25,6 +25,8 @@ printf "Starting meteograms at ${now}.\n" >> ${SCRIPT_PATH}/log.info
 
 cd ${HOME}/<output_folder>
 
+# optional addition to the storage path
+DEST_SUFFIX=${5}
 DATE=$1-$2-$3
 START_DATE=$(LC_ALL=en_UTF-8 date +\(%Y-%m-%d-%HUTC\) -d "${DATE}T${4}:00")
 DATE_FORMAT="+%b-%d/00"
@@ -62,7 +64,7 @@ STICK_ARRAY+="/)"
 
 # when putting the output into time stamp based folder, this creates a folder
 # prefix with mm_dd_hh/mm_dd_hh
-DEST_PREFIX=${2}_${3}_${4}/${2}_${3}_${4}
+DEST_PREFIX=${2}_${3}_${4}/${2}_${3}_${4}${DEST_SUFFIX}
 
 # function call to draw the output for one specific place
 generate_meteogram "Hannover,_Germany_${START_DATE}" "Han"
