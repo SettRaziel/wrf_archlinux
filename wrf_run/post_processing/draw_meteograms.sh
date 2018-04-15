@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-04-14 19:32:46
+# @Last Modified time: 2018-04-15 17:39:44
 
 function generate_meteogram () {
   METEO_TITLE=${1}
@@ -27,7 +27,7 @@ cd ${HOME}/<output_folder>
 
 # optional addition to the storage path
 DEST_SUFFIX=${5}
-DATE=$1-$2-$3
+DATE=${1}-${2}-${3}
 START_DATE=$(LC_ALL=en_UTF-8 date +\(%Y-%m-%d-%HUTC\) -d "${DATE}T${4}:00")
 DATE_FORMAT="+%b-%d/00"
 # create an array with date stamps to show at the time axis
@@ -35,18 +35,18 @@ LEGEND_ARRAY="(/\"$(LC_ALL=en_UTF-8 date $DATE_FORMAT -d "$DATE + 1 day")\""
 
 # create array for major tick mark positions at the beginning of a day
 # add the first position based on the starting hour of the model run
-MAIN_HOURS=`expr 24 - $4`
+MAIN_HOURS=`expr 24 - ${4}`
 TICK_ARRAY="(/${MAIN_HOURS}"
 
 # create arry for minor tick mark positions at midday
 # add the first position based on the starting hour of the model run
-SEC_HOURS=`expr 12 - $4`
+SEC_HOURS=`expr 12 - ${4}`
 STICK_ARRAY="(/${SEC_HOURS}"
 
 # add the tick mark positions and time stamps for the following days
 for i in {2..8}
 do
-  NEXT_DATE=$(LC_ALL=en_UTF-8 date $DATE_FORMAT -d "$DATE + $i day")
+  NEXT_DATE=$(LC_ALL=en_UTF-8 date $DATE_FORMAT -d "$DATE + ${i} day")
   SEC_HOURS=`expr $MAIN_HOURS + 12`
   STICK_ARRAY+=","
   STICK_ARRAY+="${SEC_HOURS}"
