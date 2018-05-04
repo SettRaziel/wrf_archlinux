@@ -113,8 +113,9 @@ on a cluster it needs a valid name to work with several machines.
     the first model iteration. Setting additional dampening parameters and settings for the vertical
     interpolation does not improve the problem. If you have a solution please write me an e-mail.
 * Sometimes the virtual machine freezes when trying to make a model run. Looking on the last entries  
-  of the system log most of the time the machine freezes while loading input data via wget.
-  - switched to curl; virtual machine seems stable at the moment
+  of the system log most of the time the machine freezes while loading input data.
+  - We found a problem with a memory option of the virtualization software that could lead to this
+    kind of behavior. This option is disabled now. Runtime tests are pending.
 * Using different resolutions for x and y seems to lead to an error, that file informations do not
   concur with the settings from the namelist file. Only the value of dx seems to be used. This
   needs to be reviewed.
