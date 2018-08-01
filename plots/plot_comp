@@ -1,0 +1,97 @@
+load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_code.ncl"
+load "$NCARG_ROOT/lib/ncarg/nclscripts/wrf/WRFUserARW.ncl"
+
+begin
+  FILES = systemfunc (" ls -1 " + "wrfout* ") ; read all input files
+  numFILES = dimsizes(FILES)
+  print("numFILES = " + numFILES)
+  print(FILES)
+  print (" ")
+
+  ; Set basic resources
+  res = True
+  res@MainTitle = "WRF: Multidiagram"          ; Give plot a main title
+  res@gsnFrame            = False          ; don't advance frame yet
+  res@gsnMaximize         = True           ; maximize plot in frame
+
+  pltres = True                                ; Plotting resources
+  mpres = True                                      ; Map resources
+  mpres@mpGeophysicalLineColor = "Black"
+  mpres@mpGeophysicalLineThicknessF = "2"
+  mpres@mpFillBoundarySets = "AllBoundaries"
+  mpres@mpNationalLineColor    = "Black"
+  mpres@mpGridLineColor        = "Black"
+  mpres@mpLimbLineColor        = "Black"
+  mpres@mpPerimLineColor       = "Black"
+  mpres@mpDataBaseVersion      = "HighRes"
+
+  a = addfiles(FILES+".nc","r")
+  times = wrf_user_getvar(a,"times",-1)  ; get all times in the file
+  ntimes = dimsizes(times)               ; number of times in the file
+
+  ; Get variables
+
+  slp = wrf_user_getvar(a,"slp",-1) ;Get slp
+  wrf_smooth_2d( slp, 3 )                          ; Smooth slp
+  t2 = wrf_user_getvar(a,"T2",-1)                  ; Get T2 (deg K)
+  tc2 = t2-273.16                                  ; Convert to deg C
+  tc2@description = "Surface Temperature"
+  tc2@units = "C"
+
+  u10 = wrf_user_getvar(a,"U10",-1)                       ; Get U10
+  v10 = wrf_user_getvar(a,"V10",-1)                       ; Get V10
+  u10 = u10*1.94386                           ; Convert to knots
+
+  v10 = v10*1.94386
+  u10@units = "kts"
+  v10@units = "kts"
+
+  tend_int = 1
+
+  do it = 0,ntimes-1,tend_int
+    wks_type = "png"
+    wks_type@wkWidth = 2500
+    wks_type@wkHeight = 2500
+    time_array = str_split(times(it), ":")
+    wks = gsn_open_wks(wks_type,"comp_" + time_array(0))
+
+     print("Working on time: " + times(it) )
+     res@TimeLabel = times(it)   ; adds Valid:<timestamp> to output
+
+
+    ; Plotting options for T
+    opts = res                                  ; Add basic resources
+    opts@cnFillOn = True                                ; Shaded plot
+    opts@ContourParameters = (/ -30., 50., 1./)   ; Contour intervals
+    ;opts@gsnSpreadColorEnd = -3
+    opts@cnFillPalette = "BlAqGrYeOrReVi200"
+    contour_tc = wrf_contour(a[it],wks,tc2(it,:,:),opts) ; Create plot
+    delete(opts)
+
+    ; Plotting options for SLP
+    opts = res                                  ; Add basic resources
+    opts@cnLineColor = "gray25"                        ; Set line color
+    opts@cnHighLabelsOn = True                           ; Set labels
+    opts@cnLowLabelsOn = True
+    opts@gsnContourLineThicknessesScale = 2.5
+    opts@ContourParameters = (/ 900.,1100.,4./)   ; Contour intervals
+    contour_psl = wrf_contour(a[it],wks,slp(it,:,:),opts) ; Create plot
+    delete(opts)
+
+    ; Plotting options for Wind Vectors
+    opts = res                                  ; Add basic resources
+    opts@FieldTitle = "Winds"             ; Overwrite the field title
+    opts@NumVectors = 40                      ; Density of wind barbs
+    vector = wrf_vector(a[it],wks,u10(it,:,:),v10(it,:,:),opts) ; Create plot
+    delete(opts)
+
+    ; MAKE PLOTS
+    pltres@PanelPlot = True
+    pltres@FramePlot = False
+    plot = wrf_map_overlays(a[it],wks,(/contour_tc,contour_psl,vector/),pltres,mpres)
+    draw(plot)
+    frame(wks)
+
+ end do
+
+end
