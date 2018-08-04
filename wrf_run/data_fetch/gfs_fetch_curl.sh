@@ -1,8 +1,8 @@
 #!/bin/sh
 # @Author: Benjamin Held
 # @Date:   2017-03-06 19:18:17
-# @Last Modified by:   benjamin
-# @Last Modified time: 2018-03-18 21:03:09
+# @Last Modified by:   Benjamin Held
+# @Last Modified time: 2018-08-04 15:52:42
 
 # This script loads the required input data for a 180 h forecast run
 # $1 matches the required date yyyymmdd
@@ -13,12 +13,12 @@
 
 # logging time stamp
 now=$(date +"%T")
-printf "Starting gfs data fetch by removing old files at ${now}.\n" > ./log.info
+printf "Starting gfs data fetch by removing old files at ${now}.\n" > ${LOG_PATH}/log.info
 
 # Remove old files
 rm ${3}/gfs.*
 
-printf "Starting gfs data fetching at ${now}.\n" > ./log.info
+printf "Starting gfs data fetching at ${now}.\n" > ${LOG_PATH}/log.info
 # Define a number of retries and try to download the files
 for i in $(seq -f %03g 0 3 ${5}); do
   tries=5
