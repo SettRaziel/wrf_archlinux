@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-02-14 11:08:22
+# @Last Modified time: 2018-08-06 18:25:59
 
 # script to update the input parameter for a model run
 # $1: the path to the wrf root folder
@@ -18,20 +18,17 @@ set -e
 source ../terminal_color.sh
 
 # error handling for input parameter
-if [ "$#" -ne 6 ]; then
-  echo "Wrong number of arguments. Must be one for <BUILD_PATH> <YEAR> <MONTH> <DAY> <HOUR> <PERIOD>."
+if [ "$#" -ne 5 ]; then
+  echo "Wrong number of arguments. Must be one for <YEAR> <MONTH> <DAY> <HOUR> <PERIOD>."
   exit 1
 fi
 
-# Use the correct build path
-BUILD_PATH=${1}
-
 # Setting start conditions
-START_YEAR=${2}
-START_MONTH=${3}
-START_DAY=${4}
-START_HOUR=${5}
-PERIOD=${6}
+START_YEAR=${1}
+START_MONTH=${2}
+START_DAY=${3}
+START_HOUR=${4}
+PERIOD=${5}
 
 END_HOUR=`date '+%H' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${PERIOD} hours"`
 END_YEAR=`date '+%Y' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${PERIOD} hours"`
@@ -47,11 +44,11 @@ DT=80
 DX=10000
 DY=10000
 
-GRID_X=300
-GRID_Y=300
+GRID_X=50
+GRID_Y=50
 
-REF_LAT=42.0
-REF_LON=-7.0
+REF_LAT=53.0
+REF_LON=9.0
 
 printf "${YELLOW}\nSetting start date to: ${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR}:00${NC}\n"
 printf "${YELLOW}\nSetting end date to: ${END_YEAR}-${END_MONTH}-${END_DAY} ${END_HOUR}:00${NC}\n"
