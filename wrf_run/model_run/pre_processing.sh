@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-07 19:02:57
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-08-06 18:26:23
+# @Last Modified time: 2018-08-09 17:53:46
 
 # Script to start the model run
 # $1: the path to the wrf root folder
@@ -15,11 +15,6 @@ source ../terminal_color.sh
 # variable declaration
 GFS_PATH=${1}
 RESOLUTION=${2}
-
-# logging time stamp
-SCRIPT_PATH=$(pwd)
-now=$(date +"%T")
-printf "Starting wrf run at ${now}.\n" >> ${LOG_PATH}/log.info
 
 # starting preprocessing steps
 now=$(date +"%T")
@@ -38,6 +33,10 @@ printf "${YELLOW}preprocessing initial and boundary data: ${NC}\n"
 ln -sf ungrib/Variable_Tables/Vtable.GFS ./Vtable
 LD_LIBRARY_PATH=$DIR/grib2/lib ./ungrib.exe >> ${LOG_PATH}/debug.log
 ./metgrid.exe >> ${LOG_PATH}/debug.log
+
+# starting wrf steps
+now=$(date +"%T")
+printf "Starting wrf run at ${now}.\n" >> ${LOG_PATH}/log.info
 
 # vertical interpolation preprocessing
 printf "${YELLOW}doing vertical interpolation (real.exe): ${NC}\n"
