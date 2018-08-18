@@ -2,7 +2,7 @@
 # @Author: Benjamin Held; based on the WRF OnlineTutorial
 # @Date:   2017-02-18 21:23:08
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-05-29 21:26:17
+# @Last Modified time: 2018-08-18 09:10:22
 
 # define terminal colors
 RED='\033[0;31m'
@@ -15,10 +15,16 @@ printf "${YELLOW}Starting PreCompile Fortran tests from: ${NC}\n"
 printf "${LIGHT_BLUE}http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php${NC}\n"
 printf "${RED}Requires: gfortran, cpp, gcc, tcsh, perl and sh.${NC}\n"
 
-# Creating required folders
+# setting -e to abort on error
+set -e
+
+# storing current script path
+SCRIPT_PATH=$(pwd)
+
+# Creating required folders and loading tests
 mkdir ${HOME}/${1}/fortran_test
-cp ${HOME}/${1}/Fortran_C_tests.tar ${HOME}/${1}/fortran_test/
 cd ${HOME}/${1}/fortran_test
+wget http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compile_tutorial/tar_files/Fortran_C_tests.tar
 
 # Unpacking test files
 printf "${YELLOW}\nUnpacking test files: ${NC}\n"
@@ -68,3 +74,4 @@ printf "${LIGHT_BLUE}finished test. ${NC}\n"
 # Cleaning up
 cd ..
 rm -r ${HOME}/${1}/fortran_test
+cd ${SCRIPT_PATH}

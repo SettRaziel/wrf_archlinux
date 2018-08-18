@@ -2,7 +2,7 @@
 # @Author: Benjamin Held; based on the WRF OnlineTutorial
 # @Date:   2017-02-18 21:23:08
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-06-02 22:31:59
+# @Last Modified time: 2018-08-18 09:10:44
 
 # installation of the netcdf package
 # $1: path to the installation folder
@@ -14,14 +14,20 @@ LIGHT_BLUE='\033[0;34m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
+# setting -e to abort on error
+set -e
+
+# storing current script path
+SCRIPT_PATH=$(pwd)
+
 printf "${YELLOW}Starting PreCompile from: ${NC}\n"
 printf "${LIGHT_BLUE}http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php${NC}\n"
 printf "${RED}Requires: netcdf and openmpi.${NC}\n"
 
 # Creating required folders
 mkdir ${HOME}/${1}/lib_test
-cp ${HOME}/${1}/Fortran_C_NETCDF_MPI_tests.tar ~/${1}/lib_test/
 cd ${HOME}/${1}/lib_test
+wget http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compile_tutorial/tar_files/Fortran_C_NETCDF_MPI_tests.tar
 
 # Unpacking test files
 printf "${YELLOW}Unpacking test files: ${NC}\n"
@@ -48,3 +54,4 @@ printf "${LIGHT_BLUE}finished test. ${NC}\n"
 # Cleaning up
 cd ..
 rm -r ${HOME}/${1}/lib_test
+cd ${SCRIPT_PATH}
