@@ -2,10 +2,12 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-26 14:21:00
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-11-25 14:18:24
+# @Last Modified time: 2018-08-18 09:48:48
 
 # ${1}: the folder relative to the home path where the files should be installed
-# ${2}: storage folder where the libraries are stored or where they should be loaded
+
+# setting -e to abort on error
+set -e
 
 # loads the majority of the required library, no jasper since version 2 has other buildsystem
 function load_libraries() {
@@ -23,25 +25,19 @@ wget http://www.mpich.org/static/downloads/${MPI_VERSION}/mpich-${MPI_VERSION}.t
 wget ftp://ftp-osl.osuosl.org/pub/libpng/src/libpng16/libpng-${LIBPNG_VERSION}.tar.gz
 # wget specified zlib version; can only retrieve latest
 wget www.zlib.net/zlib-${ZLIB_VERSION}.tar.gz
+# wget specified jasper version
+wget http://www.ece.uvic.ca/~frodo/jasper/software/jasper-${JASPER_VERSION}.tar.gz
 }
 
-# Simple script to copy the library or script files to its designated folders
-mkdir ${HOME}/${1}
+# storing current script path
+SCRIPT_PATH=$(pwd)
 
-# Change to lib folder and load possible libraries
-cd ${2}
+# Create destination folder and change to that
+mkdir ${HOME}/${1}
+cd ${HOME}/${1}
 
 load_libraries
 
-# copy libraries with version specified in version export
-cp WRFV${WRF_VERSION}.TAR.gz ${HOME}/${1}/WRFV${WRF_VERSION}.tar.gz
-cp WPSV${WPS_VERSION}.TAR.gz ${HOME}/${1}/WPSV${WPS_VERSION}.tar.gz
-cp netcdf-${NETCDF_VERSION}.tar.gz ${HOME}/${1}
-cp netcdf-fortran-${NETCDF_FORTRAN_VERSION}.tar.gz ${HOME}/${1}
-cp mpich-${MPI_VERSION}.tar.gz ${HOME}/${1}
-cp libpng-${LIBPNG_VERSION}.tar.gz ${HOME}/${1}
-cp zlib-${ZLIB_VERSION}.tar.gz ${HOME}/${1}
-cp jasper-${JASPER_VERSION}.tar.gz ${HOME}/${1}
-
-# copy function test archives, requires them to be in that folder
-cp ./tests/* ${HOME}/${1}
+# rename tar gz to lower case endings
+mv WRFV${WRF_VERSION}.TAR.gz WRFV${WRF_VERSION}.tar.gz
+mv WPSV${WPS_VERSION}.TAR.gz WPSV${WPS_VERSION}.tar.gz

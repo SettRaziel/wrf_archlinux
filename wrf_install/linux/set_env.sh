@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-03 17:20:53
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-11-19 14:00:20
+# @Last Modified time: 2018-08-18 09:49:12
 
 # Script that sets the required variables for the model installation
 # $1: the build path where the wrf should be installed
@@ -33,6 +33,6 @@ export WPS_VERSION="3.8.1"            # latest: 3.9.1
 export NETCDF_VERSION="4.4.1.1"       # latest: 4.5.0
 export NETCDF_FORTRAN_VERSION="4.4.4" # latest: 4.4.4
 export MPI_VERSION="3.2"              # latest: 3.2.1
-export LIBPNG_VERSION="1.6.28"        # latest: 1.6.34
+export LIBPNG_VERSION="1.6.34"        # latest: 1.6.34
 export ZLIB_VERSION="1.2.11"          # latest: 1.2.11
-export JASPER_VERSION="1.900.1"       # latest: 2.0.14
+export JASPER_VERSION="1.900.2"       # latest: 2.0.14

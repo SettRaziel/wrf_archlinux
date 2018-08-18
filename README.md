@@ -33,9 +33,9 @@ folders for subsidiary license files.
 * Network Common Data Form (NetCDF): [Source](https://www.unidata.ucar.edu/software/netcdf/) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.4.1.1
 * NetCDF-Fortran Library: [Source](https://www.unidata.ucar.edu/software/netcdf/) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.4.4
 * Message Passing Interface (mpich): [Source](https://www.mpich.org/) and [License](http://git.mpich.org/mpich.git/blob/HEAD:/COPYRIGHT), used version: 3.2
-* PNG reference library (libpng): [Source](http://www.libpng.org/pub/png/libpng.html) and [License](http://www.libpng.org/pub/png/src/libpng-LICENSE.txt), used version: 1.6.28
+* PNG reference library (libpng): [Source](http://www.libpng.org/pub/png/libpng.html) and [License](http://www.libpng.org/pub/png/src/libpng-LICENSE.txt), used version: 1.6.34
 * A Massively Spiffy Yet Delicately Unobtrusive Compression Library (zlib): [Source](http://www.zlib.net) and [License](http://www.zlib.net/zlib_license.html), used version: 1.2.11
-* JasPer Project (JasPer): [Source](https://www.ece.uvic.ca/~frodo/jasper/) and [License](https://www.ece.uvic.ca/~frodo/jasper/LICENSE), used version: 1.900.1
+* JasPer Project (JasPer): [Source](https://www.ece.uvic.ca/~frodo/jasper/) and [License](https://www.ece.uvic.ca/~frodo/jasper/LICENSE), used version: 1.900.2
 * Optional postprocessing tools:
   - Unified Post Processor (UPP): [Source](http://www.dtcenter.org/wrf-nmm/users/downloads/index.php), needs email validation
   - NCAR Command Language (NCL): [Source](https://www.ncl.ucar.edu/Download/) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 6.4.0_nodap Binaries
@@ -44,9 +44,7 @@ folders for subsidiary license files.
 * install_wrf.sh: Set the correct file paths
   - BUILD_PATH: the path relative from the home folder, where the model data
     should be installed
-  - WRF_ROOT_PATH: the absolute path to the home folder of the used user plus
-    the $BUILD_PATH to the wrf model root
-  - the path to the required libraries
+  - WRF_ROOT_PATH: on default the home folder + the build path is used, adjust if necessary
 * libraries: adjust the number of used cores by changing the -j parameter
 * starting with WRF v3.9 the model can use a hybrid approach for the vertical coordinate
   (see manual for details); atm the corresponding parameter -hyb needs to be set manually
@@ -83,9 +81,12 @@ otherwise.
     - NetCDF v4.5.0 / NetCDF-Fortran Library v4.4.4
     - mpi v3.2.1, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.1
 * tested setups:
+  - WRF Model and WPS v3.8.1 [compiling, normal_build, unstable]
+    - NetCDF v4.4.1.1 / NetCDF-Fortran Library v4.4.4
+    - mpi v3.2, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.2
   - WRF Model and WPS v3.9 [compiling, normal_build, unstable]
     - NetCDF v4.5.0 / NetCDF-Fortran Library v4.4.4
-    - mpi v3.2.1, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.1 
+    - mpi v3.2.1, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.1
 
 # Troubleshooting
 * If one of the mpi test fails with a naming error, check if you have set the

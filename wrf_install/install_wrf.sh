@@ -2,12 +2,15 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-19 13:25:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-11-17 22:30:35
+# @Last Modified time: 2018-08-18 09:45:05
 
 # main installation script: start the installation of the wrf model on a
 # minimal arch linux installation
 # Version 0.1.0
 # created by Benjamin Held and other sources, June 2017
+
+# setting -e to abort on error
+set -e
 
 # define terminal colors
 RED='\033[0;31m'
@@ -28,7 +31,7 @@ sh ./linux/basics.sh
 
 # Preaparing files and folder
 cd ${SCRIPT_PATH}
-sh ./linux/preparations.sh ${BUILD_PATH} path/to/libs
+sh ./linux/preparations.sh ${BUILD_PATH}
 
 # Compiling netcdf bindings
 sh ./wrf_preparation/netcdf.sh ${BUILD_PATH}
