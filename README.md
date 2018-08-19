@@ -61,6 +61,17 @@ folders for subsidiary license files.
   - horitontal grid resolution: dx, dy
   - start time stamp
 
+# Known issues
+* Since the model creates intermediate output every 3 hours (configurable in namelist.input)
+  it is useful to choose a forecast range accordingly to that time step
+* The total rain output is calculated for a 6 hour interval. Choosing a forecast interval that is not
+  a common multiple of 6 leads to errors for the total rain output that prevents the data from
+  being copied to the destination folder (that needs to be adresses in the ncl output script)
+* The forecast uses the unix date command to determine the start and end date. Using full days (e.g
+  24 hours, 72 hours, ...) leads to a problem to determine the correct dates. That issue will be
+  adressed soon.
+* Model instability as statet in Troubleshooting
+
 # Working setup and testing setups
 This section describes the current working setup based under the condition that the installation is
 successful and a model run is starting for a given time stamp of input data. Unstable means that for
@@ -115,13 +126,14 @@ on a cluster it needs a valid name to work with several machines.
     interpolation does not improve the problem. If you have a solution please write me an e-mail.
 * Sometimes the virtual machine freezes when trying to make a model run. Looking on the last entries  
   of the system log most of the time the machine freezes while loading input data.
-  - We found a problem with a memory option of the virtualization software that could lead to this
-    kind of behavior. This option is disabled now. Runtime tests are pending.
+  - The latest change to adress this problem is the usage of flock within the script that prevents two or more
+    parallel model runs
 * Using different resolutions for x and y seems to lead to an error, that file informations do not
   concur with the settings from the namelist file. Only the value of dx seems to be used. This
   needs to be reviewed.
 
 # Todos:
+* better error handling, error logging and script behavior in error cases
 * generic file paths will be added later as shell parameters
 * archive cleanup after installation
 * ncl examples for output
