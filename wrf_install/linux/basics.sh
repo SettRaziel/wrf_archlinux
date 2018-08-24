@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 19:47:48
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-08-17 20:41:12
+# @Last Modified time: 2018-08-24 20:09:14
 
 # define terminal colors
 RED='\033[0;31m'
@@ -16,9 +16,11 @@ NC='\033[0m' # No Color
 # Start from home directory
 cd ${HOME}
 
+sudo pacman -Sy --needed make pkg-config fakeroot
+
 printf "${YELLOW}Installing yaourt and its requirements... \n${NC}"
 # Prepare git package
-sudo pacman -S git
+sudo pacman -S --needed git
 
 # Prepare Folders
 mkdir aur_packages
@@ -37,5 +39,5 @@ makepkg -si
 
 printf "${YELLOW}Installing basic packages... ${NC}"
 # Installing required packages
-yaourt -S gcc-fortran			# fortran compiler
-yaourt -S tcsh time curl wget   # required packages
+yaourt -S --needed gcc-fortran			# fortran compiler
+yaourt -S --needed tcsh time curl wget   # required packages
