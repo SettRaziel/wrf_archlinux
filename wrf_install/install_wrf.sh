@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-19 13:25:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-08-18 09:45:05
+# @Last Modified time: 2018-09-04 11:12:38
 
 # main installation script: start the installation of the wrf model on a
 # minimal arch linux installation
@@ -65,3 +65,8 @@ sh ./wrf_compile/wrf_compile.sh ${BUILD_PATH} ${WRF_ROOT_PATH}
 printf "${YELLOW}Starting WPS compilation in 5 seconds ... ${NC}"
 sleep 5
 sh ./wrf_compile/wps_compile.sh ${BUILD_PATH}
+
+# Adding postprocessing components
+printf "${YELLOW}Adding software packages for result processing ... \n${NC}"
+sleep 5
+sh ./wrf_postprocessing/wrf_postprocessing.sh

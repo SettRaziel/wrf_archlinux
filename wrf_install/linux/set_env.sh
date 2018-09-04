@@ -2,10 +2,10 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-03 17:20:53
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-08-25 08:11:33
+# @Last Modified time: 2018-09-04 11:13:19
 
 # Script that sets the required variables for the model installation
-# $1: the build path where the wrf should be installed
+# ${1}: the build path where the wrf model should be installed
 
 # Setting required environment variables for the session
 export DIR="${1}/libraries"
@@ -18,7 +18,7 @@ export FFLAGS="-m64"
 export PATH="${PATH}:${DIR}/netcdf/bin"
 export NETCDF="${DIR}/netcdf"
 export LDFLAGS="-L${DIR}/grib2/lib"
-export CPPFLAGS="-I${DIR}/grib2/include"
+export CPPFLAGS="-I${DIR}/grib2/include -I/usr/include/tirpc"
 export PATH="${PATH}:${DIR}/mpich/bin"
 export WRFIO_NCD_LARGE_FILE_SUPPORT=1
 export JASPERLIB="${DIR}/grib2/lib"
