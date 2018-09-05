@@ -38,7 +38,7 @@ folders for subsidiary license files.
 * JasPer Project (JasPer): [Source](https://www.ece.uvic.ca/~frodo/jasper/) and [License](https://www.ece.uvic.ca/~frodo/jasper/LICENSE), used version: 1.900.2
 * Optional postprocessing tools:
   - Unified Post Processor (UPP): [Source](http://www.dtcenter.org/wrf-nmm/users/downloads/index.php), needs email validation
-  - NCAR Command Language (NCL): [Source](https://www.ncl.ucar.edu/Download/) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 6.4.0_nodap Binaries
+  - NCAR Command Language (NCL): [Source](https://www.ncl.ucar.edu/Download/) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 6.4.0_nodap Binaries / newest version 6.5.0
 
 # Additional install configurations
 * install_wrf.sh: Set the correct file paths
@@ -48,11 +48,18 @@ folders for subsidiary license files.
 * libraries: adjust the number of used cores by changing the -j parameter
 * starting with WRF v3.9 the model can use a hybrid approach for the vertical coordinate
   (see manual for details); atm the corresponding parameter -hyb needs to be set manually
+* postprocessing options:
+  - ncl is now the default postprocessing tool that will be installed automatically
 
 # Compile Options, that worked for me
 * WPS: 1 gfortran serial
 * WRF: 35 gfortran dm+sm
 * UPP (if used): 7 gfortran serial
+
+# Additional run prepartions
+* load geodata for the model
+  - WRF version 3: [Link](http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog_V3.html)
+  - WRF Version 4: [Link](http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html)
 
 # Run options
 * grid parameter (namelists)
@@ -135,8 +142,9 @@ on a cluster it needs a valid name to work with several machines.
 # Todos:
 * better error handling, error logging and script behavior in error cases
 * generic file paths will be added later as shell parameters
-* archive cleanup after installation
-* ncl examples for output
+* archive cleanup after installation (added)
+* ncl examples for output (added)
+* alternate postprocessing options: choice between upp and ncl during installation
 * cronjob details
 * intermediate results during wrf_run
 * installation details
