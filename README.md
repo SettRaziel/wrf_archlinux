@@ -5,7 +5,7 @@ ArchLinux. The descriptions will grow together with the uploaded files.
 A description that summarizes the requried steps and gives additional
 information will be available shortly.
 
-Current version: v0.1.0
+Current version: v0.2.0
 
 # Current content
 * scripts to install the wrf model on a minimum arch linux installation
