@@ -2,10 +2,10 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-26 17:34:20
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-09-03 14:02:24
+# @Last Modified time: 2018-09-09 20:10:51
 
 # Script to compile the ncar command language for output visualization
-# $1: the path to the folder where the ncl program should be installed
+# ${1}: the path to the folder where the ncl program should be installed
 
 function load_zipfile () {
 	FILE_NAME=${1}
@@ -55,7 +55,7 @@ load_zipfile "gshhs(3)"
 load_zipfile "gshhs(4)"
 
 # Installing additional library
-printf "${YELLOW}\nInstaling additional libraries: ${NC}\n"
+printf "${YELLOW}\nInstalling additional libraries: ${NC}\n"
 yaourt -S --needed fontconfig libxrender libxtst
 # Installing optipng to optimize png output size
 yaourt -S --needed optipng
