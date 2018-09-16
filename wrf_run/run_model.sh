@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-09-07 15:17:19
+# @Last Modified time: 2018-09-16 18:22:39
 
 # main script for starting a wrf model run
 # Version 0.2.0
@@ -24,7 +24,8 @@ function error_exit () {
 
 # imports
 SCRIPT_PATH=$(pwd)
-source ${SCRIPT_PATH}/set_env.sh
+BUILD_PATH="<wrf path>"
+source ${SCRIPT_PATH}/set_env.sh ${BUILD_PATH}
 export LOG_PATH=${SCRIPT_PATH}/logs
 
 # default variables
