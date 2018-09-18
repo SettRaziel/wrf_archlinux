@@ -62,11 +62,14 @@ folders for subsidiary license files.
   - WRF Version 4: [Link](http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html)
 
 # Run options
-* grid parameter (namelists)
+* build directory: set correct directory in run_model.sh
+* run parameter for namelists: adjust them in prepare_namelist.sh
   - horizontal grid size: grid_dx, grid_dy
-  - vertical grid size: grid_dz
   - horitontal grid resolution: dx, dy
+  - reference latitude and longitude
   - start time stamp
+* addition grid parameter: directly in namelist in required
+  - vertical grid size: grid_dz
 
 # Known issues
 * Since the model creates intermediate output every 3 hours (configurable in namelist.input)
@@ -95,9 +98,9 @@ otherwise.
     - NetCDF v4.4.1.1 / NetCDF-Fortran Library v4.4.4
     - mpi v3.2, libpng v1.6.28, zlib v1.2.11, JasPer v1.900.1
 * testing setup:
-  - WRF Model and WPS v3.9 [not_compiling, hybrid_build, not_running]
-    - NetCDF v4.5.0 / NetCDF-Fortran Library v4.4.4
-    - mpi v3.2.1, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.1
+  - WRF Model and WPS v3.91 [compiling, normal_build, unstable]
+    - NetCDF v4.6.0 / NetCDF-Fortran Library v4.4.4
+    - mpi v3.2.1, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.2
 * tested setups:
   - WRF Model and WPS v3.8.1 [compiling, normal_build, unstable]
     - NetCDF v4.4.1.1 / NetCDF-Fortran Library v4.4.4
