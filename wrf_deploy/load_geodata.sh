@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-09-04 11:57:18
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-09-13 14:18:06
+# @Last Modified time: 2018-11-11 20:14:14
 
 # Script that loads the WPS geodata specified by argument or 
 # selectable index
@@ -49,17 +49,16 @@ else
   esac
 fi
 
+# select the geodata
 case ${SELECT_VALUE} in
-  [1]* ) URL_PATH='http://www2.mmm.ucar.edu/wrf/src/wps_files/geog_complete.tar.gz'
-         FILE_NAME='geog_complete.tar.gz';;
-  [2]* ) URL_PATH='http://www2.mmm.ucar.edu/wrf/src/wps_files/geog_minimum.tar.bz2'
-         FILE_NAME='geog_minimum.tar.bz2';;
-  [3]* ) URL_PATH='http://www2.mmm.ucar.edu/wrf/src/wps_files/geog_high_res_mandatory.tar.gz'
-         FILE_NAME='geog_high_res_mandatory.tar.gz';;
-  [4]* ) URL_PATH='http://www2.mmm.ucar.edu/wrf/src/wps_files/geog_low_res_mandatory.tar.gz'
-         FILE_NAME='geog_low_res_mandatory.tar.gz';;
+  [1]* ) FILE_NAME='geog_complete.tar.gz';;
+  [2]* ) FILE_NAME='geog_minimum.tar.bz2';;
+  [3]* ) FILE_NAME='geog_high_res_mandatory.tar.gz';;
+  [4]* ) FILE_NAME='geog_low_res_mandatory.tar.gz';;
 esac
 
+# load and deploy the geodata
+URL_PATH="http://www2.mmm.ucar.edu/wrf/src/wps_files/${FILE_NAME}"
 mkdir ${HOME}/geo_data
 cd ${HOME}/geo_data
 printf "${YELLOW}\nLoading data files: ${NC}\n"
