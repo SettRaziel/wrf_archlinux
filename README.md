@@ -29,8 +29,8 @@ scripts are marked and can have different license conditions. Please check the
 folders for subsidiary license files.
 
 ## Software components
-* WRF Model / WPS: [Source](http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php), used version: 3.8.1
-* Network Common Data Form (NetCDF): [Source](https://www.unidata.ucar.edu/software/netcdf/) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.4.1.1
+* WRF Model / WPS: [Source](http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php), used version: 3.9.1
+* Network Common Data Form (NetCDF): [Source](https://www.unidata.ucar.edu/software/netcdf/) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.6.0
 * NetCDF-Fortran Library: [Source](https://www.unidata.ucar.edu/software/netcdf/) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.4.4
 * Message Passing Interface (mpich): [Source](https://www.mpich.org/) and [License](http://git.mpich.org/mpich.git/blob/HEAD:/COPYRIGHT), used version: 3.2
 * PNG reference library (libpng): [Source](http://www.libpng.org/pub/png/libpng.html) and [License](http://www.libpng.org/pub/png/src/libpng-LICENSE.txt), used version: 1.6.34
@@ -94,13 +94,11 @@ The different setups will be categorized in
 Additionally all setups use gcc/gcc-libs/gcc-gfortran 6.3.1-2 until described 
 otherwise.
 * current setup:
-  - WRF Model and WPS v3.8.1 [compiling, normal_build, unstable]
+  - WRF Model and WPS v3.9.1 [compiling, normal_build, unstable]
     - NetCDF v4.4.1.1 / NetCDF-Fortran Library v4.4.4
     - mpi v3.2, libpng v1.6.28, zlib v1.2.11, JasPer v1.900.1
 * testing setup:
-  - WRF Model and WPS v3.91 [compiling, normal_build, unstable]
-    - NetCDF v4.6.0 / NetCDF-Fortran Library v4.4.4
-    - mpi v3.2.1, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.2
+  - starting WRFV4 soon
 * tested setups:
   - WRF Model and WPS v3.8.1 [compiling, normal_build, unstable]
     - NetCDF v4.4.1.1 / NetCDF-Fortran Library v4.4.4
@@ -108,6 +106,9 @@ otherwise.
   - WRF Model and WPS v3.9 [compiling, normal_build, unstable]
     - NetCDF v4.5.0 / NetCDF-Fortran Library v4.4.4
     - mpi v3.2.1, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.1
+  - WRF Model and WPS v3.91 [compiling, normal_build, unstable]
+    - NetCDF v4.6.0 / NetCDF-Fortran Library v4.4.4
+    - mpi v3.2.1, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.2
 
 # Troubleshooting
 * If one of the mpi test fails with a naming error, check if you have set the
@@ -123,7 +124,7 @@ on a cluster it needs a valid name to work with several machines.
     This can be avoided by editing phys/module_cu_g3.F and setting the dimension of seed
     to the required value.
     When running the model it breaks (last check: 2017/05/30) since the model needs libgfortran.so.3
-    which cannot be found after upgrading the gcc-gfortran to 7.1.1-2. Even compiling WRFV3.9 and
+    which cannot be found after upgrading the gcc-gfortran to newer version. Even compiling WRFV3.9 and
     WPSV3.9 does not resolve this issue.
 * NCL: If you have problems with ncl and missing ssl libraries, use the nodap binaries
 * My model instability seems to result from the choosen model area. Considering posts from the WRF 
@@ -151,7 +152,7 @@ on a cluster it needs a valid name to work with several machines.
 * cronjob details
 * intermediate results during wrf_run
 * installation details
-* testing of newer wrf version, e.g. WRFV3.9
+* testing of newer wrf version, e.g. WRFV4
 * testing the new hybrid vertical coordinate for WRFV3.9 and higher
 * more error checks:
   - e.g. checks that the run time of the model need to be a multiple of three
