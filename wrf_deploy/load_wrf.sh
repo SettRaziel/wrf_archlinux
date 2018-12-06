@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-10-23 09:09:29
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-11-25 20:18:30
+# @Last Modified time: 2018-12-06 16:23:36
 
 function print_options () {
   printf "${YELLOW} 1: WRFV3 version 3.9.1\n${NC}"
@@ -42,10 +42,10 @@ else
 fi
 
 case ${SELECT_VALUE} in
-  [1]* ) FILE_NAME='wrf_dev_391.tar.gz';;
-  [2]* ) FILE_NAME='wrf_dev_390.tar.gz';;
-  [3]* ) FILE_NAME='wrf_dev_381.tar.gz';;
-  [4]* ) FILE_NAME='wrf_dev_380.tar.gz';;
+  [1]* ) FILE_NAME='wrf_391.tar.gz';;
+  [2]* ) FILE_NAME='wrf_390.tar.gz';;
+  [3]* ) FILE_NAME='wrf_381.tar.gz';;
+  [4]* ) FILE_NAME='wrf_380.tar.gz';;
 esac
 
 # creating url for the selectied wrf tar
