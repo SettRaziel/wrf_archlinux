@@ -1,7 +1,10 @@
 # @Author: Benjamin Held
 # @Date:   2018-11-15 18:08:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-12-07 23:26:57
+# @Last Modified time: 2018-12-08 12:33:37
+
+# enable termination on error
+set -e
 
 # check and load required packages
 sh load_packages.sh
