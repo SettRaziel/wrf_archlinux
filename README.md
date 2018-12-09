@@ -8,8 +8,9 @@ information will be available shortly.
 Current version: v0.2.0
 
 # Current content
-* scripts to install the wrf model on a minimum arch linux installation
+* scripts to install the wrf model on a minimum ArchLinux installation
 * basic script collection to start a model run
+* scripts to deploy a precompiled archive on an ArchLinux system 
 
 # Folder Overview
 * wrf_install: contains scripts to install and configure the wrf model and its
