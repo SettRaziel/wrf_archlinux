@@ -7,27 +7,29 @@ information will be available shortly.
 
 Current version: v0.2.0
 
-# Current content
+## License
+The scripts are licensed under the given license file. 3rd party software and
+scripts are marked and can have different license conditions. Please check the
+folders for subsidiary license files.
+
+## Current content
 * scripts to install the wrf model on a minimum ArchLinux installation
 * basic script collection to start a model run
 * scripts to deploy a precompiled archive on an ArchLinux system 
 
-# Folder Overview
-* wrf_install: contains scripts to install and configure the wrf model and its
-  requirements
-* wrf_run: contains scripts to fetch the required input data, prepare the
-  start values and execute a model run
+## Folder Overview
+* wrf_install: [readme](./wrf_install/README.md)
+  * contains scripts to install and configure the wrf model and its requirements
+* wrf_run: [readme](./wrf_run/README.md)
+  * contains scripts to fetch the required input data, prepare the start values and execute a model run
+* wrf_deploy: [readme](./wrf_deploy/README.md)
+  * contains scripts to load and deploy a precompiled wrf archive
 * additions: additional scripts and files that can help running the model
 
-# Sources
+## Sources
 * basic system: [here](https://wiki.archlinux.org/index.php/Installation_guide)
 * wrf tutorial: [here](http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php)
 * ncl output: [here](https://www.ncl.ucar.edu/Applications/)
-
-# License
-The scripts are licensed under the given license file. 3rd party software and
-scripts are marked and can have different license conditions. Please check the
-folders for subsidiary license files.
 
 ## Software components
 * WRF Model / WPS: [Source](http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php), used version: 3.9.1
@@ -41,49 +43,7 @@ folders for subsidiary license files.
   - Unified Post Processor (UPP): [Source](http://www.dtcenter.org/wrf-nmm/users/downloads/index.php), needs email validation
   - NCAR Command Language (NCL): [Source](https://www.ncl.ucar.edu/Download/) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 6.4.0_nodap Binaries / newest version 6.5.0
 
-# Additional install configurations
-* install_wrf.sh: Set the correct file paths
-  - BUILD_PATH: the path relative from the home folder, where the model data
-    should be installed
-  - WRF_ROOT_PATH: on default the home folder + the build path is used, adjust if necessary
-* libraries: adjust the number of used cores by changing the -j parameter
-* starting with WRF v3.9 the model can use a hybrid approach for the vertical coordinate
-  (see manual for details); atm the corresponding parameter -hyb needs to be set manually
-* postprocessing options:
-  - ncl is now the default postprocessing tool that will be installed automatically
-
-# Compile Options, that worked for me
-* WPS: 1 gfortran serial
-* WRF: 35 gfortran dm+sm
-* UPP (if used): 7 gfortran serial
-
-# Additional run prepartions
-* load geodata for the model
-  - WRF version 3: [Link](http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog_V3.html)
-  - WRF Version 4: [Link](http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html)
-
-# Run options
-* build directory: set correct directory in run_model.sh
-* run parameter for namelists: adjust them in prepare_namelist.sh
-  - horizontal grid size: grid_dx, grid_dy
-  - horitontal grid resolution: dx, dy
-  - reference latitude and longitude
-  - start time stamp
-* addition grid parameter: directly in namelist in required
-  - vertical grid size: grid_dz
-
-# Known issues
-* Since the model creates intermediate output every 3 hours (configurable in namelist.input)
-  it is useful to choose a forecast range accordingly to that time step
-* The total rain output is calculated for a 6 hour interval. Choosing a forecast interval that is not
-  a common multiple of 6 leads to errors for the total rain output that prevents the data from
-  being copied to the destination folder (that needs to be adresses in the ncl output script)
-* The forecast uses the unix date command to determine the start and end date. Using full days (e.g
-  24 hours, 72 hours, ...) leads to a problem to determine the correct dates. That issue will be
-  adressed soon.
-* Model instability as statet in Troubleshooting
-
-# Working setup and testing setups
+## Working setup and testing setups
 This section describes the current working setup based under the condition that the installation is
 successful and a model run is starting for a given time stamp of input data. Unstable means that for
 the current namelist-files some model runs end preliminary with an error.
@@ -111,52 +71,7 @@ otherwise.
     - NetCDF v4.6.0 / NetCDF-Fortran Library v4.4.4
     - mpi v3.2.1, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.2
 
-# Troubleshooting
-* If one of the mpi test fails with a naming error, check if you have set the
-hostname from your /etc/hostname in your file /etc/hosts. Since mpi can run
-on a cluster it needs a valid name to work with several machines.
-* Installing and running the model should be done with gcc/gcc-libs/gcc-gfortran
-  6.3.1-2. During the wrf compilation an error occurs like:
-   ```
-   CALL RANDOM_SEED(PUT=count)
-                     1
-   Error: Size of 'put' argument of 'random_seed' intrinsic at (1) too small (12/33)
-    ```
-    This can be avoided by editing phys/module_cu_g3.F and setting the dimension of seed
-    to the required value.
-    When running the model it breaks (last check: 2017/05/30) since the model needs libgfortran.so.3
-    which cannot be found after upgrading the gcc-gfortran to newer version. Even compiling WRFV3.9 and
-    WPSV3.9 does not resolve this issue.
-* NCL: If you have problems with ncl and missing ssl libraries, use the nodap binaries
-* My model instability seems to result from the choosen model area. Considering posts from the WRF 
-  forum it can be caused by high orography near the model borders or CFL violations in the vertical wind
-  interpolation. Consider trying a model area with an island or a whole continent if your model runs 
-  fail shortly after the wrf.exe starts running. So you will have water near the boundaries.
-  - even the model area around Iceland does crash occasionally. Not clear if that is caused by CFL 
-    violations or faulty GFS data. Setting the model area to central europe results in crahes at
-    the first model iteration. Setting additional dampening parameters and settings for the vertical
-    interpolation does not improve the problem. If you have a solution please write me an e-mail.
-* Sometimes the virtual machine freezes when trying to make a model run. Looking on the last entries  
-  of the system log most of the time the machine freezes while loading input data.
-  - The latest change to adress this problem is the usage of flock within the script that prevents two or more
-    parallel model runs
-* Using different resolutions for x and y seems to lead to an error, that file informations do not
-  concur with the settings from the namelist file. Only the value of dx seems to be used. This
-  needs to be reviewed.
-
-# Todos:
-* better error handling, error logging and script behavior in error cases
-* generic file paths will be added later as shell parameters
-* archive cleanup after installation (added)
-* ncl examples for output (added)
-* alternate postprocessing options: choice between upp and ncl during installation
-* cronjob details
-* intermediate results during wrf_run
-* installation details
-* testing of newer wrf version, e.g. WRFV4
-* testing the new hybrid vertical coordinate for WRFV3.9 and higher
-* more error checks:
-  - e.g. checks that the run time of the model need to be a multiple of three
-    (as long as the output interval is static and set to 3 hours)
+## Todos
+Check the subsidiary readmes or issues for further work
 
 created by: Benjamin Held, March 2017
