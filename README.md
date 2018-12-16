@@ -73,5 +73,16 @@ otherwise.
 
 ## Todos
 Check the subsidiary readmes or issues for further work
+* wrf_install: [readme](./wrf_install/README.md)
+* wrf_run: [readme](./wrf_run/README.md)
+* wrf_deploy: [readme](./wrf_deploy/README.md)
+
+## Contributing
+* Fork it
+* Create your feature branch (git checkout -b my-new-feature)
+* Commit your changes (git commit -am 'add some feature')
+* Push to the branch (git push origin my-new-feature)
+* Create an issue describing your work
+* Create a new pull request
 
 created by: Benjamin Held, March 2017
