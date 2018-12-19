@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-10-23 09:09:29
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-12-08 23:19:57
+# @Last Modified time: 2018-12-19 19:54:32
 
 function print_options () {
   printf "${YELLOW} 1: WRFV3 version 3.9.1\n${NC}"
@@ -57,7 +57,7 @@ cd ${HOME}
 printf "${YELLOW}\nLoading wrf archive: ${NC}\n"
 wget ${URL_PATH}
 printf "${YELLOW}\nUnpacking archive: ${NC}\n"
-tar -xzf ${FILE_NAME}
+tar -xzf ${FILE_NAME}.tar.gz
 rm ${FILE_NAME}.tar.gz
 
 # copying the config files from the repository to its destination
