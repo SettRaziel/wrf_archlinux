@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-10-23 09:09:29
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-12-19 19:54:32
+# @Last Modified time: 2018-12-20 09:47:53
 
 function print_options () {
   printf "${YELLOW} 1: WRFV3 version 3.9.1\n${NC}"
@@ -63,8 +63,8 @@ rm ${FILE_NAME}.tar.gz
 # copying the config files from the repository to its destination
 printf "${YELLOW}\nDeploying repository config files: ${NC}\n"
 cd ${SCRIPT_PATH}
-cp ../additons/config/namelist.wps ${HOME}/${FILE_NAME}/WPS
-cp ../additons/config/namelist.input ${HOME}/${FILE_NAME}/WRFV3/test/em_real/
-cp ../additons/config/tslist ${HOME}/${FILE_NAME}/WRFV3/test/em_real/
+cp ../additions/config/namelist.wps ${HOME}/${FILE_NAME}/WPS
+cp ../additions/config/namelist.input ${HOME}/${FILE_NAME}/WRFV3/test/em_real/
+cp ../additions/config/tslist ${HOME}/${FILE_NAME}/WRFV3/test/em_real/
 
 printf "${YELLOW}\nFinished wrf deployment.${NC}\n"
