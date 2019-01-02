@@ -24,3 +24,5 @@ see LICENSE
 
 ## Todo
 * Parameters for the deployment script to deploy custom setups
+* adding WRFV4 deployment
+* adding WRFV4 geo data

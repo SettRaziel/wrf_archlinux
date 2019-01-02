@@ -46,3 +46,4 @@ on a cluster it needs a valid name to work with several machines.
 * installation details
 * testing of newer wrf version, e.g. WRFV4
 * testing the new hybrid vertical coordinate for WRFV3.9 and higher
+* testing newer gcc/gfortran with WRFV4
