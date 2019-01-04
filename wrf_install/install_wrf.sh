@@ -2,11 +2,11 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-19 13:25:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-09-07 15:17:06
+# @Last Modified time: 2019-01-04 22:15:39
 
 # main installation script: start the installation of the wrf model on a
 # minimal arch linux installation
-# Version 0.2.0
+# Version 0.3.0
 # created by Benjamin Held and other sources, June 2017
 
 # setting -e to abort on error
