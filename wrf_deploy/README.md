@@ -24,5 +24,5 @@ see LICENSE
 
 ## Todo
 * Parameters for the deployment script to deploy custom setups
-* adding WRFV4 deployment
-* adding WRFV4 geo data
+* adding WRFV4 deployment [see: (Issue)](https://github.com/SettRaziel/wrf_archlinux/issues/2)
+* adding WRFV4 geo data [see: (Issue)](https://github.com/SettRaziel/wrf_archlinux/issues/2)
