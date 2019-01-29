@@ -39,7 +39,7 @@ on a cluster it needs a valid name to work with several machines.
 * NCL: If you have problems with ncl and missing ssl libraries, use the nodap binaries
 
 ## Todos:
-* better error handling, error logging and script behavior in error cases [see: (Issue)](https://github.com/SettRaziel/wrf_archlinux/issues/3)
+* better error handling, error logging and script behavior in error cases; see:[(Issue)](https://github.com/SettRaziel/wrf_archlinux/issues/3)
 * generic file paths will be added later as shell parameters
 * archive cleanup after installation (added)
 * alternate postprocessing options: choice between upp and ncl during installation
