@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-06 19:18:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-08-04 15:52:42
+# @Last Modified time: 2019-02-05 20:10:24
 
 # This script loads the required input data for a 180 h forecast run
 # $1 matches the required date yyyymmdd
@@ -24,7 +24,7 @@ for i in $(seq -f %03g 0 3 ${5}); do
   tries=5
   while [ $tries -gt 0 ] 
   do
-    curl -C - -o ${3}/gfs.t${2}z.pgrb2.${4}.f${i} http://www.ftp.ncep.noaa.gov/data/nccf/com/gfs/prod/gfs.${1}${2}/gfs.t${2}z.pgrb2.${4}.f${i}
+    curl -C - -o ${3}/gfs.t${2}z.pgrb2.${4}.f${i} https://www.ftp.ncep.noaa.gov/data/nccf/com/gfs/prod/gfs.${1}${2}/gfs.t${2}z.pgrb2.${4}.f${i}
     if [ $? -ne 56 ]
      then break
     fi
