@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-26 17:34:20
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-09-09 20:10:51
+# @Last Modified time: 2019-02-14 18:18:34
 
 # Script to compile the ncar command language for output visualization
 # ${1}: the path to the folder where the ncl program should be installed
@@ -28,7 +28,7 @@ NCL_NAME='ncl_ncarg-6.4.0-Debian8.6_64bit_nodap_gnu492.tar.gz'
 cd ${DIR}
 
 # checking unzip package
-yaourt -S --needed unzip
+yay -S --needed unzip
 
 # Unpacking ncl files
 printf "${YELLOW}\nUnpacking ncl.tar files: ${NC}\n"
@@ -56,8 +56,8 @@ load_zipfile "gshhs(4)"
 
 # Installing additional library
 printf "${YELLOW}\nInstalling additional libraries: ${NC}\n"
-yaourt -S --needed fontconfig libxrender libxtst
+yay -S --needed fontconfig libxrender libxtst
 # Installing optipng to optimize png output size
-yaourt -S --needed optipng
+yay -S --needed optipng
 
 printf "${LIGHT_BLUE}\nFinished ncl preparations. ${NC}\n"

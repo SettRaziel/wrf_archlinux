@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 19:47:48
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-08-24 20:09:14
+# @Last Modified time: 2019-02-14 18:20:53
 
 # define terminal colors
 RED='\033[0;31m'
@@ -18,7 +18,7 @@ cd ${HOME}
 
 sudo pacman -Sy --needed make pkg-config fakeroot
 
-printf "${YELLOW}Installing yaourt and its requirements... \n${NC}"
+printf "${YELLOW}Installing yay as package helper... \n${NC}"
 # Prepare git package
 sudo pacman -S --needed git
 
@@ -26,18 +26,12 @@ sudo pacman -S --needed git
 mkdir aur_packages
 cd aur_packages
 
-# Getting package query
-git clone https://aur.archlinux.org/package-query.git
-cd package-query
-makepkg -si
-cd ..
-
-# Getting yaourt
-git clone https://aur.archlinux.org/yaourt.git
-cd yaourt
+# Getting yay
+git clone https://aur.archlinux.org/yay.git
+cd yay
 makepkg -si
 
 printf "${YELLOW}Installing basic packages... ${NC}"
 # Installing required packages
-yaourt -S --needed gcc-fortran			# fortran compiler
-yaourt -S --needed tcsh time curl wget   # required packages
+yay -S --needed gcc-fortran			# fortran compiler
+yay -S --needed tcsh time curl wget   # required packages
