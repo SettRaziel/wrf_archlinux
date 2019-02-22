@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-09-04 11:57:18
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-11-11 20:14:14
+# @Last Modified time: 2019-02-22 17:49:42
 
 # Script that loads the WPS geodata specified by argument or 
 # selectable index
@@ -20,11 +20,7 @@ function print_options () {
 }
 
 # define terminal colors
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-LIGHT_BLUE='\033[0;34m'
-YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+source ../libs/terminal_color.sh
 
 # Default selection
 SELECT_VALUE=1

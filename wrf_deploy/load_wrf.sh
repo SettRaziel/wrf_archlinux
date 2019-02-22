@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-10-23 09:09:29
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-12-20 09:47:53
+# @Last Modified time: 2019-02-22 17:49:30
 
 function print_options () {
   printf "${YELLOW} 1: WRFV3 version 3.9.1\n${NC}"
@@ -12,11 +12,7 @@ function print_options () {
 }
 
 # define terminal colors
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-LIGHT_BLUE='\033[0;34m'
-YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+source ../libs/terminal_color.sh
 
 # Default selection
 SELECT_VALUE=1
