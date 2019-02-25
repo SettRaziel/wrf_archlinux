@@ -2,14 +2,10 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-18 15:49:25
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-12-29 22:05:09
+# @Last Modified time: 2019-02-25 20:23:37
 
 # define terminal colors
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-LIGHT_BLUE='\033[0;34m'
-YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+source ../../libs/terminal_color.sh
 
 # Script to compile the wrf model, after setting up all dependencies
 # and paths

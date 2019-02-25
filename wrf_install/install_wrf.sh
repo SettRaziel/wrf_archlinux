@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-19 13:25:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-01-04 22:15:39
+# @Last Modified time: 2019-02-25 20:22:08
 
 # main installation script: start the installation of the wrf model on a
 # minimal arch linux installation
@@ -13,11 +13,7 @@
 set -e
 
 # define terminal colors
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-LIGHT_BLUE='\033[0;34m'
-YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+source ../libs/terminal_color.sh
 
 BUILD_PATH="<wrf path>"
 WRF_ROOT_PATH="${HOME}/${BUILD_PATH}"

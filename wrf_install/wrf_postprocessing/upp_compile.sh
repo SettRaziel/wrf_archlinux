@@ -2,17 +2,13 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-05 17:52:09
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-12-23 18:06:21
+# @Last Modified time: 2019-02-25 20:26:10
 
 # Script to compile the upp library for output visualization
 # $1: the path to the folder where the upp program should be installed
 
 # define terminal colors
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-LIGHT_BLUE='\033[0;34m'
-YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+source ../../libs/terminal_color.sh
 
 # Script to compile the optional upp package for postprocessing
 cd ${HOME}/${1}

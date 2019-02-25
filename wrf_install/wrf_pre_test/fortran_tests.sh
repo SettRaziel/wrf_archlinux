@@ -2,14 +2,10 @@
 # @Author: Benjamin Held; based on the WRF OnlineTutorial
 # @Date:   2017-02-18 21:23:08
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-08-18 09:10:22
+# @Last Modified time: 2019-02-25 20:24:05
 
 # define terminal colors
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-LIGHT_BLUE='\033[0;34m'
-YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+source ../../libs/terminal_color.sh
 
 printf "${YELLOW}Starting PreCompile Fortran tests from: ${NC}\n"
 printf "${LIGHT_BLUE}http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php${NC}\n"

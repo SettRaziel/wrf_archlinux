@@ -2,17 +2,13 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 21:06:12
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2017-12-25 14:15:36
+# @Last Modified time: 2019-02-25 20:24:33
 
 # installation of the netcdf package
 # $1: path to the installation folder
 
 # define terminal colors
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-LIGHT_BLUE='\033[0;34m'
-YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+source ../../libs/terminal_color.sh
 
 # Script to compile the required netcdf package
 cd ${HOME}/${1}
