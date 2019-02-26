@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-01 20:09:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-02-25 20:23:25
+# @Last Modified time: 2019-02-26 07:05:13
 
 # define terminal colors
 source ../../libs/terminal_color.sh
@@ -10,6 +10,9 @@ source ../../libs/terminal_color.sh
 # Script to compile the wps module, after setting up all dependencies
 # and paths
 # $1: the path to the folder where the wps should be installed
+
+# storing current script path
+SCRIPT_PATH=$(pwd)
 
 # Script to compile the required netcdf package
 cd ${HOME}/${1}
@@ -31,5 +34,6 @@ cd ..
 
 # cleanup
 rm WPSV${WPS_VERSION}.tar.gz
+cd ${SCRIPT_PATH}
 
 printf "${LIGHT_BLUE}\nFinished installing wps. ${NC}\n"

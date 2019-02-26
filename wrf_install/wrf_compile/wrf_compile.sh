@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-18 15:49:25
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-02-25 20:23:37
+# @Last Modified time: 2019-02-26 07:04:25
 
 # define terminal colors
 source ../../libs/terminal_color.sh
@@ -11,6 +11,9 @@ source ../../libs/terminal_color.sh
 # and paths
 # $1: the path to the folder where the wrf should be installed
 # $2: the path to the folder where the wrf files has been unpacked
+
+# storing current script path
+SCRIPT_PATH=$(pwd)
 
 # Jump in folder and extract tar
 cd ${HOME}/${1}
@@ -32,6 +35,7 @@ cd ..
 
 #clean up
 rm WRFV${WRF_VERSION}.tar.gz
+cd ${SCRIPT_PATH}
 
 printf "${LIGHT_BLUE}\nFinished installing wrf. ${NC}"
 printf "${LIGHT_BLUE}Check compile.log for details. ${NC}\n"
