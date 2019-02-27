@@ -2,15 +2,12 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 09:26:31
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-08-06 18:26:44
+# @Last Modified time: 2019-02-27 10:50:15
 
 # script to run the necessary preprocessing steps before starting the wrf run
 # $1: the path to the wrf root folder
 # $2: the path to the gfs input data
 # $3: the resolution of the input data
-
-# define terminal colors
-source ../terminal_color.sh
 
 # variable declaration
 GFS_PATH=${1}

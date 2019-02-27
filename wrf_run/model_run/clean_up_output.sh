@@ -1,14 +1,12 @@
 #!/bin/sh
 # @Author: Benjamin Held
 # @Date:   2017-03-12 09:26:31
-# @Last Modified by:   benjamin
-# @Last Modified time: 2018-08-01 17:45:26
+# @Last Modified by:   Benjamin Held
+# @Last Modified time: 2019-02-27 10:59:56
 
 # Script to run the preprocessing operations
 # $1: the path to the wrf root folder
 
-# define terminal colors
-source ../terminal_color.sh
 source ../set_env.sh
 
 # cleaning up in wps preprocessing folder

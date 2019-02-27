@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-08-06 18:25:59
+# @Last Modified time: 2019-02-27 10:51:59
 
 # script to update the input parameter for a model run
 # $1: the path to the wrf root folder
@@ -15,11 +15,11 @@
 set -e
 
 # define terminal colors
-source ../terminal_color.sh
+source ../../libs/terminal_color.sh
 
 # error handling for input parameter
 if [ "$#" -ne 5 ]; then
-  echo "Wrong number of arguments. Must be one for <YEAR> <MONTH> <DAY> <HOUR> <PERIOD>."
+  printf "${RED}Wrong number of arguments. Must be one for <YEAR> <MONTH> <DAY> <HOUR> <PERIOD>.${NC}\n"
   exit 1
 fi
 
