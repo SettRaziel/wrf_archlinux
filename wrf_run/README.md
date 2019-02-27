@@ -7,6 +7,11 @@ see LICENSE
 * load geodata for the model
   - WRF version 3: [Link](http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog_V3.html)
   - WRF Version 4: [Link](http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html)
+  - geodata resulutions are described using arc-minutes or arc-seconds, so the resultion values are:
+    * 30 arc-seconds
+    * 2, 5 or 10 arc-minutes
+  - for WRF version 3 no all resolutions are available in the coarse or fine resolution packs, they can
+    be downloaded manually and needed to be copied into the geodata folder
 
 ## Run options
 * build directory: set correct directory in run_model.sh
@@ -42,6 +47,8 @@ see LICENSE
   of the system log most of the time the machine freezes while loading input data.
   - The latest change to adress this problem is the usage of flock within the script that prevents two or more
     parallel model runs
+  - running an additional instance on another server with a different virtualization software resulted in a stable
+    instance, so it might be possible that the different virtualization or ram errors lead to the freezing behavior
 * Using different resolutions for x and y seems to lead to an error, that file informations do not
   concur with the settings from the namelist file. Only the value of dx seems to be used. This
   needs to be reviewed.

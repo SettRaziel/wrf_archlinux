@@ -10,6 +10,7 @@ parameters to customize the deployment process.
 * WRF version, currently available: 3.8.0, 3.8.1, 3.9.0, 3.9.1
 * Geodata: 
 	* WRFV3 lowres (~200 mb), WRFV3 highres (~50 gb)
+	* additional resolutions can the downloaded manually from [Link](http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog_V3.html)
 	* WRFV4 lowres (~200 mb), WRFV4 hightes (~50 gb)
 * Visualization of WRF results with precompiled ncl
 
