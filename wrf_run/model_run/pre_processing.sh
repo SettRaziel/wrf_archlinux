@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-07 19:02:57
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-02-27 10:50:36
+# @Last Modified time: 2019-03-02 21:10:27
 
 # Script to start the model run
 # $1: the path to the wrf root folder
@@ -10,7 +10,7 @@
 set -e
 
 # define terminal colors
-source ..../libs/terminal_color.sh
+source ../../libs/terminal_color.sh
 
 # variable declaration
 GFS_PATH=${1}
