@@ -1,8 +1,8 @@
 &share
  wrf_core = 'ARW',
  max_dom = 1,
- start_date = '2017-06-04_00:00:00',
- end_date   = '2017-06-11_12:00:00',
+ start_date = '2019-03-02_00:00:00',
+ end_date   = '2019-03-05_12:00:00',
  interval_seconds = 10800
  io_form_geogrid = 2,
 /
@@ -12,34 +12,35 @@
  parent_grid_ratio =   1,
  i_parent_start    =   1,
  j_parent_start    =   1,
- e_we              =  300,
- e_sn              =  300,
+ e_we              =  325,
+ e_sn              =  325,
  !
  !!!!!!!!!!!!!!!!!!!!!!!!!!!! IMPORTANT NOTE !!!!!!!!!!!!!!!!!!!!!!!!!!!!
- ! The default datasets used to produce the HGT_M, GREENFRAC,
+ ! The default datasets used to produce the HGT_M, GREENFRAC, 
  ! and LU_INDEX/LANDUSEF fields have changed in WPS v3.8. The HGT_M field
- ! is now interpolated from 30-arc-second USGS GMTED2010, the GREENFRAC
- ! field is interpolated from MODIS FPAR, and the LU_INDEX/LANDUSEF fields
+ ! is now interpolated from 30-arc-second USGS GMTED2010, the GREENFRAC 
+ ! field is interpolated from MODIS FPAR, and the LU_INDEX/LANDUSEF fields 
  ! are interpolated from 21-class MODIS.
  !
- ! To match the output given by the default namelist.wps in WPS v3.7.1,
+ ! To match the output given by the default namelist.wps in WPS v3.7.1, 
  ! the following setting for geog_data_res may be used:
  !
  ! geog_data_res = 'gtopo_10m+usgs_10m+nesdis_greenfrac+10m','gtopo_2m+usgs_2m+nesdis_greenfrac+2m',
  !
  !!!!!!!!!!!!!!!!!!!!!!!!!!!! IMPORTANT NOTE !!!!!!!!!!!!!!!!!!!!!!!!!!!!
- ! the used geo data for the calculation; high resolution
- geog_data_res = '2deg+topo_gmted2010_30s+landuse_30s_with_lakes+30s+greenfrac','2deg+topo_gmted2010_30s+landuse_30s_with_lakes+30s+greenfrac',
- dx = 10000,
- dy = 10000,
+ !
+!geog_data_res = 'gtopo_10m+usgs_10m+nesdis_greenfrac+10m', 'gtopo_10m+usgs_10m+nesdis_greenfrac+10m'
+geog_data_res = '2deg+topo_gmted2010_30s+landuse_30s_with_lakes+30s+greenfrac','2deg+topo_gmted2010_30s+landuse_30s_with_lakes+30s+greenfrac',
+ dx = 4500,
+ dy = 4500,
  map_proj = 'lambert',
  ref_lat   =  51.5,
- ref_lon   =  11.0,
- truelat1  =  49.0,
+ ref_lon   =  9.0,
+ truelat1  =  52.0,
  truelat2  =  49.0,
  stand_lon =  10.0,
  ! path to the unzipped geodata
- geog_data_path = 'path/to/geo_data/WPS_GEOG/'
+ geog_data_path = '/home/raziel/geo_data/geog/'
 /
 
 &ungrib
@@ -49,5 +50,5 @@
 
 &metgrid
  fg_name = 'FILE'
- io_form_metgrid = 2,
+ io_form_metgrid = 2, 
 /

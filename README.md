@@ -24,7 +24,8 @@ folders for subsidiary license files.
   * contains scripts to fetch the required input data, prepare the start values and execute a model run
 * wrf_deploy: [readme](./wrf_deploy/README.md)
   * contains scripts to load and deploy a precompiled wrf archive
-* additions: additional scripts and files that can help running the model
+* additions: [readme](./additions/README.md)
+  * additional scripts and files that can help running the model
 * plots: example scripts for ncl output files
 
 ## Sources
