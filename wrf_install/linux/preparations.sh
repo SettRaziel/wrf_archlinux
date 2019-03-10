@@ -2,9 +2,12 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-26 14:21:00
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-08-18 09:48:48
+# @Last Modified time: 2019-03-09 17:43:08
 
 # ${1}: the folder relative to the home path where the files should be installed
+
+# define terminal colors
+source ../../libs/terminal_color.sh
 
 # setting -e to abort on error
 set -e
@@ -22,7 +25,7 @@ wget ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-fortran-${NETCDF_FORTRAN_VERSI
 # wget specified mpich version
 wget http://www.mpich.org/static/downloads/${MPI_VERSION}/mpich-${MPI_VERSION}.tar.gz
 # wget specified libpng version; can only retrieve latest
-wget ftp://ftp-osl.osuosl.org/pub/libpng/src/libpng16/libpng-${LIBPNG_VERSION}.tar.gz
+wget https://download.sourceforge.net/libpng/libpng-${LIBPNG_VERSION}.tar.gz
 # wget specified zlib version; can only retrieve latest
 wget www.zlib.net/zlib-${ZLIB_VERSION}.tar.gz
 # wget specified jasper version
@@ -33,6 +36,10 @@ wget http://www.ece.uvic.ca/~frodo/jasper/software/jasper-${JASPER_VERSION}.tar.
 SCRIPT_PATH=$(pwd)
 
 # Create destination folder and change to that
+if [ -d "${HOME}/${1}" ]; then
+  printf "${YELLOW}Directory already exists, removing ... ${NC}\n"
+  rm -rf ${HOME}/${1}
+fi
 mkdir ${HOME}/${1}
 cd ${HOME}/${1}
 
