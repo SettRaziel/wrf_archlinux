@@ -54,11 +54,11 @@ see LICENSE
   needs to be reviewed.
 
 ## Todos:
-* better error handling, error logging and script behavior in error cases
+* better error handling, error logging and script behavior in error cases; see:[(Issue)](https://github.com/SettRaziel/wrf_archlinux/issues/7), see:[(Issue)](https://github.com/SettRaziel/wrf_archlinux/issues/10)
 * generic file paths will be added later as shell parameters
 * ncl examples for output (added)
 * cronjob details
-* intermediate results during wrf_run
+* intermediate results during wrf_run; see:[(Issue)](https://github.com/SettRaziel/wrf_archlinux/issues/13)
 * more error checks:
   - e.g. checks that the run time of the model need to be a multiple of three
     (as long as the output interval is static and set to 3 hours)

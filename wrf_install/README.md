@@ -46,4 +46,4 @@ on a cluster it needs a valid name to work with several machines.
 * installation details
 * testing of newer wrf version, e.g. WRFV4; see:[(Issue)](https://github.com/SettRaziel/wrf_archlinux/issues/6)
 * testing the new hybrid vertical coordinate for WRFV3.9 and higher; see:[(Issue)](https://github.com/SettRaziel/wrf_archlinux/issues/7)
-* testing newer gcc/gfortran with WRFV4
+* testing newer gcc/gfortran with WRFV4; see:[(Issue)](https://github.com/SettRaziel/wrf_archlinux/issues/12)
