@@ -9,6 +9,8 @@ The installation scripts are based on the the tutorial of the wrf model that can
   - BUILD_PATH: the path relative from the home folder, where the model data
     should be installed
   - WRF_ROOT_PATH: on default the home folder + the build path is used, adjust if necessary
+  - installation with local libraries: all libraries must be present in the folder libraries in the repository folder
+    by adding --local as a script parameter
 * libraries: adjust the number of used cores by changing the -j parameter
 * starting with WRF v3.9 the model can use a hybrid approach for the vertical coordinate
   (see manual for details); atm the corresponding parameter -hyb needs to be set manually
