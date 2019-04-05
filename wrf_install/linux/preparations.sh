@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-26 14:21:00
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-03-09 17:43:08
+# @Last Modified time: 2019-04-05 17:36:02
 
 # ${1}: the folder relative to the home path where the files should be installed
 
@@ -43,8 +43,11 @@ fi
 mkdir ${HOME}/${1}
 cd ${HOME}/${1}
 
-load_libraries
-
-# rename tar gz to lower case endings
-mv WRFV${WRF_VERSION}.TAR.gz WRFV${WRF_VERSION}.tar.gz
-mv WPSV${WPS_VERSION}.TAR.gz WPSV${WPS_VERSION}.tar.gz
+if [ ${2} = '--local' -a -d "${SCRIPT_PATH}/../../libraries" ]; then
+	cp -r ${SCRIPT_PATH}/../../libraries/* .
+else
+	load_libraries
+	# rename tar gz to lower case endings
+	mv WRFV${WRF_VERSION}.TAR.gz WRFV${WRF_VERSION}.tar.gz
+	mv WPSV${WPS_VERSION}.TAR.gz WPSV${WPS_VERSION}.tar.gz
+fi
