@@ -2,15 +2,15 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-08-07 19:02:24
+# @Last Modified time: 2019-04-15 18:21:51
 
 function generate_meteogram () {
   METEO_TITLE=${1}
   LOC_SHORTCUT=${2}
   INPUT_FILE=${2}.d01.TS
 
-  # move required meteogram files
-  mv ${HOME}/Build_WRF/WRFV3/test/em_real/${LOC_SHORTCUT}.* ${HOME}/wrf_output
+  # move required meteogram files to output folder
+  mv ${BUILD_PATH}/WRFV3/test/em_real/${LOC_SHORTCUT}.* ${HOME}/wrf_output
 
   ncl time_array=${LEGEND_ARRAY} ticks=${TICK_ARRAY} sticks=${STICK_ARRAY} title=\"${METEO_TITLE}\" input=\"${INPUT_FILE}\" plot_T_timeline  >> ${LOG_PATH}/debug.log
   ncl time_array=${LEGEND_ARRAY} ticks=${TICK_ARRAY} sticks=${STICK_ARRAY} title=\"${METEO_TITLE}\" input=\"${INPUT_FILE}\" plot_meteogram  >> ${LOG_PATH}/debug.log
