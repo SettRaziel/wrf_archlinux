@@ -20,6 +20,14 @@ Simply call the deployment script
     ./deploy_wrf.sh
 ```
 
+## Additional run prepartions
+Depending on the deployed wrf_model a few manual steps are required to do before running the model
+* build directory: set correct directory in run_model.sh
+* wrf_output directory: adjust destination folder and destination suffix for the output files in draw_plots.sh
+* configure e-mail settings:
+	* configure mail text and default sender in create_mail.sh
+	* configure .msmtp file for correct mail settings
+
 ## License
 see LICENSE
 
