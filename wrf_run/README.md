@@ -43,12 +43,14 @@ see LICENSE
     violations or faulty GFS data. Setting the model area to central europe results in crahes at
     the first model iteration. Setting additional dampening parameters and settings for the vertical
     interpolation does not improve the problem. If you have a solution please write me an e-mail.
+      - the current setup works for middle europe as expected, v3.9.1 via wrf_deploy works stable at the moment
 * Sometimes the virtual machine freezes when trying to make a model run. Looking on the last entries  
   of the system log most of the time the machine freezes while loading input data.
   - The latest change to adress this problem is the usage of flock within the script that prevents two or more
     parallel model runs
   - running an additional instance on another server with a different virtualization software resulted in a stable
     instance, so it might be possible that the different virtualization or ram errors lead to the freezing behavior
+      - April 2019: new virtual machine works wothout this problem
 * Using different resolutions for x and y seems to lead to an error, that file informations do not
   concur with the settings from the namelist file. Only the value of dx seems to be used. This
   needs to be reviewed.
