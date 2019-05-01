@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 09:26:31
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-02-27 10:50:15
+# @Last Modified time: 2019-05-01 13:30:14
 
 # script to run the necessary preprocessing steps before starting the wrf run
 # $1: the path to the wrf root folder
@@ -13,12 +13,14 @@
 GFS_PATH=${1}
 RESOLUTION=${2}
 
-source ../set_env.sh
-
 # cleaning up in wps preprocessing folder
 SCRIPT_PATH=$(pwd)
 now=$(date +"%T")
 printf "Cleaning up wps data from last time at ${now}\n" >> ${LOG_PATH}/log.info
+if [ -z "${BUILD_PATH}" ]; then
+  printf " Build path is not set, exiting with error."
+  exit 1
+fi
 cd ${BUILD_PATH}/WPS
 
 # remove met_em files from the last run
