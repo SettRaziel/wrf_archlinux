@@ -2,7 +2,15 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-04-15 18:21:51
+# @Last Modified time: 2019-05-24 21:03:00
+
+# output script to generate the meteograms specified in the tslist file
+# ${1}: the year of the run
+# ${2}: the month of the run
+# ${3}: the day of the run
+# ${4}: the hour of the run
+# ${5}: the time period of the run
+# ${6}: the path to the destination folder
 
 function generate_meteogram () {
   METEO_TITLE=${1}
@@ -32,17 +40,24 @@ SCRIPT_PATH=$(pwd)
 now=$(date +"%T")
 printf "Starting meteograms at ${now}.\n" >> ${LOG_PATH}/log.info
 
+# parameter validation
+if [ "$#" -ne 6 ]; then
+  echo "Wrong number of arguments."
+  echo "Must be <YEAR> <MONTH> <DAY> <HOUR> <PERIOD> <DESTINATION>"
+  exit 1
+fi
+
 cd ${HOME}/wrf_output
 
-DATE=$1-$2-$3
+DATE=${1}-${2}-${3}
 START_DATE=$(LC_ALL=en_UTF-8 date +\(%Y-%m-%d-%HUTC\) -d "${DATE}T${4}:00")
 DATE_FORMAT="+%b-%d/00"
 LEGEND_ARRAY="(/\"$(LC_ALL=en_UTF-8 date $DATE_FORMAT -d "$DATE + 1 day")\""
 
-MAIN_HOURS=`expr 24 - $4`
+MAIN_HOURS=`expr 24 - ${4}`
 TICK_ARRAY="(/${MAIN_HOURS}"
 
-SEC_HOURS=`expr 12 - $4`
+SEC_HOURS=`expr 12 - ${4}`
 STICK_ARRAY="(/${SEC_HOURS}"
 
 for i in {2..8}
