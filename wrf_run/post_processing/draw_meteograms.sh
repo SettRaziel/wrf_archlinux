@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-05-24 21:03:00
+# @Last Modified time: 2019-05-26 17:25:54
 
 # output script to generate the meteograms specified in the tslist file
 # ${1}: the year of the run
@@ -23,16 +23,14 @@ function generate_meteogram () {
   ncl time_array=${LEGEND_ARRAY} ticks=${TICK_ARRAY} sticks=${STICK_ARRAY} title=\"${METEO_TITLE}\" input=\"${INPUT_FILE}\" plot_T_timeline  >> ${LOG_PATH}/debug.log
   ncl time_array=${LEGEND_ARRAY} ticks=${TICK_ARRAY} sticks=${STICK_ARRAY} title=\"${METEO_TITLE}\" input=\"${INPUT_FILE}\" plot_meteogram  >> ${LOG_PATH}/debug.log
 
-  # mkdir ${DEST_FOLDER}/
-  # mv time_T2.png ${DEST_FOLDER}/${DEST_PREFIX}_time_T2_${LOC_SHORTCUT}.png
-  # mv meteo.png ${DEST_FOLDER}/${DEST_PREFIX}_meteogram_${LOC_SHORTCUT}.png
-
   # optimize png size
   find . -maxdepth 1 -name '*.png' -exec optipng {} \;
 
+  # create now folder for the station
+  mkdir ${DEST_FOLDER}/${LOC_SHORTCUT}
   # move files to output folder
-  mv time_T2.png ${DEST_FOLDER}/${DEST_PREFIX}_time_T2_${LOC_SHORTCUT}.png
-  mv meteo.png ${DEST_FOLDER}/${DEST_PREFIX}_meteogram_${LOC_SHORTCUT}.png
+  mv time_T2.png ${DEST_FOLDER}/${LOC_SHORTCUT}/${DEST_PREFIX}_time_T2_${LOC_SHORTCUT}.png
+  mv meteo.png ${DEST_FOLDER}/${LOC_SHORTCUT}/${DEST_PREFIX}_meteogram_${LOC_SHORTCUT}.png
 }
 
 # logging time stamp
