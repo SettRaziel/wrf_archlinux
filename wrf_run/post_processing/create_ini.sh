@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-04-09 19:25:16
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-09-06 19:07:53
+# @Last Modified time: 2019-05-29 19:09:43
 
 # script that generates a meta.ini for the minimal php gui
 if [ "$#" -ne 6 ]; then
@@ -58,14 +58,14 @@ echo
 
 echo '[meteogram]'
 echo 'scope="locations"'
-echo 'files=%m_%d_%H_meteogram_%x.png'
+echo 'files=%x/%m_%d_%H_meteogram_%x.png'
 echo 'desc="Meteogramm für %X ab %Y-%m-%d %H:00 UTC"'
 echo 'title="Meteogramm %x"'
 echo
 
 echo '[temperature]'
 echo 'scope="locations"'
-echo 'files=%m_%d_%H_time_T2_%x.png'
+echo 'files=%x/%m_%d_%H_time_T2_%x.png'
 echo 'desc="Temperatur in 2m Höhe für %X ab %Y-%m-%d %H:00 UTC"'
 echo 'title="Temperatur %x"'
 }
