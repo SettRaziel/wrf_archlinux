@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-05-26 17:25:54
+# @Last Modified time: 2019-06-05 22:06:35
 
 # output script to generate the meteograms specified in the tslist file
 # ${1}: the year of the run
@@ -76,11 +76,13 @@ TICK_ARRAY+="/)"
 STICK_ARRAY+="/)"
 
 DEST_PREFIX=${2}_${3}_${4}
-DEST_FOLDER=${6}
+DEST_FOLDER=${6}/meteogram
 
+# create now subfolder for the meteograms
+mkdir ${DEST_FOLDER}
 generate_meteogram "Hannover,_NDS_${START_DATE}" "Han"
 generate_meteogram "Ith-Zeltplatz,_NDS_${START_DATE}" "Ith"
-generate_meteogram "Husum,_SH_${START_DATE}" "Hus"
+generate_meteogram "Berlin,_BER_${START_DATE}" "Ber"
 
 # logging time stamp
 now=$(date +"%T")
