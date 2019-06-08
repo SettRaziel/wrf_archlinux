@@ -2,9 +2,10 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-26 14:21:00
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-04-05 17:36:02
+# @Last Modified time: 2019-06-08 10:03:54
 
 # ${1}: the folder relative to the home path where the files should be installed
+# ${2}: the marker if the installation should use local libraries
 
 # define terminal colors
 source ../../libs/terminal_color.sh
@@ -18,6 +19,8 @@ function load_libraries() {
 wget http://www2.mmm.ucar.edu/wrf/src/WRFV${WRF_VERSION}.TAR.gz
 # wget specified wps version
 wget http://www2.mmm.ucar.edu/wrf/src/WPSV${WPS_VERSION}.TAR.gz
+# wget specific hdf 5 version
+wget https://support.hdfgroup.org/ftp/HDF5/current/src/hdf5-${HDF_VERSION}.tar.gz
 # wget specified netcdf version
 wget ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-${NETCDF_VERSION}.tar.gz
 # wget specified netcdf fortran bindings

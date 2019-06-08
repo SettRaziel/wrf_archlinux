@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-03 17:20:53
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-03-09 17:52:12
+# @Last Modified time: 2019-06-08 10:04:46
 
 # Script that sets the required variables for the model installation
 # ${1}: the build path where the wrf model should be installed
@@ -17,8 +17,8 @@ export F77="gfortran"
 export FFLAGS="-m64"
 export PATH="${PATH}:${DIR}/netcdf/bin"
 export NETCDF="${DIR}/netcdf"
-export LDFLAGS="-L${DIR}/grib2/lib"
-export CPPFLAGS="-I${DIR}/grib2/include -I/usr/include/tirpc"
+export LDFLAGS="-L/usr/include/tirpc/rpc"
+export CPPFLAGS="-I/usr/include/tirpc/rpc"
 export PATH="${PATH}:${DIR}/mpich/bin"
 export WRFIO_NCD_LARGE_FILE_SUPPORT=1
 export JASPERLIB="${DIR}/grib2/lib"
@@ -28,8 +28,9 @@ export JASPERINC="${DIR}/grib2/include"
 export NCARG_ROOT="${DIR}/ncl"
 
 # Setting library versions for usage (last checked: 2019-03-09)
-export WRF_VERSION="3.9.1"            # latest: 4.0.2
-export WPS_VERSION="3.9.1"            # latest: 4.0.2
+export WRF_VERSION="4.0"            # latest: 4.0.2
+export WPS_VERSION="4.0"            # latest: 4.0.2
+export HDF_VERSION="1.10.5"         # latest: 1.10.5
 export NETCDF_VERSION="4.6.1"       # latest: 4.6.1
 export NETCDF_FORTRAN_VERSION="4.4.5" # latest: 4.4.5
 export MPI_VERSION="3.3"              # latest: 3.3.0
