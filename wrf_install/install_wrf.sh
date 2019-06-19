@@ -2,11 +2,11 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-19 13:25:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-04-05 17:43:55
+# @Last Modified time: 2019-06-19 21:32:33
 
 # main installation script: start the installation of the wrf model on a
 # minimal arch linux installation
-# Version 0.3.0
+# Version 0.3.1
 # created by Benjamin Held and other sources, June 2017
 
 # ${1}: the flag if the installation should be done with local libraries
@@ -35,6 +35,11 @@ sh ./preparations.sh ${BUILD_PATH} ${1}
 # Compiling netcdf bindings
 cd ${SCRIPT_PATH}/wrf_preparation
 sh ./netcdf.sh ${BUILD_PATH}
+# exporting required environment parameters
+export LDFLAGS="${LDFLAGS} -L${DIR}/netcdf/lib"
+export CPPFLAGS="${CPPFLAGS} -I${DIR}/netcdf/include"
+# setting library path while building with shared libraries
+export LD_LIBRARY_PATH="${DIR}/hdf5/lib:${DIR}/netcdf/lib:${LD_LIBRARY_PATH}"
 
 # Compiling fortran binding for netcdf
 printf "${YELLOW}Starting fortran bindings in 5 seconds ... ${NC}"
@@ -45,6 +50,9 @@ sh ./fortran_bindings.sh ${BUILD_PATH}
 printf "${YELLOW}Starting library compilation in 5 seconds ... ${NC}"
 sleep 5
 sh ./install_libraries.sh ${BUILD_PATH}
+# exporting required environment parameters
+export LDFLAGS="${LDFLAGS} -L${DIR}/grib2/lib"
+export CPPFLAGS="${CPPFLAGS} -I${DIR}/grib2/include"
 
 # Running System environment test
 printf "${YELLOW}Starting fortran tests. Press any key ... ${NC}"
