@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 09:26:31
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-05-06 16:09:38
+# @Last Modified time: 2019-06-15 08:56:13
 
 # script to run the necessary preprocessing steps before starting the wrf run
 # ${1}: the path to the gfs input data
@@ -40,7 +40,7 @@ rm PFILE*
 # cleaning up in wrf
 now=$(date +"%T")
 printf "Cleaning up wrf data from last time at ${now}\n" >> ${LOG_PATH}/log.info
-cd ${BUILD_PATH}/WRFV3/test/em_real/
+cd ${BUILD_PATH}/WRF/test/em_real/
 
 # remove met_em files from the last run
 rm met_em.d01.*
