@@ -26,8 +26,8 @@ The installation scripts are based on the the tutorial of the wrf model that can
 * If one of the mpi test fails with a naming error, check if you have set the
 hostname from your /etc/hostname in your file /etc/hosts. Since mpi can run
 on a cluster it needs a valid name to work with several machines.
-* Installing and running the model should be done with gcc/gcc-libs/gcc-gfortran
-  6.3.1-2. During the wrf compilation an error occurs like:
+* WRF with Version less then 4: Installing and running the model should be done with 
+  gcc/gcc-libs/gcc-gfortran 6.3.1-2. During the wrf compilation an error occurs like:
    ```
    CALL RANDOM_SEED(PUT=count)
                      1
@@ -38,6 +38,9 @@ on a cluster it needs a valid name to work with several machines.
     When running the model it breaks (last check: 2017/05/30) since the model needs libgfortran.so.3
     which cannot be found after upgrading the gcc-gfortran to newer version. Even compiling WRFV3.9 and
     WPSV3.9 does not resolve this issue.
+* WRF version 4: Compiling the WRF sources did not succeed every time. Roughly half the compile tests failed, mostly with
+  the message of an compiler problem / bug. Recompiling with the same settings lead to a successful build. But with WRFV 4
+  the gcc / gcc-fortran version 8 could be used.
 * NCL: If you have problems with ncl and missing ssl libraries, use the nodap binaries
 
 ## Todos:

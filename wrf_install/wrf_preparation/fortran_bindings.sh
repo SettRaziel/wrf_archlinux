@@ -2,10 +2,10 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-18 15:39:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-02-25 20:24:45
+# @Last Modified time: 2019-06-17 20:08:54
 
 # Script to compile the required netcdf-fortran package
-# $1: path to the installation folder
+# ${1}: path to the installation folder
 
 # define terminal colors
 source ../../libs/terminal_color.sh
@@ -19,7 +19,7 @@ tar xfv netcdf-fortran-${NETCDF_FORTRAN_VERSION}.tar.gz
 cd netcdf-fortran-${NETCDF_FORTRAN_VERSION}
 # Change the path according to the used user; configure requires an absolute
 # path here or it fails with an error
-CPPFLAGS="-I$DIR/netcdf/include" ./configure --prefix=$NETCDF --disable-shared
+./configure --prefix=${NETCDF} 
 make -j 2 && make -j 2 install
 
 cd ..
