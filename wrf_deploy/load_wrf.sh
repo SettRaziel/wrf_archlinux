@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-10-23 09:09:29
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-06-26 21:02:44
+# @Last Modified time: 2019-07-21 08:56:07
 
 # help output
 function print_options () {
@@ -18,6 +18,8 @@ source ../libs/terminal_color.sh
 
 # Default selection
 SELECT_VALUE=2
+# Default wrf directory corresponding to v3.9.1
+WRF_FOLDER='WRFV3'
 
 # check for script arguments
 if [ $# -ne 1 ] 
@@ -33,14 +35,14 @@ then
   done
 else
   case ${1} in
-    [12345]* ) SELECT_VALUE=${1} ;;
+    [12345]* ) SELECT_VALUE=${1};;
     ['--help']* ) printf "${LIGHT_BLUE}Usage:\n${NC}"; print_options;;
     * ) printf "${RED}Error: False argument. Please use a numeric value in [1-5] or --help.${NC}\n";;
   esac
 fi
 
 case ${SELECT_VALUE} in
-  [1]* ) FILE_NAME='wrf_400';;
+  [1]* ) FILE_NAME='wrf_400'; WRF_FOLDER='WRF';;
   [2]* ) FILE_NAME='wrf_391';;
   [3]* ) FILE_NAME='wrf_390';;
   [4]* ) FILE_NAME='wrf_381';;
@@ -63,7 +65,7 @@ rm ${FILE_NAME}.tar.gz
 printf "${YELLOW}\nDeploying repository config files: ${NC}\n"
 cd ${SCRIPT_PATH}
 cp ../additions/config/namelist.wps ${HOME}/${FILE_NAME}/WPS
-cp ../additions/config/namelist.input ${HOME}/${FILE_NAME}/WRFV3/test/em_real/
-cp ../additions/config/tslist ${HOME}/${FILE_NAME}/WRFV3/test/em_real/
+cp ../additions/config/namelist.input ${HOME}/${FILE_NAME}/${WRF_FOLDER}/test/em_real/
+cp ../additions/config/tslist ${HOME}/${FILE_NAME}/${WRF_FOLDER}/test/em_real/
 
 printf "${YELLOW}\nFinished wrf deployment.${NC}\n"
