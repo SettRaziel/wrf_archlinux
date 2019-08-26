@@ -21,6 +21,11 @@ BUILD_PATH="<wrf path>"
 WRF_ROOT_PATH="${HOME}/${BUILD_PATH}"
 SCRIPT_PATH=$(pwd)
 
+# Check var settings
+if [ "$BUILD_PATH" = "<wrf path>" ]; then
+  echo "Please set the <BUILD_PATH> variable. See README.md"
+fi
+
 # Setting required environment variables
 source ./linux/set_env.sh ${WRF_ROOT_PATH}
 
