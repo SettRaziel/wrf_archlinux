@@ -24,6 +24,7 @@ SCRIPT_PATH=$(pwd)
 # Check var settings
 if [ "$BUILD_PATH" = "<wrf path>" ]; then
   echo "Please set the <BUILD_PATH> variable. See README.md"
+  exit 1
 fi
 
 # Setting required environment variables
