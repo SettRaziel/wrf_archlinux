@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-19 13:25:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-06-19 21:32:33
+# @Last Modified time: 2019-08-28 16:16:13
 
 # main installation script: start the installation of the wrf model on a
 # minimal arch linux installation
@@ -21,9 +21,9 @@ BUILD_PATH="<wrf path>"
 WRF_ROOT_PATH="${HOME}/${BUILD_PATH}"
 SCRIPT_PATH=$(pwd)
 
-# Check var settings
-if [ "$BUILD_PATH" = "<wrf path>" ]; then
-  echo "Please set the <BUILD_PATH> variable. See README.md"
+# Check var settings of build path
+if [ "${BUILD_PATH}" = "<wrf path>" ]; then
+  printf "${RED}Invalid build path. Please set the <BUILD_PATH> variable. See README.md ${NC}\n"
   exit 1
 fi
 
