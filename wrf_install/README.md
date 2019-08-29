@@ -11,6 +11,7 @@ The installation scripts are based on the the tutorial of the wrf model that can
   - WRF_ROOT_PATH: on default the home folder + the build path is used, adjust if necessary
   - installation with local libraries: all libraries must be present in the folder libraries in the repository folder
     by adding --local as a script parameter
+  - if not build path is set the script will fail, a default folder will be added with [(#26)](https://github.com/SettRaziel/wrf_archlinux/issues/26)
 * libraries: adjust the number of used cores by changing the -j parameter
 * starting with WRF v3.9 the model can use a hybrid approach for the vertical coordinate
   (see manual for details); atm the corresponding parameter -hyb needs to be set manually
