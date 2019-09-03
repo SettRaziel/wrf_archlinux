@@ -40,13 +40,13 @@ printf "Starting wrf run at ${now}.\n" >> ${LOG_PATH}/log.info
 
 # vertical interpolation preprocessing
 printf "${YELLOW}doing vertical interpolation (real.exe): ${NC}\n"
-cd ${BUILD_PATH}/WRFV3/test/em_real
+cd ${BUILD_PATH}/WRF/test/em_real
 ln -sf ../../../WPS/met_em.* .
 ./real.exe
 cp rsl.error.0000 real_error.log
 
 printf "${YELLOW}starting wrf run ... ${NC}\n"
-cd ${BUILD_PATH}/WRFV3/test/em_real
+cd ${BUILD_PATH}/WRF/test/em_real
 mpirun ./wrf.exe
 
 # logging time stamp
