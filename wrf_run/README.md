@@ -15,6 +15,7 @@ see LICENSE
 
 ## Run options
 * build directory: set correct directory in run_model.sh
+* set the geodata path at <your installation dir>/WPS/namelist.wps geog_data_path
 * run parameter for namelists: adjust them in prepare_namelist.sh
   - horizontal grid size: grid_dx, grid_dy
   - horitontal grid resolution: dx, dy
