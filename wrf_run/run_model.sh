@@ -31,6 +31,7 @@ mkdir -p ${LOG_PATH}
 
 # default variables
 GFS_PATH=${HOME}/gfs_data
+mkdir -p ${GFS_PATH}
 STATUS_FILE=${LOG_PATH}/status.log               
 ERROR_LOG=${LOG_PATH}/error_$(date +"%m_%d").log # path to error log
 
