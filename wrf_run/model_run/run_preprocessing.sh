@@ -40,7 +40,7 @@ rm PFILE*
 # cleaning up in wrf
 now=$(date +"%T")
 printf "Cleaning up wrf data from last time at ${now}\n" >> ${LOG_PATH}/log.info
-cd ${BUILD_PATH}/WRFV3/test/em_real/
+cd ${BUILD_PATH}/WRF/test/em_real/
 
 # remove met_em files from the last run
 rm met_em.d01.*
