@@ -27,6 +27,7 @@ SCRIPT_PATH=$(pwd)
 BUILD_PATH="<wrf path>"
 source ${SCRIPT_PATH}/set_env.sh ${BUILD_PATH}
 export LOG_PATH=${SCRIPT_PATH}/logs
+mkdir -p ${LOG_PATH}
 
 # default variables
 GFS_PATH=${HOME}/gfs_data
