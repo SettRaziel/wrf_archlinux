@@ -83,7 +83,7 @@ printf "Starting model run and preparation.\n" >> ${STATUS_FILE}
 sh run_preprocessing.sh ${GFS_PATH} ${RESOLUTION}; RET=${?}
 cd ${SCRIPT_PATH}
 if ! [ ${RET} == 0 ]; then
-    cd ${BUILD_PATH}/WRFV3/test/em_real/
+    cd ${BUILD_PATH}/WRF/test/em_real/
     rm wrfout_d01_*
     error_exit "Failed to run the model"
 fi
@@ -91,7 +91,7 @@ fi
 # move output files
 cd ${SCRIPT_PATH}/model_run
 sh clean_up_output.sh
-mv ${BUILD_PATH}/WRFV3/test/em_real/wrfout_d01_* ${HOME}/wrf_output
+mv ${BUILD_PATH}/WRF/test/em_real/wrfout_d01_* ${HOME}/wrf_output
 
 # run output script
 cd ${SCRIPT_PATH}/post_processing
