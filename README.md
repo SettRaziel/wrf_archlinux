@@ -12,7 +12,7 @@ The scripts are licensed under the given license file. 3rd party software and
 scripts are marked and can have different license conditions. Please check the
 folders for subsidiary license files.
 
-## Current content
+## Current content of the repository
 * scripts to install the wrf model on a minimum ArchLinux installation
 * basic script collection to start a model run
 * scripts to deploy a precompiled archive on an ArchLinux system 
@@ -23,7 +23,7 @@ folders for subsidiary license files.
 * wrf_run: [readme](./wrf_run/README.md)
   * contains scripts to fetch the required input data, prepare the start values and execute a model run
 * wrf_deploy: [readme](./wrf_deploy/README.md)
-  * contains scripts to load and deploy a precompiled wrf archive
+  * contains scripts to download and deploy a precompiled wrf archive with all required libraries
 * additions: [readme](./additions/README.md)
   * additional scripts and files that can help running the model
 * plots: example scripts for ncl output files

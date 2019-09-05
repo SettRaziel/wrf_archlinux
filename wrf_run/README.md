@@ -23,6 +23,16 @@ see LICENSE
 * addition grid parameter: directly in namelist in required
   - vertical grid size: grid_dz
 
+## Usage
+Call the run script
+```
+    ./run_model.sh <input_model_run> <forecast_time> <input_resolution>
+    e.g. ./run_model.sh 00 84 0p50
+```
+* input_model_run: {00, 06, 12, 18}
+* forecast_time: hours as integer, no whole days (see known issues)
+* input_resolution: {0p25, 0p50, 1p00}
+
 ## Known issues
 * Since the model creates intermediate output every 3 hours (configurable in namelist.input)
   it is useful to choose a forecast range accordingly to that time step

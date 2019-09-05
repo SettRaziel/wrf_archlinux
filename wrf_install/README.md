@@ -3,6 +3,10 @@
 ## License
 The installation scripts are based on the the tutorial of the wrf model that can be found
 [here](http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php).
+The installation scripts are for the compilation of new versions or different WRF configurations.
+If you want to run the WRF model and chose to compile it on your own be advised that serveral manual steps are required to run it afterwards.
+For running the model without compiling everything from scratch try the deployment scripts. They minimize the manual configuration steps that
+are requried to run the model on your own hardware.
 
 ## Additional install configurations
 * install_wrf.sh: Set the correct file paths
@@ -11,7 +15,7 @@ The installation scripts are based on the the tutorial of the wrf model that can
   - WRF_ROOT_PATH: on default the home folder + the build path is used, adjust if necessary
   - installation with local libraries: all libraries must be present in the folder libraries in the repository folder
     by adding --local as a script parameter
-  - if not build path is set the script will fail, a default folder will be added with [(#26)](https://github.com/SettRaziel/wrf_archlinux/issues/26)
+  - if no build path is set the script will fail, a default folder will be added with [(#26)](https://github.com/SettRaziel/wrf_archlinux/issues/26)
 * libraries: adjust the number of used cores by changing the -j parameter
 * starting with WRF v3.9 the model can use a hybrid approach for the vertical coordinate
   (see manual for details); atm the corresponding parameter -hyb needs to be set manually
