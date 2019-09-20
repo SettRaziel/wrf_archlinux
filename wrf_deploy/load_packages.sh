@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-09-07 16:35:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-09-18 09:39:18
+# @Last Modified time: 2019-09-20 19:21:55
 
 # define terminal colors
 source ../libs/terminal_color.sh
@@ -30,3 +30,6 @@ yay -S --noconfirm --needed optipng
 # installing packages to send emails
 printf "${YELLOW}\nInstalling required mail libraries: ${NC}\n"
 yay -S --noconfirm --needed msmtp
+
+# package clean up
+sudo pacman --noconfirm -Rsn $(sudo pacman -Qdtq)
