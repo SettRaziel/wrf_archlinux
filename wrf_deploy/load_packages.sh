@@ -2,21 +2,34 @@
 # @Author: Benjamin Held
 # @Date:   2018-09-07 16:35:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-04-14 12:14:28
+# @Last Modified time: 2019-09-20 19:21:55
 
 # define terminal colors
 source ../libs/terminal_color.sh
 
-# Installing packages for running the model
+# prepare Folders
+mkdir aur_packages
+cd aur_packages
+
+# getting yay and install if necessary
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si --noconfirm --needed
+cd ..
+
+# installing packages for running the model
 printf "${YELLOW}\nInstalling required model libraries: ${NC}\n"
-yay -S --needed tcsh wget curl
+yay -S --noconfirm --needed tcsh wget curl
 
-# Installing required packages for running ncl
+# installing required packages for running ncl
 printf "${YELLOW}\nInstalling additional ncl libraries: ${NC}\n"
-yay -S --needed fontconfig libxrender libxtst
-# Installing optipng to optimize png output size
-yay -S --needed optipng
+yay -S --noconfirm --needed fontconfig libxrender libxtst
+# installing optipng to optimize png output size
+yay -S --noconfirm --needed optipng
 
-# Installing packages to send emails
+# installing packages to send emails
 printf "${YELLOW}\nInstalling required mail libraries: ${NC}\n"
-yay -S --needed msmtp
+yay -S --noconfirm --needed msmtp
+
+# package clean up
+sudo pacman --noconfirm -Rsn $(sudo pacman -Qdtq)
