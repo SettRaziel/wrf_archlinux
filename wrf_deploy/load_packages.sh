@@ -2,14 +2,15 @@
 # @Author: Benjamin Held
 # @Date:   2018-09-07 16:35:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-09-20 19:21:55
+# @Last Modified time: 2019-10-02 21:25:11
 
 # define terminal colors
 source ../libs/terminal_color.sh
 
 # prepare Folders
-mkdir aur_packages
-cd aur_packages
+SCRIPT_PATH=$(pwd)
+mkdir ${HOME}/aur_packages
+cd ${HOME}/aur_packages
 
 # getting yay and install if necessary
 git clone https://aur.archlinux.org/yay.git
@@ -33,3 +34,5 @@ yay -S --noconfirm --needed msmtp
 
 # package clean up
 sudo pacman --noconfirm -Rsn $(sudo pacman -Qdtq)
+
+cd ${SCRIPT_PATH}
