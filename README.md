@@ -12,7 +12,7 @@ The scripts are licensed under the given license file. 3rd party software and
 scripts are marked and can have different license conditions. Please check the
 folders for subsidiary license files.
 
-## Current content
+## Current content of the repository
 * scripts to install the wrf model on a minimum ArchLinux installation
 * basic script collection to start a model run
 * scripts to deploy a precompiled archive on an ArchLinux system 
@@ -23,7 +23,7 @@ folders for subsidiary license files.
 * wrf_run: [readme](./wrf_run/README.md)
   * contains scripts to fetch the required input data, prepare the start values and execute a model run
 * wrf_deploy: [readme](./wrf_deploy/README.md)
-  * contains scripts to load and deploy a precompiled wrf archive
+  * contains scripts to download and deploy a precompiled wrf archive with all required libraries
 * additions: [readme](./additions/README.md)
   * additional scripts and files that can help running the model
 * plots: example scripts for ncl output files
@@ -54,16 +54,16 @@ The different setups will be categorized in
 * {debug_build, normal_build, hybrid_build, combined_build}
 * {running, unstable, not_running}
 
-Additionally all setups use gcc/gcc-libs/gcc-gfortran 6.3.1-2 until described 
-otherwise.
+All setups for WRFV3.x use gcc/gcc-libs/gcc-gfortran 6.3.1-2 until described otherwise.
+WRFV4 uses the latest version 8.x.
 * current setup:
   - WRF Model and WPS v3.9.1 [compiling, normal_build, stable]
     - NetCDF v4.6.0 / NetCDF-Fortran Library v4.4.5
     - mpi v3.2, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.1
 * testing setup:
-  - - WRF Model and WPS v4.0.2 [not_compiling, normal_build, not_running]
-    - NetCDF v4.6.0 / NetCDF-Fortran Library v4.4.5
-    - mpi v3.3, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.1
+  - - WRF Model and WPS v4.0.2 [compiling, normal_build, not_running]
+    - NetCDF v4.6.1 / NetCDF-Fortran Library v4.4.5
+    - mpi v3.3, libpng v1.6.36, zlib v1.2.11, JasPer v1.900.1
 * tested setups:
   - WRF Model and WPS v3.8.1 [compiling, normal_build, unstable]
     - NetCDF v4.4.1.1 / NetCDF-Fortran Library v4.4.4

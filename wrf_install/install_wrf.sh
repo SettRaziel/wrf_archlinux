@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-19 13:25:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-06-15 08:52:25
+# @Last Modified time: 2019-08-28 16:16:13
 
 # main installation script: start the installation of the wrf model on a
 # minimal arch linux installation
@@ -21,6 +21,12 @@ BUILD_PATH="<wrf path>"
 WRF_ROOT_PATH="${HOME}/${BUILD_PATH}"
 SCRIPT_PATH=$(pwd)
 
+# Check var settings of build path
+if [ "${BUILD_PATH}" = "<wrf path>" ]; then
+  printf "${RED}Invalid build path. Please set the <BUILD_PATH> variable. See README.md ${NC}\n"
+  exit 1
+fi
+
 # Setting required environment variables
 source ./linux/set_env.sh ${WRF_ROOT_PATH}
 
@@ -35,6 +41,11 @@ sh ./preparations.sh ${BUILD_PATH} ${1}
 # Compiling netcdf bindings
 cd ${SCRIPT_PATH}/wrf_preparation
 sh ./netcdf.sh ${BUILD_PATH}
+# exporting required environment parameters
+export LDFLAGS="${LDFLAGS} -L${DIR}/netcdf/lib"
+export CPPFLAGS="${CPPFLAGS} -I${DIR}/netcdf/include"
+# setting library path while building with shared libraries
+export LD_LIBRARY_PATH="${DIR}/hdf5/lib:${DIR}/netcdf/lib:${LD_LIBRARY_PATH}"
 
 # Compiling fortran binding for netcdf
 printf "${YELLOW}Starting fortran bindings in 5 seconds ... ${NC}"
@@ -45,6 +56,9 @@ sh ./fortran_bindings.sh ${BUILD_PATH}
 printf "${YELLOW}Starting library compilation in 5 seconds ... ${NC}"
 sleep 5
 sh ./install_libraries.sh ${BUILD_PATH}
+# exporting required environment parameters
+export LDFLAGS="${LDFLAGS} -L${DIR}/grib2/lib"
+export CPPFLAGS="${CPPFLAGS} -I${DIR}/grib2/include"
 
 # Running System environment test
 printf "${YELLOW}Starting fortran tests. Press any key ... ${NC}"

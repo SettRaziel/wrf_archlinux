@@ -2,15 +2,15 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-18 15:49:25
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-02-26 07:04:25
+# @Last Modified time: 2019-06-18 17:26:50
 
 # define terminal colors
 source ../../libs/terminal_color.sh
 
 # Script to compile the wrf model, after setting up all dependencies
 # and paths
-# $1: the path to the folder where the wrf should be installed
-# $2: the path to the folder where the wrf files has been unpacked
+# ${1}: the path to the folder where the wrf should be installed
+# ${2}: the path to the folder where the wrf files has been unpacked
 
 # storing current script path
 SCRIPT_PATH=$(pwd)
@@ -21,14 +21,18 @@ printf "${YELLOW}\nUnpacking wrf.tar files: ${NC}\n"
 tar xfv WRFV${WRF_VERSION}.tar.gz
 
 # Build wrf
-cd WRFV3
+cd WRF
 printf "${YELLOW}\nInstaling wrf: ${NC}\n"
 # Change the path according to the used user; configure requires an absolute
 # path here or it fails with an error
 sudo ln -s /bin/cpp /lib/cpp
-ln -s ${2}/WRFV3/frame/ ${2}/WRFV3/external/
+ln -s ${2}/WRF/frame/ ${2}/WRF/external/
 ./configure
 ./clean
+
+# add additional libraries
+sed -r -i 's/-L\$\(WRF_SRC_ROOT_DIR\)\/external\/io_netcdf -lwrfio_nf/-L\$\(WRF_SRC_ROOT_DIR\)\/external\/io_netcdf -ltirpc -lwrfio_nf/g' configure.wrf
+
 ./compile -j 1 em_real >& ./compile.log
 
 cd ..

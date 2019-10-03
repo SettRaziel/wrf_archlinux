@@ -2,14 +2,14 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-01 20:09:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-02-26 07:05:13
+# @Last Modified time: 2019-06-18 17:27:05
 
 # define terminal colors
 source ../../libs/terminal_color.sh
 
 # Script to compile the wps module, after setting up all dependencies
 # and paths
-# $1: the path to the folder where the wps should be installed
+# ${1}: the path to the folder where the wps should be installed
 
 # storing current script path
 SCRIPT_PATH=$(pwd)
@@ -26,7 +26,8 @@ printf "${YELLOW}\nInstaling wps: ${NC}\n"
 cd WPS
 ./configure
 
-sed -r -i 's/-L\$\(NETCDF\)\/lib -lnetcdff -lnetcdf/-L\$\(NETCDF\)\/lib -lnetcdff -lnetcdf -lgomp/g' configure.wps
+# add additional libraries
+sed -r -i 's/-L\$\(NETCDF\)\/lib -lnetcdff -lnetcdf/-L\$\(NETCDF\)\/lib -lnetcdff -lnetcdf -ltirpc -lgomp/g' configure.wps
 
 ./compile >& ./compile.log
 
