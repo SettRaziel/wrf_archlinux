@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-26 17:34:20
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-02-25 20:26:20
+# @Last Modified time: 2019-10-05 08:57:47
 
 # Script to compile the ncar command language for output visualization
 # ${1}: the path to the folder where the ncl program should be installed
@@ -17,7 +17,8 @@ function load_zipfile () {
 # define terminal colors
 source ../../libs/terminal_color.sh
 
-NCL_NAME='ncl_ncarg-6.4.0-Debian8.6_64bit_nodap_gnu492.tar.gz'
+# latest version, marked deprecated in 09-2019
+NCL_NAME='ncl_ncarg-6.6.2-Debian9.8_64bit_nodap_gnu630.tar.gz'
 
 # Script to extract the optional ncl package for postprocessing
 # Path to the library folder
@@ -27,10 +28,11 @@ cd ${DIR}
 yay -S --needed unzip
 
 # Unpacking ncl files
+printf "${RED}\nAs of Sep 2019 ncl is no longer developed. Take this in mind, if you want to use that!${NC}\n"
 printf "${YELLOW}\nUnpacking ncl.tar files: ${NC}\n"
 mkdir ncl
 cd ncl
-wget https://www.earthsystemgrid.org/dataset/ncl.640.nodap/file/${NCL_NAME}
+wget https://www.earthsystemgrid.org/dataset/ncl.662_2.nodap/file/${NCL_NAME}
 tar -xzf ${NCL_NAME}
 
 # cleanup tar
