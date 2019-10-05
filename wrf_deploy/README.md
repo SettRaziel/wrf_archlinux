@@ -31,6 +31,13 @@ Depending on the deployed wrf_model a few manual steps are required to do before
 	* configure .msmtp file for correct mail settings
 * adjust tslist for further locations (optional)
 
+## NCL usage
+As of september 2019 the ncar command language used for the current wrf output is no longer developed. 
+The last binary version has been built with gcc 6.3.0 and need libgfortran3.so to run correctly.
+To use this as a library for visualizing the wrf output a workaorund is the usage of a parallel gcc version.
+That is done within the `load_packages.sh`. The compilation process of the gcc6 package takes up to a few hours.
+After that the model run will set the path to the missing libgfortran3.so when creating the output with ncl.
+
 ## License
 see LICENSE
 
