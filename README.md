@@ -43,7 +43,10 @@ folders for subsidiary license files.
 * JasPer Project (JasPer): [Source](https://www.ece.uvic.ca/~frodo/jasper/) and [License](https://www.ece.uvic.ca/~frodo/jasper/LICENSE), used version: 1.900.2; newest: 2.0.14
 * Optional postprocessing tools:
   - Unified Post Processor (UPP): [Source](http://www.dtcenter.org/wrf-nmm/users/downloads/index.php), needs email validation
-  - NCAR Command Language (NCL): [Source](https://www.ncl.ucar.edu/Download/) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 6.4.0_nodap Binaries; newest version 6.5.0
+  - NCAR Command Language (NCL): [Source](https://www.ncl.ucar.edu/Download/) and [Terms of use](https://www2.ucar.edu/terms-of-use), 
+    used version: 6.4.0_nodap Binaries; newest version 6.6.2; depracated, since no longer developed [Source](https://www.ncl.ucar.edu/Document/Pivot_to_Python/september_2019_update.shtml)
+    Since it is currently used for the wrf output a replacement needs to be found for visualizing the data. If you plan to deploy and run with ncl, consider the notes
+    in the wrf_deploy readme!
 
 ## Working setup and testing setups
 This section describes the current working setup based under the condition that the installation is
@@ -52,18 +55,16 @@ the current namelist-files some model runs end preliminary with an error.
 The different setups will be categorized in
 * {compiling, not_compiling}
 * {debug_build, normal_build, hybrid_build, combined_build}
-* {running, unstable, not_running}
+* {stable, running, unstable, not_running}
 
 All setups for WRFV3.x use gcc/gcc-libs/gcc-gfortran 6.3.1-2 until described otherwise.
-WRFV4 uses the latest version 8.x.
+WRFV4 uses the latest version of gcc/gcc-gfortran: 9.x.x.
 * current setup:
-  - WRF Model and WPS v3.9.1 [compiling, normal_build, stable]
-    - NetCDF v4.6.0 / NetCDF-Fortran Library v4.4.5
-    - mpi v3.2, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.1
-* testing setup:
-  - - WRF Model and WPS v4.0.2 [compiling, normal_build, not_running]
+  - WRF Model and WPS v4.0.2 [compiling, normal_build, running]
     - NetCDF v4.6.1 / NetCDF-Fortran Library v4.4.5
-    - mpi v3.3, libpng v1.6.36, zlib v1.2.11, JasPer v1.900.1
+    - mpi v3.3, libpng v1.6.36, zlib v1.2.11, JasPer v1.900.2
+* testing setup:
+  - preparing WRF Model and WPS v4.1
 * tested setups:
   - WRF Model and WPS v3.8.1 [compiling, normal_build, unstable]
     - NetCDF v4.4.1.1 / NetCDF-Fortran Library v4.4.4
@@ -74,6 +75,9 @@ WRFV4 uses the latest version 8.x.
   - WRF Model and WPS v3.91 [compiling, normal_build, unstable]
     - NetCDF v4.6.0 / NetCDF-Fortran Library v4.4.4
     - mpi v3.2.1, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.2
+  - WRF Model and WPS v3.9.1 [compiling, normal_build, stable]
+    - NetCDF v4.6.0 / NetCDF-Fortran Library v4.4.5
+    - mpi v3.2, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.1
 
 ## Todos
 Check the subsidiary readmes or issues for further work

@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-02-27 10:51:59
+# @Last Modified time: 2019-06-15 08:35:22
 
 # script to update the input parameter for a model run
 # $1: the path to the wrf root folder
@@ -73,7 +73,7 @@ sed -r -i "s/truelat1   =  (\-|)[0-9]+\.[0-9]+/truelat1   =  ${REF_LAT}/g" namel
 sed -r -i "s/ref_lon   =  (\-|)[0-9]+\.[0-9]+/ref_lon   =  ${REF_LON}/g" namelist.wps
 
 # Adjust values in namelist.input in the wrf folder
-cd ${BUILD_PATH}/WRFV3/test/em_real
+cd ${BUILD_PATH}/WRF/test/em_real
 
 sed -r -i "s/run_days                            = [0-9]+/run_days                            = ${RUN_DAYS}/g" namelist.input
 sed -r -i "s/run_hours                           = [0-9]+/run_hours                           = ${RUN_HOURS}/g" namelist.input

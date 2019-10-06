@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 16:04:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-08-07 19:01:17
+# @Last Modified time: 2019-10-05 08:43:31
 
 # logging time stamp
 SCRIPT_PATH=$(pwd)
@@ -17,6 +17,9 @@ PERIOD=${5}
 # optional addition to the storage path
 DEST_SUFFIX='_test'
 DEST_FOLDER="${SCRIPT_PATH}/${MONTH}_${DAY}_${HOUR}${DEST_SUFFIX}"
+
+# ncl requires libgfortran3.so, so adding it to the library path for usage here
+export LD_LIBRARY_PATH="/usr/lib/gcc/x86_64-pc-linux-gnu/6.5.0/:${LD_LIBRARY_PATH}"
 
 # create parent folder for time stamp
 mkdir ${DEST_FOLDER}
