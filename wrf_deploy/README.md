@@ -1,11 +1,10 @@
 # WRF Deployment
 
 This scripts can deploy a already precompiled version of the WRF model in the
-home directory of the user calling this script. Initially it will download the
-latest version of WRFV3 (currently: 3.9.1) and the minimal geodata (~200 mb) 
+home directory of the user calling this script. On default it will download the
+latest version of WRFV4 (currently: 4.0.2) and the minimal geodata (~200 mb) 
 required to start a model run. The main script will be extended to accept
 parameters to customize the deployment process.
-WRFV4 will be the default download once it runs properly.
 
 ## Parameters
 * WRF version, currently available: 3.8.0, 3.8.1, 3.9.0, 3.9.1, 4.0.2
