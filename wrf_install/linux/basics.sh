@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 19:47:48
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-02-25 20:22:42
+# @Last Modified time: 2019-10-10 20:00:46
 
 # define terminal colors
 source ../../libs/terminal_color.sh
@@ -29,5 +29,4 @@ makepkg -si
 
 printf "${YELLOW}Installing basic packages... ${NC}"
 # Installing required packages
-yay -S --needed gcc-fortran			# fortran compiler
 yay -S --needed tcsh time curl wget   # required packages

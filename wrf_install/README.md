@@ -20,7 +20,13 @@ are requried to run the model on your own hardware.
 * starting with WRF v3.9 the model can use a hybrid approach for the vertical coordinate
   (see manual for details); atm the corresponding parameter -hyb needs to be set manually
 * postprocessing options:
-  - ncl is now the default postprocessing tool that will be installed automatically
+  - ncl is the default postprocessing tool that will be installed automatically at the moment. Since it was set to maintance mode in Sep. 2019 a
+    replacement is needed. If you still want to use it you need to install a version of gcc 6, e.g. 
+    ```
+    yay -S --needed gcc-fortran 
+    ```
+    that will compile the latest gcc 6 version. This is not included in the installation process since the compilation can take several hours. You need to do that
+    manually using the command above.
 
 ## Compile Options, that worked for me
 * WPS: 1 gfortran serial
