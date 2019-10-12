@@ -12,6 +12,7 @@ parameters to customize the deployment process.
 	* WRFV3 lowres (~200 mb), WRFV3 highres (~50 gb)
 	* additional resolutions can the downloaded manually from [Link](http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog_V3.html)
 	* WRFV4 lowres (~200 mb), WRFV4 hightes (~50 gb)
+	* overview of WRFV4 geo data and manual download of additional resolutions is available [here](http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html)
 * Visualization of WRF results with precompiled ncl
 
 ## Usage
@@ -23,7 +24,7 @@ Simply call the deployment script
 ## Additional manual prepartions
 Depending on the deployed wrf_model a few manual steps are required to do before running the model
 * build directory: set correct directory in run_model.sh
-* namelist.WPS: set to correct path to the geo data (that will be automated in the future and integrated into the deployment)
+* namelist file for WPS: set to correct path to the geo data (that will be automated in the future and integrated into the deployment)
 * wrf_output directory: adjust destination folder and destination suffix for the output files in draw_plots.sh
 * configure e-mail settings:
 	* configure mail text and default sender in create_mail.sh
