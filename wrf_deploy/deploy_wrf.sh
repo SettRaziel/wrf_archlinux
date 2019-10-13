@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-11-15 18:08:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-07 18:00:12
+# @Last Modified time: 2019-10-13 09:14:16
 
 # main script to deploy a pre compiled version of wrf
 # Version 0.3.1
@@ -10,6 +10,9 @@
 # enable termination on error
 set -e
 
+# set environment variables
+sh set_env.sh
+
 # check and load required packages
 sh load_packages.sh
 
@@ -17,7 +20,7 @@ sh load_packages.sh
 sh create_directories.sh
 
 # load and unpack the neccessary geodata, WRFV4 minimal
-sh load_geodata.sh 4
+sh load_geodata.sh
 
 # load and unpack the wrf archive, version 4.0.2
-sh load_wrf.sh 1
+sh load_wrf.sh

@@ -2,9 +2,18 @@
 # @Author: Benjamin Held
 # @Date:   2018-10-23 09:09:29
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-07-21 08:56:07
+# @Last Modified time: 2019-10-13 09:32:40
 
-# help output
+# Script that loads the WRF model specified by argument or 
+# selectable index
+# the index of the chosen wrf model:
+# 1: WRFV4 version 4.0.2
+# 2: WRFV3 version 3.9.1
+# 3: WRFV3 version 3.9.0
+# 4: WRFV3 version 3.8.1
+# 5: WRFV3 version 3.8.0
+
+# option output
 function print_options () {
   printf "${YELLOW} 1: WRFV4 version 4.0.2\n${NC}"
   printf "${YELLOW} 2: WRFV3 version 3.9.1\n${NC}"
@@ -16,14 +25,8 @@ function print_options () {
 # define terminal colors
 source ../libs/terminal_color.sh
 
-# Default selection
-SELECT_VALUE=2
-# Default wrf directory corresponding to v3.9.1
-WRF_FOLDER='WRFV3'
-
 # check for script arguments
-if [ $# -ne 1 ] 
-then
+if [[ -z "${WRF_VERSION_INDEX}" ]]; then
   while true; do
     printf "${LIGHT_BLUE}Select the WRF version that should be deployed:\n${NC}"
     print_options        
@@ -34,19 +37,19 @@ then
     esac
   done
 else
-  case ${1} in
-    [12345]* ) SELECT_VALUE=${1};;
+  case ${WRF_VERSION_INDEX} in
+    [12345]* ) SELECT_VALUE=${WRF_VERSION_INDEX};;
     ['--help']* ) printf "${LIGHT_BLUE}Usage:\n${NC}"; print_options;;
-    * ) printf "${RED}Error: False argument. Please use a numeric value in [1-5] or --help.${NC}\n";;
+    * ) printf "${RED}Error: False argument. Please use a numeric value in [1-5] or --help.${NC}\n"; exit 1;;
   esac
 fi
 
 case ${SELECT_VALUE} in
   [1]* ) FILE_NAME='wrf_400'; WRF_FOLDER='WRF';;
-  [2]* ) FILE_NAME='wrf_391';;
-  [3]* ) FILE_NAME='wrf_390';;
-  [4]* ) FILE_NAME='wrf_381';;
-  [5]* ) FILE_NAME='wrf_380';;
+  [2]* ) FILE_NAME='wrf_391'; WRF_FOLDER='WRFV3';;
+  [3]* ) FILE_NAME='wrf_390'; WRF_FOLDER='WRFV3';;
+  [4]* ) FILE_NAME='wrf_381'; WRF_FOLDER='WRFV3';;
+  [5]* ) FILE_NAME='wrf_380'; WRF_FOLDER='WRFV3';;
 esac
 
 # creating url for the selectied wrf tar
@@ -64,7 +67,10 @@ rm ${FILE_NAME}.tar.gz
 # copying the config files from the repository to its destination
 printf "${YELLOW}\nDeploying repository config files: ${NC}\n"
 cd ${SCRIPT_PATH}
-cp ../additions/config/namelist.wps ${HOME}/${FILE_NAME}/WPS
+case ${WRF_GEODATA_INDEX} in
+    [4]* ) cp ../additions/config/namelist_low_res.wps ${HOME}/${FILE_NAME}/WPS/namelist.wps ;;
+    * ) cp ../additions/config/namelist.wps ${HOME}/${FILE_NAME}/WPS;;
+esac
 cp ../additions/config/namelist.input ${HOME}/${FILE_NAME}/${WRF_FOLDER}/test/em_real/
 cp ../additions/config/tslist ${HOME}/${FILE_NAME}/${WRF_FOLDER}/test/em_real/
 

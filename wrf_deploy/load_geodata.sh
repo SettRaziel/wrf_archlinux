@@ -2,11 +2,11 @@
 # @Author: Benjamin Held
 # @Date:   2018-09-04 11:57:18
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-02-22 17:49:42
+# @Last Modified time: 2019-10-13 09:27:53
 
 # Script that loads the WPS geodata specified by argument or 
 # selectable index
-# ${1}: the index of the chosen geo data:
+# the index of the chosen geo data:
 # 1: WRFV3 high resolution data
 # 2: WRFV3 low resolution data
 # 3: WRFV4 high resolution data
@@ -22,12 +22,8 @@ function print_options () {
 # define terminal colors
 source ../libs/terminal_color.sh
 
-# Default selection
-SELECT_VALUE=1
-
 # check for script arguments
-if [ $# -ne 1 ] 
-then
+if [[ -z "${WRF_GEODATA_INDEX}" ]]; then
   while true; do
     printf "${LIGHT_BLUE}Select geographical data for WPS preprocessing:\n${NC}"
     print_options        
@@ -38,10 +34,10 @@ then
     esac
   done
 else
-  case ${1} in
-    [1234]* ) SELECT_VALUE=${1} ;;
+  case ${WRF_GEODATA_INDEX} in
+    [1234]* ) SELECT_VALUE=${WRF_GEODATA_INDEX} ;;
     ['--help']* ) printf "${LIGHT_BLUE}Usage:\n${NC}"; print_options;;
-    * ) printf "${RED}Error: False argument. Please use a numeric value in [1-4] or --help.${NC}\n";;
+    * ) printf "${RED}Error: False argument. Please use a numeric value in [1-4] or --help.${NC}\n"; exit 1;;
   esac
 fi
 
