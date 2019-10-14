@@ -31,6 +31,11 @@ Depending on the deployed wrf_model a few manual steps are required to do before
 	* configure .msmtp file for correct mail settings
 * adjust tslist for further locations (optional)
 
+## Troubleshooting
+* check if the copied namelist.wps works for your geo data, the WRFV4 lowres data needs the lowres data instead of default
+* check the correct build path
+* check for correct ggc-fortran libraries if the output with ncl causes any trouble
+
 ## NCL usage
 As of september 2019 the ncar command language used for the current wrf output is no longer developed. 
 The last binary version has been built with gcc 6.3.0 and need libgfortran3.so to run correctly.
