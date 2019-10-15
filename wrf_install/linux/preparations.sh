@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-26 14:21:00
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-06-08 10:03:54
+# @Last Modified time: 2019-10-15 16:21:22
 
 # ${1}: the folder relative to the home path where the files should be installed
 # ${2}: the marker if the installation should use local libraries
@@ -35,8 +35,17 @@ wget www.zlib.net/zlib-${ZLIB_VERSION}.tar.gz
 wget http://www.ece.uvic.ca/~frodo/jasper/software/jasper-${JASPER_VERSION}.tar.gz
 }
 
+# checks if the given library exists before copying it
+function check_library() {
+	if [ ! -f ${1} ]; then
+		printf "${RED}Missing library ${1}. Aborting... ${NC}\n"
+		exit 1
+	fi
+}
+
 # storing current script path
 SCRIPT_PATH=$(pwd)
+LIBRARY_PATH="${SCRIPT_PATH}/../../libraries"
 
 # Create destination folder and change to that
 if [ -d "${HOME}/${1}" ]; then
@@ -46,8 +55,19 @@ fi
 mkdir ${HOME}/${1}
 cd ${HOME}/${1}
 
-if [ ${2} = '--local' -a -d "${SCRIPT_PATH}/../../libraries" ]; then
-	cp -r ${SCRIPT_PATH}/../../libraries/* .
+
+if [ ${2} = '--local' -a -d ${LIBRARY_PATH} ]; then
+	check_library ${LIBRARY_PATH}/WRFV${WRF_VERSION}.tar.gz
+	check_library ${LIBRARY_PATH}/WPSV${WPS_VERSION}.tar.gz
+	check_library ${LIBRARY_PATH}/hdf5-${HDF_VERSION}.tar.gz
+	check_library ${LIBRARY_PATH}/netcdf-${NETCDF_VERSION}.tar.gz
+	check_library ${LIBRARY_PATH}/netcdf-fortran-${NETCDF_FORTRAN_VERSION}.tar.gz
+	check_library ${LIBRARY_PATH}/mpich-${MPI_VERSION}.tar.gz
+	check_library ${LIBRARY_PATH}/libpng-${LIBPNG_VERSION}.tar.gz
+	check_library ${LIBRARY_PATH}/zlib-${ZLIB_VERSION}.tar.gz
+	check_library ${LIBRARY_PATH}/jasper-${JASPER_VERSION}.tar.gz
+
+	cp -r ${LIBRARY_PATH}/* .
 else
 	load_libraries
 	# rename tar gz to lower case endings
