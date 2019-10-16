@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-26 14:21:00
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-15 16:21:22
+# @Last Modified time: 2019-10-16 19:52:40
 
 # ${1}: the folder relative to the home path where the files should be installed
 # ${2}: the marker if the installation should use local libraries
@@ -37,8 +37,8 @@ wget http://www.ece.uvic.ca/~frodo/jasper/software/jasper-${JASPER_VERSION}.tar.
 
 # checks if the given library exists before copying it
 function check_library() {
-	if [ ! -f ${1} ]; then
-		printf "${RED}Missing library ${1}. Aborting... ${NC}\n"
+	if [ ! -f ${1}/${2} ]; then
+		printf "${RED}Missing library: ${2}. Aborting... ${NC}\n"
 		exit 1
 	fi
 }
@@ -57,15 +57,16 @@ cd ${HOME}/${1}
 
 
 if [ ${2} = '--local' -a -d ${LIBRARY_PATH} ]; then
-	check_library ${LIBRARY_PATH}/WRFV${WRF_VERSION}.tar.gz
-	check_library ${LIBRARY_PATH}/WPSV${WPS_VERSION}.tar.gz
-	check_library ${LIBRARY_PATH}/hdf5-${HDF_VERSION}.tar.gz
-	check_library ${LIBRARY_PATH}/netcdf-${NETCDF_VERSION}.tar.gz
-	check_library ${LIBRARY_PATH}/netcdf-fortran-${NETCDF_FORTRAN_VERSION}.tar.gz
-	check_library ${LIBRARY_PATH}/mpich-${MPI_VERSION}.tar.gz
-	check_library ${LIBRARY_PATH}/libpng-${LIBPNG_VERSION}.tar.gz
-	check_library ${LIBRARY_PATH}/zlib-${ZLIB_VERSION}.tar.gz
-	check_library ${LIBRARY_PATH}/jasper-${JASPER_VERSION}.tar.gz
+	# check if required libraries are present
+	check_library ${LIBRARY_PATH} WRFV${WRF_VERSION}.tar.gz
+	check_library ${LIBRARY_PATH} WPSV${WPS_VERSION}.tar.gz
+	check_library ${LIBRARY_PATH} hdf5-${HDF_VERSION}.tar.gz
+	check_library ${LIBRARY_PATH} netcdf-${NETCDF_VERSION}.tar.gz
+	check_library ${LIBRARY_PATH} netcdf-fortran-${NETCDF_FORTRAN_VERSION}.tar.gz
+	check_library ${LIBRARY_PATH} mpich-${MPI_VERSION}.tar.gz
+	check_library ${LIBRARY_PATH} libpng-${LIBPNG_VERSION}.tar.gz
+	check_library ${LIBRARY_PATH} zlib-${ZLIB_VERSION}.tar.gz
+	check_library ${LIBRARY_PATH} jasper-${JASPER_VERSION}.tar.gz
 
 	cp -r ${LIBRARY_PATH}/* .
 else
