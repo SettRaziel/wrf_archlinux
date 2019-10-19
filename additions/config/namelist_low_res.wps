@@ -25,9 +25,11 @@
  !
  ! geog_data_res = 'maxsnowalb_ncep+albedo_ncep+default', 'maxsnowalb_ncep+albedo_ncep+default', 
  !
+ ! This only works for the high resolution data set!
  !!!!!!!!!!!!!!!!!!!!!!!!!!!! IMPORTANT NOTE !!!!!!!!!!!!!!!!!!!!!!!!!!!!
- !geog_data_res = '2deg+topo_gmted2010_30s+landuse_30s_with_lakes+30s+greenfrac','2deg+topo_gmted2010_30s+landuse_30s_with_lakes+30s+greenfrac',
- geog_data_res = 'default','default',
+ ! Use the default entries for the low resolution data set, the default data sets are only available in the high res data
+ ! or are needed to be downloaded seperatly
+ geog_data_res = 'lowres','lowres',
  dx = 5000,
  dy = 5000,
  map_proj = 'lambert',
@@ -37,7 +39,7 @@
  truelat2  =  49.0,
  stand_lon =  10.0,
  ! Check this path and change it if your geodata is stored somewhere else
- geog_data_path = '/home/raziel/geo_data/WPS_GEOG/'
+ geog_data_path = '/home/raziel/geo_data/WPS_GEOG_LOW_RES/'
 /
 
 &ungrib
