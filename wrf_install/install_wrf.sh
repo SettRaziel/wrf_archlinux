@@ -2,14 +2,14 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-19 13:25:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-08-28 16:16:13
+# @Last Modified time: 2019-10-23 17:01:21
 
 # main installation script: start the installation of the wrf model on a
 # minimal arch linux installation
 # Version 0.3.1
 # created by Benjamin Held and other sources, June 2017
 
-# ${1}: the flag if the installation should be done with local libraries
+# ${1}: optional flag --local if the installation should be done with local libraries
 
 # setting -e to abort on error
 set -e

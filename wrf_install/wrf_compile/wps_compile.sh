@@ -2,7 +2,10 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-01 20:09:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-06-18 17:27:05
+# @Last Modified time: 2019-10-23 17:08:02
+
+# setting -e to abort on error
+set -e
 
 # define terminal colors
 source ../../libs/terminal_color.sh

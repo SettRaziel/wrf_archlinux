@@ -2,10 +2,13 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 21:06:12
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-06-17 20:09:01
+# @Last Modified time: 2019-10-23 17:06:45
 
 # Script to compile the required libraries
-# $1: path to the installation folder
+# ${1}: path to the installation folder
+
+# setting -e to abort on error
+set -e
 
 # define terminal colors
 source ../../libs/terminal_color.sh
