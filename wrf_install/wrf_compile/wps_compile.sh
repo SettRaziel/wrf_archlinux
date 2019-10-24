@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-01 20:09:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-23 17:08:02
+# @Last Modified time: 2019-10-24 13:20:44
 
 # setting -e to abort on error
 set -e
@@ -33,6 +33,9 @@ cd WPS
 sed -r -i 's/-L\$\(NETCDF\)\/lib -lnetcdff -lnetcdf/-L\$\(NETCDF\)\/lib -lnetcdff -lnetcdf -ltirpc -lgomp/g' configure.wps
 
 ./compile >& ./compile.log
+
+# copy compiling log
+cp compile.log ${SCRIPT_PATH}/../logs
 
 cd ..
 
