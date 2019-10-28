@@ -51,7 +51,9 @@ on a cluster it needs a valid name to work with several machines.
     WPSV3.9 does not resolve this issue.
 * WRF version 4: Compiling the WRF sources did not succeed every time. Roughly half the compile tests failed, mostly with
   the message of an compiler problem / bug. Recompiling with the same settings lead to a successful build. But with WRFV 4
-  the gcc / gcc-fortran version 8 could be used.
+  the gcc / gcc-fortran version 8 or higher can be used.
+* The compile logs of WRF and WPS are now stored in the logs folder, check if the executables for the WRF are created and that the WPS
+  log did not throw an error, the other libraries will stop the whole installation process since the scripts run with -e flag.
 * NCL: If you have problems with ncl and missing ssl libraries, use the nodap binaries
 
 ## Todos:

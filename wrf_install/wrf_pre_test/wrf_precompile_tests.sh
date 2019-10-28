@@ -2,10 +2,10 @@
 # @Author: Benjamin Held; based on the WRF OnlineTutorial
 # @Date:   2017-02-18 21:23:08
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-02-25 20:24:17
+# @Last Modified time: 2019-10-23 17:07:15
 
 # installation of the netcdf package
-# $1: path to the installation folder
+# ${1}: path to the installation folder
 
 # define terminal colors
 source ../../libs/terminal_color.sh
