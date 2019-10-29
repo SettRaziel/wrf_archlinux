@@ -1,10 +1,10 @@
 # @Author: Benjamin Held
 # @Date:   2018-11-15 18:08:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-13 09:14:16
+# @Last Modified time: 2019-10-29 17:20:30
 
 # main script to deploy a pre compiled version of wrf
-# Version 0.3.1
+# Version 0.4.0
 # created by Benjamin Held and other sources, June 2017
 
 # enable termination on error
