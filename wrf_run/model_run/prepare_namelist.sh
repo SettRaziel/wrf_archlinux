@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-06-15 08:35:22
+# @Last Modified time: 2019-10-30 21:51:42
 
 # script to update the input parameter for a model run
 # $1: the path to the wrf root folder
@@ -19,7 +19,7 @@ source ../../libs/terminal_color.sh
 
 # error handling for input parameter
 if [ "$#" -ne 5 ]; then
-  printf "${RED}Wrong number of arguments. Must be one for <YEAR> <MONTH> <DAY> <HOUR> <PERIOD>.${NC}\n"
+  printf "${RED}Wrong number of arguments. Must be one for <YEAR> <MONTH> <DAY> <HOUR> <PERIOD>.${NC}\\n"
   exit 1
 fi
 
@@ -50,12 +50,12 @@ GRID_Y=50
 REF_LAT=53.0
 REF_LON=9.0
 
-printf "${YELLOW}\nSetting start date to: ${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR}:00${NC}\n"
-printf "${YELLOW}\nSetting end date to: ${END_YEAR}-${END_MONTH}-${END_DAY} ${END_HOUR}:00${NC}\n"
-printf "${YELLOW}\nForcasting for: ${RUN_DAYS} days and ${RUN_HOURS} hours${NC}\n"
-printf "${YELLOW}\nSetting grid to $GRID_X x $GRID_Y${NC}\n"
-printf "${YELLOW}\nSetting step size to $DX x $DY${NC}\n"
-printf "${YELLOW}\nSetting time step $DT${NC}\n"
+printf "${YELLOW}\\nSetting start date to: ${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR}:00${NC}\\n"
+printf "${YELLOW}\\nSetting end date to: ${END_YEAR}-${END_MONTH}-${END_DAY} ${END_HOUR}:00${NC}\\n"
+printf "${YELLOW}\\nForcasting for: ${RUN_DAYS} days and ${RUN_HOURS} hours${NC}\\n"
+printf "${YELLOW}\\nSetting grid to $GRID_X x $GRID_Y${NC}\\n"
+printf "${YELLOW}\\nSetting step size to $DX x $DY${NC}\\n"
+printf "${YELLOW}\\nSetting time step $DT${NC}\\n"
 
 # Adjust values in namelist.wps in the wps folder
 cd ${BUILD_PATH}/WPS

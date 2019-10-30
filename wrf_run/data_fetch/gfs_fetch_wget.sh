@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-06 19:18:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-04 15:15:10
+# @Last Modified time: 2019-10-30 21:50:31
 
 # This script loads the required input data for a 180 h forecast run
 # ${1} matches the required date yyyymmdd
@@ -13,7 +13,7 @@
 
 # logging time stamp
 now=$(date +"%T")
-printf "Starting gfs data fetching at ${now}.\n" > ${LOG_PATH}/log.info
+printf "Starting gfs data fetching at ${now}.\\n" > ${LOG_PATH}/log.info
 
 # Remove old files
 rm ${3}/gfs.*

@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-29 17:19:54
+# @Last Modified time: 2019-10-30 21:53:38
 
 # main script for starting a wrf model run
 # Version 0.4.0
@@ -14,8 +14,8 @@
 function error_exit () {
   NOW=$(date +"%T")
   ERROR_STATUS="${1} at: ${NOW}."
-  printf "${ERROR_STATUS}\n" >> ${ERROR_LOG}
-  printf "Error: ${1} at: ${NOW}.\n" >> ${STATUS_FILE}
+  printf "${ERROR_STATUS}\\n" >> ${ERROR_LOG}
+  printf "Error: ${1} at: ${NOW}.\\n" >> ${STATUS_FILE}
   cd ${SCRIPT_PATH}
   sh create_mail.sh ${YEAR} ${MONTH} ${DAY} ${HOUR} "${ERROR_STATUS}" "Fail"
   echo "${1}" 1>&2
@@ -59,11 +59,11 @@ exec 42>${LCK};
 
 flock -x 42;
 # preparing status file
-printf "Starting new model run for: ${YEAR}/${MONTH}/${DAY} ${HOUR}:00 UTC.\n" > ${STATUS_FILE}
+printf "Starting new model run for: ${YEAR}/${MONTH}/${DAY} ${HOUR}:00 UTC.\\n" > ${STATUS_FILE}
 
 # adjusting namelist for next run
 cd ${SCRIPT_PATH}/model_run
-printf "Starting namelist preparation.\n" >> ${STATUS_FILE}
+printf "Starting namelist preparation.\\n" >> ${STATUS_FILE}
 sh prepare_namelist.sh ${YEAR} ${MONTH} ${DAY} ${HOUR} ${PERIOD}; RET=${?}
 if ! [ ${RET} == 0 ]; then
   error_exit "Failed to prepare the namelist files"
@@ -71,7 +71,7 @@ fi
 
 # fetching input data
 cd ${SCRIPT_PATH}/data_fetch
-printf "Starting namelist preparation.\n" >> ${STATUS_FILE}
+printf "Starting namelist preparation.\\n" >> ${STATUS_FILE}
 sh gfs_fetch.sh "${YEAR}${MONTH}${DAY}" ${HOUR} ${GFS_PATH} ${RESOLUTION} ${PERIOD}; RET=${?}
 if ! [ ${RET} == 0 ]; then
   error_exit "Failed to prepare the namelist files"
@@ -79,7 +79,7 @@ fi
 
 # start model run
 cd ${SCRIPT_PATH}/model_run
-printf "Starting model run and preparation.\n" >> ${STATUS_FILE}
+printf "Starting model run and preparation.\\n" >> ${STATUS_FILE}
 sh run_preprocessing.sh ${GFS_PATH} ${RESOLUTION}; RET=${?}
 cd ${SCRIPT_PATH}
 if ! [ ${RET} == 0 ]; then
@@ -95,10 +95,10 @@ mv ${BUILD_PATH}/WRF/test/em_real/wrfout_d01_* ${HOME}/wrf_output
 
 # run output script
 cd ${SCRIPT_PATH}/post_processing
-printf "Starting postprocessing.\n" >> ${STATUS_FILE}
+printf "Starting postprocessing.\\n" >> ${STATUS_FILE}
 sh draw_plots.sh ${YEAR} ${MONTH} ${DAY} ${HOUR} ${PERIOD}; RET=${?}
 if [ ${RET} == 0 ]; then
-  printf "Starting archive generation.\n" >> ${STATUS_FILE}
+  printf "Starting archive generation.\\n" >> ${STATUS_FILE}
   cd ${HOME}/wrf_output
   #tar czf wrfout_${YEAR}_${MONTH}_${DAY}_${HOUR}.tar.gz wrfout_d01_* Han.d01.* Ith.d01.*
   #mv wrfout_${YEAR}_${MONTH}_${DAY}_${HOUR}.tar.gz history/
@@ -108,4 +108,4 @@ fi
 
 cd ${SCRIPT_PATH}
 sh create_mail.sh ${YEAR} ${MONTH} ${DAY} ${HOUR} "Finished model run without error." "Success"
-printf "Finished model run without error.\n" >> ${STATUS_FILE}
+printf "Finished model run without error.\\n" >> ${STATUS_FILE}

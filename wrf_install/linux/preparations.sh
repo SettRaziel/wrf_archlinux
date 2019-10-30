@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-26 14:21:00
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-23 17:04:26
+# @Last Modified time: 2019-10-30 21:49:44
 
 # ${1}: the folder relative to the home path where the files should be installed
 # ${2}: the marker if the installation should use local libraries
@@ -40,7 +40,7 @@ wget http://www.ece.uvic.ca/~frodo/jasper/software/jasper-${JASPER_VERSION}.tar.
 # ${2}: library archive
 function check_library() {
 	if [ ! -f ${1}/${2} ]; then
-		printf "${RED}Missing library: ${2}. Aborting... ${NC}\n"
+		printf "${RED}Missing library: ${2}. Aborting... ${NC}\\n"
 		exit 1
 	fi
 }
@@ -51,7 +51,7 @@ LIBRARY_PATH="${SCRIPT_PATH}/../../libraries"
 
 # Create destination folder and change to that
 if [ -d "${HOME}/${1}" ]; then
-  printf "${YELLOW}Directory already exists, removing content... ${NC}\n"
+  printf "${YELLOW}Directory already exists, removing content... ${NC}\\n"
   rm -rf ${HOME}/${1}
 fi
 mkdir ${HOME}/${1}
@@ -72,7 +72,7 @@ if [ ${2} = '--local' -a -d ${LIBRARY_PATH} ]; then
 
 	cp -r ${LIBRARY_PATH}/* .
 else
-	printf "${YELLOW}Loading libraries: ${NC}\n"
+	printf "${YELLOW}Loading libraries: ${NC}\\n"
 	load_libraries
 	# rename tar gz to lower case endings
 	mv WRFV${WRF_VERSION}.TAR.gz WRFV${WRF_VERSION}.tar.gz

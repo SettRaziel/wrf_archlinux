@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 19:47:48
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-23 17:00:10
+# @Last Modified time: 2019-10-30 21:49:29
 
 # setting -e to abort on error
 set -e
@@ -17,7 +17,7 @@ cd ${HOME}
 
 sudo pacman -Sy --needed make pkg-config fakeroot
 
-printf "${YELLOW}Installing yay as package helper... \n${NC}"
+printf "${YELLOW}Installing yay as package helper... \\n${NC}"
 # Prepare git package
 sudo pacman -S --needed git
 
