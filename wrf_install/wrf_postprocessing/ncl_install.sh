@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-26 17:34:20
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-05 08:57:47
+# @Last Modified time: 2019-10-31 16:43:56
 
 # Script to compile the ncar command language for output visualization
 # ${1}: the path to the folder where the ncl program should be installed
@@ -28,8 +28,8 @@ cd ${DIR}
 yay -S --needed unzip
 
 # Unpacking ncl files
-printf "${RED}\nAs of Sep 2019 ncl is no longer developed. Take this in mind, if you want to use that!${NC}\n"
-printf "${YELLOW}\nUnpacking ncl.tar files: ${NC}\n"
+printf "${RED}\\nAs of Sep 2019 ncl is no longer developed. Take this in mind, if you want to use that!${NC}\\n"
+printf "${YELLOW}\\nUnpacking ncl.tar files: ${NC}\\n"
 mkdir ncl
 cd ncl
 wget https://www.earthsystemgrid.org/dataset/ncl.662_2.nodap/file/${NCL_NAME}
@@ -53,9 +53,9 @@ load_zipfile "gshhs(3)"
 load_zipfile "gshhs(4)"
 
 # Installing additional library
-printf "${YELLOW}\nInstalling additional libraries: ${NC}\n"
+printf "${YELLOW}\\nInstalling additional libraries: ${NC}\\n"
 yay -S --needed fontconfig libxrender libxtst
 # Installing optipng to optimize png output size
 yay -S --needed optipng
 
-printf "${LIGHT_BLUE}\nFinished ncl preparations. ${NC}\n"
+printf "${LIGHT_BLUE}\\nFinished ncl preparations. ${NC}\\n"

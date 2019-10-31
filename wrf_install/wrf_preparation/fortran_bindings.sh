@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-18 15:39:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-23 17:06:28
+# @Last Modified time: 2019-10-31 16:41:23
 
 # Script to compile the required netcdf-fortran package
 # ${1}: path to the installation folder
@@ -15,7 +15,7 @@ source ../../libs/terminal_color.sh
 
 # Jump in folder and extract tar
 cd ${HOME}/${1}
-printf "${YELLOW}\nUnpacking netcdf-fortran.tar files: ${NC}\n"
+printf "${YELLOW}\\nUnpacking netcdf-fortran.tar files: ${NC}\\n"
 tar xfv netcdf-fortran-${NETCDF_FORTRAN_VERSION}.tar.gz
 
 # Build netcdf-fortran bindings
@@ -30,4 +30,4 @@ cd ..
 # clean up
 rm netcdf-fortran-${NETCDF_FORTRAN_VERSION}.tar.gz
 
-printf "${LIGHT_BLUE}\nFinished installing netcdf fortran bindings. ${NC}\n"
+printf "${LIGHT_BLUE}\\nFinished installing netcdf fortran bindings. ${NC}\\n"

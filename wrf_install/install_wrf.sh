@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-19 13:25:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-29 17:20:10
+# @Last Modified time: 2019-10-31 16:38:13
 
 # main installation script: start the installation of the wrf model on a
 # minimal arch linux installation
@@ -23,7 +23,7 @@ SCRIPT_PATH=$(pwd)
 
 # Check var settings of build path
 if [ "${BUILD_PATH}" = "<wrf path>" ]; then
-  printf "${RED}Invalid build path. Please set the <BUILD_PATH> variable. See README.md ${NC}\n"
+  printf "${RED}Invalid build path. Please set the <BUILD_PATH> variable. See README.md ${NC}\\n"
   exit 1
 fi
 
@@ -88,7 +88,7 @@ sleep 5
 sh ./wps_compile.sh ${BUILD_PATH}
 
 # Adding postprocessing components
-printf "${YELLOW}Adding software packages for result processing ... \n${NC}"
+printf "${YELLOW}Adding software packages for result processing ... \\n${NC}"
 sleep 5
 cd ${SCRIPT_PATH}/wrf_postprocessing
 sh ./wrf_postprocessing.sh

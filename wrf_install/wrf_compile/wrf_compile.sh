@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-18 15:49:25
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-24 13:20:51
+# @Last Modified time: 2019-10-31 16:39:19
 
 # setting -e to abort on error
 set -e
@@ -20,12 +20,12 @@ SCRIPT_PATH=$(pwd)
 
 # Jump in folder and extract tar
 cd ${HOME}/${1}
-printf "${YELLOW}\nUnpacking wrf.tar files: ${NC}\n"
+printf "${YELLOW}\\nUnpacking wrf.tar files: ${NC}\\n"
 tar xfv WRFV${WRF_VERSION}.tar.gz
 
 # Build wrf
 cd WRF
-printf "${YELLOW}\nInstaling wrf: ${NC}\n"
+printf "${YELLOW}\\nInstaling wrf: ${NC}\\n"
 # Change the path according to the used user; configure requires an absolute
 # path here or it fails with an error
 sudo ln -s /bin/cpp /lib/cpp
@@ -47,5 +47,5 @@ cd ..
 rm WRFV${WRF_VERSION}.tar.gz
 cd ${SCRIPT_PATH}
 
-printf "${LIGHT_BLUE}\nFinished installing wrf. ${NC}"
-printf "${LIGHT_BLUE}Check compile.log for details. ${NC}\n"
+printf "${LIGHT_BLUE}\\nFinished installing wrf. ${NC}"
+printf "${LIGHT_BLUE}Check compile.log for details. ${NC}\\n"
