@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-09-07 16:35:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-05 08:58:05
+# @Last Modified time: 2019-11-02 10:26:18
 
 # define terminal colors
 source ../libs/terminal_color.sh
@@ -27,8 +27,10 @@ printf "${YELLOW}\nInstalling additional ncl libraries: ${NC}\n"
 yay -S --noconfirm --needed fontconfig libxrender libxtst
 # installing optipng to optimize png output size
 yay -S --noconfirm --needed optipng
+
 # ncl still requires libgfortran3.so and is no longer maintained, so we need gfortran 6.x.x
 printf "${YELLOW}\nInstalling gcc6-fortran for compatibility, that may take a while: ${NC}\n"
+yay -S --noconfirm --needed pkgconfig
 yay -S --needed gcc6-fortran
 
 # installing packages to send emails
