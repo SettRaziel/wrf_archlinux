@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-04-09 19:25:16
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-09-06 19:07:53
+# @Last Modified time: 2019-11-04 17:00:34
 
 # script that generates a meta.ini for the minimal php gui
 if [ "$#" -ne 6 ]; then
@@ -19,7 +19,7 @@ FILEPATH="${6}/meta.ini"
 function print_ini() {
 echo start = $START_DATE
 echo end = $END_DATE
-echo period = `expr ${1} \* 3600`
+echo period = $(expr ${1} \* 3600)
 echo
 
 echo 'locations[Han] = "Hannover, Germany"'

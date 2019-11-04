@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-30 21:53:38
+# @Last Modified time: 2019-11-04 17:02:04
 
 # main script for starting a wrf model run
 # Version 0.4.0
@@ -34,9 +34,9 @@ STATUS_FILE=${LOG_PATH}/status.log
 ERROR_LOG=${LOG_PATH}/error_$(date +"%m_%d").log # path to error log
 
 if [ "$#" -eq 3 ]; then # no argument, run whole script
-  YEAR=`date '+%Y'`
-  MONTH=`date '+%m'`
-  DAY=`date '+%d'`
+  YEAR=$(date '+%Y')
+  MONTH=$(date '+%m')
+  DAY=$(date '+%d')
   HOUR=${1}
   PERIOD=${2}
   RESOLUTION=${3}

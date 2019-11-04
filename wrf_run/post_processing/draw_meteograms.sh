@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-30 21:52:50
+# @Last Modified time: 2019-11-04 17:02:37
 
 function generate_meteogram () {
   METEO_TITLE=${1}
@@ -39,19 +39,19 @@ START_DATE=$(LC_ALL=en_UTF-8 date +\(%Y-%m-%d-%HUTC\) -d "${DATE}T${4}:00")
 DATE_FORMAT="+%b-%d/00"
 LEGEND_ARRAY="(/\"$(LC_ALL=en_UTF-8 date $DATE_FORMAT -d "$DATE + 1 day")\""
 
-MAIN_HOURS=`expr 24 - ${4}`
+MAIN_HOURS=$(expr 24 - ${4})
 TICK_ARRAY="(/${MAIN_HOURS}"
 
-SEC_HOURS=`expr 12 - ${4}`
+SEC_HOURS=$(expr 12 - ${4})
 STICK_ARRAY="(/${SEC_HOURS}"
 
 for i in {2..8}
 do
   NEXT_DATE=$(LC_ALL=en_UTF-8 date $DATE_FORMAT -d "$DATE + ${i} day")
-  SEC_HOURS=`expr ${MAIN_HOURS} + 12`
+  SEC_HOURS=$(expr ${MAIN_HOURS} + 12)
   STICK_ARRAY+=","
   STICK_ARRAY+="${SEC_HOURS}"
-  MAIN_HOURS=`expr ${MAIN_HOURS} + 24`
+  MAIN_HOURS=$(expr ${MAIN_HOURS} + 24)
   LEGEND_ARRAY+=","
   LEGEND_ARRAY+="\"${NEXT_DATE}\""
   TICK_ARRAY+=","

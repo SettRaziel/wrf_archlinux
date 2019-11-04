@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-30 21:51:42
+# @Last Modified time: 2019-10-31 16:22:15
 
 # script to update the input parameter for a model run
 # $1: the path to the wrf root folder
@@ -30,14 +30,14 @@ START_DAY=${3}
 START_HOUR=${4}
 PERIOD=${5}
 
-END_HOUR=`date '+%H' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${PERIOD} hours"`
-END_YEAR=`date '+%Y' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${PERIOD} hours"`
-END_MONTH=`date '+%m' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${PERIOD} hours"`
-END_DAY=`date '+%d' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${PERIOD} hours"`
+END_HOUR=$(date '+%H' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${PERIOD} hours")
+END_YEAR=$(date '+%Y' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${PERIOD} hours")
+END_MONTH=$(date '+%m' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${PERIOD} hours")
+END_DAY=$(date '+%d' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${PERIOD} hours")
 
 # calculating run time
-RUN_DAYS=`expr ${PERIOD} / 24`
-RUN_HOURS=`expr ${PERIOD} % 24`
+RUN_DAYS=$(expr ${PERIOD} / 24)
+RUN_HOURS=$(expr ${PERIOD} % 24)
 
 # grid parameters
 DT=80
