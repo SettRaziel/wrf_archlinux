@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-31 16:22:15
+# @Last Modified time: 2019-11-08 18:00:54
 
 # script to update the input parameter for a model run
 # $1: the path to the wrf root folder
@@ -59,18 +59,18 @@ printf "${YELLOW}\\nSetting time step $DT${NC}\\n"
 
 # Adjust values in namelist.wps in the wps folder
 cd ${BUILD_PATH}/WPS
-sed -r -i "s/start_date = '[0-9]+\-[0-9]+\-[0-9]+\_[0-9]+/start_date = '${START_YEAR}\-${START_MONTH}\-${START_DAY}\_${START_HOUR}/g" namelist.wps
-sed -r -i "s/end_date   = '[0-9]+\-[0-9]+\-[0-9]+\_[0-9]+/end_date   = '${END_YEAR}\-${END_MONTH}\-${END_DAY}\_${END_HOUR}/g" namelist.wps
+sed -r -i "s/start_date = '[0-9]+\\-[0-9]+\\-[0-9]+\\_[0-9]+/start_date = '${START_YEAR}\\-${START_MONTH}\\-${START_DAY}\\_${START_HOUR}/g" namelist.wps
+sed -r -i "s/end_date   = '[0-9]+\\-[0-9]+\\-[0-9]+\\_[0-9]+/end_date   = '${END_YEAR}\\-${END_MONTH}\\-${END_DAY}\\_${END_HOUR}/g" namelist.wps
 
-sed -r -i "s/e\_we              =  [0-9]+/e\_we              =  ${GRID_X}/g" namelist.wps
-sed -r -i "s/e\_sn              =  [0-9]+/e\_sn              =  ${GRID_Y}/g" namelist.wps
+sed -r -i "s/e\\_we              =  [0-9]+/e\\_we              =  ${GRID_X}/g" namelist.wps
+sed -r -i "s/e\\_sn              =  [0-9]+/e\\_sn              =  ${GRID_Y}/g" namelist.wps
 
 sed -r -i "s/dx = [0-9]+/dx = ${DX}/g" namelist.wps
 sed -r -i "s/dy = [0-9]+/dy = ${DY}/g" namelist.wps
 
-sed -r -i "s/ref_lat   =  (\-|)[0-9]+\.[0-9]+/ref_lat   =  ${REF_LAT}/g" namelist.wps
-sed -r -i "s/truelat1   =  (\-|)[0-9]+\.[0-9]+/truelat1   =  ${REF_LAT}/g" namelist.wps
-sed -r -i "s/ref_lon   =  (\-|)[0-9]+\.[0-9]+/ref_lon   =  ${REF_LON}/g" namelist.wps
+sed -r -i "s/ref_lat   =  (\\-|)[0-9]+\\.[0-9]+/ref_lat   =  ${REF_LAT}/g" namelist.wps
+sed -r -i "s/truelat1   =  (\\-|)[0-9]+\\.[0-9]+/truelat1   =  ${REF_LAT}/g" namelist.wps
+sed -r -i "s/ref_lon   =  (\\-|)[0-9]+\\.[0-9]+/ref_lon   =  ${REF_LON}/g" namelist.wps
 
 # Adjust values in namelist.input in the wrf folder
 cd ${BUILD_PATH}/WRF/test/em_real
@@ -88,8 +88,8 @@ sed -r -i "s/end_month                           = [0-9]+/end_month             
 sed -r -i "s/end_day                             = [0-9]+/end_day                             = ${END_DAY}/g" namelist.input
 sed -r -i "s/end_hour                            = [0-9]+/end_hour                            = ${END_HOUR}/g" namelist.input
 
-sed -r -i "s/e\_we                                = [0-9]+/e\_we                                = ${GRID_X}/g" namelist.input
-sed -r -i "s/e\_sn                                = [0-9]+/e\_sn                                = ${GRID_Y}/g" namelist.input
+sed -r -i "s/e\\_we                                = [0-9]+/e\\_we                                = ${GRID_X}/g" namelist.input
+sed -r -i "s/e\\_sn                                = [0-9]+/e\\_sn                                = ${GRID_Y}/g" namelist.input
 
 sed -r -i "s/time_step                           = [0-9]+/time_step                           = ${DT}/g" namelist.input
 sed -r -i "s/dx                                  = [0-9]+/dx                                  = ${DX}/g" namelist.input
