@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-10-23 09:09:29
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-30 21:48:52
+# @Last Modified time: 2019-11-09 12:50:16
 
 # Script that loads the WRF model specified by argument or 
 # selectable index
@@ -26,7 +26,7 @@ function print_options () {
 source ../libs/terminal_color.sh
 
 # check for script arguments
-if [[ -z "${WRF_VERSION_INDEX}" ]]; then
+if [ -z "${WRF_VERSION_INDEX}" ]; then
   while true; do
     printf "${LIGHT_BLUE}Select the WRF version that should be deployed:\\n${NC}"
     print_options        

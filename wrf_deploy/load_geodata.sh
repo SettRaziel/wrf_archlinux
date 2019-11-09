@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-09-04 11:57:18
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-30 21:48:05
+# @Last Modified time: 2019-11-09 12:50:02
 
 # Script that loads the WPS geodata specified by argument or 
 # selectable index
@@ -23,7 +23,7 @@ function print_options () {
 source ../libs/terminal_color.sh
 
 # check for script arguments
-if [[ -z "${WRF_GEODATA_INDEX}" ]]; then
+if [ -z "${WRF_GEODATA_INDEX}" ]; then
   while true; do
     printf "${LIGHT_BLUE}Select geographical data for WPS preprocessing:\\n${NC}"
     print_options        
