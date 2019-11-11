@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-11-15 18:08:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-29 17:20:30
+# @Last Modified time: 2019-11-11 16:29:35
 
 # main script to deploy a pre compiled version of wrf
 # Version 0.4.0
@@ -11,7 +11,13 @@
 set -e
 
 # set environment variables
-sh set_env.sh
+if [ "${1}" = '--default' ]; then
+	# default: 1 for WRFV4 and 4 for WRFV4 low res geodata
+	source ./set_env.sh 1 4
+else
+	# no values for environment variables, so manual setting
+	source ./set_env.sh
+fi
 
 # check and load required packages
 sh load_packages.sh
