@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-26 14:21:00
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-23 17:04:26
+# @Last Modified time: 2019-11-10 21:25:33
 
 # ${1}: the folder relative to the home path where the files should be installed
 # ${2}: the marker if the installation should use local libraries
@@ -58,7 +58,7 @@ mkdir ${HOME}/${1}
 cd ${HOME}/${1}
 
 
-if [ ${2} = '--local' -a -d ${LIBRARY_PATH} ]; then
+if [ "${2}" = '--local' -a -d ${LIBRARY_PATH} ]; then
 	# check if required libraries are present
 	check_library ${LIBRARY_PATH} WRFV${WRF_VERSION}.tar.gz
 	check_library ${LIBRARY_PATH} WPSV${WPS_VERSION}.tar.gz
