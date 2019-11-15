@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-10-23 09:09:29
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-13 09:32:40
+# @Last Modified time: 2019-11-15 17:13:04
 
 # Script that loads the WRF model specified by argument or 
 # selectable index
@@ -32,19 +32,19 @@ if [[ -z "${WRF_VERSION_INDEX}" ]]; then
     print_options        
     read INPUT
     case ${INPUT} in
-      [12345]* ) SELECT_VALUE=${INPUT}; break;;
+      [12345]* ) WRF_VERSION_INDEX=${INPUT}; break;;
       * ) printf "${RED}Please use a numeric value in [1-5].${NC}\n";;
     esac
   done
 else
   case ${WRF_VERSION_INDEX} in
-    [12345]* ) SELECT_VALUE=${WRF_VERSION_INDEX};;
+    [12345]* ) ;;
     ['--help']* ) printf "${LIGHT_BLUE}Usage:\n${NC}"; print_options;;
     * ) printf "${RED}Error: False argument. Please use a numeric value in [1-5] or --help.${NC}\n"; exit 1;;
   esac
 fi
 
-case ${SELECT_VALUE} in
+case ${WRF_VERSION_INDEX} in
   [1]* ) FILE_NAME='wrf_400'; WRF_FOLDER='WRF';;
   [2]* ) FILE_NAME='wrf_391'; WRF_FOLDER='WRFV3';;
   [3]* ) FILE_NAME='wrf_390'; WRF_FOLDER='WRFV3';;
