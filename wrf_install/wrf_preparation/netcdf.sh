@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 21:06:12
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-11-17 13:42:40
+# @Last Modified time: 2019-11-17 19:36:17
 
 # installation of the netcdf package
 # ${1}: path to the installation folder
@@ -23,7 +23,7 @@ tar xfv hdf5-${HDF_VERSION}.tar.gz
 # Installing hdf5 library
 printf "${YELLOW}\nInstalling hdf5: ${NC}\n"
 cd hdf5-${HDF_VERSION}
-env LIBS="-lgcc_s" ./configure --enable-fortran --enable-fortran2003 --prefix=${DIR}/hdf5
+env LIBS="-lgcc_s" ./configure --enable-fortran --enable-fortran2003 --prefix="${DIR}/hdf5"
 make -j 2 && make install -j 2
 
 cd ..
