@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-09-07 16:35:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-11-02 10:26:18
+# @Last Modified time: 2019-11-19 16:36:07
 
 # define terminal colors
 source ../libs/terminal_color.sh
@@ -20,7 +20,7 @@ cd ..
 
 # installing packages for running the model
 printf "${YELLOW}\nInstalling required model libraries: ${NC}\n"
-yay -S --noconfirm --needed tcsh wget curl
+yay -S --noconfirm --needed tcsh wget curl gcc-fortran
 
 # installing required packages for running ncl
 printf "${YELLOW}\nInstalling additional ncl libraries: ${NC}\n"

@@ -3,7 +3,7 @@
 ## License
 see LICENSE
 
-## Additional run prepartions
+## Additional run preparations
 * load geodata for the model
   - WRF version 3: [Link](http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog_V3.html)
   - WRF Version 4: [Link](http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html)
@@ -12,6 +12,9 @@ see LICENSE
     * 2, 5 or 10 arc-minutes
   - for WRF version 3 no all resolutions are available in the coarse or fine resolution packs, they can
     be downloaded manually and needed to be copied into the geodata folder
+  - make sure that you have installed the required packages, especially a compatible fortran compiler (see deployment
+    or install scripts for details). The run script does not check if all requried dependencies are installed, since
+    it assumes that at least the deploy scripts are used to setup a running environment!
 
 ## Run options
 * build directory: set correct directory in run_model.sh

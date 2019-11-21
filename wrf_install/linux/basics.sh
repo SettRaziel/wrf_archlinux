@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 19:47:48
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-23 17:00:10
+# @Last Modified time: 2019-11-19 16:36:21
 
 # setting -e to abort on error
 set -e
@@ -28,8 +28,8 @@ cd aur_packages
 # Getting yay
 git clone https://aur.archlinux.org/yay.git
 cd yay
-makepkg -si
+makepkg -si --noconfirm --needed
 
 printf "${YELLOW}Installing basic packages... ${NC}"
 # Installing required packages
-yay -S --needed tcsh time curl wget   # required packages
+yay -S --needed tcsh time curl wget gcc-fortran   # required packages
