@@ -2,16 +2,16 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-26 17:34:20
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-31 16:43:56
+# @Last Modified time: 2019-12-06 18:38:01
 
 # Script to compile the ncar command language for output visualization
 # ${1}: the path to the folder where the ncl program should be installed
 
 function load_zipfile () {
 	FILE_NAME=${1}
-	wget https://www.io-warnemuende.de/tl_files/staff/rfeistel/download/${FILE_NAME}.zip
-	unzip ${FILE_NAME}.zip
-	rm ${FILE_NAME}.zip
+	wget "https://www.io-warnemuende.de/tl_files/staff/rfeistel/download/${FILE_NAME}.zip"
+	unzip "${FILE_NAME}.zip"
+	rm "${FILE_NAME}.zip"
 }
 
 # define terminal colors
@@ -22,7 +22,7 @@ NCL_NAME='ncl_ncarg-6.6.2-Debian9.8_64bit_nodap_gnu630.tar.gz'
 
 # Script to extract the optional ncl package for postprocessing
 # Path to the library folder
-cd ${DIR}
+cd "${DIR}" || exit 1
 
 # checking unzip package
 yay -S --needed unzip
@@ -31,12 +31,12 @@ yay -S --needed unzip
 printf "${RED}\\nAs of Sep 2019 ncl is no longer developed. Take this in mind, if you want to use that!${NC}\\n"
 printf "${YELLOW}\\nUnpacking ncl.tar files: ${NC}\\n"
 mkdir ncl
-cd ncl
+cd ncl || exit 1
 wget https://www.earthsystemgrid.org/dataset/ncl.662_2.nodap/file/${NCL_NAME}
 tar -xzf ${NCL_NAME}
 
 # cleanup tar
-rm ${NCL_NAME}
+rm "${NCL_NAME}" || exit 1
 
 # Downloading detailed coastlines
 mkdir ./lib/ncarg/database/rangs

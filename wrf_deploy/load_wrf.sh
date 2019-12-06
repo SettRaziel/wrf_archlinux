@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-10-23 09:09:29
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-11-09 12:50:16
+# @Last Modified time: 2019-12-06 18:26:51
 
 # Script that loads the WRF model specified by argument or 
 # selectable index
@@ -14,7 +14,7 @@
 # 5: WRFV3 version 3.8.0
 
 # option output
-function print_options () {
+print_options () {
   printf "${YELLOW} 1: WRFV4 version 4.0.2\\n${NC}"
   printf "${YELLOW} 2: WRFV3 version 3.9.1\\n${NC}"
   printf "${YELLOW} 3: WRFV3 version 3.9.0\\n${NC}"
@@ -55,7 +55,7 @@ esac
 # creating url for the selectied wrf tar
 URL_PATH="https://bheld.eu/data/wrf_deploy/${FILE_NAME}.tar.gz"
 SCRIPT_PATH=$(pwd)
-cd ${HOME}
+cd ${HOME} || exit 1
 
 # downloading and unpacking archive
 printf "${YELLOW}\\nLoading wrf archive: ${NC}\\n"
@@ -66,12 +66,12 @@ rm ${FILE_NAME}.tar.gz
 
 # copying the config files from the repository to its destination
 printf "${YELLOW}\\nDeploying repository config files: ${NC}\\n"
-cd ${SCRIPT_PATH}
+cd "${SCRIPT_PATH}" || exit 1
 case ${WRF_GEODATA_INDEX} in
-    [4]* ) cp ../additions/config/namelist_low_res.wps ${HOME}/${FILE_NAME}/WPS/namelist.wps ;;
-    * ) cp ../additions/config/namelist.wps ${HOME}/${FILE_NAME}/WPS;;
+    [4]* ) cp ../additions/config/namelist_low_res.wps "${HOME}/${FILE_NAME}/WPS/namelist.wps";;
+    * ) cp ../additions/config/namelist.wps "${HOME}/${FILE_NAME}/WPS";;
 esac
-cp ../additions/config/namelist.input ${HOME}/${FILE_NAME}/${WRF_FOLDER}/test/em_real/
-cp ../additions/config/tslist ${HOME}/${FILE_NAME}/${WRF_FOLDER}/test/em_real/
+cp ../additions/config/namelist.input "${HOME}/${FILE_NAME}/${WRF_FOLDER}/test/em_real/"
+cp ../additions/config/tslist "${HOME}/${FILE_NAME}/${WRF_FOLDER}/test/em_real/"
 
 printf "${YELLOW}\\nFinished wrf deployment.${NC}\\n"

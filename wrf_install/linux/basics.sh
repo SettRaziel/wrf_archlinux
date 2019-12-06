@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 19:47:48
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-30 21:49:29
+# @Last Modified time: 2019-12-06 18:29:00
 
 # setting -e to abort on error
 set -e
@@ -13,7 +13,7 @@ source ../../libs/terminal_color.sh
 # Script to get the required basic packages after installing the base system
 
 # Start from home directory
-cd ${HOME}
+cd "${HOME}" || exit 1
 
 sudo pacman -Sy --needed make pkg-config fakeroot
 
@@ -23,11 +23,11 @@ sudo pacman -S --needed git
 
 # Prepare Folders
 mkdir aur_packages
-cd aur_packages
+cd aur_packages || exit 1
 
 # Getting yay
 git clone https://aur.archlinux.org/yay.git
-cd yay
+cd yay || exit 1
 makepkg -si
 
 printf "${YELLOW}Installing basic packages... ${NC}"

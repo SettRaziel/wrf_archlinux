@@ -2,7 +2,7 @@
 # @Author: Benjamin Held; based on the WRF OnlineTutorial
 # @Date:   2017-02-18 21:23:08
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-31 16:41:04
+# @Last Modified time: 2019-12-06 18:39:57
 
 # installation of the netcdf package
 # ${1}: path to the installation folder
@@ -21,8 +21,8 @@ printf "${LIGHT_BLUE}http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tut
 printf "${RED}Requires: netcdf and openmpi.${NC}\\n"
 
 # Creating required folders
-mkdir ${HOME}/${1}/lib_test
-cd ${HOME}/${1}/lib_test
+mkdir "${HOME}/${1}/lib_test"
+cd "${HOME}/${1}/lib_test" || exit 1
 wget http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compile_tutorial/tar_files/Fortran_C_NETCDF_MPI_tests.tar
 
 # Unpacking test files
@@ -31,7 +31,7 @@ tar -xf Fortran_C_NETCDF_MPI_tests.tar
 
 # Running first test
 printf "${YELLOW}Running first test: TEST_1_fortran_only_fixed ${NC}\\n"
-cp ${NETCDF}/include/netcdf.inc .
+cp "${NETCDF}/include/netcdf.inc" . || exit 1
 gfortran -c 01_fortran+c+netcdf_f.f
 gcc -c 01_fortran+c+netcdf_c.c
 gfortran 01_fortran+c+netcdf_f.o 01_fortran+c+netcdf_c.o -L${NETCDF}/lib -lnetcdff -lnetcdf
@@ -48,6 +48,6 @@ cat out.log
 printf "${LIGHT_BLUE}finished test. ${NC}\\n"
 
 # Cleaning up
-cd ..
-rm -r ${HOME}/${1}/lib_test
-cd ${SCRIPT_PATH}
+cd .. || exit 1
+rm -r "${HOME}/${1}/lib_test"
+cd "${SCRIPT_PATH}" || exit 1

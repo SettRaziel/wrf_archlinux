@@ -2,21 +2,21 @@
 # @Author: Benjamin Held
 # @Date:   2018-09-07 16:35:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-30 21:48:33
+# @Last Modified time: 2019-12-06 18:25:24
 
 # define terminal colors
 source ../libs/terminal_color.sh
 
 # prepare Folders
 SCRIPT_PATH=$(pwd)
-mkdir ${HOME}/aur_packages
-cd ${HOME}/aur_packages
+mkdir "${HOME}/aur_packages"
+cd "${HOME}/aur_packages" || exit 1
 
 # getting yay and install if necessary
 git clone https://aur.archlinux.org/yay.git
-cd yay
+cd yay || exit 1
 makepkg -si --noconfirm --needed
-cd ..
+cd .. || exit 1
 
 # installing packages for running the model
 printf "${YELLOW}\\nInstalling required model libraries: ${NC}\\n"
@@ -38,4 +38,4 @@ yay -S --noconfirm --needed msmtp
 # package clean up
 sudo pacman --noconfirm -Rsn $(sudo pacman -Qdtq)
 
-cd ${SCRIPT_PATH}
+cd ${SCRIPT_PATH} || exit 1

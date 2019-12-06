@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-09-04 11:57:18
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-11-09 12:50:02
+# @Last Modified time: 2019-12-06 18:24:02
 
 # Script that loads the WPS geodata specified by argument or 
 # selectable index
@@ -12,7 +12,7 @@
 # 3: WRFV4 high resolution data
 # 4: WRFV4 low resolution data
 
-function print_options () {
+print_options () {
   printf "${YELLOW} 1: WRFV3 high resolution data\\n${NC}"
   printf "${YELLOW} 2: WRFV3 low resolution data\\n${NC}"
   printf "${YELLOW} 3: WRFV4 high resolution data\\n${NC}"
@@ -51,8 +51,8 @@ esac
 
 # load and deploy the geodata
 URL_PATH="http://www2.mmm.ucar.edu/wrf/src/wps_files/${FILE_NAME}"
-mkdir ${HOME}/geo_data
-cd ${HOME}/geo_data
+mkdir "${HOME}/geo_data"
+cd "${HOME}/geo_data" || exit 1
 printf "${YELLOW}\\nLoading data files: ${NC}\\n"
 wget ${URL_PATH}
 printf "${YELLOW}\\nUnpacking archive: ${NC}\\n"

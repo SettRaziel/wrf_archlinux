@@ -2,7 +2,7 @@
 # @Author: Benjamin Held; based on the WRF OnlineTutorial
 # @Date:   2017-02-18 21:23:08
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-31 16:40:41
+# @Last Modified time: 2019-12-06 18:39:00
 
 # define terminal colors
 source ../../libs/terminal_color.sh
@@ -18,8 +18,8 @@ set -e
 SCRIPT_PATH=$(pwd)
 
 # Creating required folders and loading tests
-mkdir ${HOME}/${1}/fortran_test
-cd ${HOME}/${1}/fortran_test
+mkdir "${HOME}/${1}/fortran_test"
+cd "${HOME}/${1}/fortran_test" || exit 1
 wget http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compile_tutorial/tar_files/Fortran_C_tests.tar
 
 # Unpacking test files
@@ -68,6 +68,6 @@ printf "${YELLOW}\\nRunning seventh test: shell functionality ${NC}\\n"
 printf "${LIGHT_BLUE}finished test. ${NC}\\n"
 
 # Cleaning up
-cd ..
-rm -r ${HOME}/${1}/fortran_test
-cd ${SCRIPT_PATH}
+cd .. || exit 1
+rm -r "${HOME}/${1}/fortran_test"
+cd "${SCRIPT_PATH}" || exit 1

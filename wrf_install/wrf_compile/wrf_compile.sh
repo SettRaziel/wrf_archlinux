@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-18 15:49:25
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-31 16:39:19
+# @Last Modified time: 2019-12-06 18:37:04
 
 # setting -e to abort on error
 set -e
@@ -19,12 +19,12 @@ source ../../libs/terminal_color.sh
 SCRIPT_PATH=$(pwd)
 
 # Jump in folder and extract tar
-cd ${HOME}/${1}
+cd "${HOME}/${1}" || exit 1
 printf "${YELLOW}\\nUnpacking wrf.tar files: ${NC}\\n"
-tar xfv WRFV${WRF_VERSION}.tar.gz
+tar xfv "WRFV${WRF_VERSION}.tar.gz"
 
 # Build wrf
-cd WRF
+cd WRF || exit 1
 printf "${YELLOW}\\nInstaling wrf: ${NC}\\n"
 # Change the path according to the used user; configure requires an absolute
 # path here or it fails with an error
@@ -39,13 +39,13 @@ sed -r -i 's/-L\$\(WRF_SRC_ROOT_DIR\)\/external\/io_netcdf -lwrfio_nf/-L\$\(WRF_
 ./compile -j 1 em_real >& ./compile.log
 
 # copy compiling log
-cp compile.log ${SCRIPT_PATH}/../logs
+cp compile.log "${SCRIPT_PATH}/../logs" || exit 1
 
-cd ..
+cd .. || exit 1
 
 #clean up
-rm WRFV${WRF_VERSION}.tar.gz
-cd ${SCRIPT_PATH}
+rm "WRFV${WRF_VERSION}.tar.gz"
+cd "${SCRIPT_PATH}" || exit 1
 
 printf "${LIGHT_BLUE}\\nFinished installing wrf. ${NC}"
 printf "${LIGHT_BLUE}Check compile.log for details. ${NC}\\n"

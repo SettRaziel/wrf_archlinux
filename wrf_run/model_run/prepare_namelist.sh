@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-11-08 18:00:54
+# @Last Modified time: 2019-12-06 18:45:41
 
 # script to update the input parameter for a model run
 # $1: the path to the wrf root folder
@@ -58,7 +58,7 @@ printf "${YELLOW}\\nSetting step size to $DX x $DY${NC}\\n"
 printf "${YELLOW}\\nSetting time step $DT${NC}\\n"
 
 # Adjust values in namelist.wps in the wps folder
-cd ${BUILD_PATH}/WPS
+cd "${BUILD_PATH}/WPS" || exit 1
 sed -r -i "s/start_date = '[0-9]+\\-[0-9]+\\-[0-9]+\\_[0-9]+/start_date = '${START_YEAR}\\-${START_MONTH}\\-${START_DAY}\\_${START_HOUR}/g" namelist.wps
 sed -r -i "s/end_date   = '[0-9]+\\-[0-9]+\\-[0-9]+\\_[0-9]+/end_date   = '${END_YEAR}\\-${END_MONTH}\\-${END_DAY}\\_${END_HOUR}/g" namelist.wps
 
@@ -73,7 +73,7 @@ sed -r -i "s/truelat1   =  (\\-|)[0-9]+\\.[0-9]+/truelat1   =  ${REF_LAT}/g" nam
 sed -r -i "s/ref_lon   =  (\\-|)[0-9]+\\.[0-9]+/ref_lon   =  ${REF_LON}/g" namelist.wps
 
 # Adjust values in namelist.input in the wrf folder
-cd ${BUILD_PATH}/WRF/test/em_real
+cd "${BUILD_PATH}/WRF/test/em_real" || exit 1
 
 sed -r -i "s/run_days                            = [0-9]+/run_days                            = ${RUN_DAYS}/g" namelist.input
 sed -r -i "s/run_hours                           = [0-9]+/run_hours                           = ${RUN_HOURS}/g" namelist.input

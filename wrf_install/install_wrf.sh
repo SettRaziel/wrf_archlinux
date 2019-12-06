@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-19 13:25:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-31 16:38:13
+# @Last Modified time: 2019-12-06 18:28:30
 
 # main installation script: start the installation of the wrf model on a
 # minimal arch linux installation
@@ -36,15 +36,15 @@ fi
 source ./linux/set_env.sh ${WRF_ROOT_PATH}
 
 # Install required basic packages
-cd linux
+cd linux || exit 1
 sh ./basics.sh
 
 # Preaparing files and folder
-cd ${SCRIPT_PATH}/linux
+cd "${SCRIPT_PATH}/linux" || exit 1
 sh ./preparations.sh ${BUILD_PATH} ${1}
 
 # Compiling netcdf bindings
-cd ${SCRIPT_PATH}/wrf_preparation
+cd "${SCRIPT_PATH}/wrf_preparation" || exit 1
 sh ./netcdf.sh ${BUILD_PATH}
 # exporting required environment parameters
 export LDFLAGS="${LDFLAGS} -L${DIR}/netcdf/lib"
@@ -68,7 +68,7 @@ export CPPFLAGS="${CPPFLAGS} -I${DIR}/grib2/include"
 # Running System environment test
 printf "${YELLOW}Starting fortran tests. Press any key ... ${NC}"
 read
-cd ${SCRIPT_PATH}/wrf_pre_test
+cd "${SCRIPT_PATH}/wrf_pre_test" || exit 1
 sh ./fortran_tests.sh ${BUILD_PATH}
 
 # Running Library compatibility test
@@ -79,7 +79,7 @@ sh ./wrf_precompile_tests.sh ${BUILD_PATH}
 # Compiling the wrf-model
 printf "${YELLOW}Starting WRF compilation. Press any key ... ${NC}"
 read
-cd ${SCRIPT_PATH}/wrf_compile
+cd "${SCRIPT_PATH}/wrf_compile" || exit 1
 sh ./wrf_compile.sh ${BUILD_PATH} ${WRF_ROOT_PATH}
 
 # Compiling the wps modulue
@@ -90,5 +90,5 @@ sh ./wps_compile.sh ${BUILD_PATH}
 # Adding postprocessing components
 printf "${YELLOW}Adding software packages for result processing ... \\n${NC}"
 sleep 5
-cd ${SCRIPT_PATH}/wrf_postprocessing
+cd "${SCRIPT_PATH}/wrf_postprocessing" || exit 1
 sh ./wrf_postprocessing.sh
