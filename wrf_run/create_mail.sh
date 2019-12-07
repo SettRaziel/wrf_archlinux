@@ -1,9 +1,9 @@
 # @Author: benjamin
 # @Date:   2017-09-06 21:17:50
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-08-29 19:30:36
+# @Last Modified time: 2019-12-07 13:14:42
 
-function create_mail () {
+create_mail () {
 	echo "To: <recipient>"
 	echo "From: <sender>"
 	echo "Subject: WRF model run ${MONTH}/${DAY} ${HOUR}:00 (${RESULT})"

@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-04-09 19:25:16
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-11-04 17:00:34
+# @Last Modified time: 2019-12-07 13:14:02
 
 # script that generates a meta.ini for the minimal php gui
 if [ "$#" -ne 6 ]; then
@@ -16,7 +16,7 @@ END_DATE=$(date -u +%s -d "${DATE} +${5} hour")
 
 FILEPATH="${6}/meta.ini"
 
-function print_ini() {
+print_ini() {
 echo start = $START_DATE
 echo end = $END_DATE
 echo period = $(expr ${1} \* 3600)

@@ -2,9 +2,9 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-06 18:47:25
+# @Last Modified time: 2019-12-07 13:14:10
 
-function generate_meteogram () {
+generate_meteogram () {
   METEO_TITLE=${1}
   LOC_SHORTCUT=${2}
   INPUT_FILE=${2}.d01.TS

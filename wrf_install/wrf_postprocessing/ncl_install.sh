@@ -2,12 +2,12 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-26 17:34:20
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-06 18:38:01
+# @Last Modified time: 2019-12-07 13:13:01
 
 # Script to compile the ncar command language for output visualization
 # ${1}: the path to the folder where the ncl program should be installed
 
-function load_zipfile () {
+load_zipfile () {
 	FILE_NAME=${1}
 	wget "https://www.io-warnemuende.de/tl_files/staff/rfeistel/download/${FILE_NAME}.zip"
 	unzip "${FILE_NAME}.zip"
