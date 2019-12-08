@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 16:04:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-06 18:49:26
+# @Last Modified time: 2019-12-08 13:14:36
 
 # logging time stamp
 SCRIPT_PATH=$(pwd)
@@ -28,7 +28,7 @@ mkdir "${DEST_FOLDER}"
 cd "${SCRIPT_PATH}" || exit 1
 sh ./draw_meteograms.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${PERIOD}" "${DEST_FOLDER}"
 
-cd $"{HOME}/wrf_output" || exit 1
+cd "${HOME}/wrf_output" || exit 1
 
 # generate output
 ncl plot_timestamp_output >> "${LOG_PATH}/debug.log"
