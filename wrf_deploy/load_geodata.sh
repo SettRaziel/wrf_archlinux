@@ -29,20 +29,20 @@ if [ -z "${WRF_GEODATA_INDEX}" ]; then
     print_options        
     read INPUT
     case ${INPUT} in
-      [1234]* ) SELECT_VALUE=${INPUT}; break;;
+      [1234]* ) WRF_GEODATA_INDEX=${INPUT}; break;;
       * ) printf "${RED}Please use a numeric value in [1-4].${NC}\\n";;
-    esac
+  	esac
   done
 else
   case ${WRF_GEODATA_INDEX} in
-    [1234]* ) SELECT_VALUE=${WRF_GEODATA_INDEX} ;;
+    [1234]* ) ;;
     ['--help']* ) printf "${LIGHT_BLUE}Usage:\\n${NC}"; print_options;;
     * ) printf "${RED}Error: False argument. Please use a numeric value in [1-4] or --help.${NC}\\n"; exit 1;;
   esac
 fi
 
 # select the geodata
-case ${SELECT_VALUE} in
+case ${WRF_GEODATA_INDEX} in
   [1]* ) FILE_NAME='geog_complete.tar.gz';;
   [2]* ) FILE_NAME='geog_minimum.tar.bz2';;
   [3]* ) FILE_NAME='geog_high_res_mandatory.tar.gz';;
@@ -56,7 +56,7 @@ cd "${HOME}/geo_data" || exit 1
 printf "${YELLOW}\\nLoading data files: ${NC}\\n"
 wget ${URL_PATH}
 printf "${YELLOW}\\nUnpacking archive: ${NC}\\n"
-if [ ${SELECT_VALUE} -eq 2 ]
+if [ ${WRF_GEODATA_INDEX} -eq 2 ]
 then
   tar -xjf ${FILE_NAME}
 else

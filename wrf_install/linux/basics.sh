@@ -28,8 +28,8 @@ cd aur_packages || exit 1
 # Getting yay
 git clone https://aur.archlinux.org/yay.git
 cd yay || exit 1
-makepkg -si
+makepkg -si --noconfirm --needed
 
 printf "${YELLOW}Installing basic packages... ${NC}"
 # Installing required packages
-yay -S --needed tcsh time curl wget   # required packages
+yay -S --needed tcsh time curl wget gcc-fortran   # required packages

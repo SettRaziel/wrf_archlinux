@@ -6,7 +6,7 @@
 
 # main installation script: start the installation of the wrf model on a
 # minimal arch linux installation
-# Version 0.4.0
+# Version 0.4.2
 # created by Benjamin Held and other sources, June 2017
 
 # ${1}: optional flag --local if the installation should be done with local libraries

@@ -23,8 +23,7 @@ tar xfv "hdf5-${HDF_VERSION}.tar.gz"
 # Installing hdf5 library
 printf "${YELLOW}\\nInstalling hdf5: ${NC}\\n"
 cd "hdf5-${HDF_VERSION}" || exit 1
-setenv LIBS="-lgcc_s"
-./configure --enable-fortran --enable-fortran2003 --prefix="${DIR}/hdf5"
+env LIBS="-lgcc_s" ./configure --enable-fortran --enable-fortran2003 --prefix="${DIR}/hdf5"
 make -j 2 && make install -j 2
 
 cd .. || exit 1

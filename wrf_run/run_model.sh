@@ -5,7 +5,7 @@
 # @Last Modified time: 2019-12-06 18:21:13
 
 # main script for starting a wrf model run
-# Version 0.4.0
+# Version 0.4.2
 # created by Benjamin Held and other sources, June 2017
 # Two possible parameter sets:
 # <START_HOUR> <PERIOD> <RESOLUTION> <PERIOD>

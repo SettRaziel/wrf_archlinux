@@ -58,7 +58,7 @@ mkdir "${HOME}/${1}"
 cd "${HOME}/${1}"
 
 
-if [ ${2} = '--local' -a -d "${LIBRARY_PATH}" ]; then
+if [ "${2}" = '--local' -a -d "${LIBRARY_PATH}" ]; then
 	# check if required libraries are present
 	check_library "${LIBRARY_PATH}" "WRFV${WRF_VERSION}.tar.gz"
 	check_library "${LIBRARY_PATH}" "WPSV${WPS_VERSION}.tar.gz"
