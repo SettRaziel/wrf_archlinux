@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-06 19:18:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-05 18:13:14
+# @Last Modified time: 2019-12-09 17:15:54
 
 # This script loads the required input data for a 180 h forecast run
 # ${1} matches the required date yyyymmdd
@@ -15,8 +15,8 @@
 now=$(date +"%T")
 printf "Starting gfs data fetch by removing old files at ${now}.\\n" > ${LOG_PATH}/log.info
 
-# Remove old files
-rm "${3}/gfs.*"
+# Remove old gfs files
+rm "${3}"/gfs.*
 
 printf "Starting gfs data fetching at ${now}.\\n" > "${LOG_PATH}/log.info"
 # Define a number of retries and try to download the files
