@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-06 18:21:13
+# @Last Modified time: 2019-12-10 17:54:08
 
 # main script for starting a wrf model run
 # Version 0.4.2
@@ -91,7 +91,7 @@ fi
 # move output files
 cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd to model_run"
 sh clean_up_output.sh
-mv "${BUILD_PATH}/WRF/test/em_real/wrfout_d01_*" "${HOME}/wrf_output"
+mv "${BUILD_PATH}"/WRF/test/em_real/wrfout_d01_* "${HOME}/wrf_output"
 
 # run output script
 cd "${SCRIPT_PATH}/post_processing" || error_exit "Failed cd postprocessing"

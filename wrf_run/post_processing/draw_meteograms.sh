@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-07 13:14:10
+# @Last Modified time: 2019-12-10 17:53:35
 
 generate_meteogram () {
   METEO_TITLE=${1}
@@ -10,7 +10,7 @@ generate_meteogram () {
   INPUT_FILE=${2}.d01.TS
 
   # move required meteogram files to output folder
-  mv "${BUILD_PATH}/WRF/test/em_real/${LOC_SHORTCUT}.*" "${HOME}/wrf_output"
+  mv "${BUILD_PATH}/WRF/test/em_real/${LOC_SHORTCUT}".* "${HOME}/wrf_output"
 
   ncl time_array=${LEGEND_ARRAY} ticks=${TICK_ARRAY} sticks=${STICK_ARRAY} title=\"${METEO_TITLE}\" input=\"${INPUT_FILE}\" plot_T_timeline  >> ${LOG_PATH}/debug.log
   ncl time_array=${LEGEND_ARRAY} ticks=${TICK_ARRAY} sticks=${STICK_ARRAY} title=\"${METEO_TITLE}\" input=\"${INPUT_FILE}\" plot_meteogram  >> ${LOG_PATH}/debug.log
