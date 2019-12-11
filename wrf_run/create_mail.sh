@@ -1,7 +1,8 @@
+#!/bin/sh
 # @Author: benjamin
 # @Date:   2017-09-06 21:17:50
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-07 13:14:42
+# @Last Modified time: 2019-12-11 21:31:34
 
 create_mail () {
 	echo "To: <recipient>"
