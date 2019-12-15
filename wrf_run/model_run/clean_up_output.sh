@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 09:26:31
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-30 21:50:52
+# @Last Modified time: 2019-12-15 13:08:51
 
 # Script to run the preprocessing operations
 
@@ -10,12 +10,12 @@
 SCRIPT_PATH=$(pwd)
 now=$(date +"%T")
 if [ -z "${LOG_PATH}" ]; then
-  printf "Cleaning up output data from last time at ${now}\\n"
+  printf "Cleaning up output data from last time at %s\\n" "${now}"
 else 
-	printf "Cleaning up output data from last time at ${now}\\n" >> ${LOG_PATH}/log.info
+	printf "Cleaning up output data from last time at %s\\n" "${now}" >> "${LOG_PATH}/log.info"
 fi
 
 # remove previous output files
-rm ${HOME}/wrf_output/wrfout_*
-rm ${HOME}/wrf_output/Han.*
-rm ${HOME}/wrf_output/Ith.*
+rm "${HOME}"/wrf_output/wrfout_*
+rm "${HOME}"/wrf_output/Han.*
+rm "${HOME}"/wrf_output/Ith.*

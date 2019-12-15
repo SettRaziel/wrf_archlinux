@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-10 17:54:08
+# @Last Modified time: 2019-12-15 13:31:17
 
 # main script for starting a wrf model run
 # Version 0.4.2
@@ -14,8 +14,8 @@
 error_exit () {
   NOW=$(date +"%T")
   ERROR_STATUS="${1} at: ${NOW}."
-  printf "${ERROR_STATUS}\\n" >> "${ERROR_LOG}"
-  printf "Error: ${1} at: ${NOW}.\\n" >> "${STATUS_FILE}"
+  printf "%s\\n" "${ERROR_STATUS}" >> "${ERROR_LOG}"
+  printf "Error: %s at: %s.\\n" "${1}" "${NOW}" >> "${STATUS_FILE}"
   cd "${SCRIPT_PATH}" || exit 1
   sh create_mail.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${ERROR_STATUS}" "Fail"
   echo "${1}" 1>&2
@@ -59,7 +59,7 @@ exec 42>${LCK};
 
 flock -x 42;
 # preparing status file
-printf "Starting new model run for: ${YEAR}/${MONTH}/${DAY} ${HOUR}:00 UTC.\\n" > "${STATUS_FILE}"
+printf "Starting new model run for: %s/%s/%s %s:00 UTC.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" > "${STATUS_FILE}"
 
 # adjusting namelist for next run
 cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd namelist"
