@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-15 13:20:40
+# @Last Modified time: 2019-12-16 17:41:49
 
 # script to update the input parameter for a model run
 # $1: the path to the wrf root folder
@@ -50,10 +50,11 @@ GRID_Y=50
 REF_LAT=53.0
 REF_LON=9.0
 
+# printing input parameter
 printf "%b\\nSetting start date to: %s-%s-%s %s:00%b\\n" "${YELLOW}" "${START_YEAR}" "${START_MONTH}" "${START_DAY}" "${START_HOUR}" "${NC}"
 printf "%b\\nSetting end date to: %s-%s-%s %s:00%b\\n" "${YELLOW}" "${END_YEAR}" "${END_MONTH}" "${END_DAY}" "${END_HOUR}" "${NC}"
 printf "%b\\nForcasting for: %s days and %s hours%b\\n" "${YELLOW}" "${RUN_DAYS}" "${RUN_HOURS}" "${NC}"
-printf "%b\\nSetting grid to %s_X x %s_Y%b\\n" "${YELLOW}" "${GRID}" "${GRID}" "${NC}"
+printf "%b\\nSetting grid to %s x %s%b\\n" "${YELLOW}" "${GRID_X}" "${GRID_Y}" "${NC}"
 printf "%b\\nSetting step size to %s x %s%b\\n" "${YELLOW}" "${DX}" "${DY}" "${NC}"
 printf "%b\\nSetting time step %s%b\\n" "${YELLOW}" "${DT}" "${NC}"
 
