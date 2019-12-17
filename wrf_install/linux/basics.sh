@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 19:47:48
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-06 18:29:00
+# @Last Modified time: 2019-12-17 18:37:38
 
 # setting -e to abort on error
 set -e
@@ -17,7 +17,7 @@ cd "${HOME}" || exit 1
 
 sudo pacman -Sy --needed make pkg-config fakeroot
 
-printf "${YELLOW}Installing yay as package helper... \\n${NC}"
+printf "%bInstalling yay as package helper... \\n%b" "${YELLOW}" "${NC}"
 # Prepare git package
 sudo pacman -S --needed git
 
@@ -30,6 +30,6 @@ git clone https://aur.archlinux.org/yay.git
 cd yay || exit 1
 makepkg -si --noconfirm --needed
 
-printf "${YELLOW}Installing basic packages... ${NC}"
+printf "%bInstalling basic packages... \\n%b" "${YELLOW}" "${NC}"
 # Installing required packages
 yay -S --needed tcsh time curl wget gcc-fortran   # required packages

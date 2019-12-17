@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-01 20:09:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-06 18:36:17
+# @Last Modified time: 2019-12-17 18:40:07
 
 # setting -e to abort on error
 set -e
@@ -21,11 +21,11 @@ SCRIPT_PATH=$(pwd)
 cd "${HOME}/${1}" || exit 1
 
 # Unpacking wps files
-printf "${YELLOW}\\nUnpacking wps.tar files: ${NC}\\n"
+printf "%b\\nUnpacking wps.tar files: %b\\n" "${YELLOW}" "${NC}"
 tar xfv "WPSV${WPS_VERSION}.tar.gz"
 
 # Installing wps
-printf "${YELLOW}\\nInstaling wps: ${NC}\\n"
+printf "%b\\nInstaling wps: %b\\n" "${YELLOW}" "${NC}"
 cd WPS || exit 1
 ./configure
 
@@ -43,4 +43,4 @@ cd .. || exit 1
 rm "WPSV${WPS_VERSION}.tar.gz"
 cd "${SCRIPT_PATH}" || exit 1
 
-printf "${LIGHT_BLUE}\\nFinished installing wps. ${NC}\\n"
+printf "%b\\nFinished installing wps. %b\\n" "${LIGHT_BLUE}" "${NC}"

@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 21:06:12
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-06 18:42:46
+# @Last Modified time: 2019-12-17 18:51:50
 
 # Script to compile the required libraries
 # ${1}: path to the installation folder
@@ -17,66 +17,66 @@ source ../../libs/terminal_color.sh
 cd "${HOME}/${1}" || exit 1
 
 # Unpacking mpich files
-printf "${YELLOW}\\nUnpacking mpich.tar files: ${NC}\\n"
+printf "%b\\nUnpacking mpich.tar files: %b\\n" "${YELLOW}" "${NC}"
 tar xfv "mpich-${MPI_VERSION}.tar.gz"
 
 # Installing mpich library
-printf "${YELLOW}\\nInstalling mpich: ${NC}\\n"
+printf "%b\\nInstalling mpich: %b\\n" "${YELLOW}" "${NC}"
 cd "mpich-${MPI_VERSION}" || exit 1
 ./configure --prefix="${DIR}/mpich"
 make -j 2 && make install -j 2
 
 cd .. || exit 1
 
-printf "${LIGHT_BLUE}\\nFinished installing mpich. ${NC}\\n"
-printf "${YELLOW}Continuing in 5 seconds ... ${NC}"
+printf "%b\\nFinished installing mpich. %b\\n" "${LIGHT_BLUE}" "${NC}"
+printf "%bContinuing in 5 seconds ... %b" "${YELLOW}" "${NC}"
 sleep 5
 
 # Unpacking zlib files
-printf "${YELLOW}\\nUnpacking zlib.tar files: ${NC}\\n"
+printf "%b\\nUnpacking zlib.tar files: %b\\n" "${YELLOW}" "${NC}"
 tar xfv "zlib-${ZLIB_VERSION}.tar.gz"
 
 # Installing zlib library
-printf "${YELLOW}\\nInstalling zlib: ${NC}\\n"
+printf "%b\\nInstalling zlib: %b\\n" "${YELLOW}" "${NC}"
 cd "zlib-${ZLIB_VERSION}"
 ./configure --prefix="${DIR}/grib2"
 make -j 2 && make install -j 2
 
 cd .. || exit 1
 
-printf "${LIGHT_BLUE}\\nFinished installing zlib. ${NC}\\n"
-printf "${YELLOW}Continuing in 5 seconds ... ${NC}"
+printf "%b\\nFinished installing zlib. %b\\n" "${LIGHT_BLUE}" "${NC}"
+printf "%bContinuing in 5 seconds ... %b" "${YELLOW}" "${NC}"
 sleep 5
 
 # Unpacking libpng files
-printf "${YELLOW}\\nUnpacking libpng.tar files: ${NC}\\n"
+printf "%b\\nUnpacking libpng.tar files: %b\\n" "${YELLOW}" "${NC}"
 tar xfv "libpng-${LIBPNG_VERSION}.tar.gz"
 
 # Installing libpng library
-printf "${YELLOW}\\nInstalling libpng: ${NC}\\n"
+printf "%b\\nInstalling libpng: %b\\n" "${YELLOW}" "${NC}"
 cd "libpng-${LIBPNG_VERSION}" || exit 1
 ./configure --prefix="${DIR}/grib2"
 make -j 2 && make install -j 2
 
 cd .. || exit 1
 
-printf "${LIGHT_BLUE}\\nFinished installing libpng. ${NC}\\n"
-printf "${YELLOW}Continuing in 5 seconds ... ${NC}"
+printf "%b\\nFinished installing libpng. %b\\n" "${LIGHT_BLUE}" "${NC}"
+printf "%bContinuing in 5 seconds ... %b" "${YELLOW}" "${NC}"
 sleep 5
 
 # Unpacking jasper files
-printf "${YELLOW}\\nUnpacking jasper.tar files: ${NC}\\n"
+printf "%b\\nUnpacking jasper.tar files: %b\\n" "${YELLOW}" "${NC}"
 tar xfv "jasper-${JASPER_VERSION}.tar.gz"
 
 # Installing jasper library
-printf "${YELLOW}\\nInstalling jasper: ${NC}\\n"
+printf "%b\\nInstalling jasper: %b\\n" "${YELLOW}" "${NC}"
 cd "jasper-${JASPER_VERSION}" || exit 1
 ./configure --prefix="${DIR}/grib2"
 make -j 2 && make install -j 2
 
 cd .. || exit 1
 
-printf "${LIGHT_BLUE}\\nFinished installing jasper. ${NC}\\n"
+printf "%b\\nFinished installing jasper. %b\\n" "${LIGHT_BLUE}" "${NC}"
 
 # cleanup
 rm "mpich-${MPI_VERSION}.tar.gz"

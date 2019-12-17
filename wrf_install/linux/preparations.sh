@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-26 14:21:00
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-06 18:35:03
+# @Last Modified time: 2019-12-17 18:38:48
 
 # ${1}: the folder relative to the home path where the files should be installed
 # ${2}: the marker if the installation should use local libraries
@@ -40,7 +40,7 @@ wget "http://www.ece.uvic.ca/~frodo/jasper/software/jasper-${JASPER_VERSION}.tar
 # ${2}: library archive
 check_library() {
 	if [ ! -f "${1}/${2}" ]; then
-		printf "${RED}Missing library: ${2}. Aborting... ${NC}\\n"
+		printf "%bMissing library: %s. Aborting... %b\\n" "${RED}" "${2}" "${NC}"
 		exit 1
 	fi
 }
@@ -51,7 +51,7 @@ LIBRARY_PATH="${SCRIPT_PATH}/../../libraries"
 
 # Create destination folder and change to that
 if [ -d "${HOME}/${1}" ]; then
-  printf "${YELLOW}Directory already exists, removing content... ${NC}\\n"
+  printf "%bDirectory already exists, removing content... %b\\n" "${YELLOW}" "${NC}"
   rm -rf "${HOME}/${1}"
 fi
 mkdir "${HOME}/${1}"
