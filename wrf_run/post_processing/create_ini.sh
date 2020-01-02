@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-04-09 19:25:16
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-09-06 19:07:53
+# @Last Modified time: 2019-12-15 13:27:39
 
 # script that generates a meta.ini for the minimal php gui
 if [ "$#" -ne 6 ]; then
@@ -16,10 +16,10 @@ END_DATE=$(date -u +%s -d "${DATE} +${5} hour")
 
 FILEPATH="${6}/meta.ini"
 
-function print_ini() {
-echo start = $START_DATE
-echo end = $END_DATE
-echo period = `expr ${1} \* 3600`
+print_ini() {
+echo start = "${START_DATE}"
+echo end = "${END_DATE}"
+echo period = $(expr ${1} \* 3600)
 echo
 
 echo 'locations[Han] = "Hannover, Germany"'
@@ -70,4 +70,4 @@ echo 'desc="Temperatur in 2m Höhe für %X ab %Y-%m-%d %H:00 UTC"'
 echo 'title="Temperatur %x"'
 }
 
-print_ini ${5} > ${FILEPATH}
+print_ini "${5}" > "${FILEPATH}"

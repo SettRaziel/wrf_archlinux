@@ -2,14 +2,14 @@
 # @Author: Benjamin Held; based on the WRF OnlineTutorial
 # @Date:   2017-02-18 21:23:08
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-02-25 20:24:05
+# @Last Modified time: 2019-12-17 18:47:22
 
 # define terminal colors
 source ../../libs/terminal_color.sh
 
-printf "${YELLOW}Starting PreCompile Fortran tests from: ${NC}\n"
-printf "${LIGHT_BLUE}http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php${NC}\n"
-printf "${RED}Requires: gfortran, cpp, gcc, tcsh, perl and sh.${NC}\n"
+printf "%bStarting PreCompile Fortran tests from: %b\\n" "${YELLOW}" "${NC}"
+printf "%bhttp://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php%b\\n" "${LIGHT_BLUE}" "${NC}"
+printf "%bRequires: gfortran, cpp, gcc, tcsh, perl and sh.%b\\n" "${RED}" "${NC}"
 
 # setting -e to abort on error
 set -e
@@ -18,56 +18,56 @@ set -e
 SCRIPT_PATH=$(pwd)
 
 # Creating required folders and loading tests
-mkdir ${HOME}/${1}/fortran_test
-cd ${HOME}/${1}/fortran_test
+mkdir "${HOME}/${1}/fortran_test"
+cd "${HOME}/${1}/fortran_test" || exit 1
 wget http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compile_tutorial/tar_files/Fortran_C_tests.tar
 
 # Unpacking test files
-printf "${YELLOW}\nUnpacking test files: ${NC}\n"
+printf "%b\\nUnpacking test files: %b\\n" "${YELLOW}" "${NC}"
 tar -xf Fortran_C_tests.tar
 
 # Running first test
-printf "${YELLOW}\nRunning first test: TEST_1_fortran_only_fixed ${NC}\n"
+printf "%b\\nRunning first test: TEST_1_fortran_only_fixed %b\\n" "${YELLOW}" "${NC}"
 gfortran TEST_1_fortran_only_fixed.f
 ./a.out
-printf "${LIGHT_BLUE}finished test. ${NC}\n"
+printf "%bfinished test. %b\\n" "${LIGHT_BLUE}" "${NC}"
 
 # Running second test
-printf "${YELLOW}\nRunning second test: TEST_2_fortran_only_free ${NC}\n"
+printf "%b\\nRunning second test: TEST_2_fortran_only_free %b\\n" "${YELLOW}" "${NC}"
 gfortran TEST_2_fortran_only_free.f90
 ./a.out
-printf "${LIGHT_BLUE}finished test. ${NC}\n"
+printf "%bfinished test. %b\\n" "${LIGHT_BLUE}" "${NC}"
 
 # Running third test
-printf "${YELLOW}\nRunning third test: TEST_3_c_only ${NC}\n"
+printf "%b\\nRunning third test: TEST_3_c_only %b\\n" "${YELLOW}" "${NC}"
 gcc TEST_3_c_only.c
 ./a.out
-printf "${LIGHT_BLUE}finished test. ${NC}\n"
+printf "%bfinished test. %b\\n" "${LIGHT_BLUE}" "${NC}"
 
 # Running fourth test
-printf "${YELLOW}\nRunning fourth test: C function called by Fortran ${NC}\n"
+printf "%b\\nRunning fourth test: C function called by Fortran %b\\n" "${YELLOW}" "${NC}"
 gcc -c -m64 TEST_4_fortran+c_c.c
 gfortran -c -m64 TEST_4_fortran+c_f.f90
 gfortran -m64 TEST_4_fortran+c_f.o TEST_4_fortran+c_c.o
 ./a.out
-printf "${LIGHT_BLUE}finished test. ${NC}\n"
+printf "%bfinished test. %b\\n" "${LIGHT_BLUE}" "${NC}"
 
 # Running fifth test
-printf "${YELLOW}\nRunning fifth test: csh functionality ${NC}\n"
+printf "%b\\nRunning fifth test: csh functionality %b\\n" "${YELLOW}" "${NC}"
 ./TEST_csh.csh
-printf "${LIGHT_BLUE}finished test. ${NC}\n"
+printf "%bfinished test. %b\\n" "${LIGHT_BLUE}" "${NC}"
 
 # Running sixth test
-printf "${YELLOW}\nRunning sixth test: perl functionality ${NC}\n"
+printf "%b\\nRunning sixth test: perl functionality %b\\n" "${YELLOW}" "${NC}"
 ./TEST_perl.pl
-printf "${LIGHT_BLUE}finished test. ${NC}\n"
+printf "%bfinished test. %b\\n" "${LIGHT_BLUE}" "${NC}"
 
 # Running seventh test
-printf "${YELLOW}\nRunning seventh test: shell functionality ${NC}\n"
+printf "%b\\nRunning seventh test: shell functionality %b\\n" "${YELLOW}" "${NC}"
 ./TEST_sh.sh
-printf "${LIGHT_BLUE}finished test. ${NC}\n"
+printf "%bfinished test. %b\\n" "${LIGHT_BLUE}" "${NC}"
 
 # Cleaning up
-cd ..
-rm -r ${HOME}/${1}/fortran_test
-cd ${SCRIPT_PATH}
+cd .. || exit 1
+rm -r "${HOME}/${1}/fortran_test"
+cd "${SCRIPT_PATH}" || exit 1

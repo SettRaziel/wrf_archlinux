@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-06 19:18:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-10-04 15:14:49
+# @Last Modified time: 2019-12-15 13:06:25
 
 # This script loads the required input data for a 180 h forecast run
 # ${1} matches the required date yyyymmdd
@@ -13,18 +13,18 @@
 
 # logging time stamp
 now=$(date +"%T")
-printf "Starting gfs data fetch by removing old files at ${now}.\n" > ${LOG_PATH}/log.info
+printf "Starting gfs data fetch by removing old files at %s.\\n" "${now}" > "${LOG_PATH}/log.info"
 
-# Remove old files
-rm ${3}/gfs.*
+# Remove old gfs files
+rm "${3}"/gfs.*
 
-printf "Starting gfs data fetching at ${now}.\n" > ${LOG_PATH}/log.info
+printf "Starting gfs data fetching at %s.\\n" "${now}" > "${LOG_PATH}/log.info"
 # Define a number of retries and try to download the files
-for i in $(seq -f %03g 0 3 ${5}); do
+for i in $(seq -f %03g 0 3 "${5}"); do
   tries=5
-  while [ $tries -gt 0 ] 
+  while [ ${tries} -gt 0 ] 
   do
-    curl -C - -o ${3}/gfs.t${2}z.pgrb2.${4}.f${i} https://www.ftp.ncep.noaa.gov/data/nccf/com/gfs/prod/gfs.${1}/${2}/gfs.t${2}z.pgrb2.${4}.f${i}
+    curl -C - -o "${3}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}" https://www.ftp.ncep.noaa.gov/data/nccf/com/gfs/prod/gfs."${1}"/"${2}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}"
     if [ $? -ne 56 ]
      then break
     fi
