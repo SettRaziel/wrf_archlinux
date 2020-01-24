@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-03 17:20:53
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-06-21 16:01:55
+# @Last Modified time: 2020-01-24 16:53:06
 
 # Script that sets the required variables for the model run
 # ${1}: the build path relativ from ${HOME} where the required wrf files
@@ -31,3 +31,9 @@ export LD_LIBRARY_PATH="${DIR}/hdf5/lib:${DIR}/netcdf/lib:${LD_LIBRARY_PATH}"
 # optional: required when using ncl unpacked in the library folder
 export NCARG_ROOT="${DIR}/ncl"
 export PATH="${PATH}:${NCARG_ROOT}/bin"
+
+# directory paths for logging files
+export LOG_PATH=../logs
+export ERROR_LOG=${LOG_PATH}/error_$(date +"%m_%d").log # path to error log
+export STATUS_LOG=${LOG_PATH}/status.log
+export DEBUG_LOG=${LOG_PATH}/debug.log
