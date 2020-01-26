@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-01-24 16:52:09
+# @Last Modified time: 2020-01-26 11:41:38
 
 # main script for starting a wrf model run
 # Version 0.4.3
@@ -25,7 +25,7 @@ error_exit () {
 # imports
 SCRIPT_PATH=$(pwd)
 BUILD_PATH="<wrf path>"
-source "${SCRIPT_PATH}/set_env.sh" "${BUILD_PATH}"
+source "${SCRIPT_PATH}/set_env.sh" "${BUILD_PATH}" "${SCRIPT_PATH}"
 
 # default variables
 GFS_PATH=${HOME}/gfs_data

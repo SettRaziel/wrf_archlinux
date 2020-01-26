@@ -2,10 +2,10 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-07 19:02:57
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-15 13:12:07
+# @Last Modified time: 2020-01-26 11:58:05
 
 # Script to start the model run
-# $1: the path to the wrf root folder
+# ${1}: the path to the wrf root folder
 
 set -e
 
@@ -25,14 +25,14 @@ cd "${BUILD_PATH}/WPS" || exit 1
 
 # preprocessing static data: elevation data and geo data
 printf "%bpreprocessing static data (geogrid.exe): %b\\n" "${YELLOW}" "${NC}"
-./geogrid.exe > "${LOG_PATH}/debug.log"
+./geogrid.exe > "${DEBUG_LOG}"
 
 # processing initial data and boundary data
 printf "%bpreprocessing initial and boundary data: %b\\n" "${YELLOW}" "${NC}"
 ./link_grib.csh "${GFS_PATH}"/gfs.*.pgrb2."${RESOLUTION}".f*
 ln -sf ungrib/Variable_Tables/Vtable.GFS ./Vtable
-LD_LIBRARY_PATH="${DIR}/grib2/lib" ./ungrib.exe >> "${LOG_PATH}/debug.log"
-./metgrid.exe >> "${LOG_PATH}/debug.log"
+LD_LIBRARY_PATH="${DIR}/grib2/lib" ./ungrib.exe >> "${DEBUG_LOG}"
+./metgrid.exe >> "${DEBUG_LOG}"
 
 # starting wrf steps
 now=$(date +"%T")

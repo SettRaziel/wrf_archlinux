@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 16:04:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-15 13:28:56
+# @Last Modified time: 2020-01-26 11:58:41
 
 # logging time stamp
 SCRIPT_PATH=$(pwd)
@@ -31,8 +31,8 @@ sh ./draw_meteograms.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${PERIOD}" "${D
 cd "${HOME}/wrf_output" || exit 1
 
 # generate output
-ncl plot_timestamp_output >> "${LOG_PATH}/debug.log"
-ncl plot_tot_rain >> "${LOG_PATH}/debug.log"
+ncl plot_timestamp_output >> "${DEBUG_LOG}"
+ncl plot_tot_rain >> "${DEBUG_LOG}"
 
 find . -maxdepth 1 -name '*.png' -exec optipng {} \;
 
