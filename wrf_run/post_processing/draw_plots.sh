@@ -2,12 +2,12 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 16:04:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-01-26 11:58:41
+# @Last Modified time: 2020-01-27 18:12:01
 
 # logging time stamp
 SCRIPT_PATH=$(pwd)
 now=$(date +"%T")
-printf "Starting output generation at %s.\\n" "${now}" >> "${LOG_PATH}/log.info"
+printf "Starting output generation at %s.\\n" "${now}" >> "${INFO_LOG}"
 
 YEAR=${1}
 MONTH=${2}
@@ -53,4 +53,4 @@ sh create_ini.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${PERIOD}" "${DEST_FOL
 
 # logging time stamp
 now=$(date +"%T")
-printf "Finished output generation at %s.\\n" "${now}" >> "${LOG_PATH}/log.info"
+printf "Finished output generation at %s.\\n" "${now}" >> "${INFO_LOG}"

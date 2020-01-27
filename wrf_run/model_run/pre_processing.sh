@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-07 19:02:57
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-01-26 11:58:05
+# @Last Modified time: 2020-01-27 18:08:07
 
 # Script to start the model run
 # ${1}: the path to the wrf root folder
@@ -18,7 +18,7 @@ RESOLUTION=${2}
 
 # starting preprocessing steps
 now=$(date +"%T")
-printf "Starting preprocessing at %s.\\n" "${now}" >> "${LOG_PATH}/log.info"
+printf "Starting preprocessing at %s.\\n" "${now}" >> "${INFO_LOG}"
 
 # opening wps folder
 cd "${BUILD_PATH}/WPS" || exit 1
@@ -36,7 +36,7 @@ LD_LIBRARY_PATH="${DIR}/grib2/lib" ./ungrib.exe >> "${DEBUG_LOG}"
 
 # starting wrf steps
 now=$(date +"%T")
-printf "Starting wrf run at %s.\\n" "${now}" >> "${LOG_PATH}/log.info"
+printf "Starting wrf run at %s.\\n" "${now}" >> "${INFO_LOG}"
 
 # vertical interpolation preprocessing
 printf "%bdoing vertical interpolation (real.exe): %b\\n" "${YELLOW}" "${NC}"
@@ -51,4 +51,4 @@ mpirun ./wrf.exe
 
 # logging time stamp
 now=$(date +"%T")
-printf "Finished wrf run at %s.\\n" "${now}" >> "${LOG_PATH}/log.info"
+printf "Finished wrf run at %s.\\n" "${now}" >> "${INFO_LOG}"
