@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-01-26 11:41:38
+# @Last Modified time: 2020-01-29 21:58:25
 
 # main script for starting a wrf model run
 # Version 0.4.3
@@ -62,7 +62,7 @@ printf "Starting new model run for: %s/%s/%s %s:00 UTC.\\n" "${YEAR}" "${MONTH}"
 cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd namelist"
 printf "Starting namelist preparation.\\n" >> "${STATUS_LOG}"
 sh prepare_namelist.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${PERIOD}"; RET=${?}
-if ! [ ${RET} == 0 ]; then
+if ! [ ${RET} -eq 0 ]; then
   error_exit "Failed to prepare the namelist files"
 fi
 
@@ -70,7 +70,7 @@ fi
 cd "${SCRIPT_PATH}/data_fetch" || error_exit "Failed cd data_fetch"
 printf "Starting namelist preparation.\\n" >> "${STATUS_LOG}"
 sh gfs_fetch.sh "${YEAR}${MONTH}${DAY}" "${HOUR}" "${GFS_PATH}" "${RESOLUTION}" "${PERIOD}"; RET=${?}
-if ! [ ${RET} == 0 ]; then
+if ! [ ${RET} -eq 0 ]; then
   error_exit "Failed to prepare the namelist files"
 fi
 
@@ -79,8 +79,8 @@ cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd start model_run"
 printf "Starting model run and preparation.\\n" >> "${STATUS_LOG}"
 sh run_preprocessing.sh "${GFS_PATH}" "${RESOLUTION}"; RET=${?}
 cd "${SCRIPT_PATH}" || error_exit "Failed cd to script path"
-if ! [ ${RET} == 0 ]; then
-    cd "${BUILD_PATH}/WRF/test/em_real/"
+if ! [ ${RET} -eq 0 ]; then
+    cd "${BUILD_PATH}/WRF/test/em_real/" || error_exit "Failed cd to WRF folder"
     rm wrfout_d01_*
     error_exit "Failed to run the model"
 fi
@@ -94,7 +94,7 @@ mv "${BUILD_PATH}"/WRF/test/em_real/wrfout_d01_* "${HOME}/wrf_output"
 cd "${SCRIPT_PATH}/post_processing" || error_exit "Failed cd postprocessing"
 printf "Starting postprocessing.\\n" >> "${STATUS_LOG}"
 sh draw_plots.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${PERIOD}"; RET=${?}
-if [ ${RET} == 0 ]; then
+if [ ${RET} -eq 0 ]; then
   printf "Starting archive generation.\\n" >> "${STATUS_LOG}"
   cd "${HOME}/wrf_output" || error_exit "Failed cd to model_output"
   #tar czf wrfout_${YEAR}_${MONTH}_${DAY}_${HOUR}.tar.gz wrfout_d01_* Han.d01.* Ith.d01.*
