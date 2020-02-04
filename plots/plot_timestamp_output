@@ -43,30 +43,23 @@ begin
   tend_int = 1
 
   do it = 0,ntimes-1,tend_int
-    print("Working on comp with timestep: " + times(it) )
-    
+    print("Working on comp with timestep: " + times(it) )    
     begin
       ; generate output for the composition at the given timestep
       print_comp_for_timestamp(times(it), a[it], mpres, tc2(it,:,:), slp(it,:,:), u10(it,:,:), v10(it,:,:))
     end
-  end do
 
-  do it = 0,ntimes-1,tend_int
     print("Working on 3hr rain with timestep: " + times(it) )
     begin
       ; generate output for 3 hr rain at the given timestep
       print_3hr_rain_for_timestamp(times(it), a[it], mpres, slp(it,:,:), rain_tot_tend(it,:,:))
     end
-  end do
 
-  do it = 0,ntimes-1,tend_int
-    print("Working on cape with timestep: " + times(it) )
-    
+    print("Working on cape with timestep: " + times(it) )    
     begin
       ; generate output for the cape energy at the given timestep
       print_cape_energy_for_timestamp(times(it), a[it], mpres, get_cape_energy(a[it]))
     end
   end do
-  
 
 end
