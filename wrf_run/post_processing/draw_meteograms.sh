@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-01-03 18:42:19
+# @Last Modified time: 2020-01-27 18:11:27
 
 generate_meteogram () {
   METEO_TITLE=${1}
@@ -29,7 +29,7 @@ generate_meteogram () {
 
 # logging time stamp
 now=$(date +"%T")
-printf "Starting meteograms at %s.\\n" "${now}" >> "${LOG_PATH}/log.info"
+printf "Starting meteograms at %s.\\n" "${now}" >> "${INFO_LOG}"
 
 cd "${HOME}/wrf_output" || exit 1
 
@@ -70,4 +70,4 @@ generate_meteogram "Husum,_SH_${START_DATE}" "Hus"
 
 # logging time stamp
 now=$(date +"%T")
-printf "Finished meteograms at %s.\\n" "${now}" >> "${LOG_PATH}/log.info"
+printf "Finished meteograms at %s.\\n" "${now}" >> "${INFO_LOG}"
