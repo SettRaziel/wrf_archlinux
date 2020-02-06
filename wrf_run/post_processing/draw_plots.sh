@@ -2,7 +2,10 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 16:04:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-01-27 18:12:01
+# @Last Modified time: 2020-02-06 20:07:07
+
+# setting -e to abort on error
+set -e
 
 # logging time stamp
 SCRIPT_PATH=$(pwd)

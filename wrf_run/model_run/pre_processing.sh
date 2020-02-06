@@ -2,11 +2,12 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-07 19:02:57
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-01-27 18:08:07
+# @Last Modified time: 2020-02-06 20:22:28
 
 # Script to start the model run
 # ${1}: the path to the wrf root folder
 
+# setting -e to abort on error
 set -e
 
 # define terminal colors

@@ -2,7 +2,10 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-01-27 18:11:27
+# @Last Modified time: 2020-02-06 20:06:55
+
+# setting -e to abort on error
+set -e
 
 generate_meteogram () {
   METEO_TITLE=${1}

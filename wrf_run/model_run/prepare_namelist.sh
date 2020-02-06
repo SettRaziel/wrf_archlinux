@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-16 17:41:49
+# @Last Modified time: 2020-02-06 20:22:28
 
 # script to update the input parameter for a model run
 # $1: the path to the wrf root folder
@@ -12,6 +12,7 @@
 # $5: the hour of the model run
 # $6: the timespan for the model run
 
+# setting -e to abort on error
 set -e
 
 # define terminal colors
