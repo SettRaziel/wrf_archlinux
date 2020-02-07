@@ -2,10 +2,10 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-05 17:52:09
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-17 18:44:17
+# @Last Modified time: 2020-02-07 22:09:37
 
 # Script to compile the upp library for output visualization
-# $1: the path to the folder where the upp program should be installed
+# ${1}: the path to the folder where the upp program should be installed
 
 # define terminal colors
 source ../../libs/terminal_color.sh
