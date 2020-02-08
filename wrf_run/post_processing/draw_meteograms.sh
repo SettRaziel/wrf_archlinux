@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-06 20:06:55
+# @Last Modified time: 2020-02-08 17:50:00
 
 # setting -e to abort on error
 set -e
@@ -15,8 +15,8 @@ generate_meteogram () {
   # move required meteogram files to output folder
   mv "${BUILD_PATH}/WRF/test/em_real/${LOC_SHORTCUT}".* "${HOME}/wrf_output"
 
-  ncl time_array="${LEGEND_ARRAY}" ticks="${TICK_ARRAY}" sticks="${STICK_ARRAY}" title=\""${METEO_TITLE}"\" input=\""${INPUT_FILE}"\" plot_T_timeline  >> "${LOG_PATH}"/debug.log
-  ncl time_array="${LEGEND_ARRAY}" ticks="${TICK_ARRAY}" sticks="${STICK_ARRAY}" title=\""${METEO_TITLE}"\" input=\""${INPUT_FILE}"\" plot_meteogram  >> "${LOG_PATH}"/debug.log
+  ncl time_array="${LEGEND_ARRAY}" ticks="${TICK_ARRAY}" sticks="${STICK_ARRAY}" title=\""${METEO_TITLE}"\" input=\""${INPUT_FILE}"\" plot_T_timeline  >> "${DEBUG_LOG}"
+  ncl time_array="${LEGEND_ARRAY}" ticks="${TICK_ARRAY}" sticks="${STICK_ARRAY}" title=\""${METEO_TITLE}"\" input=\""${INPUT_FILE}"\" plot_meteogram  >> "${DEBUG_LOG}"
 
   # mkdir ${DEST_FOLDER}/
   # mv time_T2.png ${DEST_FOLDER}/${DEST_PREFIX}_time_T2_${LOC_SHORTCUT}.png
