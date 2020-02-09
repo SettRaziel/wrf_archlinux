@@ -2,7 +2,15 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-01-27 18:11:27
+# @Last Modified time: 2020-02-09 17:36:24
+
+# script to generate output meteograms from a model run
+# ${1}: the year for the model run
+# ${2}: the month for the model run
+# ${3}: the day for the model run
+# ${4}: the hour of the model run
+# ${5}: the timespan for the model run
+# ${6}: the destination folder of the output
 
 generate_meteogram () {
   METEO_TITLE=${1}
@@ -36,7 +44,7 @@ cd "${HOME}/wrf_output" || exit 1
 DATE=${1}-${2}-${3}
 START_DATE=$(LC_ALL=en_UTF-8 date +\(%Y-%m-%d-%HUTC\) -d "${DATE}T${4}:00")
 DATE_FORMAT="+%b-%d/00"
-LEGEND_ARRAY="(/\"$(LC_ALL=en_UTF-8 date $DATE_FORMAT -d "$DATE + 1 day")\""
+LEGEND_ARRAY="(/\"$(LC_ALL=en_UTF-8 date ${DATE_FORMAT} -d "${DATE} + 1 day")\""
 
 MAIN_HOURS=$(expr 24 - ${4})
 TICK_ARRAY="(/${MAIN_HOURS}"
@@ -46,7 +54,7 @@ STICK_ARRAY="(/${SEC_HOURS}"
 
 for i in {2..8}
 do
-  NEXT_DATE=$(LC_ALL=en_UTF-8 date $DATE_FORMAT -d "$DATE + ${i} day")
+  NEXT_DATE=$(LC_ALL=en_UTF-8 date ${DATE_FORMAT} -d "${DATE} + ${i} day")
   SEC_HOURS=$(expr ${MAIN_HOURS} + 12)
   STICK_ARRAY+=","
   STICK_ARRAY+="${SEC_HOURS}"
