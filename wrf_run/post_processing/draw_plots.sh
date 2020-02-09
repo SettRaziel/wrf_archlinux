@@ -2,10 +2,19 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 16:04:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-09 11:49:03
+# @Last Modified time: 2020-02-09 17:54:21
 
 # setting -e to abort on error
 set -e
+
+# define terminal colors
+source ../../libs/terminal_color.sh
+
+# error handling for input parameter
+if [ "$#" -ne 5 ]; then
+  printf "%bWrong number of arguments. Must be one for <YEAR> <MONTH> <DAY> <HOUR> <PERIOD>.%b\\n" "${RED}" "${NC}"
+  exit 1
+fi
 
 # logging time stamp
 SCRIPT_PATH=$(pwd)

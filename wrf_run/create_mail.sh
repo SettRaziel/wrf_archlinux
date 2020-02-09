@@ -2,8 +2,18 @@
 # @Author: benjamin
 # @Date:   2017-09-06 21:17:50
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-11 21:31:34
+# @Last Modified time: 2020-02-09 21:58:52
 
+# define terminal colors
+source ../libs/terminal_color.sh
+
+# error handling for input parameter
+if [ "$#" -ne 6 ]; then
+  printf "%bWrong number of arguments. Must be one for <YEAR> <MONTH> <DAY> <HOUR> <REASON> <RESULT>.%b\\n" "${RED}" "${NC}"
+  exit 1
+fi
+
+# function to create the mail text
 create_mail () {
 	echo "To: <recipient>"
 	echo "From: <sender>"
