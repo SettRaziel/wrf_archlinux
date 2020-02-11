@@ -2,14 +2,14 @@
 # @Author: Benjamin Held
 # @Date:   2017-04-09 19:25:16
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-09 22:01:02
+# @Last Modified time: 2020-02-11 21:25:09
 
 # define terminal colors
 source ../../libs/terminal_color.sh
 
 # script that generates a meta.ini for the minimal php gui
 if [ "$#" -ne 6 ]; then
-  echo "%bWrong number of arguments. Must be one for <YEAR> <MONTH> <DAY> <HOUR> <PERIOD> <DEST_FOLDER>.%b\\n" "${RED}" "${NC}"
+  printf "%bWrong number of arguments. Must be one for <YEAR> <MONTH> <DAY> <HOUR> <PERIOD> <DEST_FOLDER>.%b\\n" "${RED}" "${NC}"
   exit 1
 fi
 
@@ -22,7 +22,7 @@ FILEPATH="${6}/meta.ini"
 print_ini() {
 echo start = "${START_DATE}"
 echo end = "${END_DATE}"
-echo period = $(expr ${1} \* 3600)
+echo period = "$((${1} \* 3600))"
 echo
 
 echo 'locations[Han] = "Hannover, Germany"'
