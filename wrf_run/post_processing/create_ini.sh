@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-04-09 19:25:16
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-11 21:25:09
+# @Last Modified time: 2020-02-12 20:30:48
 
 # define terminal colors
 source ../../libs/terminal_color.sh
@@ -22,7 +22,7 @@ FILEPATH="${6}/meta.ini"
 print_ini() {
 echo start = "${START_DATE}"
 echo end = "${END_DATE}"
-echo period = "$((${1} \* 3600))"
+echo period = "$((${1}\*3600))"
 echo
 
 echo 'locations[Han] = "Hannover, Germany"'

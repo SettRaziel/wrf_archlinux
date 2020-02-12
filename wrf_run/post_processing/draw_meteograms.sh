@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-11 21:27:17
+# @Last Modified time: 2020-02-12 20:31:39
 
 # setting -e to abort on error
 set -e
@@ -59,10 +59,10 @@ STICK_ARRAY="(/${SEC_HOURS}"
 for i in {2..8}
 do
   NEXT_DATE=$(LC_ALL=en_UTF-8 date $DATE_FORMAT -d "$DATE + ${i} day")
-  SEC_HOURS="$((${MAIN_HOURS} + 12))"
+  SEC_HOURS="$((${MAIN_HOURS}+12))"
   STICK_ARRAY+=","
   STICK_ARRAY+="${SEC_HOURS}"
-  MAIN_HOURS="$((${MAIN_HOURS} + 24))"
+  MAIN_HOURS="$((${MAIN_HOURS}+24))"
   LEGEND_ARRAY+=","
   LEGEND_ARRAY+="\"${NEXT_DATE}\""
   TICK_ARRAY+=","
