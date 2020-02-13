@@ -2,10 +2,10 @@
 # @Author: Benjamin Held
 # @Date:   2017-04-09 19:25:16
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-12 20:30:48
+# @Last Modified time: 2020-02-13 21:19:56
 
 # define terminal colors
-source ../../libs/terminal_color.sh
+source ${COLOR_PATH}
 
 # script that generates a meta.ini for the minimal php gui
 if [ "$#" -ne 6 ]; then

@@ -2,13 +2,13 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 16:04:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-09 17:54:21
+# @Last Modified time: 2020-02-13 21:19:56
 
 # setting -e to abort on error
 set -e
 
 # define terminal colors
-source ../../libs/terminal_color.sh
+source ${COLOR_PATH}
 
 # error handling for input parameter
 if [ "$#" -ne 5 ]; then

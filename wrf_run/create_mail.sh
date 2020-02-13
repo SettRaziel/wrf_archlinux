@@ -2,10 +2,10 @@
 # @Author: benjamin
 # @Date:   2017-09-06 21:17:50
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-09 21:58:52
+# @Last Modified time: 2020-02-13 21:18:47
 
 # define terminal colors
-source ../libs/terminal_color.sh
+source ${COLOR_PATH}
 
 # error handling for input parameter
 if [ "$#" -ne 6 ]; then

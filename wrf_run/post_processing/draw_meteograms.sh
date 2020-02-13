@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-12 20:31:39
+# @Last Modified time: 2020-02-13 21:19:56
 
 # setting -e to abort on error
 set -e
@@ -31,7 +31,7 @@ generate_meteogram () {
 }
 
 # define terminal colors
-source ../../libs/terminal_color.sh
+source ${COLOR_PATH}
 
 # error handling for input parameter
 if [ "$#" -ne 6 ]; then

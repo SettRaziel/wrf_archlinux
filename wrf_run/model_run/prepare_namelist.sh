@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-06 20:22:28
+# @Last Modified time: 2020-02-13 21:19:56
 
 # script to update the input parameter for a model run
 # $1: the path to the wrf root folder
@@ -16,7 +16,7 @@
 set -e
 
 # define terminal colors
-source ../../libs/terminal_color.sh
+source ${COLOR_PATH}
 
 # error handling for input parameter
 if [ "$#" -ne 5 ]; then
