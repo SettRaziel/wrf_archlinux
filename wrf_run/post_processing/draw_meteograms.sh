@@ -4,6 +4,14 @@
 # @Last Modified by:   Benjamin Held
 # @Last Modified time: 2020-02-13 21:19:56
 
+# script to generate output meteograms from a model run
+# ${1}: the year for the model run
+# ${2}: the month for the model run
+# ${3}: the day for the model run
+# ${4}: the hour of the model run
+# ${5}: the timespan for the model run
+# ${6}: the destination folder of the output
+
 # setting -e to abort on error
 set -e
 
@@ -48,7 +56,7 @@ cd "${HOME}/wrf_output" || exit 1
 DATE=${1}-${2}-${3}
 START_DATE=$(LC_ALL=en_UTF-8 date +\(%Y-%m-%d-%HUTC\) -d "${DATE}T${4}:00")
 DATE_FORMAT="+%b-%d/00"
-LEGEND_ARRAY="(/\"$(LC_ALL=en_UTF-8 date $DATE_FORMAT -d "$DATE + 1 day")\""
+LEGEND_ARRAY="(/\"$(LC_ALL=en_UTF-8 date ${DATE_FORMAT} -d "${DATE} + 1 day")\""
 
 MAIN_HOURS="$((24 - ${4}))"
 TICK_ARRAY="(/${MAIN_HOURS}"
@@ -58,7 +66,7 @@ STICK_ARRAY="(/${SEC_HOURS}"
 
 for i in {2..8}
 do
-  NEXT_DATE=$(LC_ALL=en_UTF-8 date $DATE_FORMAT -d "$DATE + ${i} day")
+  NEXT_DATE=$(LC_ALL=en_UTF-8 date ${DATE_FORMAT} -d "${DATE} + ${i} day")
   SEC_HOURS="$((${MAIN_HOURS}+12))"
   STICK_ARRAY+=","
   STICK_ARRAY+="${SEC_HOURS}"

@@ -6,6 +6,7 @@
 
 # Script to start the model run
 # ${1}: the path to the gfs data
+# ${2}: the geographic resolution of the input data
 
 # setting -e to abort on error
 set -e

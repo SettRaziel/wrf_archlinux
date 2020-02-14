@@ -5,12 +5,11 @@
 # @Last Modified time: 2020-02-13 21:19:56
 
 # script to update the input parameter for a model run
-# $1: the path to the wrf root folder
-# $2: the year for the model run
-# $3: the month for the model run
-# $4: the day for the model run
-# $5: the hour of the model run
-# $6: the timespan for the model run
+# ${1}: the year for the model run
+# ${2}: the month for the model run
+# ${3}: the day for the model run
+# ${4}: the hour of the model run
+# ${5}: the timespan for the model run
 
 # setting -e to abort on error
 set -e

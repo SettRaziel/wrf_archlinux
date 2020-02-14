@@ -8,6 +8,14 @@
 source ${COLOR_PATH}
 
 # script that generates a meta.ini for the minimal php gui
+# ${1}: the year for the model run
+# ${2}: the month for the model run
+# ${3}: the day for the model run
+# ${4}: the hour of the model run
+# ${5}: the timespan for the model run
+# ${6}: the destination folder of the output
+
+# parameter check
 if [ "$#" -ne 6 ]; then
   printf "%bWrong number of arguments. Must be one for <YEAR> <MONTH> <DAY> <HOUR> <PERIOD> <DEST_FOLDER>.%b\\n" "${RED}" "${NC}"
   exit 1

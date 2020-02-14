@@ -2,7 +2,15 @@
 # @Author: benjamin
 # @Date:   2017-09-06 21:17:50
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-13 21:18:47
+# @Last Modified time: 2020-02-09 17:39:54
+
+# script to generate a notifiaction email if the model run ends
+# ${1}: the year for the model run
+# ${2}: the month for the model run
+# ${3}: the day for the model run
+# ${4}: the hour of the model run
+# ${5}: the reason text of the email
+# ${6}: the outcome of the model run {Success, Fail}
 
 # define terminal colors
 source ${COLOR_PATH}

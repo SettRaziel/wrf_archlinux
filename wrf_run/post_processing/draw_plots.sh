@@ -4,6 +4,13 @@
 # @Last Modified by:   Benjamin Held
 # @Last Modified time: 2020-02-13 21:19:56
 
+# script to generate output pictures from a model run
+# ${1}: the year for the model run
+# ${2}: the month for the model run
+# ${3}: the day for the model run
+# ${4}: the hour of the model run
+# ${5}: the timespan for the model run
+
 # setting -e to abort on error
 set -e
 
