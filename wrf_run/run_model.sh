@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-01-29 21:58:25
+# @Last Modified time: 2020-02-09 17:27:39
 
 # main script for starting a wrf model run
 # Version 0.4.3
@@ -22,11 +22,10 @@ error_exit () {
   exit 1
 }
 
-# imports
+# required variables
 SCRIPT_PATH=$(pwd)
 BUILD_PATH="<wrf path>"
 source "${SCRIPT_PATH}/set_env.sh" "${BUILD_PATH}" "${SCRIPT_PATH}"
-
 # default variables
 GFS_PATH=${HOME}/gfs_data
 
@@ -103,6 +102,7 @@ else
     error_exit "Error while creating output files"
 fi
 
+# finish up model run and send notification mail
 cd "${SCRIPT_PATH}" || error_exit "Failed cd finish mail"
 sh create_mail.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "Finished model run without error." "Success"
 printf "Finished model run without error.\\n" >> "${STATUS_LOG}"

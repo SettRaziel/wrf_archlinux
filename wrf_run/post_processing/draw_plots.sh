@@ -2,7 +2,14 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 16:04:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-01-27 18:12:01
+# @Last Modified time: 2020-02-09 17:29:26
+
+# script to generate output pictures from a model run
+# ${1}: the year for the model run
+# ${2}: the month for the model run
+# ${3}: the day for the model run
+# ${4}: the hour of the model run
+# ${5}: the timespan for the model run
 
 # logging time stamp
 SCRIPT_PATH=$(pwd)

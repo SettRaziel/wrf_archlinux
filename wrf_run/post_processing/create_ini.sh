@@ -2,9 +2,17 @@
 # @Author: Benjamin Held
 # @Date:   2017-04-09 19:25:16
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-15 13:27:39
+# @Last Modified time: 2020-02-09 17:36:52
 
 # script that generates a meta.ini for the minimal php gui
+# ${1}: the year for the model run
+# ${2}: the month for the model run
+# ${3}: the day for the model run
+# ${4}: the hour of the model run
+# ${5}: the timespan for the model run
+# ${6}: the destination folder of the output
+
+# parameter check
 if [ "$#" -ne 6 ]; then
   echo "Wrong number of arguments. Must be one for <YEAR> <MONTH> <DAY> <HOUR> <PERIOD> <DEST_FOLDER>."
   exit 1

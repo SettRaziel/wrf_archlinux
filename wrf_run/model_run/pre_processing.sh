@@ -2,10 +2,11 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-07 19:02:57
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-01-27 18:08:07
+# @Last Modified time: 2020-02-09 17:38:19
 
 # Script to start the model run
 # ${1}: the path to the wrf root folder
+# ${2}: the geographic resolution of the input data
 
 set -e
 
