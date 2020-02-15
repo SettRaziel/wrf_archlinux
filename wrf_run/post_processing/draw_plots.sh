@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 16:04:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-15 16:50:32
+# @Last Modified time: 2020-02-15 22:01:34
 
 # script to generate output pictures from a model run
 # ${1}: the year for the model run
@@ -24,7 +24,7 @@ move_files () {
 }
 
 # define terminal colors
-source ${COLOR_PATH}
+source "${COLOR_PATH}"
 
 # error handling for input parameter
 if [ "$#" -ne 5 ]; then

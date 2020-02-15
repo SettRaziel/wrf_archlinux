@@ -2,10 +2,10 @@
 # @Author: Benjamin Held
 # @Date:   2017-04-09 19:25:16
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-15 10:10:16
+# @Last Modified time: 2020-02-15 21:59:31
 
 # define terminal colors
-source ${COLOR_PATH}
+source "${COLOR_PATH}"
 
 # script that generates a meta.ini for the minimal php gui
 # ${1}: the year for the model run
@@ -30,7 +30,7 @@ FILEPATH="${6}/meta.ini"
 print_ini() {
 echo start = "${START_DATE}"
 echo end = "${END_DATE}"
-echo period = "$((${1}*3600))"
+echo period = "$((${1} * 3600))"
 echo
 
 echo 'locations[Han] = "Hannover, Germany"'

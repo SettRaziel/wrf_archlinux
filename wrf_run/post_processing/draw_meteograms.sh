@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-13 21:19:56
+# @Last Modified time: 2020-02-15 22:01:27
 
 # script to generate output meteograms from a model run
 # ${1}: the year for the model run
@@ -39,7 +39,7 @@ generate_meteogram () {
 }
 
 # define terminal colors
-source ${COLOR_PATH}
+source "${COLOR_PATH}"
 
 # error handling for input parameter
 if [ "$#" -ne 6 ]; then

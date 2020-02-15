@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-07 19:02:57
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-13 21:19:56
+# @Last Modified time: 2020-02-15 22:00:54
 
 # Script to start the model run
 # ${1}: the path to the gfs data
@@ -12,7 +12,7 @@
 set -e
 
 # define terminal colors
-source ${COLOR_PATH}
+source "${COLOR_PATH}"
 
 # error handling for input parameter
 if [ "$#" -ne 2 ]; then
