@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-04-09 19:25:16
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-13 21:19:56
+# @Last Modified time: 2020-02-15 10:10:16
 
 # define terminal colors
 source ${COLOR_PATH}
@@ -30,7 +30,7 @@ FILEPATH="${6}/meta.ini"
 print_ini() {
 echo start = "${START_DATE}"
 echo end = "${END_DATE}"
-echo period = "$((${1}\*3600))"
+echo period = "$((${1}*3600))"
 echo
 
 echo 'locations[Han] = "Hannover, Germany"'

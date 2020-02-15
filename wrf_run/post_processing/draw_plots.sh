@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 16:04:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-13 21:19:56
+# @Last Modified time: 2020-02-15 16:50:32
 
 # script to generate output pictures from a model run
 # ${1}: the year for the model run
@@ -13,6 +13,15 @@
 
 # setting -e to abort on error
 set -e
+
+move_files () {
+	FILE_PATTERN=${1}
+	MOVE_FOLDER=${2}
+
+	for FILE_NAME in $(ls ${FILE_PATTERN}); do
+  	mv ${FILE_NAME} ${MOVE_FOLDER}
+	done
+}
 
 # define terminal colors
 source ${COLOR_PATH}
@@ -62,10 +71,10 @@ mkdir "${DEST_FOLDER}/rain_tot"
 mkdir "${DEST_FOLDER}/thunderstorm_index"
 
 # Check for moveable file and move them if present
-[ ! -f comp_*.png ] || mv comp_*.png "${DEST_FOLDER}/comp"
-[ ! -f rain_3h_*.png ] || mv rain_3h_*.png "${DEST_FOLDER}/rain_3h"
-[ ! -f rain_tot_*.png ] || mv rain_tot_*.png "${DEST_FOLDER}/rain_tot"
-[ ! -f thunderstorm_*.png ] || mv thunderstorm_*.png "${DEST_FOLDER}/thunderstorm_index"
+move_files "comp_*.png" "${DEST_FOLDER}/comp"
+move_files "rain_3h_*.png" "${DEST_FOLDER}/rain_3h"
+move_files "rain_tot_*.png" "${DEST_FOLDER}/rain_tot"
+move_files "thunderstorm_*.png" "${DEST_FOLDER}/thunderstorm_index"
 
 # generate meat.ini file
 cd "${SCRIPT_PATH}" || exit 1
