@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 16:04:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-15 22:01:34
+# @Last Modified time: 2020-02-16 17:34:53
 
 # script to generate output pictures from a model run
 # ${1}: the year for the model run
@@ -18,8 +18,8 @@ move_files () {
 	FILE_PATTERN=${1}
 	MOVE_FOLDER=${2}
 
-	for FILE_NAME in $(ls ${FILE_PATTERN}); do
-  	mv ${FILE_NAME} ${MOVE_FOLDER}
+	for FILE_NAME in "${FILE_PATTERN}"; do
+  	mv "${FILE_NAME}" "${MOVE_FOLDER}"
 	done
 }
 
