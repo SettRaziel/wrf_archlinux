@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-04-09 19:25:16
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-15 21:59:31
+# @Last Modified time: 2020-02-17 20:10:05
 
 # define terminal colors
 source "${COLOR_PATH}"
@@ -27,6 +27,7 @@ END_DATE=$(date -u +%s -d "${DATE} +${5} hour")
 
 FILEPATH="${6}/meta.ini"
 
+# function to write the content of the meta.ini
 print_ini() {
 echo start = "${START_DATE}"
 echo end = "${END_DATE}"

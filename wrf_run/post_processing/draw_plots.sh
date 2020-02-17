@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 16:04:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-17 16:36:14
+# @Last Modified time: 2020-02-17 20:10:36
 
 # script to generate output pictures from a model run
 # ${1}: the year for the model run
@@ -14,6 +14,7 @@
 # setting -e to abort on error
 set -e
 
+# function to move the files of a given pattern to the destination
 move_files () {
 	FILE_PATTERN=${1}
 	MOVE_FOLDER=${2}
@@ -64,6 +65,7 @@ cd "${HOME}/wrf_output" || exit 1
 ncl plot_timestamp_output >> "${DEBUG_LOG}"
 ncl plot_tot_rain >> "${DEBUG_LOG}"
 
+# optimizing output file quality
 find . -maxdepth 1 -name '*.png' -exec optipng {} \;
 
 # create folder and move output
@@ -78,7 +80,7 @@ move_files "rain_3h_*.png" "${DEST_FOLDER}/rain_3h"
 move_files "rain_tot_*.png" "${DEST_FOLDER}/rain_tot"
 move_files "thunderstorm_*.png" "${DEST_FOLDER}/thunderstorm_index"
 
-# generate meat.ini file
+# generate meta.ini file
 printf "Starting generation of meta.ini at %s.\\n" "${now}" >> "${INFO_LOG}"
 cd "${SCRIPT_PATH}" || exit 1
 sh create_ini.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${PERIOD}" "${DEST_FOLDER}"
