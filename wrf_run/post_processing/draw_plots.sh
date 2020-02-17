@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 16:04:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-16 17:34:53
+# @Last Modified time: 2020-02-17 16:36:14
 
 # script to generate output pictures from a model run
 # ${1}: the year for the model run
@@ -18,9 +18,11 @@ move_files () {
 	FILE_PATTERN=${1}
 	MOVE_FOLDER=${2}
 
-	for FILE_NAME in "${FILE_PATTERN}"; do
-  	mv "${FILE_NAME}" "${MOVE_FOLDER}"
-	done
+	for FILE_NAME in ${FILE_PATTERN}; do
+    if [ -e "${FILE_NAME}" ]; then
+      mv "${FILE_NAME}" "${MOVE_FOLDER}"
+	  fi
+  done
 }
 
 # define terminal colors
@@ -77,6 +79,7 @@ move_files "rain_tot_*.png" "${DEST_FOLDER}/rain_tot"
 move_files "thunderstorm_*.png" "${DEST_FOLDER}/thunderstorm_index"
 
 # generate meat.ini file
+printf "Starting generation of meta.ini at %s.\\n" "${now}" >> "${INFO_LOG}"
 cd "${SCRIPT_PATH}" || exit 1
 sh create_ini.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${PERIOD}" "${DEST_FOLDER}"
 
