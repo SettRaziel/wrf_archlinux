@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-06 19:18:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-01-27 18:05:25
+# @Last Modified time: 2020-02-15 22:01:11
 
 # This script loads the required input data for a 180 h forecast run
 # ${1} matches the required date yyyymmdd
@@ -10,6 +10,15 @@
 # ${3} is the storage path
 # ${4} is the model resolution [0p25, 0p50, 1p00]
 # ${5} the time period for the model run
+
+# define terminal colors
+source "${COLOR_PATH}"
+
+# error handling for input parameter
+if [ "$#" -ne 5 ]; then
+  printf "%bWrong number of arguments. Must be one for <DATE> <TIMESTAMP> <STORAGE_PATH> <GEO_RESOLUTION> <PERIOD>.%b\\n" "${RED}" "${NC}"
+  exit 1
+fi
 
 # logging time stamp
 now=$(date +"%T")

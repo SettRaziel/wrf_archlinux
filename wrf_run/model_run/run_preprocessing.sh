@@ -2,11 +2,20 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 09:26:31
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-01-27 18:09:09
+# @Last Modified time: 2020-02-13 21:19:56
 
 # script to run the necessary preprocessing steps before starting the wrf run
 # ${1}: the path to the gfs input data
 # ${2}: the resolution of the input data
+
+# define terminal colors
+source ${COLOR_PATH}
+
+# error handling for input parameter
+if [ "$#" -ne 2 ]; then
+  printf "%bWrong number of arguments. Must be one for <GFS_PATH> <GEO_RESOLUTION>.%b\\n" "${RED}" "${NC}"
+  exit 1
+fi
 
 # variable declaration
 GFS_PATH=${1}

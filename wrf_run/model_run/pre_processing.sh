@@ -2,16 +2,23 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-07 19:02:57
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-09 17:38:19
+# @Last Modified time: 2020-02-15 22:00:54
 
 # Script to start the model run
-# ${1}: the path to the wrf root folder
+# ${1}: the path to the gfs data
 # ${2}: the geographic resolution of the input data
 
+# setting -e to abort on error
 set -e
 
 # define terminal colors
-source ../../libs/terminal_color.sh
+source "${COLOR_PATH}"
+
+# error handling for input parameter
+if [ "$#" -ne 2 ]; then
+  printf "%bWrong number of arguments. Must be one for <GFS_PATH> <GEO_RESOLUTION>.%b\\n" "${RED}" "${NC}"
+  exit 1
+fi
 
 # variable declaration
 GFS_PATH=${1}
