@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-15 22:00:38
+# @Last Modified time: 2020-02-19 20:29:39
 
 # script to update the input parameter for a model run
 # ${1}: the year for the model run
@@ -36,8 +36,8 @@ END_MONTH=$(date '+%m' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_
 END_DAY=$(date '+%d' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${PERIOD} hours")
 
 # calculating run time
-RUN_DAYS="$((${PERIOD} / 24))"
-RUN_HOURS="$((${PERIOD} % 24))"
+RUN_DAYS="$((PERIOD / 24))"
+RUN_HOURS="$((PERIOD % 24))"
 
 # grid parameters
 DT=80
