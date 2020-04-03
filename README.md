@@ -6,7 +6,7 @@ ArchLinux. The descriptions will grow together with the uploaded files.
 A description that summarizes the requried steps and gives additional
 information will be available shortly.
 
-Current version: v0.4.3
+Current version: v0.4.4
 
 ## License
 The scripts are licensed under the given license file. 3rd party software and
