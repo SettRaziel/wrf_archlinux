@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-03 17:20:53
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-04 14:55:45
+# @Last Modified time: 2020-04-04 14:58:16
 
 # Script that sets the required variables for the model installation
 # ${1}: the build path where the wrf model should be installed
@@ -31,7 +31,7 @@ export NCARG_ROOT="${DIR}/ncl"
 # Setting library versions for usage (last checked: 2020-04-04)
 export WRF_VERSION="4.1.5"            # latest: 4.1.5
 export WPS_VERSION="4.1"              # latest: 4.1
-export HDF_VERSION="1.12.0"           # latest: 1.12.0
+export HDF_VERSION="1.12"           # latest: 1.12.0
 export NETCDF_VERSION="4.7.2"         # latest: 4.7.2
 export NETCDF_FORTRAN_VERSION="4.5.2" # latest: 4.5.2
 export MPI_VERSION="3.3"              # latest: 3.3.0
