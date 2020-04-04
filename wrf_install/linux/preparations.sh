@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-26 14:21:00
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-04 14:52:35
+# @Last Modified time: 2020-04-04 15:12:30
 
 # ${1}: the folder relative to the home path where the files should be installed
 # ${2}: the marker if the installation should use local libraries
@@ -16,15 +16,15 @@ set -e
 # loads the majority of the required library, no jasper since version 2 has other buildsystem
 load_libraries() {
 # wget specified wrf version
-wget "https://github.com/wrf-model/WRF/archive/v${WRF_VERSION}.tar.gz"
+wget -O "WRFV${WRF_VERSION}.tar.gz" "https://github.com/wrf-model/WRF/archive/v${WRF_VERSION}.tar.gz"
 # wget specified wps version
-wget "https://github.com/wrf-model/WPS/archive/v${WPS_VERSION}.tar.gz"
+wget -O "WPSV${WPS_VERSION}.tar.gz" "https://github.com/wrf-model/WPS/archive/v${WPS_VERSION}.tar.gz"
 # wget specific hdf 5 version
 wget "https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-${HDF_VERSION}/hdf5-${HDF_VERSION}.0/src/hdf5-${HDF_VERSION}.0.tar.gz"
 # wget specified netcdf version
-wget "ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-${NETCDF_VERSION}.tar.gz"
+wget -O "netcdf-${NETCDF_VERSION}.tar.gz" "https://github.com/Unidata/netcdf-c/archive/v${NETCDF_VERSION}.tar.gz"
 # wget specified netcdf fortran bindings
-wget "ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-fortran-${NETCDF_FORTRAN_VERSION}.tar.gz"
+wget -O "netcdf-fortran-${NETCDF_FORTRAN_VERSION}.tar.gz" "https://github.com/Unidata/netcdf-fortran/archive/v${NETCDF_FORTRAN_VERSION}.tar.gz"
 # wget specified mpich version
 wget "http://www.mpich.org/static/downloads/${MPI_VERSION}/mpich-${MPI_VERSION}.tar.gz"
 # wget specified libpng version; can only retrieve latest
@@ -74,7 +74,4 @@ if [ "${2}" = '--local' -a -d "${LIBRARY_PATH}" ]; then
 else
 	printf "${YELLOW}Loading libraries: ${NC}\\n"
 	load_libraries
-	# rename tar gz from version to concrete identifier
-	mv "v${WRF_VERSION}.tar.gz" "WRFV${WRF_VERSION}.tar.gz"
-	mv "v${WPS_VERSION}.tar.gz" "WPSV${WPS_VERSION}.tar.gz"
 fi
