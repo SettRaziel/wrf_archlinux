@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-01 20:09:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-17 18:40:07
+# @Last Modified time: 2020-04-04 16:05:40
 
 # setting -e to abort on error
 set -e
@@ -26,7 +26,7 @@ tar xfv "WPSV${WPS_VERSION}.tar.gz"
 
 # Installing wps
 printf "%b\\nInstaling wps: %b\\n" "${YELLOW}" "${NC}"
-cd WPS || exit 1
+cd "WPS-${WPS_VERSION}" || exit 1
 ./configure
 
 # add additional libraries

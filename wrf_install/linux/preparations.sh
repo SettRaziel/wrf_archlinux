@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-26 14:21:00
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-04 15:12:30
+# @Last Modified time: 2020-04-04 15:19:59
 
 # ${1}: the folder relative to the home path where the files should be installed
 # ${2}: the marker if the installation should use local libraries
@@ -62,7 +62,7 @@ if [ "${2}" = '--local' -a -d "${LIBRARY_PATH}" ]; then
 	# check if required libraries are present
 	check_library "${LIBRARY_PATH}" "WRFV${WRF_VERSION}.tar.gz"
 	check_library "${LIBRARY_PATH}" "WPSV${WPS_VERSION}.tar.gz"
-	check_library "${LIBRARY_PATH}" "hdf5-${HDF_VERSION}.tar.gz"
+	check_library "${LIBRARY_PATH}" "hdf5-${HDF_VERSION}.0.tar.gz"
 	check_library "${LIBRARY_PATH}" "netcdf-${NETCDF_VERSION}.tar.gz"
 	check_library "${LIBRARY_PATH}" "netcdf-fortran-${NETCDF_FORTRAN_VERSION}.tar.gz"
 	check_library "${LIBRARY_PATH}" "mpich-${MPI_VERSION}.tar.gz"

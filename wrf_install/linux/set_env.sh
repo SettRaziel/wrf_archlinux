@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-03 17:20:53
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-04 15:07:57
+# @Last Modified time: 2020-04-04 17:00:41
 
 # Script that sets the required variables for the model installation
 # ${1}: the build path where the wrf model should be installed
@@ -38,3 +38,5 @@ export MPI_VERSION="3.3"              # latest: 3.3.0
 export LIBPNG_VERSION="1.6.37"        # latest: 1.6.37
 export ZLIB_VERSION="1.2.11"          # latest: 1.2.11
 export JASPER_VERSION="1.900.2"       # latest: 1.900.29 / 2.0.14
+
+export WRF_DIR="${1}/WRF-${WRF_VERSION}"
