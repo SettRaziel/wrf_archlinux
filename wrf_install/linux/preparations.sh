@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-26 14:21:00
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-17 18:38:48
+# @Last Modified time: 2020-04-04 14:38:40
 
 # ${1}: the folder relative to the home path where the files should be installed
 # ${2}: the marker if the installation should use local libraries
@@ -16,9 +16,9 @@ set -e
 # loads the majority of the required library, no jasper since version 2 has other buildsystem
 load_libraries() {
 # wget specified wrf version
-wget "http://www2.mmm.ucar.edu/wrf/src/WRFV${WRF_VERSION}.TAR.gz"
+wget "https://github.com/wrf-model/WRF/archive/v${WRF_VERSION}.tar.gz"
 # wget specified wps version
-wget "http://www2.mmm.ucar.edu/wrf/src/WPSV${WPS_VERSION}.TAR.gz"
+wget "https://github.com/wrf-model/WPS/archive/v${WPS_VERSION}.tar.gz"
 # wget specific hdf 5 version
 wget "https://support.hdfgroup.org/ftp/HDF5/current/src/hdf5-${HDF_VERSION}.tar.gz"
 # wget specified netcdf version
@@ -74,7 +74,7 @@ if [ "${2}" = '--local' -a -d "${LIBRARY_PATH}" ]; then
 else
 	printf "${YELLOW}Loading libraries: ${NC}\\n"
 	load_libraries
-	# rename tar gz to lower case endings
-	mv "WRFV${WRF_VERSION}.TAR.gz" "WRFV${WRF_VERSION}.tar.gz"
-	mv "WPSV${WPS_VERSION}.TAR.gz" "WPSV${WPS_VERSION}.tar.gz"
+	# rename tar gz from version to concrete identifier
+	mv "v${WRF_VERSION}.tar.gz" "WRFV${WRF_VERSION}.tar.gz"
+	mv "v${WPS_VERSION}.tar.gz" "WPSV${WPS_VERSION}.tar.gz"
 fi
