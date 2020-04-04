@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-26 14:21:00
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-04 14:38:40
+# @Last Modified time: 2020-04-04 14:52:35
 
 # ${1}: the folder relative to the home path where the files should be installed
 # ${2}: the marker if the installation should use local libraries
@@ -20,7 +20,7 @@ wget "https://github.com/wrf-model/WRF/archive/v${WRF_VERSION}.tar.gz"
 # wget specified wps version
 wget "https://github.com/wrf-model/WPS/archive/v${WPS_VERSION}.tar.gz"
 # wget specific hdf 5 version
-wget "https://support.hdfgroup.org/ftp/HDF5/current/src/hdf5-${HDF_VERSION}.tar.gz"
+wget "https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-${HDF_VERSION}/hdf5-${HDF_VERSION}.0/src/hdf5-${HDF_VERSION}.0.tar.gz"
 # wget specified netcdf version
 wget "ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-${NETCDF_VERSION}.tar.gz"
 # wget specified netcdf fortran bindings
