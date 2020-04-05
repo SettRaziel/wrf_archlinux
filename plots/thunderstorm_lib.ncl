@@ -44,8 +44,12 @@ begin
   pltres = True
   pltres@PanelPlot = True
   pltres@FramePlot = False
-  contour_tot = wrf_contour(data, wks, mcape, res)
-  plot = wrf_map_overlays(data, wks, contour_tot, pltres, mpres)
-  draw(plot)
-  frame(wks)
+  if(.not. any(ismissing(data)) .and. .not. any(ismissing(mcape))) then
+    contour_tot = wrf_contour(data, wks, mcape, res)
+    plot = wrf_map_overlays(data, wks, contour_tot, pltres, mpres)
+    draw(plot)
+    frame(wks)
+  else
+    print("Error drawing CAPE data for current timestamp")
+  end if
 end

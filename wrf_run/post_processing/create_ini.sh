@@ -2,11 +2,22 @@
 # @Author: Benjamin Held
 # @Date:   2017-04-09 19:25:16
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-15 13:27:39
+# @Last Modified time: 2020-02-17 20:10:05
+
+# define terminal colors
+source "${COLOR_PATH}"
 
 # script that generates a meta.ini for the minimal php gui
+# ${1}: the year for the model run
+# ${2}: the month for the model run
+# ${3}: the day for the model run
+# ${4}: the hour of the model run
+# ${5}: the timespan for the model run
+# ${6}: the destination folder of the output
+
+# parameter check
 if [ "$#" -ne 6 ]; then
-  echo "Wrong number of arguments. Must be one for <YEAR> <MONTH> <DAY> <HOUR> <PERIOD> <DEST_FOLDER>."
+  printf "%bWrong number of arguments. Must be one for <YEAR> <MONTH> <DAY> <HOUR> <PERIOD> <DEST_FOLDER>.%b\\n" "${RED}" "${NC}"
   exit 1
 fi
 
@@ -16,10 +27,11 @@ END_DATE=$(date -u +%s -d "${DATE} +${5} hour")
 
 FILEPATH="${6}/meta.ini"
 
+# function to write the content of the meta.ini
 print_ini() {
 echo start = "${START_DATE}"
 echo end = "${END_DATE}"
-echo period = $(expr ${1} \* 3600)
+echo period = "$((${1} * 3600))"
 echo
 
 echo 'locations[Han] = "Hannover, Germany"'

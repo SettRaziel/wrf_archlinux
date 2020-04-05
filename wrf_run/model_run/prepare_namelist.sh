@@ -2,20 +2,20 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-16 17:41:49
+# @Last Modified time: 2020-02-19 20:29:39
 
 # script to update the input parameter for a model run
-# $1: the path to the wrf root folder
-# $2: the year for the model run
-# $3: the month for the model run
-# $4: the day for the model run
-# $5: the hour of the model run
-# $6: the timespan for the model run
+# ${1}: the year for the model run
+# ${2}: the month for the model run
+# ${3}: the day for the model run
+# ${4}: the hour of the model run
+# ${5}: the timespan for the model run
 
+# setting -e to abort on error
 set -e
 
 # define terminal colors
-source ../../libs/terminal_color.sh
+source "${COLOR_PATH}"
 
 # error handling for input parameter
 if [ "$#" -ne 5 ]; then
@@ -36,8 +36,8 @@ END_MONTH=$(date '+%m' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_
 END_DAY=$(date '+%d' -u -d "${START_YEAR}-${START_MONTH}-${START_DAY} ${START_HOUR} +${PERIOD} hours")
 
 # calculating run time
-RUN_DAYS=$(expr ${PERIOD} / 24)
-RUN_HOURS=$(expr ${PERIOD} % 24)
+RUN_DAYS="$((PERIOD / 24))"
+RUN_HOURS="$((PERIOD % 24))"
 
 # grid parameters
 DT=80
