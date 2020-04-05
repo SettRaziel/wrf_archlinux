@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 09:26:31
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-19 20:29:23
+# @Last Modified time: 2020-04-05 15:00:22
 
 # Script to run the preprocessing operations
 
@@ -17,7 +17,7 @@ else
 fi
 
 # remove previous output files
-for FILE_NAME in "${BUILD_PATH}"/WRF/test/em_real/wrfrst_*; do
+for FILE_NAME in "${WRF_DIR}"/test/em_real/wrfrst_*; do
   [ -e "${FILE_NAME}" ] && rm "${FILE_NAME}"
 done
 rm "${HOME}"/wrf_output/wrfout_*

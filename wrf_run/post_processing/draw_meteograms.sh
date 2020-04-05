@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-19 20:30:10
+# @Last Modified time: 2020-04-05 15:03:48
 
 # script to generate output meteograms from a model run
 # ${1}: the year for the model run
@@ -21,7 +21,7 @@ generate_meteogram () {
   INPUT_FILE=${2}.d01.TS
 
   # move required meteogram files to output folder
-  mv "${BUILD_PATH}/WRF/test/em_real/${LOC_SHORTCUT}".* "${HOME}/wrf_output"
+  mv "${WRF_DIR}/test/em_real/${LOC_SHORTCUT}".* "${HOME}/wrf_output"
 
   ncl time_array="${LEGEND_ARRAY}" ticks="${TICK_ARRAY}" sticks="${STICK_ARRAY}" title=\""${METEO_TITLE}"\" input=\""${INPUT_FILE}"\" plot_T_timeline  >> "${DEBUG_LOG}"
   ncl time_array="${LEGEND_ARRAY}" ticks="${TICK_ARRAY}" sticks="${STICK_ARRAY}" title=\""${METEO_TITLE}"\" input=\""${INPUT_FILE}"\" plot_meteogram  >> "${DEBUG_LOG}"
