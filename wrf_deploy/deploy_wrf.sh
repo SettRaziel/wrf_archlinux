@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-11-15 18:08:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-21 16:45:27
+# @Last Modified time: 2020-04-06 17:51:12
 
 # main script to deploy a pre compiled version of wrf
 # Version 0.4.4
@@ -34,5 +34,5 @@ sh create_directories.sh
 source ./load_geodata.sh
 cd "${SCRIPT_PATH}"
 
-# load and unpack the wrf archive, version 4.0.2
+# load and unpack the wrf archive, default version 4.1.5
 sh load_wrf.sh
