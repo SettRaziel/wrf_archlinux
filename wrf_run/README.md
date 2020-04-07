@@ -18,6 +18,7 @@ see LICENSE
 
 ## Run options
 * build directory: set correct directory in run_model.sh
+* WRF / WPS Version when unsing different versions that the latest development: set value in set_ent.sh
 * run parameter for namelists: adjust them in prepare_namelist.sh
   - horizontal grid size: grid_dx, grid_dy
   - horitontal grid resolution: dx, dy
