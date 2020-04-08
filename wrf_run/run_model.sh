@@ -2,10 +2,10 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-05 15:05:06
+# @Last Modified time: 2020-04-08 17:57:01
 
 # main script for starting a wrf model run
-# Version 0.4.4
+# Version 0.4.5
 # created by Benjamin Held and other sources, June 2017
 # Two possible parameter sets:
 # <START_HOUR> <PERIOD> <RESOLUTION> <PERIOD>
