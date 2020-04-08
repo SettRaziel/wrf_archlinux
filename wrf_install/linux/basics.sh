@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 19:47:48
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-17 18:37:38
+# @Last Modified time: 2020-04-05 10:43:04
 
 # setting -e to abort on error
 set -e
@@ -15,7 +15,7 @@ source ../../libs/terminal_color.sh
 # Start from home directory
 cd "${HOME}" || exit 1
 
-sudo pacman -Sy --needed make pkg-config fakeroot
+sudo pacman -Sy --needed make pkg-config fakeroot m4
 
 printf "%bInstalling yay as package helper... \\n%b" "${YELLOW}" "${NC}"
 # Prepare git package

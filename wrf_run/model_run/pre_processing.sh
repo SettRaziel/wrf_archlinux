@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-07 19:02:57
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-15 22:00:54
+# @Last Modified time: 2020-04-05 15:02:25
 
 # Script to start the model run
 # ${1}: the path to the gfs data
@@ -29,7 +29,7 @@ now=$(date +"%T")
 printf "Starting preprocessing at %s.\\n" "${now}" >> "${INFO_LOG}"
 
 # opening wps folder
-cd "${BUILD_PATH}/WPS" || exit 1
+cd "${WPS_DIR}" || exit 1
 
 # preprocessing static data: elevation data and geo data
 printf "%bpreprocessing static data (geogrid.exe): %b\\n" "${YELLOW}" "${NC}"
@@ -48,13 +48,13 @@ printf "Starting wrf run at %s.\\n" "${now}" >> "${INFO_LOG}"
 
 # vertical interpolation preprocessing
 printf "%bdoing vertical interpolation (real.exe): %b\\n" "${YELLOW}" "${NC}"
-cd "${BUILD_PATH}/WRF/test/em_real" || exit 1
-ln -sf ../../../WPS/met_em.* .
+cd "${WRF_DIR}/test/em_real" || exit 1
+ln -sf "${WPS_DIR}"/met_em.* .
 ./real.exe
 cp rsl.error.0000 real_error.log
 
 printf "%bstarting wrf run ... %b\\n" "${YELLOW}" "${NC}"
-cd "${BUILD_PATH}/WRF/test/em_real" || exit 1
+cd "${WRF_DIR}/test/em_real" || exit 1
 mpirun ./wrf.exe
 
 # logging time stamp

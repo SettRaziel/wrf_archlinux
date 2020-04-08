@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-03 17:20:53
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-15 21:58:12
+# @Last Modified time: 2020-04-05 17:52:37
 
 # Script that sets the required variables for the model run
 # ${1}: the build path relativ from ${HOME} where the required wrf files
@@ -38,6 +38,12 @@ export JASPERLIB="${DIR}/grib2/lib"
 export JASPERINC="${DIR}/grib2/include"
 # Adding shared libraries
 export LD_LIBRARY_PATH="${DIR}/hdf5/lib:${DIR}/netcdf/lib:${LD_LIBRARY_PATH}"
+
+# Version and directory variables
+export WRF_VERSION="4.1.5"
+export WPS_VERSION="4.1"
+export WRF_DIR="${BUILD_PATH}/WRF-${WRF_VERSION}"
+export WPS_DIR="${BUILD_PATH}/WPS-${WPS_VERSION}"
 
 # optional: required when using ncl unpacked in the library folder
 export NCARG_ROOT="${DIR}/ncl"

@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-21 16:45:08
+# @Last Modified time: 2020-04-05 15:05:06
 
 # main script for starting a wrf model run
 # Version 0.4.4
@@ -79,7 +79,7 @@ printf "Starting model run and preparation.\\n" >> "${STATUS_LOG}"
 sh run_preprocessing.sh "${GFS_PATH}" "${RESOLUTION}"; RET=${?}
 cd "${SCRIPT_PATH}" || error_exit "Failed cd to script path"
 if ! [ ${RET} -eq 0 ]; then
-    cd "${BUILD_PATH}/WRF/test/em_real/" || error_exit "Failed cd to WRF folder"
+    cd "${WRF_DIR}/test/em_real/" || error_exit "Failed cd to WRF folder"
     rm wrfout_d01_*
     error_exit "Failed to run the model"
 fi
@@ -88,7 +88,7 @@ fi
 cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd to model_run"
 sh clean_up_output.sh; RET=${?}
 if [ ${RET} -eq 0 ]; then
-  mv "${BUILD_PATH}"/WRF/test/em_real/wrfout_d01_* "${HOME}/wrf_output"
+  mv "${WRF_DIR}"/test/em_real/wrfout_d01_* "${HOME}/wrf_output"
 else
     error_exit "Error while cleaning up previous output files"
 fi

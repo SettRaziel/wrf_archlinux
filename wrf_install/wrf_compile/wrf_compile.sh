@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-18 15:49:25
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-17 18:41:38
+# @Last Modified time: 2020-04-05 11:15:09
 
 # setting -e to abort on error
 set -e
@@ -24,12 +24,10 @@ printf "%b\\nUnpacking wrf.tar files: %b\\n" "${YELLOW}" "${NC}"
 tar xfv "WRFV${WRF_VERSION}.tar.gz"
 
 # Build wrf
-cd WRF || exit 1
+cd "WRF-${WRF_VERSION}" || exit 1
 printf "%b\\nInstaling wrf: %b\\n" "${YELLOW}" "${NC}"
-# Change the path according to the used user; configure requires an absolute
-# path here or it fails with an error
+# link the cpp file to the correct folder or configure will fail in not finding it
 sudo ln -s /bin/cpp /lib/cpp
-ln -s ${2}/WRF/frame/ ${2}/WRF/external/
 ./configure
 ./clean
 

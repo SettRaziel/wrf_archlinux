@@ -19,6 +19,7 @@ are requried to run the model on your own hardware.
 * libraries: adjust the number of used cores by changing the -j parameter
 * starting with WRF v3.9 the model can use a hybrid approach for the vertical coordinate
   (see manual for details); atm the corresponding parameter -hyb needs to be set manually
+* different library version or WRF/WPS versions: adjusted version numbers in set_env.sh; this may lead to untested conflicts, so handle with care!
 * postprocessing options:
   - ncl is the default postprocessing tool that will be installed automatically at the moment. Since it was set to maintance mode in Sep. 2019 a
     replacement is needed. If you still want to use it you need to install a version of gcc 6, e.g. 

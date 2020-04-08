@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 21:06:12
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-17 18:53:34
+# @Last Modified time: 2020-04-04 15:38:48
 
 # installation of the netcdf package
 # ${1}: path to the installation folder
@@ -18,11 +18,11 @@ cd "${HOME}/${1}" || exit 1
 
 # installing the hdf 5 dependency
 printf "%b\\nUnpacking hdf5.tar files: %b\\n" "${YELLOW}" "${NC}"
-tar xfv "hdf5-${HDF_VERSION}.tar.gz"
+tar xfv "hdf5-${HDF_VERSION}.0.tar.gz"
 
 # Installing hdf5 library
 printf "%b\\nInstalling hdf5: %b\\n" "${YELLOW}" "${NC}"
-cd "hdf5-${HDF_VERSION}" || exit 1
+cd "hdf5-${HDF_VERSION}.0" || exit 1
 env LIBS="-lgcc_s" ./configure --enable-fortran --enable-fortran2003 --prefix="${DIR}/hdf5"
 make -j 2 && make install -j 2
 
@@ -37,7 +37,7 @@ tar xfv "netcdf-${NETCDF_VERSION}.tar.gz"
 
 # Installing netcdf library
 printf "%b\\nInstalling netcdf: %b\\n" "${YELLOW}" "${NC}"
-cd "netcdf-${NETCDF_VERSION}"
+cd "netcdf-c-${NETCDF_VERSION}"
 ./configure --prefix="${DIR}/netcdf" 
 make -j 2 &&  make install -j 2
 
@@ -45,6 +45,6 @@ cd .. || exit 1
 
 # cleanup
 rm "netcdf-${NETCDF_VERSION}.tar.gz"
-rm "hdf5-${HDF_VERSION}.tar.gz"
+rm "hdf5-${HDF_VERSION}.0.tar.gz"
 
 printf "%b\\nFinished installing netcdf. %b\\n" "${LIGHT_BLUE}" "${NC}"

@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 09:26:31
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-19 20:29:23
+# @Last Modified time: 2020-04-06 13:17:23
 
 # Script to run the preprocessing operations
 
@@ -17,13 +17,13 @@ else
 fi
 
 # remove previous output files
-for FILE_NAME in "${BUILD_PATH}"/WRF/test/em_real/wrfrst_*; do
-  [ -e "${FILE_NAME}" ] && rm "${FILE_NAME}"
-done
-rm "${HOME}"/wrf_output/wrfout_*
-rm "${HOME}"/wrf_output/*.PH
-rm "${HOME}"/wrf_output/*.QV
-rm "${HOME}"/wrf_output/*.TH
-rm "${HOME}"/wrf_output/*.TS
-rm "${HOME}"/wrf_output/*.UU
-rm "${HOME}"/wrf_output/*.VV
+find "${WRF_DIR}"/test/em_real/  -name 'wrfrst_*' -exec rm {} \;
+find "${HOME}"/wrf_output -name 'wrfout_*' -exec rm {} \;
+find "${HOME}"/wrf_output -name '*.PH' -exec rm {} \;
+find "${HOME}"/wrf_output -name '*.PR' -exec rm {} \;
+find "${HOME}"/wrf_output -name '*.QV' -exec rm {} \;
+find "${HOME}"/wrf_output -name '*.TH' -exec rm {} \;
+find "${HOME}"/wrf_output -name '*.TS' -exec rm {} \;
+find "${HOME}"/wrf_output -name '*.UU' -exec rm {} \;
+find "${HOME}"/wrf_output -name '*.VV' -exec rm {} \;
+find "${HOME}"/wrf_output -name '*.WW' -exec rm {} \;
