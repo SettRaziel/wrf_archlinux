@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-08 17:57:01
+# @Last Modified time: 2020-04-12 17:20:30
 
 # main script for starting a wrf model run
 # Version 0.4.5
@@ -50,7 +50,7 @@ else
   exit 1
 fi
 
-LCK="./lock.file";
+LCK="${SCRIPT_PATH}/lock.file";
 exec 42>${LCK};
 
 flock -x 42;
