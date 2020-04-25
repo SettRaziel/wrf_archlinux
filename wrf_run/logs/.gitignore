@@ -1,0 +1,3 @@
+# ignore log and info files
+*.log
+*.info

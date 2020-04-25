@@ -3,7 +3,7 @@
 ## License
 see LICENSE
 
-## Additional run prepartions
+## Additional run preparations
 * load geodata for the model
   - WRF version 3: [Link](http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog_V3.html)
   - WRF Version 4: [Link](http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html)
@@ -12,9 +12,13 @@ see LICENSE
     * 2, 5 or 10 arc-minutes
   - for WRF version 3 no all resolutions are available in the coarse or fine resolution packs, they can
     be downloaded manually and needed to be copied into the geodata folder
+  - make sure that you have installed the required packages, especially a compatible fortran compiler (see deployment
+    or install scripts for details). The run script does not check if all requried dependencies are installed, since
+    it assumes that at least the deploy scripts are used to setup a running environment!
 
 ## Run options
 * build directory: set correct directory in run_model.sh
+* WRF / WPS Version when unsing different versions that the latest development: set value in set_ent.sh
 * run parameter for namelists: adjust them in prepare_namelist.sh
   - horizontal grid size: grid_dx, grid_dy
   - horitontal grid resolution: dx, dy
@@ -22,6 +26,16 @@ see LICENSE
   - start time stamp
 * addition grid parameter: directly in namelist in required
   - vertical grid size: grid_dz
+
+## Usage
+Call the run script
+```
+    ./run_model.sh <input_model_run> <forecast_time> <input_resolution>
+    e.g. ./run_model.sh 00 84 0p50
+```
+* input_model_run: {00, 06, 12, 18}
+* forecast_time: hours as integer, no whole days (see known issues)
+* input_resolution: {0p25, 0p50, 1p00}
 
 ## Known issues
 * Since the model creates intermediate output every 3 hours (configurable in namelist.input)

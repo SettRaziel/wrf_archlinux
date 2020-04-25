@@ -2,47 +2,49 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 21:06:12
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-06-17 20:08:46
+# @Last Modified time: 2020-04-04 15:38:48
 
 # installation of the netcdf package
-# $1: path to the installation folder
+# ${1}: path to the installation folder
+
+# setting -e to abort on error
+set -e
 
 # define terminal colors
 source ../../libs/terminal_color.sh
 
 # Script to compile the required netcdf package
-cd ${HOME}/${1}
+cd "${HOME}/${1}" || exit 1
 
 # installing the hdf 5 dependency
-printf "${YELLOW}\nUnpacking hdf5.tar files: ${NC}\n"
-tar xfv hdf5-${HDF_VERSION}.tar.gz
+printf "%b\\nUnpacking hdf5.tar files: %b\\n" "${YELLOW}" "${NC}"
+tar xfv "hdf5-${HDF_VERSION}.0.tar.gz"
 
 # Installing hdf5 library
-printf "${YELLOW}\nInstalling hdf5: ${NC}\n"
-cd hdf5-${HDF_VERSION}
-setenv LIBS="-lgcc_s"
-./configure --enable-fortran --enable-fortran2003 --prefix=${DIR}/hdf5
+printf "%b\\nInstalling hdf5: %b\\n" "${YELLOW}" "${NC}"
+cd "hdf5-${HDF_VERSION}.0" || exit 1
+env LIBS="-lgcc_s" ./configure --enable-fortran --enable-fortran2003 --prefix="${DIR}/hdf5"
 make -j 2 && make install -j 2
 
-cd ..
+cd .. || exit 1
 
 export LDFLAGS="${LDFLAGS} -L${DIR}/hdf5/lib"
 export CPPFLAGS="${CPPFLAGS} -I${DIR}/hdf5/include"
 
 # Unpacking netcdf files
-printf "${YELLOW}\nUnpacking netcdf.tar files: ${NC}\n"
-tar xfv netcdf-${NETCDF_VERSION}.tar.gz
+printf "%b\\nUnpacking netcdf.tar files: %b\\n" "${YELLOW}" "${NC}"
+tar xfv "netcdf-${NETCDF_VERSION}.tar.gz"
 
 # Installing netcdf library
-printf "${YELLOW}\nInstalling netcdf: ${NC}\n"
-cd netcdf-${NETCDF_VERSION}
-./configure --prefix=${DIR}/netcdf 
+printf "%b\\nInstalling netcdf: %b\\n" "${YELLOW}" "${NC}"
+cd "netcdf-c-${NETCDF_VERSION}"
+./configure --prefix="${DIR}/netcdf" 
 make -j 2 &&  make install -j 2
 
-cd ..
+cd .. || exit 1
 
 # cleanup
-rm netcdf-${NETCDF_VERSION}.tar.gz
-rm hdf5-${HDF_VERSION}.tar.gz
+rm "netcdf-${NETCDF_VERSION}.tar.gz"
+rm "hdf5-${HDF_VERSION}.0.tar.gz"
 
-printf "${LIGHT_BLUE}\nFinished installing netcdf. ${NC}\n"
+printf "%b\\nFinished installing netcdf. %b\\n" "${LIGHT_BLUE}" "${NC}"

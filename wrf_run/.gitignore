@@ -1,4 +1,2 @@
 # lock file during modelrun
 lock.file
-# folder for wrf run logs
-logs/
