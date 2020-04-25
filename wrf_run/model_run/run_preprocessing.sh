@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 09:26:31
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-05 15:03:21
+# @Last Modified time: 2020-04-25 17:40:36
 
 # script to run the necessary preprocessing steps before starting the wrf run
 # ${1}: the path to the gfs input data
@@ -23,13 +23,12 @@ RESOLUTION=${2}
 
 # cleaning up in wps preprocessing folder
 SCRIPT_PATH=$(pwd)
-now=$(date +"%T")
 if [ -z "${LOG_PATH}" ]; then
   printf " Log path is not set, exiting with error."
   exit 1
 fi
 
-printf "Cleaning up wps data from last time at %s\\n" "${now}" >> "${INFO_LOG}"
+printf "Cleaning up wps data from last time at %s\\n" "$(date +"%T")" >> "${INFO_LOG}"
 if [ -z "${BUILD_PATH}" ]; then
   printf " Build path is not set, exiting with error."
   exit 1
@@ -47,8 +46,7 @@ rm FILE*
 rm PFILE*
 
 # cleaning up in wrf
-now=$(date +"%T")
-printf "Cleaning up wrf data from last time at %s\\n" "${now}" >> "${INFO_LOG}"
+printf "Cleaning up wrf data from last time at %s\\n" "$(date +"%T")" >> "${INFO_LOG}"
 cd "${WRF_DIR}/test/em_real/" || exit 1
 
 # remove met_em files from the last run

@@ -2,9 +2,9 @@
 # @Author: benjamin
 # @Date:   2017-09-06 21:17:50
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-15 21:57:50
+# @Last Modified time: 2020-04-25 17:39:12
 
-# script to generate a notifiaction email if the model run ends
+# script to generate a notification email if the model run ends
 # ${1}: the year for the model run
 # ${2}: the month for the model run
 # ${3}: the day for the model run
@@ -41,8 +41,8 @@ HOUR=${4}
 REASON=${5}
 RESULT=${6}
 
-touch ${FILENAME}
-create_mail > ${FILENAME}
+touch "${FILENAME}"
+create_mail > "${FILENAME}"
 
-cat ${FILENAME} | msmtp -a default mail@recipient.domain
-rm ${FILENAME}
+cat "${FILENAME}" | msmtp -a default mail@recipient.domain
+rm "${FILENAME}"

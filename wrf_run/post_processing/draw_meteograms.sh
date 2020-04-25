@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-05 15:03:48
+# @Last Modified time: 2020-04-25 17:39:57
 
 # script to generate output meteograms from a model run
 # ${1}: the year for the model run
@@ -48,8 +48,7 @@ if [ "$#" -ne 6 ]; then
 fi
 
 # logging time stamp
-now=$(date +"%T")
-printf "Starting meteograms at %s.\\n" "${now}" >> "${INFO_LOG}"
+printf "Starting meteograms at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
 
 cd "${HOME}/wrf_output" || exit 1
 
@@ -89,5 +88,4 @@ generate_meteogram "Ith-Zeltplatz,_NDS_${START_DATE}" "Ith"
 generate_meteogram "Husum,_SH_${START_DATE}" "Hus"
 
 # logging time stamp
-now=$(date +"%T")
-printf "Finished meteograms at %s.\\n" "${now}" >> "${INFO_LOG}"
+printf "Finished meteograms at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"

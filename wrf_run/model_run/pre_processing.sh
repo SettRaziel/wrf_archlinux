@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-07 19:02:57
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-05 15:02:25
+# @Last Modified time: 2020-04-25 17:41:05
 
 # Script to start the model run
 # ${1}: the path to the gfs data
@@ -25,8 +25,7 @@ GFS_PATH=${1}
 RESOLUTION=${2}
 
 # starting preprocessing steps
-now=$(date +"%T")
-printf "Starting preprocessing at %s.\\n" "${now}" >> "${INFO_LOG}"
+printf "Starting preprocessing at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
 
 # opening wps folder
 cd "${WPS_DIR}" || exit 1
@@ -43,8 +42,7 @@ LD_LIBRARY_PATH="${DIR}/grib2/lib" ./ungrib.exe >> "${DEBUG_LOG}"
 ./metgrid.exe >> "${DEBUG_LOG}"
 
 # starting wrf steps
-now=$(date +"%T")
-printf "Starting wrf run at %s.\\n" "${now}" >> "${INFO_LOG}"
+printf "Starting wrf run at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
 
 # vertical interpolation preprocessing
 printf "%bdoing vertical interpolation (real.exe): %b\\n" "${YELLOW}" "${NC}"
@@ -58,5 +56,4 @@ cd "${WRF_DIR}/test/em_real" || exit 1
 mpirun ./wrf.exe
 
 # logging time stamp
-now=$(date +"%T")
-printf "Finished wrf run at %s.\\n" "${now}" >> "${INFO_LOG}"
+printf "Finished wrf run at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"

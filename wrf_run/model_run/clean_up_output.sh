@@ -2,18 +2,17 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 09:26:31
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-06 13:17:23
+# @Last Modified time: 2020-04-25 17:41:24
 
 # Script to run the preprocessing operations
 
 # setting -e to abort on error
 set -e
 
-now=$(date +"%T")
 if [ -z "${LOG_PATH}" ]; then
-  printf "Cleaning up output data from last time at %s\\n" "${now}"
+  printf "Cleaning up output data from last time at %s\\n" "$(date +"%T")"
 else 
-	printf "Cleaning up output data from last time at %s\\n" "${now}" >> "${INFO_LOG}"
+	printf "Cleaning up output data from last time at %s\\n" "$(date +"%T")" >> "${INFO_LOG}"
 fi
 
 # remove previous output files
