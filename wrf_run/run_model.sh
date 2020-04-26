@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-13 10:29:50
+# @Last Modified time: 2020-04-26 09:33:24
 
 # main script for starting a wrf model run
 # Version 0.4.5
@@ -56,6 +56,7 @@ exec 42>"${LCK}";
 flock -x 42;
 # preparing status file
 printf "Starting new model run for: %s/%s/%s %s:00 UTC at $(date +"%T").\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" > "${STATUS_LOG}"
+printf "Starting new model run for: %s/%s/%s %s:00 UTC at $(date +"%T").\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" > "${INFO_LOG}"
 
 # adjusting namelist for next run
 cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd namelist"
@@ -75,8 +76,15 @@ fi
 
 # start model run
 cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd start model_run"
-printf "Starting model run and preparation at $(date +"%T").\\n" >> "${STATUS_LOG}"
-sh run_preprocessing.sh "${GFS_PATH}" "${RESOLUTION}"; RET=${?}
+printf "Starting model run preparation at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
+sh run_preprocessing.sh; RET=${?}
+if ! [ ${RET} -eq 0 ]; then
+    error_exit "Failed preparations for the model run"
+fi
+
+cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd start model_run"
+printf "Starting model run at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
+sh run_wrfmodel.sh "${GFS_PATH}" "${RESOLUTION}"; RET=${?}
 cd "${SCRIPT_PATH}" || error_exit "Failed cd to script path"
 if ! [ ${RET} -eq 0 ]; then
     cd "${WRF_DIR}/test/em_real/" || error_exit "Failed cd to WRF folder"

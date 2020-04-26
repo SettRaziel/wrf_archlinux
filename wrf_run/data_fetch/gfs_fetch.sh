@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-06 19:18:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-25 17:41:49
+# @Last Modified time: 2020-04-26 09:10:32
 
 # This script loads the required input data for a 180 h forecast run
 # ${1} matches the required date yyyymmdd
@@ -50,12 +50,12 @@ if [ "$#" -ne 5 ]; then
 fi
 
 # logging time stamp
-printf "Starting gfs data fetch by removing old files at %s.\\n" "$(date +"%T")" > "${INFO_LOG}"
+printf "Starting gfs data fetch by removing old files at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
 
 # Remove old gfs files
 rm "${3}"/gfs.*
 
-printf "Starting gfs data fetching at %s.\\n" "$(date +"%T")" > "${INFO_LOG}"
+printf "Starting gfs data fetching at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
 
 # use fetch via curl at this point
 gfs_fetch_curl "${1}" "${2}" "${3}" "${4}" "${5}"

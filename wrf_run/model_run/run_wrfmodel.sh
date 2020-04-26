@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-07 19:02:57
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-25 17:41:05
+# @Last Modified time: 2020-04-26 09:21:27
 
 # Script to start the model run
 # ${1}: the path to the gfs data
@@ -52,6 +52,7 @@ ln -sf "${WPS_DIR}"/met_em.* .
 cp rsl.error.0000 real_error.log
 
 printf "%bstarting wrf run ... %b\\n" "${YELLOW}" "${NC}"
+printf "Starting wrf run at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
 cd "${WRF_DIR}/test/em_real" || exit 1
 mpirun ./wrf.exe
 
