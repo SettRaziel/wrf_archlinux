@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-07 19:02:57
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-26 09:21:27
+# @Last Modified time: 2020-04-26 10:42:59
 
 # Script to start the model run
 # ${1}: the path to the gfs data
@@ -41,16 +41,15 @@ ln -sf ungrib/Variable_Tables/Vtable.GFS ./Vtable
 LD_LIBRARY_PATH="${DIR}/grib2/lib" ./ungrib.exe >> "${DEBUG_LOG}"
 ./metgrid.exe >> "${DEBUG_LOG}"
 
-# starting wrf steps
-printf "Starting wrf run at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
-
 # vertical interpolation preprocessing
 printf "%bdoing vertical interpolation (real.exe): %b\\n" "${YELLOW}" "${NC}"
+printf "Starting real interpolation at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
 cd "${WRF_DIR}/test/em_real" || exit 1
 ln -sf "${WPS_DIR}"/met_em.* .
 ./real.exe
 cp rsl.error.0000 real_error.log
 
+# starting wrf
 printf "%bstarting wrf run ... %b\\n" "${YELLOW}" "${NC}"
 printf "Starting wrf run at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
 cd "${WRF_DIR}/test/em_real" || exit 1

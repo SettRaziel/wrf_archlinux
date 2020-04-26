@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-26 09:33:24
+# @Last Modified time: 2020-04-26 10:51:09
 
 # main script for starting a wrf model run
 # Version 0.4.5
@@ -55,12 +55,12 @@ exec 42>"${LCK}";
 
 flock -x 42;
 # preparing status file
-printf "Starting new model run for: %s/%s/%s %s:00 UTC at $(date +"%T").\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" > "${STATUS_LOG}"
-printf "Starting new model run for: %s/%s/%s %s:00 UTC at $(date +"%T").\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" > "${INFO_LOG}"
+printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%T")" > "${STATUS_LOG}"
+printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%T")" > "${INFO_LOG}"
 
 # adjusting namelist for next run
 cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd namelist"
-printf "Starting namelist preparation at $(date +"%T").\\n" >> "${STATUS_LOG}"
+printf "Starting namelist preparation at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
 sh prepare_namelist.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${PERIOD}"; RET=${?}
 if ! [ ${RET} -eq 0 ]; then
   error_exit "Failed to prepare the namelist files"
@@ -68,7 +68,7 @@ fi
 
 # fetching input data
 cd "${SCRIPT_PATH}/data_fetch" || error_exit "Failed cd data_fetch"
-printf "Starting data fetching at $(date +"%T").\n" >> "${STATUS_LOG}"
+printf "Starting data fetching at %s.\n" "$(date +"%T")" >> "${STATUS_LOG}"
 sh gfs_fetch.sh "${YEAR}${MONTH}${DAY}" "${HOUR}" "${GFS_PATH}" "${RESOLUTION}" "${PERIOD}"; RET=${?}
 if ! [ ${RET} -eq 0 ]; then
   error_exit "Failed to prepare the namelist files"
@@ -103,10 +103,10 @@ fi
 
 # run output script
 cd "${SCRIPT_PATH}/post_processing" || error_exit "Failed cd postprocessing"
-printf "Starting postprocessing at $(date +"%T").\\n" >> "${STATUS_LOG}"
+printf "Starting postprocessing at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
 sh draw_plots.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${PERIOD}"; RET=${?}
 if [ ${RET} -eq 0 ]; then
-  printf "Starting archive generation at $(date +"%T").\\n" >> "${STATUS_LOG}"
+  printf "Starting archive generation at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
   cd "${HOME}/wrf_output" || error_exit "Failed cd to model_output"
   #tar czf wrfout_${YEAR}_${MONTH}_${DAY}_${HOUR}.tar.gz wrfout_d01_* Han.d01.* Ith.d01.*
   #mv wrfout_${YEAR}_${MONTH}_${DAY}_${HOUR}.tar.gz history/
@@ -117,4 +117,4 @@ fi
 # finish up model run and send notification mail
 cd "${SCRIPT_PATH}" || error_exit "Failed cd finish mail"
 sh create_mail.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "Finished model run without error." "Success"
-printf "Finished model run without error at $(date +"%T").\\n" >> "${STATUS_LOG}"
+printf "Finished model run without error at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
