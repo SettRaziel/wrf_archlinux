@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-26 10:51:09
+# @Last Modified time: 2020-04-28 17:40:09
 
 # main script for starting a wrf model run
 # Version 0.4.5
@@ -68,7 +68,7 @@ fi
 
 # fetching input data
 cd "${SCRIPT_PATH}/data_fetch" || error_exit "Failed cd data_fetch"
-printf "Starting data fetching at %s.\n" "$(date +"%T")" >> "${STATUS_LOG}"
+printf "Starting data fetching at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
 sh gfs_fetch.sh "${YEAR}${MONTH}${DAY}" "${HOUR}" "${GFS_PATH}" "${RESOLUTION}" "${PERIOD}"; RET=${?}
 if ! [ ${RET} -eq 0 ]; then
   error_exit "Failed to prepare the namelist files"
