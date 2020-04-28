@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 09:26:31
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-26 09:29:40
+# @Last Modified time: 2020-04-28 13:39:19
 
 # script to run the necessary preprocessing steps before starting the wrf run
 
@@ -10,7 +10,7 @@
 set -e
 
 # define terminal colors
-source "${COLOR_PATH}"
+. "${COLOR_PATH}"
 
 # cleaning up in wps preprocessing folder
 if [ -z "${LOG_PATH}" ]; then

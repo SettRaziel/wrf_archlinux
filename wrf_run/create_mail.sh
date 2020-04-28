@@ -2,7 +2,7 @@
 # @Author: benjamin
 # @Date:   2017-09-06 21:17:50
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-25 17:39:12
+# @Last Modified time: 2020-04-28 13:39:45
 
 # script to generate a notification email if the model run ends
 # ${1}: the year for the model run
@@ -13,7 +13,7 @@
 # ${6}: the outcome of the model run {Success, Fail}
 
 # define terminal colors
-source "${COLOR_PATH}"
+. "${COLOR_PATH}"
 
 # error handling for input parameter
 if [ "$#" -ne 6 ]; then

@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-06 19:18:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-26 09:10:32
+# @Last Modified time: 2020-04-28 13:38:47
 
 # This script loads the required input data for a 180 h forecast run
 # ${1} matches the required date yyyymmdd
@@ -12,7 +12,7 @@
 # ${5} the time period for the model run
 
 # define terminal colors
-source "${COLOR_PATH}"
+. "${COLOR_PATH}"
 
 # function to fetch the input data with curl
 gfs_fetch_curl () {

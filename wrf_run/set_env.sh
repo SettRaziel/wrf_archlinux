@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-03 17:20:53
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-05 17:52:37
+# @Last Modified time: 2020-04-28 13:40:21
 
 # Script that sets the required variables for the model run
 # ${1}: the build path relativ from ${HOME} where the required wrf files
@@ -11,7 +11,7 @@
 
 # define terminal colors
 export COLOR_PATH="${2}/../libs/terminal_color.sh"
-source "${COLOR_PATH}"
+. "${COLOR_PATH}"
 
 # error handling for input parameter
 if [ "$#" -ne 2 ]; then
