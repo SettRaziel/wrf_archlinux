@@ -2,57 +2,40 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 09:26:31
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-05 15:03:21
+# @Last Modified time: 2020-04-28 13:39:19
 
 # script to run the necessary preprocessing steps before starting the wrf run
-# ${1}: the path to the gfs input data
-# ${2}: the resolution of the input data
+
+# setting -e to abort on error
+set -e
 
 # define terminal colors
-source "${COLOR_PATH}"
-
-# error handling for input parameter
-if [ "$#" -ne 2 ]; then
-  printf "%bWrong number of arguments. Must be one for <GFS_PATH> <GEO_RESOLUTION>.%b\\n" "${RED}" "${NC}"
-  exit 1
-fi
-
-# variable declaration
-GFS_PATH=${1}
-RESOLUTION=${2}
+. "${COLOR_PATH}"
 
 # cleaning up in wps preprocessing folder
-SCRIPT_PATH=$(pwd)
-now=$(date +"%T")
 if [ -z "${LOG_PATH}" ]; then
   printf " Log path is not set, exiting with error."
   exit 1
 fi
 
-printf "Cleaning up wps data from last time at %s\\n" "${now}" >> "${INFO_LOG}"
+printf "Cleaning up wps data from last time at %s\\n" "$(date +"%T")" >> "${INFO_LOG}"
 if [ -z "${BUILD_PATH}" ]; then
   printf " Build path is not set, exiting with error."
   exit 1
 fi
-cd "${WPS_DIR}" || exit 1
 
 # remove met_em files from the last run
-rm met_em.d01.*
+find "${WPS_DIR}" -name 'met_em.d01.*' -exec rm {} \;
 
 # remove grib files
-rm GRIB*
+find "${WPS_DIR}" -name 'GRIB*' -exec rm {} \;
 
 # remove FILE objects of the time stamps
-rm FILE*
-rm PFILE*
+find "${WPS_DIR}" -name 'FILE*' -exec rm {} \;
+find "${WPS_DIR}" -name 'PFILE*' -exec rm {} \;
 
 # cleaning up in wrf
-now=$(date +"%T")
-printf "Cleaning up wrf data from last time at %s\\n" "${now}" >> "${INFO_LOG}"
-cd "${WRF_DIR}/test/em_real/" || exit 1
+printf "Cleaning up wrf data from last time at %s\\n" "$(date +"%T")" >> "${INFO_LOG}"
 
 # remove met_em files from the last run
-rm met_em.d01.*
-
-cd "${SCRIPT_PATH}" || exit 1
-sh ./pre_processing.sh "${GFS_PATH}" "${RESOLUTION}"
+find "${WRF_DIR}/test/em_real/" -name 'met_em.d01.*' -exec rm {} \;

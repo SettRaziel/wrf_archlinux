@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 16:04:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-17 20:10:36
+# @Last Modified time: 2020-04-25 17:38:38
 
 # script to generate output pictures from a model run
 # ${1}: the year for the model run
@@ -37,8 +37,7 @@ fi
 
 # logging time stamp
 SCRIPT_PATH=$(pwd)
-now=$(date +"%T")
-printf "Starting output generation at %s.\\n" "${now}" >> "${INFO_LOG}"
+printf "Starting output generation at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
 
 YEAR=${1}
 MONTH=${2}
@@ -81,10 +80,9 @@ move_files "rain_tot_*.png" "${DEST_FOLDER}/rain_tot"
 move_files "thunderstorm_*.png" "${DEST_FOLDER}/thunderstorm_index"
 
 # generate meta.ini file
-printf "Starting generation of meta.ini at %s.\\n" "${now}" >> "${INFO_LOG}"
+printf "Starting generation of meta.ini at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
 cd "${SCRIPT_PATH}" || exit 1
 sh create_ini.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${PERIOD}" "${DEST_FOLDER}"
 
 # logging time stamp
-now=$(date +"%T")
-printf "Finished output generation at %s.\\n" "${now}" >> "${INFO_LOG}"
+printf "Finished output generation at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"

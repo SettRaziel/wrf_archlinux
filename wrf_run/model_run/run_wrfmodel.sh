@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-07 19:02:57
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-05 15:02:25
+# @Last Modified time: 2020-04-28 13:39:25
 
 # Script to start the model run
 # ${1}: the path to the gfs data
@@ -12,7 +12,7 @@
 set -e
 
 # define terminal colors
-source "${COLOR_PATH}"
+. "${COLOR_PATH}"
 
 # error handling for input parameter
 if [ "$#" -ne 2 ]; then
@@ -25,8 +25,7 @@ GFS_PATH=${1}
 RESOLUTION=${2}
 
 # starting preprocessing steps
-now=$(date +"%T")
-printf "Starting preprocessing at %s.\\n" "${now}" >> "${INFO_LOG}"
+printf "Starting preprocessing at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
 
 # opening wps folder
 cd "${WPS_DIR}" || exit 1
@@ -42,21 +41,19 @@ ln -sf ungrib/Variable_Tables/Vtable.GFS ./Vtable
 LD_LIBRARY_PATH="${DIR}/grib2/lib" ./ungrib.exe >> "${DEBUG_LOG}"
 ./metgrid.exe >> "${DEBUG_LOG}"
 
-# starting wrf steps
-now=$(date +"%T")
-printf "Starting wrf run at %s.\\n" "${now}" >> "${INFO_LOG}"
-
 # vertical interpolation preprocessing
 printf "%bdoing vertical interpolation (real.exe): %b\\n" "${YELLOW}" "${NC}"
+printf "Starting real interpolation at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
 cd "${WRF_DIR}/test/em_real" || exit 1
 ln -sf "${WPS_DIR}"/met_em.* .
 ./real.exe
 cp rsl.error.0000 real_error.log
 
+# starting wrf
 printf "%bstarting wrf run ... %b\\n" "${YELLOW}" "${NC}"
+printf "Starting wrf run at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
 cd "${WRF_DIR}/test/em_real" || exit 1
 mpirun ./wrf.exe
 
 # logging time stamp
-now=$(date +"%T")
-printf "Finished wrf run at %s.\\n" "${now}" >> "${INFO_LOG}"
+printf "Finished wrf run at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
