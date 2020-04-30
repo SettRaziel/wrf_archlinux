@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-19 13:25:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-15 16:39:00
+# @Last Modified time: 2020-04-30 17:15:58
 
 # main installation script: start the installation of the wrf model on a
 # minimal arch linux installation
@@ -15,7 +15,7 @@
 set -e
 
 # define terminal colors
-source ../libs/terminal_color.sh
+. ../libs/terminal_color.sh
 
 BUILD_PATH="<wrf path>"
 WRF_ROOT_PATH="${HOME}/${BUILD_PATH}"
@@ -33,7 +33,7 @@ if ! [ -d 'logs' ]; then
 fi
 
 # Setting required environment variables
-source ./linux/set_env.sh "${WRF_ROOT_PATH}"
+. ./linux/set_env.sh "${WRF_ROOT_PATH}"
 
 # Install required basic packages
 cd linux || exit 1

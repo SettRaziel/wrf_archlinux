@@ -2,13 +2,13 @@
 # @Author: Benjamin Held; based on the WRF OnlineTutorial
 # @Date:   2017-02-18 21:23:08
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-17 18:48:56
+# @Last Modified time: 2020-04-30 17:16:55
 
 # installation of the netcdf package
 # ${1}: path to the installation folder
 
 # define terminal colors
-source ../../libs/terminal_color.sh
+. ../../libs/terminal_color.sh
 
 # setting -e to abort on error
 set -e

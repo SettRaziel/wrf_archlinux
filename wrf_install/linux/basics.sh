@@ -2,13 +2,13 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 19:47:48
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-05 10:43:04
+# @Last Modified time: 2020-04-30 17:17:41
 
 # setting -e to abort on error
 set -e
 
 # define terminal colors
-source ../../libs/terminal_color.sh
+. ../../libs/terminal_color.sh
 
 # Script to get the required basic packages after installing the base system
 

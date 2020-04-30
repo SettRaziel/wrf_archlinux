@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-26 17:34:20
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-17 18:43:08
+# @Last Modified time: 2020-04-30 17:17:21
 
 # Script to compile the ncar command language for output visualization
 # ${1}: the path to the folder where the ncl program should be installed
@@ -15,7 +15,7 @@ load_zipfile () {
 }
 
 # define terminal colors
-source ../../libs/terminal_color.sh
+. ../../libs/terminal_color.sh
 
 # latest version, marked deprecated in 09-2019
 NCL_NAME='ncl_ncarg-6.6.2-Debian9.8_64bit_nodap_gnu630.tar.gz'

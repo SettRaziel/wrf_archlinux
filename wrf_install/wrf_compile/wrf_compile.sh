@@ -2,13 +2,13 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-18 15:49:25
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-05 11:15:09
+# @Last Modified time: 2020-04-30 17:17:27
 
 # setting -e to abort on error
 set -e
 
 # define terminal colors
-source ../../libs/terminal_color.sh
+. ../../libs/terminal_color.sh
 
 # Script to compile the wrf model, after setting up all dependencies
 # and paths
