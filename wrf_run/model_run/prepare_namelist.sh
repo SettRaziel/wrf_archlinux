@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-05 15:02:54
+# @Last Modified time: 2020-04-28 13:39:11
 
 # script to update the input parameter for a model run
 # ${1}: the year for the model run
@@ -15,7 +15,7 @@
 set -e
 
 # define terminal colors
-source "${COLOR_PATH}"
+. "${COLOR_PATH}"
 
 # error handling for input parameter
 if [ "$#" -ne 5 ]; then
