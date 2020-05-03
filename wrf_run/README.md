@@ -26,6 +26,11 @@ see LICENSE
   - start time stamp
 * addition grid parameter: directly in namelist in required
   - vertical grid size: grid_dz
+* meteogram locations can be set in `WRF/test/em_real/tslist`
+  - check the description, you have 24 characters for the location name, than identifier and coordinates
+  - a readme can be found at: `WRF/run/README.tslist`
+  - be cautious with an umlaut like {ö,ä,ü}. Using that in a name leads to an additional char, so a workaround
+    that help me was the removal of a padding whitespace between location name and identifier
 
 ## Usage
 Call the run script
