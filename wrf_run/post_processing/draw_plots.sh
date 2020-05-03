@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 16:04:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-25 17:38:38
+# @Last Modified time: 2020-05-03 20:40:12
 
 # script to generate output pictures from a model run
 # ${1}: the year for the model run
@@ -26,8 +26,16 @@ move_files () {
   done
 }
 
+# function to check if the destination already exists, if not create it
+create_directory () {
+  DESTINATION=${1}
+  if ! [ -d "${DESTINATION}" ]; then
+    mkdir "${DESTINATION}"
+  fi
+}
+
 # define terminal colors
-source "${COLOR_PATH}"
+. "${COLOR_PATH}"
 
 # error handling for input parameter
 if [ "$#" -ne 5 ]; then
@@ -52,7 +60,7 @@ DEST_FOLDER="${SCRIPT_PATH}/${MONTH}_${DAY}_${HOUR}${DEST_SUFFIX}"
 export LD_LIBRARY_PATH="/usr/lib/gcc/x86_64-pc-linux-gnu/6.5.0/:${LD_LIBRARY_PATH}"
 
 # create parent folder for time stamp
-mkdir "${DEST_FOLDER}"
+create_directory "${DEST_FOLDER}"
 
 # generate all listed meteograms
 cd "${SCRIPT_PATH}" || exit 1
@@ -68,10 +76,10 @@ ncl plot_tot_rain >> "${DEBUG_LOG}"
 find . -maxdepth 1 -name '*.png' -exec optipng {} \;
 
 # create folder and move output
-mkdir "${DEST_FOLDER}/comp"
-mkdir "${DEST_FOLDER}/rain_3h"
-mkdir "${DEST_FOLDER}/rain_tot"
-mkdir "${DEST_FOLDER}/thunderstorm_index"
+create_directory "${DEST_FOLDER}/comp"
+create_directory "${DEST_FOLDER}/rain_3h"
+create_directory "${DEST_FOLDER}/rain_tot"
+create_directory "${DEST_FOLDER}/thunderstorm_index"
 
 # Check for moveable file and move them if present
 move_files "comp_*.png" "${DEST_FOLDER}/comp"
