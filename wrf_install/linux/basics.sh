@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 19:47:48
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-30 17:17:41
+# @Last Modified time: 2020-05-07 17:55:55
 
 # setting -e to abort on error
 set -e
@@ -22,12 +22,17 @@ printf "%bInstalling yay as package helper... \\n%b" "${YELLOW}" "${NC}"
 sudo pacman -S --needed git
 
 # Prepare Folders
-mkdir aur_packages
+if ! [ -d "aur_packages" ]; then
+  mkdir aur_packages
+fi
 cd aur_packages || exit 1
 
 # Getting yay
-git clone https://aur.archlinux.org/yay.git
+if ! [ -d "yay" ]; then
+  git clone https://aur.archlinux.org/yay.git
+fi
 cd yay || exit 1
+git pull
 makepkg -si --noconfirm --needed
 
 printf "%bInstalling basic packages... \\n%b" "${YELLOW}" "${NC}"
