@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-28 17:40:09
+# @Last Modified time: 2020-05-09 21:55:38
 
 # main script for starting a wrf model run
 # Version 0.4.5
@@ -14,8 +14,21 @@
 error_exit () {
   NOW=$(date +"%T")
   ERROR_STATUS="${1} at: ${NOW}."
+  # log error informations
   printf "%s\\n" "${ERROR_STATUS}" >> "${ERROR_LOG}"
   printf "Error: %s at: %s.\\n" "${1}" "${NOW}" >> "${STATUS_LOG}"
+
+  # store relevant error informations
+  cd "${LOG_PATH}" || exit 1
+  ERROR_DIR="error_${YEAR}_${MONTH}_${DAY}_${HOUR}"
+  if ! [ -d "${ERROR_DIR}" ]; then
+    mkdir "${ERROR_DIR}"
+  fi
+  mv "${INFO_LOG}" "${ERROR_DIR}"
+  mv "${DEBUG_LOG}" "${ERROR_DIR}"
+  mv "${ERROR_LOG}" "${ERROR_DIR}"
+
+  # generate error mail
   cd "${SCRIPT_PATH}" || exit 1
   sh create_mail.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${ERROR_STATUS}" "Fail"
   echo "${1}" 1>&2
