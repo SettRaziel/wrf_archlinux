@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-05-22 19:00:25
+# @Last Modified time: 2020-05-23 10:35:30
 
 # main script for starting a wrf model run
 # Version 0.4.5
@@ -112,6 +112,14 @@ if [ ${RET} -eq 0 ]; then
   #mv wrfout_${YEAR}_${MONTH}_${DAY}_${HOUR}.tar.gz history/
 else
   error_exit "Error while creating output files"
+fi
+
+# run post hook scripts
+cd "${SCRIPT_PATH}/post_processing" || error_exit "Failed cd postprocessing"
+printf "Starting post hook activities at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
+sh post_hook.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${PERIOD}" "${RESOLUTION}"; RET=${?}
+if [ ${RET} -ne 0 ]; then
+  error_exit "Error executing post hook activities"  
 fi
 
 # finish up model run and send notification mail
