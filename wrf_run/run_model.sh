@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-28 17:40:09
+# @Last Modified time: 2020-05-23 10:35:30
 
 # main script for starting a wrf model run
 # Version 0.4.5
@@ -79,7 +79,7 @@ cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd start model_run"
 printf "Starting model run preparation at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
 sh run_preprocessing.sh; RET=${?}
 if ! [ ${RET} -eq 0 ]; then
-    error_exit "Failed preparations for the model run"
+  error_exit "Failed preparations for the model run"
 fi
 
 cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd start model_run"
@@ -87,9 +87,9 @@ printf "Starting model run at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
 sh run_wrfmodel.sh "${GFS_PATH}" "${RESOLUTION}"; RET=${?}
 cd "${SCRIPT_PATH}" || error_exit "Failed cd to script path"
 if ! [ ${RET} -eq 0 ]; then
-    cd "${WRF_DIR}/test/em_real/" || error_exit "Failed cd to WRF folder"
-    rm wrfout_d01_*
-    error_exit "Failed to run the model"
+  cd "${WRF_DIR}/test/em_real/" || error_exit "Failed cd to WRF folder"
+  rm wrfout_d01_*
+  error_exit "Failed to run the model"
 fi
 
 # move output files
@@ -98,7 +98,7 @@ sh clean_up_output.sh; RET=${?}
 if [ ${RET} -eq 0 ]; then
   mv "${WRF_DIR}"/test/em_real/wrfout_d01_* "${HOME}/wrf_output"
 else
-    error_exit "Error while cleaning up previous output files"
+  error_exit "Error while cleaning up previous output files"
 fi
 
 # run output script
@@ -111,7 +111,15 @@ if [ ${RET} -eq 0 ]; then
   #tar czf wrfout_${YEAR}_${MONTH}_${DAY}_${HOUR}.tar.gz wrfout_d01_* Han.d01.* Ith.d01.*
   #mv wrfout_${YEAR}_${MONTH}_${DAY}_${HOUR}.tar.gz history/
 else
-    error_exit "Error while creating output files"
+  error_exit "Error while creating output files"
+fi
+
+# run post hook scripts
+cd "${SCRIPT_PATH}/post_processing" || error_exit "Failed cd postprocessing"
+printf "Starting post hook activities at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
+sh post_hook.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${PERIOD}" "${RESOLUTION}"; RET=${?}
+if [ ${RET} -ne 0 ]; then
+  error_exit "Error executing post hook activities"  
 fi
 
 # finish up model run and send notification mail
