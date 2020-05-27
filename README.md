@@ -63,14 +63,17 @@ The different setups will be categorized in
 All setups for WRFV3.x use gcc/gcc-libs/gcc-gfortran 6.3.1-2 until described otherwise.
 WRFV4 uses the latest version of gcc/gcc-gfortran: 9.x.x.
 * current setup:
-  - WRF Model and WPS v4.0.2 [compiling, normal_build, running]
-    - NetCDF v4.6.1 / NetCDF-Fortran Library v4.4.5, HDF 1.10.5
-    - mpi v3.3, libpng v1.6.36, zlib v1.2.11, JasPer v1.900.2
+  - WRF Model v4.1.5 and WPS v4.1 [compiling, normal_build, running]
+    - NetCDF v4.7.4 / NetCDF-Fortran Library v4.5.2, HDF 1.12.0
+    - mpi v3.3, libpng v1.6.37, zlib v1.2.11, JasPer v1.900.2
 * testing setup:
   - WRF Model v4.1.5 and WPS v4.1 [compiling, normal_build, running]
     - NetCDF v4.7.4 / NetCDF-Fortran Library v4.5.2, HDF 1.12.0
     - mpi v3.3, libpng v1.6.37, zlib v1.2.11, JasPer v1.900.2
 * tested setups:
+  - WRF Model v4.1.5 and WPS v4.1 [compiling, normal_build, running]
+    - NetCDF v4.7.4 / NetCDF-Fortran Library v4.5.2, HDF 1.12.0
+    - mpi v3.3, libpng v1.6.37, zlib v1.2.11, JasPer v1.900.2
   - WRF Model and WPS v3.8.1 [compiling, normal_build, unstable]
     - NetCDF v4.4.1.1 / NetCDF-Fortran Library v4.4.4
     - mpi v3.2, libpng v1.6.34, zlib v1.2.11, JasPer v1.900.2
