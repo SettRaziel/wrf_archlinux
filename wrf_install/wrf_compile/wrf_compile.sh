@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-18 15:49:25
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-30 17:17:27
+# @Last Modified time: 2020-05-28 19:37:44
 
 # setting -e to abort on error
 set -e
@@ -27,7 +27,9 @@ tar xfv "WRFV${WRF_VERSION}.tar.gz"
 cd "WRF-${WRF_VERSION}" || exit 1
 printf "%b\\nInstaling wrf: %b\\n" "${YELLOW}" "${NC}"
 # link the cpp file to the correct folder or configure will fail in not finding it
-sudo ln -s /bin/cpp /lib/cpp
+if ! [ -L "/lib/cpp" ]; then
+  sudo ln -s /bin/cpp /lib/cpp
+fi
 ./configure
 ./clean
 
