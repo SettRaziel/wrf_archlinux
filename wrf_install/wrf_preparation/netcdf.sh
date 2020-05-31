@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 21:06:12
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-04 15:38:48
+# @Last Modified time: 2020-04-30 17:16:36
 
 # installation of the netcdf package
 # ${1}: path to the installation folder
@@ -11,7 +11,7 @@
 set -e
 
 # define terminal colors
-source ../../libs/terminal_color.sh
+. ../../libs/terminal_color.sh
 
 # Script to compile the required netcdf package
 cd "${HOME}/${1}" || exit 1

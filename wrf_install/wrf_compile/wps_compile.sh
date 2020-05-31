@@ -2,13 +2,13 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-01 20:09:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-04 16:05:40
+# @Last Modified time: 2020-04-30 17:17:30
 
 # setting -e to abort on error
 set -e
 
 # define terminal colors
-source ../../libs/terminal_color.sh
+. ../../libs/terminal_color.sh
 
 # Script to compile the wps module, after setting up all dependencies
 # and paths
