@@ -47,7 +47,4 @@ After that the model run will set the path to the missing libgfortran3.so when c
 see LICENSE
 
 ## Todo
-* Parameters for the deployment script to deploy custom setups see:[(Issue)](https://github.com/SettRaziel/wrf_archlinux/issues/4)
-* adding WRFV4 deployment; see:[(Issue)](https://github.com/SettRaziel/wrf_archlinux/issues/2)
-* adding WRFV4 geo data; see:[(Issue)](https://github.com/SettRaziel/wrf_archlinux/issues/2)
-* adding deployment for hybrid vertical coordinated; see:[(Issue)](https://github.com/SettRaziel/wrf_archlinux/issues/8)
+check issues with wrf_deploy label
