@@ -45,6 +45,10 @@ Call the run script
 * forecast_time: hours as integer, no whole days (see known issues)
 * input_resolution: {0p25, 0p50, 1p00}
 
+## Data source
+According to the ncep noaa [website](https://www.nco.ncep.noaa.gov/pmb/products/gfs/#GFS) the input data can be downloaded as of
+2020-06-01 from the [nomad](https://nomads.ncep.noaa.gov/pub/) webserver.
+
 ## Known issues
 * Since the model creates intermediate output every 3 hours (configurable in namelist.input)
   it is useful to choose a forecast range accordingly to that time step
@@ -78,11 +82,4 @@ Call the run script
   needs to be reviewed.
 
 ## Todos:
-* better error handling, error logging and script behavior in error cases; see:[(Issue)](https://github.com/SettRaziel/wrf_archlinux/issues/7), see:[(Issue)](https://github.com/SettRaziel/wrf_archlinux/issues/10)
-* generic file paths will be added later as shell parameters
-* ncl examples for output (added)
-* cronjob details
-* intermediate results during wrf_run; see:[(Issue)](https://github.com/SettRaziel/wrf_archlinux/issues/13)
-* more error checks:
-  - e.g. checks that the run time of the model need to be a multiple of three
-    (as long as the output interval is static and set to 3 hours)
+check issues with wrf run label
