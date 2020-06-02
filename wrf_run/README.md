@@ -82,4 +82,4 @@ According to the ncep noaa [website](https://www.nco.ncep.noaa.gov/pmb/products/
   needs to be reviewed.
 
 ## Todos:
-check issues with wrf run label
+check issues with wrf_run label
