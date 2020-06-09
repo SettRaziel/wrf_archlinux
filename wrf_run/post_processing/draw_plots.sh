@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 16:04:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-05-03 20:40:12
+# @Last Modified time: 2020-06-09 17:23:58
 
 # script to generate output pictures from a model run
 # ${1}: the year for the model run
@@ -52,6 +52,8 @@ MONTH=${2}
 DAY=${3}
 HOUR=${4}
 PERIOD=${5}
+# path for external python visualization tool
+WRF_VISUALIZATION="${HOME}/wrf_visualization"
 # optional addition to the storage path
 DEST_SUFFIX='_test'
 DEST_FOLDER="${SCRIPT_PATH}/${MONTH}_${DAY}_${HOUR}${DEST_SUFFIX}"
@@ -64,7 +66,7 @@ create_directory "${DEST_FOLDER}"
 
 # generate all listed meteograms
 cd "${SCRIPT_PATH}" || exit 1
-sh ./draw_meteograms.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${PERIOD}" "${DEST_FOLDER}"
+sh ./draw_meteograms.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${WRF_VISUALIZATION}" "${DEST_FOLDER}"
 
 cd "${HOME}/wrf_output" || exit 1
 
