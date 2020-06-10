@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 16:04:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-09 17:23:58
+# @Last Modified time: 2020-06-10 19:43:33
 
 # script to generate output pictures from a model run
 # ${1}: the year for the model run
@@ -58,9 +58,6 @@ WRF_VISUALIZATION="${HOME}/wrf_visualization"
 DEST_SUFFIX='_test'
 DEST_FOLDER="${SCRIPT_PATH}/${MONTH}_${DAY}_${HOUR}${DEST_SUFFIX}"
 
-# ncl requires libgfortran3.so, so adding it to the library path for usage here
-export LD_LIBRARY_PATH="/usr/lib/gcc/x86_64-pc-linux-gnu/6.5.0/:${LD_LIBRARY_PATH}"
-
 # create parent folder for time stamp
 create_directory "${DEST_FOLDER}"
 
@@ -68,11 +65,10 @@ create_directory "${DEST_FOLDER}"
 cd "${SCRIPT_PATH}" || exit 1
 sh ./draw_meteograms.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${WRF_VISUALIZATION}" "${DEST_FOLDER}"
 
-cd "${HOME}/wrf_output" || exit 1
+cd "${WRF_VISUALIZATION}" || exit 1
 
 # generate output
-ncl plot_timestamp_output >> "${DEBUG_LOG}"
-ncl plot_tot_rain >> "${DEBUG_LOG}"
+python plot_composites.py >> "${DEBUG_LOG}"
 
 # optimizing output file quality
 find . -maxdepth 1 -name '*.png' -exec optipng {} \;
@@ -84,10 +80,11 @@ create_directory "${DEST_FOLDER}/rain_tot"
 create_directory "${DEST_FOLDER}/thunderstorm_index"
 
 # Check for moveable file and move them if present
+cd "${WRF_VISUALIZATION}/files"
 move_files "comp_*.png" "${DEST_FOLDER}/comp"
-move_files "rain_3h_*.png" "${DEST_FOLDER}/rain_3h"
-move_files "rain_tot_*.png" "${DEST_FOLDER}/rain_tot"
-move_files "thunderstorm_*.png" "${DEST_FOLDER}/thunderstorm_index"
+move_files "rainsum_3h_*.png" "${DEST_FOLDER}/rain_3h"
+move_files "rainsum_*.png" "${DEST_FOLDER}/rain_tot"
+move_files "cape_*.png" "${DEST_FOLDER}/thunderstorm_index"
 
 # generate meta.ini file
 printf "Starting generation of meta.ini at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
