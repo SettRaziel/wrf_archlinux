@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-09-07 16:35:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-06 16:41:23
+# @Last Modified time: 2020-06-13 11:57:06
 
 # define terminal colors
 source ../libs/terminal_color.sh
@@ -20,18 +20,13 @@ cd .. || exit 1
 
 # installing packages for running the model
 printf "%b\\nInstalling required model libraries: %b\\n" "${YELLOW}" "${NC}"
+yay -S --noconfirm --needed pkgconfig
 yay -S --noconfirm --needed tcsh wget curl findutils gcc-fortran
 
-# installing required packages for running ncl
-printf "%b\\nInstalling additional ncl libraries: %b\\n" "${YELLOW}" "${NC}"
-yay -S --noconfirm --needed fontconfig libxrender libxtst
-# installing optipng to optimize png output size
-yay -S --noconfirm --needed optipng
-
-# ncl still requires libgfortran3.so and is no longer maintained, so we need gfortran 6.x.x
-printf "%b\\nInstalling gcc6-fortran for compatibility, that may take a while: %b\\n" "${YELLOW}" "${NC}"
-yay -S --noconfirm --needed pkgconfig
-yay -S --needed gcc6-fortran
+# installing required packages: 
+# optipng for optimizing png size and unzip for loading high res coastlines
+printf "%b\\nInstalling required packages for output visualization: %b\\n" "${YELLOW}" "${NC}"
+yay -S --noconfirm --needed optipng unzip
 
 # installing packages to send emails
 printf "%b\\nInstalling required mail libraries: %b\\n" "${YELLOW}" "${NC}"
