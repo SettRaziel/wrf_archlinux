@@ -13,7 +13,7 @@ parameters to customize the deployment process.
 	* additional resolutions can the downloaded manually from [Link](http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog_V3.html)
 	* WRFV4 lowres (~200 mb), WRFV4 hightes (~50 gb)
 	* overview of WRFV4 geo data and manual download of additional resolutions is available [here](http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html)
-* Visualization of WRF results with precompiled ncl
+* Visualization of WRF results with wrf_visualization based on pyngl, pynio which will be installed using wrf_deploy
 
 ## Usage
 Simply call the deployment script
@@ -34,9 +34,9 @@ Depending on the deployed wrf_model a few manual steps are required to do before
 ## Troubleshooting
 * check if the copied namelist.wps works for your geo data, the WRFV4 lowres data needs the lowres data instead of default
 * check the correct build path
-* check for correct ggc-fortran libraries if the output with ncl causes any trouble
+* (DEPRECATED) check for correct ggc-fortran libraries if the output with ncl causes any trouble
 
-## NCL usage
+## NCL usage (DEPRECATED)
 As of september 2019 the ncar command language used for the current wrf output is no longer developed. 
 The last binary version has been built with gcc 6.3.0 and need libgfortran3.so to run correctly.
 To use this as a library for visualizing the wrf output a workaorund is the usage of a parallel gcc version.

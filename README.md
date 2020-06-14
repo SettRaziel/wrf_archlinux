@@ -45,11 +45,12 @@ folders for subsidiary license files.
 * A Massively Spiffy Yet Delicately Unobtrusive Compression Library (zlib): [Source](http://www.zlib.net) and [License](http://www.zlib.net/zlib_license.html), used version: 1.2.11; newest: 1.2.11
 * JasPer Project (JasPer): [Source](https://www.ece.uvic.ca/~frodo/jasper/) and [License](https://www.ece.uvic.ca/~frodo/jasper/LICENSE), used version: 1.900.2; newest: 2.0.14
 * Optional postprocessing tools:
+  - (DEFAULT) wrf_visualization based on pyngl, pynio
   - Unified Post Processor (UPP): [Source](http://www.dtcenter.org/wrf-nmm/users/downloads/index.php), needs email validation
-  - NCAR Command Language (NCL): [Source](https://www.ncl.ucar.edu/Download/) and [Terms of use](https://www2.ucar.edu/terms-of-use), 
-    used version: 6.4.0_nodap Binaries; newest version 6.6.2; depracated, since no longer developed [Source](https://www.ncl.ucar.edu/Document/Pivot_to_Python/september_2019_update.shtml)
-    Since it is currently used for the wrf output a replacement needs to be found for visualizing the data. If you plan to deploy and run with ncl, consider the notes
-    in the wrf_deploy readme!
+  - (DEPRECATED) NCAR Command Language (NCL): [Source](https://www.ncl.ucar.edu/Download/) and [Terms of use](https://www2.ucar.edu/terms-of-use), 
+    used version: 6.4.0_nodap Binaries; newest version 6.6.2; 
+      * no longer developed [Source](https://www.ncl.ucar.edu/Document/Pivot_to_Python/september_2019_update.shtml)
+      * usage only with wrf_archlinux below v0.5.0; support will be dropped with v0.5.0.
 
 ## Working setup and testing setups
 This section describes the current working setup based under the condition that the installation is
@@ -61,11 +62,12 @@ The different setups will be categorized in
 * {stable, running, unstable, not_running}
 
 All setups for WRFV3.x use gcc/gcc-libs/gcc-gfortran 6.3.1-2 until described otherwise.
-WRFV4 uses the latest version of gcc/gcc-gfortran: 9.x.x.
+WRFV4 uses the latest version of gcc/gcc-gfortran avaiable at the time of testing:
 * current setup:
   - WRF Model v4.1.5 and WPS v4.1 [compiling, normal_build, running]
     - NetCDF v4.7.4 / NetCDF-Fortran Library v4.5.2, HDF 1.12.0
     - mpi v3.3, libpng v1.6.37, zlib v1.2.11, JasPer v1.900.2
+    - gcc/gfortran: 9.3
 * testing setup:
   - WRF Model v4.1.5 and WPS v4.1 [compiling, normal_build, running]
     - NetCDF v4.7.4 / NetCDF-Fortran Library v4.5.2, HDF 1.12.0
