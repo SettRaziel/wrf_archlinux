@@ -2,10 +2,10 @@
 # @Author: Benjamin Held
 # @Date:   2018-09-07 16:35:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-13 11:57:06
+# @Last Modified time: 2020-06-14 12:23:26
 
 # define terminal colors
-source ../libs/terminal_color.sh
+. ../libs/terminal_color.sh
 
 # prepare Folders
 SCRIPT_PATH=$(pwd)

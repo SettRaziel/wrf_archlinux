@@ -2,12 +2,12 @@
 # @Author: Benjamin Held
 # @Date:   2018-10-23 09:09:29
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-06 17:50:35
+# @Last Modified time: 2020-06-14 12:23:41
 
 # Script that loads the WRF model specified by argument or 
 # selectable index
 # the index of the chosen wrf model:
-# 1: WRFV4 version 4.0.2
+# 1: WRFV4 version 4.1.5
 # 2: WRFV4 version 4.0.2
 # 3: WRFV3 version 3.9.1
 # 4: WRFV3 version 3.9.0
@@ -25,7 +25,7 @@ print_options () {
 }
 
 # define terminal colors
-source ../libs/terminal_color.sh
+. ../libs/terminal_color.sh
 
 # check for script arguments
 if [ -z "${WRF_VERSION_INDEX}" ]; then
