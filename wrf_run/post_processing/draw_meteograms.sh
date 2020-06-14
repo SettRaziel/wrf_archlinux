@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-11 20:24:38
+# @Last Modified time: 2020-06-14 14:45:19
 
 # script to generate output meteograms from a model run
 # ${1}: the year for the model run
@@ -46,9 +46,9 @@ mv "${WRF_DIR}/test/em_real/"*.VV "${WRF_OUTPUT}"
 mv "${WRF_DIR}/test/em_real/"*.WW "${WRF_OUTPUT}"
 
 # call python script for meteogram creation
-conda activate pyn_env
+conda activate wrf_env
 python meteogram.py "${START_DATE}" 
-conda deactivate pyn_env
+conda deactivate wrf_env
 
 # optimize png size
 find . -maxdepth 1 -name '*.png' -exec optipng {} \;

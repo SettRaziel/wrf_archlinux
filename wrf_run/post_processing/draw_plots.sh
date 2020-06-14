@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 16:04:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-11 20:23:54
+# @Last Modified time: 2020-06-14 14:45:11
 
 # script to generate output pictures from a model run
 # ${1}: the year for the model run
@@ -68,9 +68,9 @@ sh ./draw_meteograms.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${WRF_VISUALIZA
 cd "${WRF_VISUALIZATION}" || exit 1
 
 # generate output
-conda activate pyn_env
+conda activate wrf_env
 python plot_composites.py >> "${DEBUG_LOG}"
-conda deactivate pyn_env
+conda deactivate wrf_env
 
 # optimizing output file quality
 find . -maxdepth 1 -name '*.png' -exec optipng {} \;
