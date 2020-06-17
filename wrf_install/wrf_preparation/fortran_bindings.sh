@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-18 15:39:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-12-17 18:49:39
+# @Last Modified time: 2020-04-30 17:16:46
 
 # Script to compile the required netcdf-fortran package
 # ${1}: path to the installation folder
@@ -11,7 +11,7 @@
 set -e
 
 # define terminal colors
-source ../../libs/terminal_color.sh
+. ../../libs/terminal_color.sh
 
 # Jump in folder and extract tar
 cd "${HOME}/${1}" || exit 1

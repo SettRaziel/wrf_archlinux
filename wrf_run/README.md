@@ -31,6 +31,9 @@ see LICENSE
   - a readme can be found at: `WRF/run/README.tslist`
   - be cautious with an umlaut like {ö,ä,ü}. Using that in a name leads to an additional char, so a workaround
     that help me was the removal of a padding whitespace between location name and identifier
+* run additional scripts after the model run finishes: after the output creation and before sending the success mail
+  there is a new shell script call for additional post hook calls the subsidiary script allows it to call additional scripts
+  that should be run before finishing, e.g. moving data to another server
 
 ## Usage
 Call the run script
@@ -41,6 +44,10 @@ Call the run script
 * input_model_run: {00, 06, 12, 18}
 * forecast_time: hours as integer, no whole days (see known issues)
 * input_resolution: {0p25, 0p50, 1p00}
+
+## Data source
+According to the ncep noaa [website](https://www.nco.ncep.noaa.gov/pmb/products/gfs/#GFS) the input data can be downloaded as of
+2020-06-01 from the [nomad](https://nomads.ncep.noaa.gov/pub/) webserver.
 
 ## Known issues
 * Since the model creates intermediate output every 3 hours (configurable in namelist.input)
@@ -75,11 +82,4 @@ Call the run script
   needs to be reviewed.
 
 ## Todos:
-* better error handling, error logging and script behavior in error cases; see:[(Issue)](https://github.com/SettRaziel/wrf_archlinux/issues/7), see:[(Issue)](https://github.com/SettRaziel/wrf_archlinux/issues/10)
-* generic file paths will be added later as shell parameters
-* ncl examples for output (added)
-* cronjob details
-* intermediate results during wrf_run; see:[(Issue)](https://github.com/SettRaziel/wrf_archlinux/issues/13)
-* more error checks:
-  - e.g. checks that the run time of the model need to be a multiple of three
-    (as long as the output interval is static and set to 3 hours)
+check issues with wrf_run label

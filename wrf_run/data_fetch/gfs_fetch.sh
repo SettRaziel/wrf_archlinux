@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-06 19:18:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-28 13:38:47
+# @Last Modified time: 2020-06-01 15:17:38
 
 # This script loads the required input data for a 180 h forecast run
 # ${1} matches the required date yyyymmdd
@@ -14,6 +14,10 @@
 # define terminal colors
 . "${COLOR_PATH}"
 
+# parent url to the noaa ftp server as of 2020-06-01
+# source: https://www.nco.ncep.noaa.gov/pmb/products/gfs/#GFS
+GFS_URL="https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/"
+
 # function to fetch the input data with curl
 gfs_fetch_curl () {
   # Define a number of retries and try to download the files
@@ -21,7 +25,7 @@ gfs_fetch_curl () {
 	  tries=5
 	  while [ ${tries} -gt 0 ] 
 	  do
-	    curl -C - -o "${3}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}" https://www.ftp.ncep.noaa.gov/data/nccf/com/gfs/prod/gfs."${1}"/"${2}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}"
+	    curl -C - -o "${3}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}" "${GFS_URL}"gfs."${1}"/"${2}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}"
 	    if [ $? -ne 56 ]; then 
         break
 	    fi
@@ -34,12 +38,12 @@ gfs_fetch_curl () {
 gfs_fetch_wget () {
   # Fetch the new input files
   for i in $(seq -f %03g 0 3 "${5}"); do
-    wget -q -P "${3}" https://www.ftp.ncep.noaa.gov/data/nccf/com/gfs/prod/gfs."${1}"/"${2}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}"
+    wget -q -P "${3}" "${GFS_URL}"gfs."${1}"/"${2}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}"
   done
 
   # Check and continue broken files
   for i in $(seq -f %03g 0 3 "${5}"); do
-    wget -c -q -P "${3}" https://www.ftp.ncep.noaa.gov/data/nccf/com/gfs/prod/gfs."${1}"/"${2}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}"
+    wget -c -q -P "${3}" "${GFS_URL}"gfs."${1}"/"${2}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}"
   done
 }
 
