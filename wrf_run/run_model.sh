@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-16 17:58:40
+# @Last Modified time: 2020-06-17 21:06:20
 
 # main script for starting a wrf model run
 # Version 0.4.6
@@ -15,7 +15,7 @@ error_exit () {
   NOW=$(date +"%T")
   ERROR_STATUS="${1} at: ${NOW}."
   # log error informations
-  printf "%s\\n" "${ERROR_STATUS}" >> "${ERROR_LOG}"
+  printf "%s\\n" "${ERROR_STATUS}" >> "${INFO_LOG}"
   printf "Error: %s at: %s.\\n" "${1}" "${NOW}" >> "${STATUS_LOG}"
 
   # store relevant error informations
@@ -26,7 +26,6 @@ error_exit () {
   fi
   mv "${INFO_LOG}" "${ERROR_DIR}"
   mv "${DEBUG_LOG}" "${ERROR_DIR}"
-  mv "${ERROR_LOG}" "${ERROR_DIR}"
   # copy wrf run files independent from the error source, it if breaks before the model run
   # it is possible to get the files from the previous run
   cp "${WRF_DIR}/test/em_real/real_error.log" "${ERROR_DIR}"
