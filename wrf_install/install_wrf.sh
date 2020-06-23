@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-19 13:25:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-02 17:18:25
+# @Last Modified time: 2020-06-23 22:42:42
 
 # main installation script: start the installation of the wrf model on a
 # minimal arch linux installation
@@ -10,6 +10,7 @@
 # created by Benjamin Held and other sources, June 2017
 
 # ${1}: optional flag --local if the installation should be done with local libraries
+# ${2}: optional build path if the installation should not be the default path
 
 # setting -e to abort on error
 set -e
@@ -17,15 +18,32 @@ set -e
 # define terminal colors
 . ../libs/terminal_color.sh
 
-BUILD_PATH="<wrf path>"
-WRF_ROOT_PATH="${HOME}/${BUILD_PATH}"
-SCRIPT_PATH=$(pwd)
-
-# Check var settings of build path
-if [ "${BUILD_PATH}" = "<wrf path>" ]; then
-  printf "%bInvalid build path. Please set the <BUILD_PATH> variable. See README.md %b\\n" "${RED}" "${NC}"
+# determine build path; start from default path
+BUILD_PATH="WRF"
+if [ "$#" -eq 2 ]; then
+  if [ "${2}" != "--local" ]; then
+   BUILD_PATH="${2}"
+  fi
+elif [ "$#" -eq 1 ]; then
+  # check for --local or build path
+  if [ "${1}" != "--local" ]; then
+   BUILD_PATH="${1}"
+  fi
+elif [ "$#" -gt 2 ]; then
+  printf "%bWrong number of arguments.%b\\n" "${RED}" "${NC}"
+  printf "%busage: ./install.sh [--local] [<BUILD_PATH>]%b\\n" "${GREEN}" "${NC}"
   exit 1
 fi
+
+# Check var settings of build path
+WRF_ROOT_PATH="${HOME}/${BUILD_PATH}"
+if [ "${BUILD_PATH}" = "WRF" ]; then
+  printf "%bDefault build path ${WRF_ROOT_PATH} will be used.%b\\n" "${RED}" "${NC}"
+  printf "%bPlease set a build path as an argument when installing to a different location.%b\\n" "${RED}" "${NC}"
+fi
+
+# save script path
+SCRIPT_PATH=$(pwd)
 
 # Check for log folder
 if ! [ -d 'logs' ]; then
