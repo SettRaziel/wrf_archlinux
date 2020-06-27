@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 21:06:12
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-30 17:16:42
+# @Last Modified time: 2020-06-27 09:15:24
 
 # Script to compile the required libraries
 # ${1}: path to the installation folder
@@ -16,11 +16,11 @@ set -e
 # move to the installation folder
 cd "${HOME}/${1}" || exit 1
 
-# Unpacking mpich files
+# unpacking mpich files
 printf "%b\\nUnpacking mpich.tar files: %b\\n" "${YELLOW}" "${NC}"
 tar xfv "mpich-${MPI_VERSION}.tar.gz"
 
-# Installing mpich library
+# installing mpich library
 printf "%b\\nInstalling mpich: %b\\n" "${YELLOW}" "${NC}"
 cd "mpich-${MPI_VERSION}" || exit 1
 ./configure --prefix="${DIR}/mpich"
@@ -32,11 +32,11 @@ printf "%b\\nFinished installing mpich. %b\\n" "${LIGHT_BLUE}" "${NC}"
 printf "%bContinuing in 5 seconds ... %b" "${YELLOW}" "${NC}"
 sleep 5
 
-# Unpacking zlib files
+# unpacking zlib files
 printf "%b\\nUnpacking zlib.tar files: %b\\n" "${YELLOW}" "${NC}"
 tar xfv "zlib-${ZLIB_VERSION}.tar.gz"
 
-# Installing zlib library
+# installing zlib library
 printf "%b\\nInstalling zlib: %b\\n" "${YELLOW}" "${NC}"
 cd "zlib-${ZLIB_VERSION}"
 ./configure --prefix="${DIR}/grib2"
@@ -48,11 +48,11 @@ printf "%b\\nFinished installing zlib. %b\\n" "${LIGHT_BLUE}" "${NC}"
 printf "%bContinuing in 5 seconds ... %b" "${YELLOW}" "${NC}"
 sleep 5
 
-# Unpacking libpng files
+# unpacking libpng files
 printf "%b\\nUnpacking libpng.tar files: %b\\n" "${YELLOW}" "${NC}"
 tar xfv "libpng-${LIBPNG_VERSION}.tar.gz"
 
-# Installing libpng library
+# installing libpng library
 printf "%b\\nInstalling libpng: %b\\n" "${YELLOW}" "${NC}"
 cd "libpng-${LIBPNG_VERSION}" || exit 1
 ./configure --prefix="${DIR}/grib2"
@@ -64,11 +64,11 @@ printf "%b\\nFinished installing libpng. %b\\n" "${LIGHT_BLUE}" "${NC}"
 printf "%bContinuing in 5 seconds ... %b" "${YELLOW}" "${NC}"
 sleep 5
 
-# Unpacking jasper files
+# unpacking jasper files
 printf "%b\\nUnpacking jasper.tar files: %b\\n" "${YELLOW}" "${NC}"
 tar xfv "jasper-${JASPER_VERSION}.tar.gz"
 
-# Installing jasper library
+# installing jasper library
 printf "%b\\nInstalling jasper: %b\\n" "${YELLOW}" "${NC}"
 cd "jasper-${JASPER_VERSION}" || exit 1
 ./configure --prefix="${DIR}/grib2"

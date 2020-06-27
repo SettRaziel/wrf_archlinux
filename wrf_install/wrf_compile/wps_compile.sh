@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-01 20:09:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-30 17:17:30
+# @Last Modified time: 2020-06-26 20:21:08
 
 # setting -e to abort on error
 set -e
@@ -16,15 +16,13 @@ set -e
 
 # storing current script path
 SCRIPT_PATH=$(pwd)
-
-# Script to compile the required netcdf package
 cd "${HOME}/${1}" || exit 1
 
-# Unpacking wps files
+# unpacking wps files
 printf "%b\\nUnpacking wps.tar files: %b\\n" "${YELLOW}" "${NC}"
 tar xfv "WPSV${WPS_VERSION}.tar.gz"
 
-# Installing wps
+# installing wps
 printf "%b\\nInstaling wps: %b\\n" "${YELLOW}" "${NC}"
 cd "WPS-${WPS_VERSION}" || exit 1
 ./configure
