@@ -2,12 +2,12 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-03 17:20:53
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-04 17:00:41
+# @Last Modified time: 2020-06-26 20:20:45
 
 # Script that sets the required variables for the model installation
 # ${1}: the build path where the wrf model should be installed
 
-# Setting required environment variables for the session
+# setting required environment variables for the session
 export DIR="${1}/libraries"
 export CC="gcc"
 export CXX="g++"
@@ -28,7 +28,7 @@ export JASPERINC="${DIR}/grib2/include"
 # optional: required when using ncl for output in the library folder
 export NCARG_ROOT="${DIR}/ncl"
 
-# Setting library versions for usage (last checked: 2020-04-04)
+# setting library versions for usage (last checked: 2020-04-04)
 export WRF_VERSION="4.1.5"            # latest: 4.1.5
 export WPS_VERSION="4.1"              # latest: 4.1
 export HDF_VERSION="1.12"           # latest: 1.12.0

@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-18 15:49:25
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-05-28 19:37:44
+# @Last Modified time: 2020-06-27 09:10:29
 
 # setting -e to abort on error
 set -e
@@ -13,17 +13,16 @@ set -e
 # Script to compile the wrf model, after setting up all dependencies
 # and paths
 # ${1}: the path to the folder where the wrf should be installed
-# ${2}: the path to the folder where the wrf files has been unpacked
 
 # storing current script path
 SCRIPT_PATH=$(pwd)
 
-# Jump in folder and extract tar
+# jump in folder and extract tar
 cd "${HOME}/${1}" || exit 1
 printf "%b\\nUnpacking wrf.tar files: %b\\n" "${YELLOW}" "${NC}"
 tar xfv "WRFV${WRF_VERSION}.tar.gz"
 
-# Build wrf
+# build wrf
 cd "WRF-${WRF_VERSION}" || exit 1
 printf "%b\\nInstaling wrf: %b\\n" "${YELLOW}" "${NC}"
 # link the cpp file to the correct folder or configure will fail in not finding it
