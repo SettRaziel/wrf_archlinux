@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-11-15 18:08:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-02 17:18:34
+# @Last Modified time: 2020-06-29 18:39:18
 
 # main script to deploy a pre compiled version of wrf
 # Version 0.4.6
@@ -23,8 +23,8 @@ else
 	source ./set_env.sh
 fi
 
-# check and load required packages
-sh load_packages.sh
+# create storage folder for the gfs input data
+mkdir ${HOME}/gfs_data
 
 # create neccessary directories
 sh create_directories.sh
