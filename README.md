@@ -45,7 +45,7 @@ folders for subsidiary license files.
 * A Massively Spiffy Yet Delicately Unobtrusive Compression Library (zlib): [Source](http://www.zlib.net) and [License](http://www.zlib.net/zlib_license.html), used version: 1.2.11; newest: 1.2.11
 * JasPer Project (JasPer): [Source](https://www.ece.uvic.ca/~frodo/jasper/) and [License](https://www.ece.uvic.ca/~frodo/jasper/LICENSE), used version: 1.900.2; newest: 2.0.14
 * Optional postprocessing tools:
-  - (DEFAULT) wrf_visualization based on pyngl, pynio
+  - (DEFAULT) wrf_visualization based on pyngl, pynio: [Source](https://github.com/SettRaziel/wrf_visualization)
   - Unified Post Processor (UPP): [Source](http://www.dtcenter.org/wrf-nmm/users/downloads/index.php), needs email validation
   - (DEPRECATED) NCAR Command Language (NCL): [Source](https://www.ncl.ucar.edu/Download/) and [Terms of use](https://www2.ucar.edu/terms-of-use), 
     used version: 6.4.0_nodap Binaries; newest version 6.6.2; 
