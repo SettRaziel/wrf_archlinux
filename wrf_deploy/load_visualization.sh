@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2020-06-29 15:28:33
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-29 18:50:16
+# @Last Modified time: 2020-06-30 13:24:14
 
 # enable termination on error
 set -e
@@ -17,6 +17,8 @@ cd "${HOME}" || exit 1
 # clone wrf_visualization project
 printf "%b\\nCloning wrf_visualization: %b\\n" "${YELLOW}" "${NC}"
 git clone "https://github.com/SettRaziel/wrf_visualization.git"
+# since development is the default branch and master provides latest stable
+git checkout master  
 
 # init python dependencies
 printf "%b\\nRunning initialization scripts: %b\\n" "${YELLOW}" "${NC}"

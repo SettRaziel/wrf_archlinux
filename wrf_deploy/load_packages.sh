@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-09-07 16:35:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-14 12:23:26
+# @Last Modified time: 2020-06-30 13:12:00
 
 # define terminal colors
 . ../libs/terminal_color.sh
@@ -26,7 +26,7 @@ yay -S --noconfirm --needed tcsh wget curl findutils gcc-fortran
 # installing required packages: 
 # optipng for optimizing png size and unzip for loading high res coastlines
 printf "%b\\nInstalling required packages for output visualization: %b\\n" "${YELLOW}" "${NC}"
-yay -S --noconfirm --needed optipng unzip
+yay -S --noconfirm --needed optipng unzip git
 
 # installing packages to send emails
 printf "%b\\nInstalling required mail libraries: %b\\n" "${YELLOW}" "${NC}"
