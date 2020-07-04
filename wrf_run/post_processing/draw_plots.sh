@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 16:04:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-14 14:45:11
+# @Last Modified time: 2020-07-04 11:51:14
 
 # script to generate output pictures from a model run
 # ${1}: the year for the model run
@@ -65,12 +65,14 @@ create_directory "${DEST_FOLDER}"
 cd "${SCRIPT_PATH}" || exit 1 
 sh ./draw_meteograms.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${WRF_VISUALIZATION}" "${DEST_FOLDER}"
 
-cd "${WRF_VISUALIZATION}" || exit 1
+cd "${WRF_VISUALIZATION}/lib/composite" || exit 1
 
+# source conda to use in subshell (https://github.com/conda/conda/issues/7980)
+. /opt/miniconda3/etc/profile.d/conda.sh
 # generate output
 conda activate wrf_env
 python plot_composites.py >> "${DEBUG_LOG}"
-conda deactivate wrf_env
+conda deactivate
 
 # optimizing output file quality
 find . -maxdepth 1 -name '*.png' -exec optipng {} \;
