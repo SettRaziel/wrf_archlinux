@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-02 17:18:17
+# @Last Modified time: 2020-07-04 11:11:34
 
 # main script for starting a wrf model run
 # Version 0.4.6
@@ -96,7 +96,7 @@ fi
 cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd to model_run"
 sh clean_up_output.sh; RET=${?}
 if [ ${RET} -eq 0 ]; then
-  mv "${WRF_DIR}"/test/em_real/wrfout_d01_* "${HOME}/wrf_output"
+  mv "${WRF_DIR}"/test/em_real/wrfout_d01_* "${HOME}/wrf_visualization/files"
 else
   error_exit "Error while cleaning up previous output files"
 fi
