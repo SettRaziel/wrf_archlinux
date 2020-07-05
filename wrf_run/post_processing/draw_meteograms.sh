@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-07-04 11:51:32
+# @Last Modified time: 2020-07-05 11:09:36
 
 # script to generate output meteograms from a model run
 # ${1}: the year for the model run
@@ -31,8 +31,6 @@ START_DATE="${1}-${2}-${3} ${4}:00"
 DEST_FOLDER=${6}
 # path for external python visualization tool
 WRF_VISUALIZATION="${5}"
-# the tool will store the pngs here
-WRF_OUTPUT="${WRF_VISUALIZATION}/files"
 
 cd "${WRF_VISUALIZATION}/lib/meteogram" || exit 1
 # move required meteogram files to output folder

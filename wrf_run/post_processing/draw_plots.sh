@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 16:04:54
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-07-04 11:51:14
+# @Last Modified time: 2020-07-05 11:11:35
 
 # script to generate output pictures from a model run
 # ${1}: the year for the model run
@@ -52,8 +52,7 @@ MONTH=${2}
 DAY=${3}
 HOUR=${4}
 PERIOD=${5}
-# path for external python visualization tool
-WRF_VISUALIZATION="${HOME}/wrf_visualization"
+
 # optional addition to the storage path
 DEST_SUFFIX='_test'
 DEST_FOLDER="${SCRIPT_PATH}/${MONTH}_${DAY}_${HOUR}${DEST_SUFFIX}"
@@ -84,7 +83,7 @@ create_directory "${DEST_FOLDER}/rain_tot"
 create_directory "${DEST_FOLDER}/thunderstorm_index"
 
 # Check for moveable file and move them if present
-cd "${WRF_VISUALIZATION}/files"
+cd "${WRF_OUTPUT}"
 move_files "comp_*.png" "${DEST_FOLDER}/comp"
 move_files "rain_3h_*.png" "${DEST_FOLDER}/rain_3h"
 move_files "rain_total_*.png" "${DEST_FOLDER}/rain_tot"

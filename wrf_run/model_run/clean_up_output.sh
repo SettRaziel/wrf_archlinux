@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-12 09:26:31
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-07-04 11:09:44
+# @Last Modified time: 2020-07-05 11:13:21
 
 # Script to clean up the model results from the last model run in the output folder
 
@@ -14,8 +14,6 @@ if [ -z "${LOG_PATH}" ]; then
 else 
 	printf "Cleaning up output folder from last run at %s\\n" "$(date +"%T")" >> "${INFO_LOG}"
 fi
-
-WRF_OUTPUT="${HOME}/wrf_visualization/files"
 
 # remove previous output files from wrf_output
 find "${WRF_DIR}"/test/em_real/  -name 'wrfrst_*' -exec rm {} \;

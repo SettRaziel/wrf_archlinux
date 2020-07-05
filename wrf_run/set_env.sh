@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-03 17:20:53
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-28 13:40:21
+# @Last Modified time: 2020-07-05 11:11:14
 
 # Script that sets the required variables for the model run
 # ${1}: the build path relativ from ${HOME} where the required wrf files
@@ -45,9 +45,9 @@ export WPS_VERSION="4.1"
 export WRF_DIR="${BUILD_PATH}/WRF-${WRF_VERSION}"
 export WPS_DIR="${BUILD_PATH}/WPS-${WPS_VERSION}"
 
-# optional: required when using ncl unpacked in the library folder
-export NCARG_ROOT="${DIR}/ncl"
-export PATH="${PATH}:${NCARG_ROOT}/bin"
+# output folder for the result images
+export WRF_VISUALIZATION="${HOME}/wrf_visualization"
+export WRF_OUTPUT="${WRF_VISUALIZATION}/files"
 
 # directory paths for logging files
 export LOG_PATH="${2}/logs"
