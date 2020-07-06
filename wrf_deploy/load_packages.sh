@@ -2,21 +2,30 @@
 # @Author: Benjamin Held
 # @Date:   2018-09-07 16:35:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-30 13:12:00
+# @Last Modified time: 2020-07-06 22:18:08
+
+# setting -e to abort on error
+set -e
 
 # define terminal colors
 . ../libs/terminal_color.sh
 
 # prepare Folders
 SCRIPT_PATH=$(pwd)
-mkdir "${HOME}/aur_packages"
-cd "${HOME}/aur_packages" || exit 1
 
-# getting yay and install if necessary
-git clone https://aur.archlinux.org/yay.git
+# Prepare Folders
+if ! [ -d "aur_packages" ]; then
+  mkdir aur_packages
+fi
+cd aur_packages || exit 1
+
+# Getting yay
+if ! [ -d "yay" ]; then
+  git clone https://aur.archlinux.org/yay.git
+fi
 cd yay || exit 1
+git pull
 makepkg -si --noconfirm --needed
-cd .. || exit 1
 
 # installing packages for running the model
 printf "%b\\nInstalling required model libraries: %b\\n" "${YELLOW}" "${NC}"
