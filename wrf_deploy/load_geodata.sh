@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-09-04 11:57:18
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-14 12:23:57
+# @Last Modified time: 2020-07-06 22:21:08
 
 # Script that loads the WPS geodata specified by argument or 
 # selectable index
@@ -51,8 +51,14 @@ esac
 
 # load and deploy the geodata
 URL_PATH="http://www2.mmm.ucar.edu/wrf/src/wps_files/${FILE_NAME}"
+
+if [ -d "${HOME}/geo_data" ]; then
+  rm -rf "${HOME}/geo_data"
+fi
+
 mkdir "${HOME}/geo_data"
 cd "${HOME}/geo_data" || exit 1
+
 printf "%b\\nLoading data files: %b\\n" "${YELLOW}" "${NC}"
 wget ${URL_PATH}
 printf "%b\\nUnpacking archive: %b\\n" "${YELLOW}" "${NC}"
