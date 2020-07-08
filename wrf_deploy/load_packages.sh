@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-09-07 16:35:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-07-06 22:18:08
+# @Last Modified time: 2020-07-08 20:27:57
 
 # setting -e to abort on error
 set -e
@@ -13,6 +13,7 @@ set -e
 # prepare Folders
 SCRIPT_PATH=$(pwd)
 
+cd "${HOME}" || exit 1
 # Prepare Folders
 if ! [ -d "aur_packages" ]; then
   mkdir aur_packages
