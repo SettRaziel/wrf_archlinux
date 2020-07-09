@@ -1,7 +1,8 @@
+#!/bin/sh
 # @Author: Benjamin Held
 # @Date:   2020-06-29 15:28:33
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-07-06 22:43:41
+# @Last Modified time: 2020-07-09 18:26:47
 
 # enable termination on error
 set -e
