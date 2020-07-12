@@ -20,8 +20,10 @@ are requried to run the model on your own hardware.
   (see manual for details); atm the corresponding parameter -hyb needs to be set manually
 * different library version or WRF/WPS versions: adjusted version numbers in set_env.sh; this may lead to untested conflicts, so handle with care!
 * postprocessing options:
-  - ncl is the default postprocessing tool that will be installed automatically at the moment. Since it was set to maintance mode in Sep. 2019 a
-    replacement is needed. If you still want to use it you need to install a version of gcc 6, e.g. 
+  - (DEFAULT) wrf_visualization based on pyngl, pynio
+  - ncl was the defult postprocessing tool that can be used with versions below v0.5.0. 
+    Since it was set to maintance mode in Sep. 2019 is is considered DEPRECATED. 
+    If you still want to use it you need to install a version of gcc 6, e.g. 
     ```
     yay -S --needed gcc-fortran 
     ```

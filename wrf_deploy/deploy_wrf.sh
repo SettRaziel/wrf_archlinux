@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-11-15 18:08:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-02 17:18:34
+# @Last Modified time: 2020-07-12 19:14:31
 
 # main script to deploy a pre compiled version of wrf
 # Version 0.4.6
@@ -24,15 +24,21 @@ else
 fi
 
 # check and load required packages
-sh load_packages.sh
+sh ./load_packages.sh
 
-# create neccessary directories
-sh create_directories.sh
+# create storage folder for the gfs input data
+if ! [ -d "${HOME}/gfs_data" ]; then
+  mkdir "${HOME}/gfs_data"
+fi
 
 # load and unpack the neccessary geodata, WRFV4 minimal
 # using source to get the environment variable for WRF_GEODATA_INDEX
 source ./load_geodata.sh
-cd "${SCRIPT_PATH}"
+cd "${SCRIPT_PATH}" || exit 1
+
+# setting up output visualization
+sh ./load_visualization.sh
+cd "${SCRIPT_PATH}" || exit 1
 
 # load and unpack the wrf archive, default version 4.1.5
-sh load_wrf.sh
+sh ./load_wrf.sh
