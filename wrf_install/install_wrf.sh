@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-19 13:25:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-02 17:18:25
+# @Last Modified time: 2020-06-27 09:10:43
 
 # main installation script: start the installation of the wrf model on a
 # minimal arch linux installation
@@ -10,6 +10,7 @@
 # created by Benjamin Held and other sources, June 2017
 
 # ${1}: optional flag --local if the installation should be done with local libraries
+# ${2}: optional build path if the installation should not be the default path
 
 # setting -e to abort on error
 set -e
@@ -17,33 +18,50 @@ set -e
 # define terminal colors
 . ../libs/terminal_color.sh
 
-BUILD_PATH="<wrf path>"
-WRF_ROOT_PATH="${HOME}/${BUILD_PATH}"
-SCRIPT_PATH=$(pwd)
-
-# Check var settings of build path
-if [ "${BUILD_PATH}" = "<wrf path>" ]; then
-  printf "%bInvalid build path. Please set the <BUILD_PATH> variable. See README.md %b\\n" "${RED}" "${NC}"
+# determine build path; start from default path
+BUILD_PATH="WRF"
+if [ "$#" -eq 2 ]; then
+  if [ "${2}" != "--local" ]; then
+   BUILD_PATH="${2}"
+  fi
+elif [ "$#" -eq 1 ]; then
+  # check for --local or build path
+  if [ "${1}" != "--local" ]; then
+   BUILD_PATH="${1}"
+  fi
+elif [ "$#" -gt 2 ]; then
+  printf "%bWrong number of arguments.%b\\n" "${RED}" "${NC}"
+  printf "%busage: ./install.sh [--local] [<BUILD_PATH>]%b\\n" "${GREEN}" "${NC}"
   exit 1
 fi
 
-# Check for log folder
+# check var settings of build path
+WRF_ROOT_PATH="${HOME}/${BUILD_PATH}"
+if [ "${BUILD_PATH}" = "WRF" ]; then
+  printf "%bDefault build path ${WRF_ROOT_PATH} will be used.%b\\n" "${RED}" "${NC}"
+  printf "%bPlease set a build path as an argument when installing to a different location.%b\\n" "${RED}" "${NC}"
+fi
+
+# save script path
+SCRIPT_PATH=$(pwd)
+
+# check for log folder
 if ! [ -d 'logs' ]; then
 	mkdir logs
 fi
 
-# Setting required environment variables
+# setting required environment variables
 . ./linux/set_env.sh "${WRF_ROOT_PATH}"
 
-# Install required basic packages
+# install required basic packages
 cd linux || exit 1
 sh ./basics.sh
 
-# Preaparing files and folder
+# preaparing files and folder
 cd "${SCRIPT_PATH}/linux" || exit 1
 sh ./preparations.sh "${BUILD_PATH}" "${1}"
 
-# Compiling netcdf bindings
+# compiling netcdf bindings
 cd "${SCRIPT_PATH}/wrf_preparation" || exit 1
 sh ./netcdf.sh "${BUILD_PATH}"
 # exporting required environment parameters
@@ -52,12 +70,12 @@ export CPPFLAGS="${CPPFLAGS} -I${DIR}/netcdf/include"
 # setting library path while building with shared libraries
 export LD_LIBRARY_PATH="${DIR}/hdf5/lib:${DIR}/netcdf/lib:${LD_LIBRARY_PATH}"
 
-# Compiling fortran binding for netcdf
+# compiling fortran binding for netcdf
 printf "%bStarting fortran bindings in 5 seconds ... %b" "${YELLOW}" "${NC}"
 sleep 5
 sh ./fortran_bindings.sh "${BUILD_PATH}"
 
-# Compiling required libraries
+# compiling required libraries
 printf "%bStarting library compilation in 5 seconds ... %b" "${YELLOW}" "${NC}"
 sleep 5
 sh ./install_libraries.sh "${BUILD_PATH}"
@@ -65,29 +83,29 @@ sh ./install_libraries.sh "${BUILD_PATH}"
 export LDFLAGS="${LDFLAGS} -L${DIR}/grib2/lib"
 export CPPFLAGS="${CPPFLAGS} -I${DIR}/grib2/include"
 
-# Running System environment test
+# running system environment test
 printf "%bStarting fortran tests. Press any key ... %b" "${YELLOW}" "${NC}"
 read
 cd "${SCRIPT_PATH}/wrf_pre_test" || exit 1
 sh ./fortran_tests.sh "${BUILD_PATH}"
 
-# Running Library compatibility test
+# running library compatibility test
 printf "%bStarting precompile tests. Press any key ... %b" "${YELLOW}" "${NC}"
 read
 sh ./wrf_precompile_tests.sh "${BUILD_PATH}"
 
-# Compiling the wrf-model
+# compiling the wrf-model
 printf "%bStarting WRF compilation. Press any key ... %b" "${YELLOW}" "${NC}"
 read
 cd "${SCRIPT_PATH}/wrf_compile" || exit 1
-sh ./wrf_compile.sh "${BUILD_PATH}" "${WRF_ROOT_PATH}"
+sh ./wrf_compile.sh "${BUILD_PATH}"
 
-# Compiling the wps modulue
+# compiling the wps modulue
 printf "%bStarting WPS compilation in 5 seconds ... %b" "${YELLOW}" "${NC}"
 sleep 5
 sh ./wps_compile.sh "${BUILD_PATH}"
 
-# Adding postprocessing components
+# adding postprocessing components
 printf "%bAdding software packages for result processing ... \\n%b" "${YELLOW}" "${NC}"
 sleep 5
 cd "${SCRIPT_PATH}/wrf_postprocessing" || exit 1

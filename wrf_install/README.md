@@ -10,12 +10,11 @@ are requried to run the model on your own hardware.
 
 ## Additional install configurations
 * install_wrf.sh: Set the correct file paths
-  - BUILD_PATH: the path relative from the home folder, where the model data
-    should be installed
-  - WRF_ROOT_PATH: on default the home folder + the build path is used, adjust if necessary
+  - BUILD_PATH: the path relative from the home folder, where the model data should be installed
+  - WRF_ROOT_PATH: on default the home directory + the build path is used, adjust if necessary
   - installation with local libraries: all libraries must be present in the folder libraries in the repository folder
     by adding --local as a script parameter
-  - if no build path is set the script will fail, a default folder will be added with [(#26)](https://github.com/SettRaziel/wrf_archlinux/issues/26)
+  - if no build path is given as a script argument the script will show a warning and use the default path: /home/user/WRF
 * libraries: adjust the number of used cores by changing the -j parameter
 * starting with WRF v3.9 the model can use a hybrid approach for the vertical coordinate
   (see manual for details); atm the corresponding parameter -hyb needs to be set manually
@@ -28,8 +27,15 @@ are requried to run the model on your own hardware.
     ```
     yay -S --needed gcc-fortran 
     ```
-    that will compile the latest gcc 6 version. This is not included in the installation process since the compilation can take several hours. You need to do that
-    manually using the command above.
+    that will compile the latest gcc 6 version. 
+    This is not included in the installation process since the compilation can take several hours. 
+    You need to do that manually using the command above.
+
+## Usage
+Call the run script
+```
+  ./install.sh [--local] [<BUILD_PATH>]
+```
 
 ## Compile Options, that worked for me
 * WPS: 1 gfortran serial

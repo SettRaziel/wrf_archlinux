@@ -51,8 +51,6 @@ export WRF_OUTPUT="${WRF_VISUALIZATION}/files"
 
 # directory paths for logging files
 export LOG_PATH="${2}/logs"
-DATE_STAMP=$(date +"%m_%d")
-export ERROR_LOG="${LOG_PATH}/error_${DATE_STAMP}.log" # path to error log
 export STATUS_LOG="${LOG_PATH}/status.log"
 export DEBUG_LOG="${LOG_PATH}/debug.log"
 export INFO_LOG="${LOG_PATH}/info.log"
