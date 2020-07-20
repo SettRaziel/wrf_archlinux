@@ -35,13 +35,13 @@ folders for subsidiary license files.
 * ncl output: [here](https://www.ncl.ucar.edu/Applications/)
 
 ## Software components
-* WRF model: [Source](https://github.com/wrf-model/WRF/releases), used version: 4.1.5; newest 4.1.5
-* WPS component: [Source](https://github.com/wrf-model/WPS/releases), used version: 4.1; newest 4.1
+* WRF model: [Source](https://github.com/wrf-model/WRF/releases), used version: 4.2; newest 4.2
+* WPS component: [Source](https://github.com/wrf-model/WPS/releases), used version: 4.2; newest 4.2
 * Network Common Data Form (NetCDF): [Source](https://github.com/Unidata/netcdf-c/releases) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.7.4; newest 4.7.4
-* Hierarchical Data Format 5 (HDF5): [Source](https://support.hdfgroup.org/products/hdf5_tools/index.html) and [Terms of use](https://support.hdfgroup.org/ftp/HDF5/releases/COPYING) used version: 1.12.0; newest 1.12.6
-* NetCDF-Fortran Library: [Source](https://github.com/Unidata/netcdf-fortran/releases) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.5.2; newest: 4.5.2
-* Message Passing Interface (mpich): [Source](https://www.mpich.org/) and [License](http://git.mpich.org/mpich.git/blob/HEAD:/COPYRIGHT), used version: 3.2.0; newest: 3.3.0
-* PNG reference library (libpng): [Source](http://www.libpng.org/pub/png/libpng.html) and [License](http://www.libpng.org/pub/png/src/libpng-LICENSE.txt), used version: 1.6.34; newest: 1.6.37
+* Hierarchical Data Format 5 (HDF5): [Source](https://support.hdfgroup.org/products/hdf5_tools/index.html) and [Terms of use](https://support.hdfgroup.org/ftp/HDF5/releases/COPYING) used version: 1.12.0; newest 1.12.0
+* NetCDF-Fortran Library: [Source](https://github.com/Unidata/netcdf-fortran/releases) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.5.3; newest: 4.5.3
+* Message Passing Interface (mpich): [Source](https://www.mpich.org/) and [License](http://git.mpich.org/mpich.git/blob/HEAD:/COPYRIGHT), used version: 3.4a3; newest: 3.4a3
+* PNG reference library (libpng): [Source](http://www.libpng.org/pub/png/libpng.html) and [License](http://www.libpng.org/pub/png/src/libpng-LICENSE.txt), used version: 1.6.37; newest: 1.6.37
 * A Massively Spiffy Yet Delicately Unobtrusive Compression Library (zlib): [Source](http://www.zlib.net) and [License](http://www.zlib.net/zlib_license.html), used version: 1.2.11; newest: 1.2.11
 * JasPer Project (JasPer): [Source](https://www.ece.uvic.ca/~frodo/jasper/) and [License](https://www.ece.uvic.ca/~frodo/jasper/LICENSE), used version: 1.900.2; newest: 2.0.14
 * Optional postprocessing tools:
@@ -70,8 +70,8 @@ WRFV4 uses the latest version of gcc/gcc-gfortran avaiable at the time of testin
     - gcc/gfortran: 9.3
 * testing setup:
   - WRF Model v4.2.0 and WPS v4.2 [compiling, normal_build, running]
-    - NetCDF v4.7.4 / NetCDF-Fortran Library v4.5.2, HDF 1.12.0
-    - mpi v3.3, libpng v1.6.37, zlib v1.2.11, JasPer v1.900.2
+    - NetCDF v4.7.4 / NetCDF-Fortran Library v4.5.3, HDF 1.12.0
+    - mpi v3.4a3, libpng v1.6.37, zlib v1.2.11, JasPer v1.900.2
     - gcc/gfortran: 10.1
 * tested setups:
   - WRF Model v4.1.5 and WPS v4.1 [compiling, normal_build, running]
