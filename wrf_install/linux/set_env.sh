@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-03 17:20:53
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-07-20 18:31:25
+# @Last Modified time: 2020-07-25 20:21:09
 
 # Script that sets the required variables for the model installation
 # ${1}: the build path where the wrf model should be installed
@@ -14,7 +14,7 @@ export CXX="g++"
 export FC="gfortran"
 export FCFLAGS="-m64"
 export F77="gfortran"
-export FFLAGS="-m64"
+export FFLAGS="-m64 -fallow-argument-mismatch"
 export PATH="${PATH}:${DIR}/netcdf/bin"
 export NETCDF="${DIR}/netcdf"
 export HDF5="${DIR}/hdf5"
