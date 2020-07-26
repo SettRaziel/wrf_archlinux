@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-01 20:09:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-26 20:21:08
+# @Last Modified time: 2020-07-26 14:49:36
 
 # setting -e to abort on error
 set -e
@@ -33,7 +33,7 @@ sed -r -i 's/-L\$\(NETCDF\)\/lib -lnetcdff -lnetcdf/-L\$\(NETCDF\)\/lib -lnetcdf
 ./compile >& ./compile.log
 
 # copy compiling log
-cp compile.log "${SCRIPT_PATH}/../logs" || exit 1
+cp compile.log "${SCRIPT_PATH}/../logs/wps_compile.log" || exit 1
 
 cd .. || exit 1
 
