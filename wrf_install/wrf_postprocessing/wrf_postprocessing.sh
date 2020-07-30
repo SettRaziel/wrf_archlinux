@@ -1,7 +1,8 @@
+#!/bin/sh
 # @Author: Benjamin Held
 # @Date:   2020-05-22 18:53:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-07-26 15:44:49
+# @Last Modified time: 2020-07-30 20:15:04
 
 # setting -e to abort on error
 set -e
@@ -10,7 +11,6 @@ set -e
 . ../../libs/terminal_color.sh
 
 # logging time stamp
-SCRIPT_PATH=$(pwd)
 printf "Starting postprocessing activities at %s.\\n" "$(date +"%T")"
 
 # IMPLEMENT YOUR POSTPROCESSING SCRIPT CALLS HERE
