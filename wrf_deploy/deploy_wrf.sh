@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-11-15 18:08:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-07-12 19:14:31
+# @Last Modified time: 2020-08-04 16:44:38
 
 # main script to deploy a pre compiled version of wrf
 # Version 0.4.6
@@ -40,5 +40,5 @@ cd "${SCRIPT_PATH}" || exit 1
 sh ./load_visualization.sh
 cd "${SCRIPT_PATH}" || exit 1
 
-# load and unpack the wrf archive, default version 4.1.5
+# load and unpack the wrf archive, default version 4.2.0
 sh ./load_wrf.sh
