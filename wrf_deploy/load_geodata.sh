@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-09-04 11:57:18
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-08-21 23:13:18
+# @Last Modified time: 2020-08-22 13:19:10
 
 # Script that loads the WPS geodata specified by argument or 
 # selectable index
@@ -54,11 +54,11 @@ URL_PATH="http://www2.mmm.ucar.edu/wrf/src/wps_files/${FILE_NAME}"
 
 if [ -d "${HOME}/geo_data" ]; then
   while true; do
-    printf "%bGeodata folder already exists, replace it? [y/n]\\n%b" "${LIGHT_BLUE}" "${NC}"        
+    printf "%bGeodata folder already exists, replace it? [y/n]\\n%b" "${YELLOW}" "${NC}"        
     read INPUT
     case ${INPUT} in
       [y]* ) rm -rf "${HOME}/geo_data"; mkdir "${HOME}/geo_data"; break;;
-      [n]* ) ;;
+      [n]* ) break;;
       * ) printf "%bWrong input Please use [y]es oder [n]o.%b\\n" "${RED}" "${NC}";;
     esac
   done
