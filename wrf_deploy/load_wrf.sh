@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-10-23 09:09:29
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-08-22 13:28:35
+# @Last Modified time: 2020-08-22 13:39:42
 
 # Script that loads the WRF model specified by argument or 
 # selectable index
@@ -73,7 +73,7 @@ cd ${HOME} || exit 1
 # checking if wrf directory is already there and ask for replacement
 if [ -d "${HOME}/geo_data" ]; then
   while true; do
-    printf "%${FILE_NAME} folder already exists, overwrite it? [y/n]\\n%b" "${YELLOW}" "${NC}"        
+    printf "%b${FILE_NAME} folder already exists, overwrite it? [y/n]\\n%b" "${YELLOW}" "${NC}"        
     read INPUT
     case ${INPUT} in
       [y]* ) load_wrf_model; break;;
