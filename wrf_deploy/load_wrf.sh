@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-10-23 09:09:29
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-08-22 13:39:42
+# @Last Modified time: 2020-08-24 13:33:51
 
 # Script that loads the WRF model specified by argument or 
 # selectable index
@@ -26,12 +26,13 @@ print_options () {
 
 # downloading and unpacking archive
 load_wrf_model () {
-  rm -rf "${HOME}/${FILE_NAME}"
+  rm -rf "${HOME:?}/${FILE_NAME}"
+  ARCHIVE="${FILE_NAME}.tar.gz"
   printf "%b\\nLoading wrf archive: %b\\n" "${YELLOW}" "${NC}"
-  wget ${URL_PATH}
+  wget "${URL_PATH}"
   printf "%b\\nUnpacking archive: %b\\n" "${YELLOW}" "${NC}"
-  tar -xzf ${FILE_NAME}.tar.gz
-  rm ${FILE_NAME}.tar.gz
+  tar -xzf ${ARCHIVE}
+  rm ${ARCHIVE}
 }
 
 # define terminal colors
@@ -42,7 +43,7 @@ if [ -z "${WRF_VERSION_INDEX}" ]; then
   while true; do
     printf "%bSelect the WRF version that should be deployed:\\n%b" "${LIGHT_BLUE}" "${NC}"
     print_options        
-    read INPUT
+    read -r INPUT
     case ${INPUT} in
       [123456]* ) WRF_VERSION_INDEX=${INPUT}; break;;
       * ) printf "%bPlease use a numeric value in [1-6].%b\\n" "${RED}" "${NC}";;
@@ -74,7 +75,7 @@ cd ${HOME} || exit 1
 if [ -d "${HOME}/geo_data" ]; then
   while true; do
     printf "%b${FILE_NAME} folder already exists, overwrite it? [y/n]\\n%b" "${YELLOW}" "${NC}"        
-    read INPUT
+    read -r INPUT
     case ${INPUT} in
       [y]* ) load_wrf_model; break;;
       [n]* ) break;;
