@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-10-23 09:09:29
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-14 12:23:41
+# @Last Modified time: 2020-08-24 13:38:13
 
 # Script that loads the WRF model specified by argument or 
 # selectable index
@@ -24,6 +24,17 @@ print_options () {
   printf "%b 6: WRFV3 version 3.8.0\\n%b" "${YELLOW}" "${NC}"
 }
 
+# downloading and unpacking archive
+load_wrf_model () {
+  rm -rf "${HOME:?}/${FILE_NAME}"
+  ARCHIVE="${FILE_NAME}.tar.gz"
+  printf "%b\\nLoading wrf archive: %b\\n" "${YELLOW}" "${NC}"
+  wget "${URL_PATH}"
+  printf "%b\\nUnpacking archive: %b\\n" "${YELLOW}" "${NC}"
+  tar -xzf "${ARCHIVE}"
+  rm "${ARCHIVE}"
+}
+
 # define terminal colors
 . ../libs/terminal_color.sh
 
@@ -32,7 +43,7 @@ if [ -z "${WRF_VERSION_INDEX}" ]; then
   while true; do
     printf "%bSelect the WRF version that should be deployed:\\n%b" "${LIGHT_BLUE}" "${NC}"
     print_options        
-    read INPUT
+    read -r INPUT
     case ${INPUT} in
       [123456]* ) WRF_VERSION_INDEX=${INPUT}; break;;
       * ) printf "%bPlease use a numeric value in [1-6].%b\\n" "${RED}" "${NC}";;
@@ -60,12 +71,18 @@ URL_PATH="https://bheld.eu/data/wrf_deploy/${FILE_NAME}.tar.gz"
 SCRIPT_PATH=$(pwd)
 cd ${HOME} || exit 1
 
-# downloading and unpacking archive
-printf "%b\\nLoading wrf archive: %b\\n" "${YELLOW}" "${NC}"
-wget ${URL_PATH}
-printf "%b\\nUnpacking archive: %b\\n" "${YELLOW}" "${NC}"
-tar -xzf ${FILE_NAME}.tar.gz
-rm ${FILE_NAME}.tar.gz
+# checking if wrf directory is already there and ask for replacement
+if [ -d "${HOME}/geo_data" ]; then
+  while true; do
+    printf "%b${FILE_NAME} folder already exists, overwrite it? [y/n]\\n%b" "${YELLOW}" "${NC}"        
+    read -r INPUT
+    case ${INPUT} in
+      [y]* ) load_wrf_model; break;;
+      [n]* ) break;;
+      * ) printf "%bWrong input Please use [y]es oder [n]o.%b\\n" "${RED}" "${NC}";;
+    esac
+  done
+fi
 
 # copying the config files from the repository to its destination
 printf "%b\\nDeploying repository config files: %b\\n" "${YELLOW}" "${NC}"

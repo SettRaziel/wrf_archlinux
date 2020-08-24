@@ -20,6 +20,8 @@ Simply call the deployment script
 ```
     ./deploy_wrf.sh
 ```
+The deployment script can be used with the parameter --default, which will deploy the latest version of the WRF model with minimal
+geodata. But there is no need for manual selection of the required model version and geodata.
 
 ## Additional manual prepartions
 Depending on the deployed wrf_model a few manual steps are required to do before running the model

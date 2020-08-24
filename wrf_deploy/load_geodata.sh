@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-09-04 11:57:18
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-07-06 22:21:08
+# @Last Modified time: 2020-08-24 13:35:15
 
 # Script that loads the WPS geodata specified by argument or 
 # selectable index
@@ -27,7 +27,7 @@ if [ -z "${WRF_GEODATA_INDEX}" ]; then
   while true; do
     printf "%bSelect geographical data for WPS preprocessing:\\n%b" "${LIGHT_BLUE}" "${NC}"
     print_options        
-    read INPUT
+    read -r INPUT
     case ${INPUT} in
       [1234]* ) WRF_GEODATA_INDEX=${INPUT}; break;;
       * ) printf "%bPlease use a numeric value in [1-4].%b\\n" "${RED}" "${NC}";;
@@ -52,15 +52,23 @@ esac
 # load and deploy the geodata
 URL_PATH="http://www2.mmm.ucar.edu/wrf/src/wps_files/${FILE_NAME}"
 
+# checking if geodata directory is already there and ask for replacement
 if [ -d "${HOME}/geo_data" ]; then
-  rm -rf "${HOME}/geo_data"
+  while true; do
+    printf "%bGeodata folder already exists, replace it? [y/n]\\n%b" "${YELLOW}" "${NC}"        
+    read -r INPUT
+    case ${INPUT} in
+      [y]* ) rm -rf "${HOME}/geo_data"; mkdir "${HOME}/geo_data"; break;;
+      [n]* ) break;;
+      * ) printf "%bWrong input Please use [y]es oder [n]o.%b\\n" "${RED}" "${NC}";;
+    esac
+  done
 fi
 
-mkdir "${HOME}/geo_data"
 cd "${HOME}/geo_data" || exit 1
 
 printf "%b\\nLoading data files: %b\\n" "${YELLOW}" "${NC}"
-wget ${URL_PATH}
+wget "${URL_PATH}"
 printf "%b\\nUnpacking archive: %b\\n" "${YELLOW}" "${NC}"
 if [ ${WRF_GEODATA_INDEX} -eq 2 ]
 then

@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2020-06-29 15:28:33
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-07-09 18:26:47
+# @Last Modified time: 2020-08-21 15:34:38
 
 # enable termination on error
 set -e
@@ -16,11 +16,16 @@ SCRIPT_PATH=$(pwd)
 cd "${HOME}" || exit 1
 
 # clone wrf_visualization project
-printf "%b\\nCloning wrf_visualization: %b\\n" "${YELLOW}" "${NC}"
-git clone "https://github.com/SettRaziel/wrf_visualization.git"
+if ! [ -d "${HOME}/wrf_visualization" ]; then
+  printf "%b\\nCloning wrf_visualization: %b\\n" "${YELLOW}" "${NC}"
+  git clone "https://github.com/SettRaziel/wrf_visualization.git"
+fi
+
 # checkout master, since it holds the latest version tag
 cd wrf_visualization || exit 1
+printf "%b\\nChecking wrf_visualization: %b\\n" "${YELLOW}" "${NC}"
 git checkout master  
+git pull
 
 # init python dependencies
 printf "%b\\nRunning initialization scripts: %b\\n" "${YELLOW}" "${NC}"
