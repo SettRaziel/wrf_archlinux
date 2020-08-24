@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-10-23 09:09:29
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-08-24 13:33:51
+# @Last Modified time: 2020-08-24 13:38:13
 
 # Script that loads the WRF model specified by argument or 
 # selectable index
@@ -31,8 +31,8 @@ load_wrf_model () {
   printf "%b\\nLoading wrf archive: %b\\n" "${YELLOW}" "${NC}"
   wget "${URL_PATH}"
   printf "%b\\nUnpacking archive: %b\\n" "${YELLOW}" "${NC}"
-  tar -xzf ${ARCHIVE}
-  rm ${ARCHIVE}
+  tar -xzf "${ARCHIVE}"
+  rm "${ARCHIVE}"
 }
 
 # define terminal colors
