@@ -70,9 +70,9 @@ WRFV4 uses the latest version of gcc/gcc-gfortran avaiable at the time of testin
     - gcc/gfortran: 9.3
 * testing setup:
   - WRF Model v4.2.0 and WPS v4.2 [compiling, normal_build, running]
-    - NetCDF v4.7.4 / NetCDF-Fortran Library v4.5.3, HDF 1.12.0
-    - mpi v3.4a3, libpng v1.6.37, zlib v1.2.11, JasPer v1.900.2
-    - gcc/gfortran: 10.1
+    - NetCDF v4.7.4 / NetCDF-Fortran Library v4.5.2, HDF 1.12.0
+    - mpi v3.3, libpng v1.6.37, zlib v1.2.11, JasPer v1.900.2
+    - gcc/gfortran: 9.3
 * tested setups:
   - WRF Model v4.1.5 and WPS v4.1 [compiling, normal_build, running]
     - NetCDF v4.7.4 / NetCDF-Fortran Library v4.5.2, HDF 1.12.0
