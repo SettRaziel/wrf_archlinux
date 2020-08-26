@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-10-23 09:09:29
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-08-24 13:38:13
+# @Last Modified time: 2020-08-26 11:21:25
 
 # Script that loads the WRF model specified by argument or 
 # selectable index
@@ -11,6 +11,9 @@
 # 2: WRFV4 version 4.1.5
 # 3: WRFV4 version 4.0.2
 # 4: WRFV3 version 3.9.1
+
+# enable termination on error
+set -e
 
 # option output
 print_options () {
@@ -22,7 +25,6 @@ print_options () {
 
 # downloading and unpacking archive
 load_wrf_model () {
-  rm -rf "${HOME:?}/${FILE_NAME}"
   ARCHIVE="${FILE_NAME}.tar.gz"
   printf "%b\\nLoading wrf archive: %b\\n" "${YELLOW}" "${NC}"
   wget "${URL_PATH}"
@@ -66,12 +68,14 @@ SCRIPT_PATH=$(pwd)
 cd ${HOME} || exit 1
 
 # checking if wrf directory is already there and ask for replacement
-if [ -d "${HOME}/geo_data" ]; then
+if ! [ -d "${HOME}/${FILE_NAME}" ]; then
+  load_wrf_model
+else
   while true; do
     printf "%b${FILE_NAME} folder already exists, overwrite it? [y/n]\\n%b" "${YELLOW}" "${NC}"        
     read -r INPUT
     case ${INPUT} in
-      [y]* ) load_wrf_model; break;;
+      [y]* ) rm -rf "${HOME:?}/${FILE_NAME}"; load_wrf_model; break;;
       [n]* ) break;;
       * ) printf "%bWrong input Please use [y]es oder [n]o.%b\\n" "${RED}" "${NC}";;
     esac
