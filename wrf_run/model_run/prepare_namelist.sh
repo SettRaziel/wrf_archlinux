@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-15 18:22:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-28 13:39:11
+# @Last Modified time: 2020-08-27 10:21:11
 
 # script to update the input parameter for a model run
 # ${1}: the year for the model run
@@ -41,14 +41,14 @@ RUN_HOURS="$((PERIOD % 24))"
 
 # grid parameters
 DT=80
-DX=10000
-DY=10000
+DX=15000
+DY=15000
 
 GRID_X=50
 GRID_Y=50
 
 REF_LAT=53.0
-REF_LON=9.0
+REF_LON=10.0
 
 # printing input parameter
 printf "%b\\nSetting start date to: %s-%s-%s %s:00%b\\n" "${YELLOW}" "${START_YEAR}" "${START_MONTH}" "${START_DAY}" "${START_HOUR}" "${NC}"
