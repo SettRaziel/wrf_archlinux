@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-19 13:25:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-27 09:10:43
+# @Last Modified time: 2020-08-02 14:16:47
 
 # main installation script: start the installation of the wrf model on a
 # minimal arch linux installation
@@ -110,3 +110,7 @@ printf "%bAdding software packages for result processing ... \\n%b" "${YELLOW}" 
 sleep 5
 cd "${SCRIPT_PATH}/wrf_postprocessing" || exit 1
 sh ./wrf_postprocessing.sh
+
+# generating tar file
+cd "${HOME}" || exit 1
+tar -cvzf "${BUILD_PATH}.tar.gz" "${BUILD_PATH}"

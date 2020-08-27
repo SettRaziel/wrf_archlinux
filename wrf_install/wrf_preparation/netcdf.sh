@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-16 21:06:12
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-27 09:15:42
+# @Last Modified time: 2020-07-25 19:40:18
 
 # installation of the netcdf package
 # ${1}: path to the installation folder
@@ -38,8 +38,8 @@ tar xfv "netcdf-${NETCDF_VERSION}.tar.gz"
 # installing netcdf library
 printf "%b\\nInstalling netcdf: %b\\n" "${YELLOW}" "${NC}"
 cd "netcdf-c-${NETCDF_VERSION}"
-./configure --prefix="${DIR}/netcdf" 
-make -j 2 &&  make install -j 2
+./configure --prefix="${DIR}/netcdf"
+make -j 2 && make install -j 2
 
 cd .. || exit 1
 

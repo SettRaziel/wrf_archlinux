@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-03 17:20:53
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-07-05 11:11:14
+# @Last Modified time: 2020-08-27 10:01:52
 
 # Script that sets the required variables for the model run
 # ${1}: the build path relativ from ${HOME} where the required wrf files
@@ -40,8 +40,8 @@ export JASPERINC="${DIR}/grib2/include"
 export LD_LIBRARY_PATH="${DIR}/hdf5/lib:${DIR}/netcdf/lib:${LD_LIBRARY_PATH}"
 
 # Version and directory variables
-export WRF_VERSION="4.1.5"
-export WPS_VERSION="4.1"
+export WRF_VERSION="4.2"
+export WPS_VERSION="4.2"
 export WRF_DIR="${BUILD_PATH}/WRF-${WRF_VERSION}"
 export WPS_DIR="${BUILD_PATH}/WPS-${WPS_VERSION}"
 

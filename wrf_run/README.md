@@ -10,7 +10,7 @@ see LICENSE
   - geodata resulutions are described using arc-minutes or arc-seconds, so the resultion values are:
     * 30 arc-seconds
     * 2, 5 or 10 arc-minutes
-  - for WRF version 3 no all resolutions are available in the coarse or fine resolution packs, they can
+  - for WRF version 3 not all resolutions are available in the coarse or fine resolution packs, they can
     be downloaded manually and needed to be copied into the geodata folder
   - make sure that you have installed the required packages, especially a compatible fortran compiler (see deployment
     or install scripts for details). The run script does not check if all requried dependencies are installed, since
@@ -18,13 +18,13 @@ see LICENSE
 
 ## Run options
 * build directory: set correct directory in run_model.sh
-* WRF / WPS Version when unsing different versions that the latest development: set value in set_env.sh
+* WRF / WPS Version when using different versions than the latest development: set value in set_env.sh
 * run parameter for namelists: adjust them in prepare_namelist.sh
   - horizontal grid size: grid_dx, grid_dy
   - horitontal grid resolution: dx, dy
   - reference latitude and longitude
   - start time stamp
-* addition grid parameter: directly in namelist in required
+* addition grid parameter: set directly in namelist file, the preparation file does not cover that
   - vertical grid size: grid_dz
 * meteogram locations can be set in `WRF/test/em_real/tslist`
   - check the description, you have 24 characters for the location name, than identifier and coordinates

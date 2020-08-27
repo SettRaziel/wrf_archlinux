@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-18 15:49:25
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-27 09:10:29
+# @Last Modified time: 2020-07-26 14:49:21
 
 # setting -e to abort on error
 set -e
@@ -38,7 +38,7 @@ sed -r -i 's/-L\$\(WRF_SRC_ROOT_DIR\)\/external\/io_netcdf -lwrfio_nf/-L\$\(WRF_
 ./compile -j 1 em_real >& ./compile.log
 
 # copy compiling log
-cp compile.log "${SCRIPT_PATH}/../logs" || exit 1
+cp compile.log "${SCRIPT_PATH}/../logs/wrf_compile.log" || exit 1
 
 cd .. || exit 1
 
