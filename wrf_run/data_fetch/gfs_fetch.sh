@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-06 19:18:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-01 15:17:38
+# @Last Modified time: 2020-09-06 16:52:46
 
 # This script loads the required input data for a 180 h forecast run
 # ${1} matches the required date yyyymmdd
@@ -22,14 +22,9 @@ GFS_URL="https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/"
 gfs_fetch_curl () {
   # Define a number of retries and try to download the files
 	for i in $(seq -f %03g 0 3 "${5}"); do
-	  tries=5
-	  while [ ${tries} -gt 0 ] 
-	  do
-	    curl -C - -o "${3}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}" "${GFS_URL}"gfs."${1}"/"${2}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}"
-	    if [ $? -ne 56 ]; then 
-        break
-	    fi
-	    let --tries
+	  while true; do
+      # -f fail silenty, -C continue if interrupted, -o define output; loop breaks if file was loaded successfully
+	    curl -f -C - -o "${3}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}" "${GFS_URL}"gfs."${1}"/"${2}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}" && break
 	  done
 	done
 }
