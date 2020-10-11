@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-18 15:49:25
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-07-26 14:49:21
+# @Last Modified time: 2020-10-11 19:12:46
 
 # setting -e to abort on error
 set -e
@@ -33,7 +33,7 @@ fi
 ./clean
 
 # add additional libraries
-sed -r -i 's/-L\$\(WRF_SRC_ROOT_DIR\)\/external\/io_netcdf -lwrfio_nf/-L\$\(WRF_SRC_ROOT_DIR\)\/external\/io_netcdf -ltirpc -lwrfio_nf/g' configure.wrf
+sed -r -i 's#-L\$\(WRF_SRC_ROOT_DIR\)\/external\/io_netcdf -lwrfio_nf#-L\$\(WRF_SRC_ROOT_DIR\)\/external\/io_netcdf -ltirpc -lwrfio_nf#g' configure.wrf
 
 ./compile -j 1 em_real >& ./compile.log
 
