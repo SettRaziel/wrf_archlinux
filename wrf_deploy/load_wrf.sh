@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-10-23 09:09:29
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-08-26 11:21:25
+# @Last Modified time: 2020-10-17 15:20:40
 
 # Script that loads the WRF model specified by argument or 
 # selectable index
@@ -65,7 +65,7 @@ esac
 # creating url for the selectied wrf tar
 URL_PATH="https://bheld.eu/data/wrf_deploy/${FILE_NAME}.tar.gz"
 SCRIPT_PATH=$(pwd)
-cd ${HOME} || exit 1
+cd "${HOME}" || exit 1
 
 # checking if wrf directory is already there and ask for replacement
 if ! [ -d "${HOME}/${FILE_NAME}" ]; then
