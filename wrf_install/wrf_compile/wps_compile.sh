@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-01 20:09:17
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-07-26 14:49:36
+# @Last Modified time: 2020-10-11 19:12:31
 
 # setting -e to abort on error
 set -e
@@ -28,7 +28,7 @@ cd "WPS-${WPS_VERSION}" || exit 1
 ./configure
 
 # add additional libraries
-sed -r -i 's/-L\$\(NETCDF\)\/lib -lnetcdff -lnetcdf/-L\$\(NETCDF\)\/lib -lnetcdff -lnetcdf -ltirpc -lgomp/g' configure.wps
+sed -r -i 's#-L\$\(NETCDF\)\/lib -lnetcdff -lnetcdf#-L\$\(NETCDF\)\/lib -lnetcdff -lnetcdf -ltirpc -lgomp#g' configure.wps
 
 ./compile >& ./compile.log
 

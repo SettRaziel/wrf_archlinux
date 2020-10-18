@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-10-23 09:09:29
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-08-26 11:21:25
+# @Last Modified time: 2020-10-11 19:18:10
 
 # Script that loads the WRF model specified by argument or 
 # selectable index
@@ -91,5 +91,8 @@ case ${WRF_GEODATA_INDEX} in
 esac
 cp ../additions/config/namelist.input "${HOME}/${FILE_NAME}/${WRF_FOLDER}/test/em_real/"
 cp ../additions/config/tslist "${HOME}/${FILE_NAME}/${WRF_FOLDER}/test/em_real/"
+
+# adjust geo data folder in namelist.wps to default /home/user/geo_data of load_geodata.sh
+sed -r -i "s#/home/raziel/geo_data#${HOME}/geo_data#g" "${HOME}/${FILE_NAME}/${WPS_FOLDER}/namelist.wps"
 
 printf "%b\\nFinished wrf deployment.%b\\n" "${YELLOW}" "${NC}"
