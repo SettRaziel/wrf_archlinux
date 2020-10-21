@@ -92,4 +92,7 @@ esac
 cp ../additions/config/namelist.input "${HOME}/${FILE_NAME}/${WRF_FOLDER}/test/em_real/"
 cp ../additions/config/tslist "${HOME}/${FILE_NAME}/${WRF_FOLDER}/test/em_real/"
 
+# adjust geo data folder in namelist.wps to default /home/user/geo_data of load_geodata.sh
+sed -r -i "s#/home/raziel/geo_data#${HOME}/geo_data#g" "${HOME}/${FILE_NAME}/${WPS_FOLDER}/namelist.wps"
+
 printf "%b\\nFinished wrf deployment.%b\\n" "${YELLOW}" "${NC}"

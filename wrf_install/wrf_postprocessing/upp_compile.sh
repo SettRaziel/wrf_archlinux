@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-05 17:52:09
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-30 17:17:05
+# @Last Modified time: 2020-10-11 19:13:05
 
 # Script to compile the upp library for output visualization
 # ${1}: the path to the folder where the upp program should be installed
@@ -22,7 +22,7 @@ printf "%b\\nInstaling upp: %b\\n" "${YELLOW}" "${NC}"
 cd UPPV3.1 || exit 1
 ./configure
 
-sed -r -i 's/NETCDFLIBS      =    -lnetcdff -lnetcdf/NETCDFLIBS      =    -lnetcdff -lnetcdf -lgomp/g' configure.upp
+sed -r -i 's#NETCDFLIBS      =    -lnetcdff -lnetcdf#NETCDFLIBS      =    -lnetcdff -lnetcdf -lgomp#g' configure.upp
 
 ./compile >& ./compile.log
 
