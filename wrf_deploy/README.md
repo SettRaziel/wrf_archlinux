@@ -7,7 +7,7 @@ required to start a model run. The main script will be extended to accept
 parameters to customize the deployment process.
 
 ## Parameters
-* WRF version, currently available: 3.8.0, 3.8.1, 3.9.0, 3.9.1, 4.0.2, 4.1.5
+* WRF version, currently available: 3.9.0, 3.9.1, 4.0.2, 4.1.5, 4.2.0
 * Geodata: 
 	* WRFV3 lowres (~200 mb), WRFV3 highres (~50 gb)
 	* additional resolutions can the downloaded manually from [Link](http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog_V3.html)
@@ -47,12 +47,13 @@ You have access to the following migration scripts:
 * check the correct build path
 * (DEPRECATED) check for correct ggc-fortran libraries if the output with ncl causes any trouble
 
-## NCL usage (DEPRECATED)
+## NCL usage (DROPPED)
 As of september 2019 the ncar command language used for the current wrf output is no longer developed. 
 The last binary version has been built with gcc 6.3.0 and need libgfortran3.so to run correctly.
 To use this as a library for visualizing the wrf output a workaorund is the usage of a parallel gcc version.
 That is done within the `load_packages.sh`. The compilation process of the gcc6 package takes up to a few hours.
 After that the model run will set the path to the missing libgfortran3.so when creating the output with ncl.
+The usage of NCL is dropped with v0.5.0.
 
 ## License
 see LICENSE
