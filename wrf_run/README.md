@@ -31,6 +31,8 @@ see LICENSE
   - a readme can be found at: `WRF/run/README.tslist`
   - be cautious with an umlaut like {ö,ä,ü}. Using that in a name leads to an additional char, so a workaround
     that help me was the removal of a padding whitespace between location name and identifier
+  - if not locations are set or no locations are present within the model area, the post_processing will fail since there
+    is not meteogram data available to copy. Do not use draw_meteograms or remove its -e flag
 * run additional scripts after the model run finishes: after the output creation and before sending the success mail
   there is a new shell script call for additional post hook calls the subsidiary script allows it to call additional scripts
   that should be run before finishing, e.g. moving data to another server
