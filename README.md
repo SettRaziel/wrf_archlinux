@@ -26,8 +26,7 @@ folders for subsidiary license files.
 * wrf_deploy: [readme](./wrf_deploy/README.md)
   * contains scripts to download and deploy a precompiled wrf archive with all required libraries
 * additions: [readme](./additions/README.md)
-  * additional scripts and files that can help running the model
-* plots: example scripts for ncl output files
+  * additional config files that can help running the model
 
 ## Sources
 * basic system: [here](https://wiki.archlinux.org/index.php/Installation_guide)

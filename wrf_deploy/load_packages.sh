@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-09-07 16:35:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-07-08 20:27:57
+# @Last Modified time: 2020-10-25 14:53:46
 
 # setting -e to abort on error
 set -e
@@ -32,6 +32,8 @@ makepkg -si --noconfirm --needed
 printf "%b\\nInstalling required model libraries: %b\\n" "${YELLOW}" "${NC}"
 yay -S --noconfirm --needed pkgconfig
 yay -S --noconfirm --needed tcsh wget curl findutils gcc-fortran
+# dependency required with WRF 4.2.0
+yay -S --noconfirm --needed libpciaccess libunwind
 
 # installing required packages: 
 # optipng for optimizing png size and unzip for loading high res coastlines
