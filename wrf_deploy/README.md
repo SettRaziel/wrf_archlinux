@@ -26,7 +26,7 @@ geodata. But there is no need for manual selection of the required model version
 ## Additional manual prepartions
 Depending on the deployed wrf_model a few manual steps are required to do before running the model
 * build directory: set correct directory in run_model.sh
-* namelist file for WPS: set to correct path to the geo data (that will be automated in the future and integrated into the deployment)
+* namelist file for WPS: update path to the geo data if a non default directory is used (it will be set to default as /home/user/geo_data)
 * wrf_output directory: adjust destination folder and destination suffix for the output files in draw_plots.sh
 * configure e-mail settings:
 	* configure mail text and default sender in create_mail.sh
