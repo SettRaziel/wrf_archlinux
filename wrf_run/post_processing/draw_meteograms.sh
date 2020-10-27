@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-07-03 18:01:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-07-05 11:09:36
+# @Last Modified time: 2020-10-26 12:17:36
 
 # script to generate output meteograms from a model run
 # ${1}: the year for the model run
@@ -15,8 +15,22 @@
 # setting -e to abort on error
 set -e
 
+# function to move the files of a given pattern to the destination
+move_files () {
+  FILE_PATTERN=${1}
+  MOVE_FOLDER=${2}
+
+  for FILE_NAME in ${FILE_PATTERN}; do
+    if [ -e "${FILE_NAME}" ]; then
+      mv "${FILE_NAME}" "${MOVE_FOLDER}"
+    else
+      printf "No meteogram file for pattern %s.\\n" "${FILE_PATTERN}" >> "${DEBUG_LOG}"      
+    fi
+  done
+}
+
 # define terminal colors
-source "${COLOR_PATH}"
+. "${COLOR_PATH}"
 
 # error handling for input parameter
 if [ "$#" -ne 6 ]; then
@@ -34,14 +48,14 @@ WRF_VISUALIZATION="${5}"
 
 cd "${WRF_VISUALIZATION}/lib/meteogram" || exit 1
 # move required meteogram files to output folder
-mv "${WRF_DIR}/test/em_real/"*.PH "${WRF_OUTPUT}"
-mv "${WRF_DIR}/test/em_real/"*.PR "${WRF_OUTPUT}"
-mv "${WRF_DIR}/test/em_real/"*.QV "${WRF_OUTPUT}"
-mv "${WRF_DIR}/test/em_real/"*.TH "${WRF_OUTPUT}"
-mv "${WRF_DIR}/test/em_real/"*.TS "${WRF_OUTPUT}"
-mv "${WRF_DIR}/test/em_real/"*.UU "${WRF_OUTPUT}"
-mv "${WRF_DIR}/test/em_real/"*.VV "${WRF_OUTPUT}"
-mv "${WRF_DIR}/test/em_real/"*.WW "${WRF_OUTPUT}"
+move_files "${WRF_DIR}/test/em_real/*.PH" "${WRF_OUTPUT}"
+move_files "${WRF_DIR}/test/em_real/*.PR" "${WRF_OUTPUT}"
+move_files "${WRF_DIR}/test/em_real/*.QV" "${WRF_OUTPUT}"
+move_files "${WRF_DIR}/test/em_real/*.TH" "${WRF_OUTPUT}"
+move_files "${WRF_DIR}/test/em_real/*.TS" "${WRF_OUTPUT}"
+move_files "${WRF_DIR}/test/em_real/*.UU" "${WRF_OUTPUT}"
+move_files "${WRF_DIR}/test/em_real/*.VV" "${WRF_OUTPUT}"
+move_files "${WRF_DIR}/test/em_real/*.WW" "${WRF_OUTPUT}"
 
 # source conda to use in subshell (https://github.com/conda/conda/issues/7980)
 . /opt/miniconda3/etc/profile.d/conda.sh
@@ -54,7 +68,7 @@ conda deactivate
 find . -maxdepth 1 -name '*.png' -exec optipng {} \;
 
 # move files to output folder
-mv "${WRF_OUTPUT}/"*.png "${DEST_FOLDER}/"
+move_files "${WRF_OUTPUT}/*.png" "${DEST_FOLDER}/"
 
 # logging time stamp
 printf "Finished meteograms at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"

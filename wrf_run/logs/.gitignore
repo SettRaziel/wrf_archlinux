@@ -1,3 +1,6 @@
 # ignore log and info files
 *.log
 *.info
+
+# ignore error directories
+error_*/
