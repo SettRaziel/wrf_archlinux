@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-10-28 18:49:34
+# @Last Modified time: 2020-12-12 21:07:16
 
 # main script for starting a wrf model run
 # Version 0.5.0
@@ -40,31 +40,35 @@ error_exit () {
 
 # required variables
 SCRIPT_PATH=$(pwd)
+# default parameters
 BUILD_PATH="<wrf path>"
-source "${SCRIPT_PATH}/set_env.sh" "${BUILD_PATH}" "${SCRIPT_PATH}"
-# default variables
 GFS_PATH=${HOME}/gfs_data
+YEAR=$(date '+%Y')
+MONTH=$(date '+%m')
+DAY=$(date '+%d')  
 
-if [ "$#" -eq 3 ]; then # no argument, run whole script
-  YEAR=$(date '+%Y')
-  MONTH=$(date '+%m')
-  DAY=$(date '+%d')
-  HOUR=${1}
-  PERIOD=${2}
-  RESOLUTION=${3}
-elif [ "$#" -eq 6 ]; then
-  YEAR=${1}
-  MONTH=${2}
-  DAY=${3}
-  HOUR=${4}
-  PERIOD=${5}
-  RESOLUTION=${6}
-else
-  echo "Wrong number of arguments."
-  echo "Must either be three for <HOUR> <PERIOD> <RESOLUTION>"
-  echo "or six for <YEAR> <MONTH> <DAY> <HOUR> <PERIOD> <RESOLUTION>"
-  exit 1
-fi
+while [[ $# -gt 0 ]]; do
+  case ${1} in
+      -b|--build)
+      BUILD_PATH="${2}"; shift; shift;;
+      -y|--year)
+      YEAR="${2}"; shift; shift;;
+      -m|--month)
+      MONTH="${2}"; shift; shift;;
+      -d|--day)
+      DAY="${2}"; shift; shift;;
+      -h|--hour)
+      HOUR="${2}"; shift; shift;;
+      -p|--period)
+      PERIOD="${2}"; shift; shift;;
+      -r|--resolution)
+      RESOLUTION="${2}"; shift; shift;;
+      *)
+      shift;;
+  esac
+done
+
+source "${SCRIPT_PATH}/set_env.sh" "${BUILD_PATH}" "${SCRIPT_PATH}"
 
 LCK="${SCRIPT_PATH}/lock.file";
 exec 42>"${LCK}";
