@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-12-12 21:07:16
+# @Last Modified time: 2020-12-14 18:35:20
 
 # main script for starting a wrf model run
 # Version 0.5.0
@@ -40,6 +40,8 @@ error_exit () {
 
 # required variables
 SCRIPT_PATH=$(pwd)
+# define terminal colors
+export COLOR_PATH="${SCRIPT_PATH}/../libs/terminal_color.sh"
 # default parameters
 BUILD_PATH="<wrf path>"
 GFS_PATH=${HOME}/gfs_data
@@ -63,6 +65,8 @@ while [[ $# -gt 0 ]]; do
       PERIOD="${2}"; shift; shift;;
       -r|--resolution)
       RESOLUTION="${2}"; shift; shift;;
+      --help)
+      sh help/man_help.sh; exit 0;;
       *)
       shift;;
   esac
