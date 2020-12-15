@@ -2,14 +2,11 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-12-14 18:35:20
+# @Last Modified time: 2020-12-15 19:31:26
 
 # main script for starting a wrf model run
 # Version 0.5.0
 # created by Benjamin Held and other sources, June 2017
-# Two possible parameter sets:
-# <START_HOUR> <PERIOD> <RESOLUTION> <PERIOD>
-# <START_YEAR> <START_MONTH> <START_DAY> <START_HOUR> <PERIOD> <RESOLUTION>
 
 error_exit () {
   NOW=$(date +"%T")
@@ -40,8 +37,8 @@ error_exit () {
 
 # required variables
 SCRIPT_PATH=$(pwd)
-# define terminal colors
 export COLOR_PATH="${SCRIPT_PATH}/../libs/terminal_color.sh"
+
 # default parameters
 BUILD_PATH="<wrf path>"
 GFS_PATH=${HOME}/gfs_data
@@ -74,13 +71,19 @@ done
 
 source "${SCRIPT_PATH}/set_env.sh" "${BUILD_PATH}" "${SCRIPT_PATH}"
 
-LCK="${SCRIPT_PATH}/lock.file";
-exec 42>"${LCK}";
+cd "${SCRIPT_PATH}/validate" || error_exit "Failed cd parameter validation"
+sh validate_parameter.sh "${BUILD_PATH}" "${PERIOD}" "${RESOLUTION}"; RET=${?}
+if ! [ ${RET} -eq 0 ]; then
+  error_exit "Input parameter are invalid, check script call"
+fi
 
-flock -x 42;
 # preparing status file
 printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%T")" > "${STATUS_LOG}"
 printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%T")" > "${INFO_LOG}"
+
+LCK="${SCRIPT_PATH}/lock.file";
+exec 42>"${LCK}";
+flock -x 42;
 
 # adjusting namelist for next run
 cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd namelist"
