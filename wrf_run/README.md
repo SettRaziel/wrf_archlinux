@@ -38,10 +38,18 @@ see LICENSE
   that should be run before finishing, e.g. moving data to another server
 
 ## Usage
-Call the run script
+Use the script with the follwing settings, mandatory values are hour, period and resolution
 ```
-    ./run_model.sh <input_model_run> <forecast_time> <input_resolution>
-    e.g. ./run_model.sh 00 84 0p50
+script usage: ./run_model.sh [parameter]
+Model run parameter:
+     --help         show help text
+ -b, --build        argument: <path>; specifies the wrf path
+ -y, --year         argument: <year>; the model year
+ -m, --month        argument: <month>; the model month
+ -d, --day          argument: <day>; the model day
+ -h, --hour         argument: <hour>; the model hour (mandatory)
+ -p, --period       argument: <period>; the forecast duration (mandatory)
+ -r, --resolution   argument: <resolution>; the model resolution (mandatory)
 ```
 * input_model_run: {00, 06, 12, 18}
 * forecast_time: hours as integer, no whole days (see known issues)
