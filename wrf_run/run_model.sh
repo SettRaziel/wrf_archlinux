@@ -2,14 +2,11 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-10-28 18:49:34
+# @Last Modified time: 2020-12-15 19:31:26
 
 # main script for starting a wrf model run
 # Version 0.5.0
 # created by Benjamin Held and other sources, June 2017
-# Two possible parameter sets:
-# <START_HOUR> <PERIOD> <RESOLUTION> <PERIOD>
-# <START_YEAR> <START_MONTH> <START_DAY> <START_HOUR> <PERIOD> <RESOLUTION>
 
 error_exit () {
   NOW=$(date +"%T")
@@ -40,39 +37,53 @@ error_exit () {
 
 # required variables
 SCRIPT_PATH=$(pwd)
-BUILD_PATH="<wrf path>"
-source "${SCRIPT_PATH}/set_env.sh" "${BUILD_PATH}" "${SCRIPT_PATH}"
-# default variables
-GFS_PATH=${HOME}/gfs_data
+export COLOR_PATH="${SCRIPT_PATH}/../libs/terminal_color.sh"
 
-if [ "$#" -eq 3 ]; then # no argument, run whole script
-  YEAR=$(date '+%Y')
-  MONTH=$(date '+%m')
-  DAY=$(date '+%d')
-  HOUR=${1}
-  PERIOD=${2}
-  RESOLUTION=${3}
-elif [ "$#" -eq 6 ]; then
-  YEAR=${1}
-  MONTH=${2}
-  DAY=${3}
-  HOUR=${4}
-  PERIOD=${5}
-  RESOLUTION=${6}
-else
-  echo "Wrong number of arguments."
-  echo "Must either be three for <HOUR> <PERIOD> <RESOLUTION>"
-  echo "or six for <YEAR> <MONTH> <DAY> <HOUR> <PERIOD> <RESOLUTION>"
-  exit 1
+# default parameters
+BUILD_PATH="<wrf path>"
+GFS_PATH=${HOME}/gfs_data
+YEAR=$(date '+%Y')
+MONTH=$(date '+%m')
+DAY=$(date '+%d')  
+
+while [[ $# -gt 0 ]]; do
+  case ${1} in
+      -b|--build)
+      BUILD_PATH="${2}"; shift; shift;;
+      -y|--year)
+      YEAR="${2}"; shift; shift;;
+      -m|--month)
+      MONTH="${2}"; shift; shift;;
+      -d|--day)
+      DAY="${2}"; shift; shift;;
+      -h|--hour)
+      HOUR="${2}"; shift; shift;;
+      -p|--period)
+      PERIOD="${2}"; shift; shift;;
+      -r|--resolution)
+      RESOLUTION="${2}"; shift; shift;;
+      --help)
+      sh help/man_help.sh; exit 0;;
+      *)
+      shift;;
+  esac
+done
+
+source "${SCRIPT_PATH}/set_env.sh" "${BUILD_PATH}" "${SCRIPT_PATH}"
+
+cd "${SCRIPT_PATH}/validate" || error_exit "Failed cd parameter validation"
+sh validate_parameter.sh "${BUILD_PATH}" "${PERIOD}" "${RESOLUTION}"; RET=${?}
+if ! [ ${RET} -eq 0 ]; then
+  error_exit "Input parameter are invalid, check script call"
 fi
 
-LCK="${SCRIPT_PATH}/lock.file";
-exec 42>"${LCK}";
-
-flock -x 42;
 # preparing status file
 printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%T")" > "${STATUS_LOG}"
 printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%T")" > "${INFO_LOG}"
+
+LCK="${SCRIPT_PATH}/lock.file";
+exec 42>"${LCK}";
+flock -x 42;
 
 # adjusting namelist for next run
 cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd namelist"
