@@ -1,5 +1,5 @@
 # WRF Forecast System
-Code Inspector: ![Code Inspector](https://www.code-inspector.com/project/863/status/svg)
+[![CodeFactor](https://www.codefactor.io/repository/github/settraziel/wrf_archlinux/badge)](https://www.codefactor.io/repository/github/settraziel/wrf_archlinux)
 
 Scripts and documentation to run your own WRF model forecast system on
 ArchLinux. The descriptions will grow together with the uploaded files.
