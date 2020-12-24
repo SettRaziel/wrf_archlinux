@@ -34,7 +34,11 @@ are requried to run the model on your own hardware.
 ## Usage
 Call the run script
 ```
-  ./install.sh [--local] [<BUILD_PATH>]
+script usage: ./install.sh [parameter]
+Install parameter:
+     --help         show help text
+ -b, --build        argument: <path>; specifies the wrf path
+ -l, --local        uses local libraries for installation
 ```
 
 ## Compile Options, that worked for me
