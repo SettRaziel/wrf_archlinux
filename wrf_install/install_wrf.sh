@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-19 13:25:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-12-20 15:31:01
+# @Last Modified time: 2020-12-25 16:42:41
 
 # main installation script: start the installation of the wrf model on a
 # minimal arch linux installation
@@ -55,7 +55,7 @@ sh ./basics.sh
 
 # preaparing files and folder
 cd "${SCRIPT_PATH}/linux" || exit 1
-sh ./preparations.sh "${BUILD_PATH}" "${1}"
+sh ./preparations.sh "${BUILD_PATH}" "${LOCAL}"
 
 # compiling netcdf bindings
 cd "${SCRIPT_PATH}/wrf_preparation" || exit 1
