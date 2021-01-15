@@ -2,15 +2,12 @@
 # @Author: Benjamin Held
 # @Date:   2017-02-19 13:25:49
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-10-28 18:49:48
+# @Last Modified time: 2020-12-25 16:42:41
 
 # main installation script: start the installation of the wrf model on a
 # minimal arch linux installation
 # Version 0.5.0
 # created by Benjamin Held and other sources, June 2017
-
-# ${1}: optional flag --local if the installation should be done with local libraries
-# ${2}: optional build path if the installation should not be the default path
 
 # setting -e to abort on error
 set -e
@@ -18,22 +15,21 @@ set -e
 # define terminal colors
 . ../libs/terminal_color.sh
 
-# determine build path; start from default path
+# set from default path
 BUILD_PATH="WRF"
-if [ "$#" -eq 2 ]; then
-  if [ "${2}" != "--local" ]; then
-   BUILD_PATH="${2}"
-  fi
-elif [ "$#" -eq 1 ]; then
-  # check for --local or build path
-  if [ "${1}" != "--local" ]; then
-   BUILD_PATH="${1}"
-  fi
-elif [ "$#" -gt 2 ]; then
-  printf "%bWrong number of arguments.%b\\n" "${RED}" "${NC}"
-  printf "%busage: ./install.sh [--local] [<BUILD_PATH>]%b\\n" "${GREEN}" "${NC}"
-  exit 1
-fi
+
+while [[ $# -gt 0 ]]; do
+  case ${1} in
+      -b|--build)
+      BUILD_PATH="${2}"; shift; shift;;
+      -l|--local)
+      LOCAL="--local"; shift;;
+      --help)
+      sh help/man_help.sh; exit 0;;
+      *)
+      shift;;
+  esac
+done
 
 # check var settings of build path
 WRF_ROOT_PATH="${HOME}/${BUILD_PATH}"
@@ -59,7 +55,7 @@ sh ./basics.sh
 
 # preaparing files and folder
 cd "${SCRIPT_PATH}/linux" || exit 1
-sh ./preparations.sh "${BUILD_PATH}" "${1}"
+sh ./preparations.sh "${BUILD_PATH}" "${LOCAL}"
 
 # compiling netcdf bindings
 cd "${SCRIPT_PATH}/wrf_preparation" || exit 1
