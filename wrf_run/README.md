@@ -86,13 +86,17 @@ According to the ncep noaa [website](https://www.nco.ncep.noaa.gov/pmb/products/
     parallel model runs
   - running an additional instance on another server with a different virtualization software resulted in a stable
     instance, so it might be possible that the different virtualization or ram errors lead to the freezing behavior
-      - April 2019: new virtual machine works wothout this problem
+      - April 2019: new virtual machine works without this problem
 * Using different resolutions for x and y seems to lead to an error, that file informations do not
   concur with the settings from the namelist file. Only the value of dx seems to be used. This
   needs to be reviewed.
 * If the model fails with error regarding namelist and data files or bad file descriptions check the loaded input data.
   Most of the time connection errors lead to incomplete file downloads. The data fetching tries to restart the download
   progress if an error occurs, but the proble, can still occur.
+* The input data cannot be loaded from the https address. Check the ftp fileserver for availablity:
+  `ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/`. If its available a temporary workaround to load the data via
+  unsecure ftp can be achieved by changing the curl command to
+  `curl -f -o "${3}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}" "${GFS_URL}"gfs."${1}"/"${2}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}"`
 
 ## Todos:
 check issues with wrf_run label
