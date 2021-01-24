@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-12-15 19:31:26
+# @Last Modified time: 2021-01-24 09:26:22
 
 # main script for starting a wrf model run
 # Version 0.5.0
@@ -77,13 +77,14 @@ if ! [ ${RET} -eq 0 ]; then
   error_exit "Input parameter are invalid, check script call"
 fi
 
-# preparing status file
-printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%T")" > "${STATUS_LOG}"
-printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%T")" > "${INFO_LOG}"
-
+# Check and lock control file
 LCK="${SCRIPT_PATH}/lock.file";
 exec 42>"${LCK}";
 flock -x 42;
+
+# preparing status file
+printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%T")" > "${STATUS_LOG}"
+printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%T")" > "${INFO_LOG}"
 
 # adjusting namelist for next run
 cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd namelist"
