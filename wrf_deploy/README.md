@@ -2,29 +2,36 @@
 
 This scripts can deploy a already precompiled version of the WRF model in the
 home directory of the user calling this script. On default it will download the
-latest version of WRFV4 (currently: 4.1.5) and the minimal geodata (~200 mb) 
+latest version of WRFV4 (currently: 4.2.0) and the minimal geodata (~200 mb) 
 required to start a model run. The main script will be extended to accept
 parameters to customize the deployment process.
 
 ## Parameters
-* WRF version, currently available: 3.9.0, 3.9.1, 4.0.2, 4.1.5, 4.2.0
+* WRF version, currently available for deployment: 3.9.1, 4.0.2, 4.1.5, 4.2.0
+* older versions that need manual deployment or older wrf_archlinux versions: 3.8.0, 3.9.0
 * Geodata: 
 	* WRFV3 lowres (~200 mb), WRFV3 highres (~50 gb)
 	* additional resolutions can the downloaded manually from [Link](http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog_V3.html)
-	* WRFV4 lowres (~200 mb), WRFV4 hightes (~50 gb)
+	* WRFV4 lowres (~200 mb), WRFV4 highres (~50 gb)
 	* overview of WRFV4 geo data and manual download of additional resolutions is available [here](http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html)
 * Visualization of WRF results with wrf_visualization based on pyngl, pynio which will be installed using wrf_deploy
 
 ## Usage
 Simply call the deployment script
 ```
-    ./deploy_wrf.sh
+script usage: ./deploy_wrf.sh [parameter]
+Deploy parameter:
+     --help         show help text
+     --default      runs the deployment with default settings WRF 4.2 low data
+ -v, --version      argument: <index>; specifies the wrf version
+                    1: 4.2, 2: 4.1, 3: 4.0, 4: 3.9.1
+ -g, --geodata      argument: <index>; specifies the wrf geodata
+                    1: WRF3 high, 2: WRF3 low, 3: WRF4 high, 4: WRF4 low
 ```
-The deployment script can be used with the parameter --default, which will deploy the latest version of the WRF model with minimal
-geodata. But there is no need for manual selection of the required model version and geodata.
+If no values are provided it will be asked during the deployment process.
 
 ## Additional manual prepartions
-Depending on the deployed wrf_model a few manual steps are required to do before running the model
+Depending on the deployed wrf_model a few manual steps are required to do before running the model:
 * build directory: set correct directory in run_model.sh
 * namelist file for WPS: update path to the geo data if a non default directory is used (it will be set to default as /home/user/geo_data)
 * wrf_output directory: adjust destination folder and destination suffix for the output files in draw_plots.sh

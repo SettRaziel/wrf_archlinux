@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2018-11-15 18:08:23
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-10-28 18:49:59
+# @Last Modified time: 2020-12-31 11:25:52
 
 # main script to deploy a pre compiled version of wrf
 # Version 0.5.0
@@ -13,15 +13,31 @@
 # enable termination on error
 set -e
 
+# define terminal colors
+. ../libs/terminal_color.sh
+
 SCRIPT_PATH=$(pwd)
-# set environment variables
-if [ "${1}" = '--default' ]; then
-	# default: 1 for WRFV4 and 4 for WRFV4 low res geodata
-	source ./set_env.sh 1 4
-else
-	# no values for environment variables, so manual setting
-	source ./set_env.sh
-fi
+# default WRFV4 model
+export WRF_VERSION_INDEX
+# default low resolution WRFV4 geo data
+export WRF_GEODATA_INDEX
+
+while [[ $# -gt 0 ]]; do
+  case ${1} in
+      --default)
+      WRF_VERSION_INDEX=1
+      WRF_GEODATA_INDEX=4
+      shift;;
+      -v|--version)
+      WRF_VERSION_INDEX="${2}"; shift; shift;;
+      -g|--geodata)
+      WRF_GEODATA_INDEX="${2}"; shift; shift;;
+      --help)
+      sh man_help.sh; exit 0;;
+      *)
+      shift;;
+  esac
+done
 
 # check and load required packages
 sh ./load_packages.sh
