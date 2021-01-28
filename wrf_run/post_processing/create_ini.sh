@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-04-09 19:25:16
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-28 13:39:33
+# @Last Modified time: 2021-01-28 11:59:49
 
 # define terminal colors
 . "${COLOR_PATH}"
@@ -40,7 +40,7 @@ echo
 
 echo '[comp]'
 echo 'delta=10800'
-echo 'files=comp/comp_%Y-%m-%d_%H.png'
+echo 'files=comp/comp_%Y_%m_%d_%H.png'
 echo 'desc="Komposition von Temperatur, Luftdruck und Wind vom %Y-%m-%d %H:00 UTC"'
 echo 'title="Multidiagramm"'
 echo
@@ -48,7 +48,7 @@ echo
 echo '[rain_3h]'
 echo "start=$(date -u +%s -d "${DATE} + 3 hour")"
 echo 'delta=10800'
-echo 'files=rain_3h/rain_3h_%Y-%m-%d_%H.png'
+echo 'files=rain_3h/rain_3h_%Y_%m_%d_%H.png'
 echo 'desc="3stündiger Niederschlag vom %Y-%m-%d %H:00 UTC"'
 echo 'title="Niederschlag 3 h"'
 echo
@@ -56,14 +56,14 @@ echo
 echo '[rain_tot]'
 echo "start=$(date -u +%s -d "${DATE} + 6 hour")"
 echo 'delta=21600'
-echo 'files=rain_tot/rain_tot_%Y-%m-%d_%H.png'
+echo 'files=rain_tot/rain_tot_%Y_%m_%d_%H.png'
 echo 'desc="Gesamtniederschlag bis zum %Y-%m-%d %H:00 UTC"'
 echo 'title="Summe Niederschlag"'
 echo
 
 echo '[thunderstorm_index]'
 echo 'delta=10800'
-echo 'files=thunderstorm_index/thunderstorm_%Y-%m-%d_%H.png'
+echo 'files=thunderstorm_index/thunderstorm_%Y_%m_%d_%H.png'
 echo 'desc="CAPE Index vom %Y-%m-%d %H:00 UTC"'
 echo 'title="Gewitter Index"'
 echo
