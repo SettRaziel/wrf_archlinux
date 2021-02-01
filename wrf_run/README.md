@@ -66,8 +66,9 @@ According to the ncep noaa [website](https://www.nco.ncep.noaa.gov/pmb/products/
   a common multiple of 6 leads to errors for the total rain output that prevents the data from
   being copied to the destination folder (that needs to be adresses in the ncl output script)
 * The forecast uses the unix date command to determine the start and end date. Using full days (e.g
-  24 hours, 72 hours, ...) leads to a problem to determine the correct dates. That issue will be
-  adressed soon.
+  24 hours, 72 hours, ...) leads to a problem to determine the correct dates. Update (2021-2-1): Retested that with the 
+  current model setup, this error cannot be reproduced. Model run was successful for different paramter combinations.
+  The corresponding ticket #5 will be closed, but reopened if the problem occurs again.
 * Model instability as statet in Troubleshooting
 
 ## Troubleshooting
