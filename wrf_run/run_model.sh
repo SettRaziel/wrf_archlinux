@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-01-24 09:26:22
+# @Last Modified time: 2021-03-08 19:43:05
 
 # main script for starting a wrf model run
 # Version 0.5.0
@@ -29,7 +29,7 @@ error_exit () {
   cp "${WRF_DIR}/test/em_real/rsl.error.0000" "${ERROR_DIR}"
 
   # generate error mail
-  cd "${SCRIPT_PATH}" || exit 1
+  cd "${SCRIPT_PATH}/notification" || exit 1
   sh create_mail.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${ERROR_STATUS}" "Fail"
   echo "${1}" 1>&2
   exit 1
@@ -151,6 +151,7 @@ if [ ${RET} -ne 0 ]; then
 fi
 
 # finish up model run and send notification mail
-cd "${SCRIPT_PATH}" || error_exit "Failed cd finish mail"
-sh create_mail.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "Finished model run without error." "Success"
-printf "Finished model run without error at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
+cd "${SCRIPT_PATH}/notification" || error_exit "Failed cd finish mail"
+SUCCESS_MESSAGE="Finished model run without error"
+sh create_mail.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${SUCCESS_MESSAGE}." "Success"
+printf "${SUCCESS_MESSAGE} at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
