@@ -2,36 +2,15 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-03-08 19:43:05
+# @Last Modified time: 2021-03-09 17:05:39
 
 # main script for starting a wrf model run
 # Version 0.5.0
 # created by Benjamin Held and other sources, June 2017
 
 error_exit () {
-  NOW=$(date +"%T")
-  ERROR_STATUS="${1} at: ${NOW}."
-  # log error informations
-  printf "%s\\n" "${ERROR_STATUS}" >> "${INFO_LOG}"
-  printf "Error: %s at: %s.\\n" "${1}" "${NOW}" >> "${STATUS_LOG}"
-
-  # store relevant error informations
-  cd "${LOG_PATH}" || exit 1
-  ERROR_DIR="error_${YEAR}_${MONTH}_${DAY}_${HOUR}"
-  if ! [ -d "${ERROR_DIR}" ]; then
-    mkdir "${ERROR_DIR}"
-  fi
-  mv "${INFO_LOG}" "${ERROR_DIR}"
-  mv "${DEBUG_LOG}" "${ERROR_DIR}"
-  # copy wrf run files independent from the error source, it if breaks before the model run
-  # it is possible to get the files from the previous run
-  cp "${WRF_DIR}/test/em_real/real_error.log" "${ERROR_DIR}"
-  cp "${WRF_DIR}/test/em_real/rsl.error.0000" "${ERROR_DIR}"
-
-  # generate error mail
   cd "${SCRIPT_PATH}/notification" || exit 1
-  sh create_mail.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${ERROR_STATUS}" "Fail"
-  echo "${1}" 1>&2
+  sh handle_error.sh "${1}" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}"
   exit 1
 }
 
