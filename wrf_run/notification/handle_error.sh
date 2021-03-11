@@ -1,10 +1,9 @@
 # @Author: Benjamin Held
 # @Date:   2021-03-08 19:29:37
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-03-09 17:11:46
+# @Last Modified time: 2021-03-11 18:41:54
 
-NOW=$(date +"%T")
-ERROR_STATUS="${1} at: ${NOW}."
+ERROR_STATUS="${1} at: $(date +"%T")."
 YEAR=${2}
 MONTH=${3}
 DAY=${4}
@@ -12,7 +11,7 @@ HOUR=${5}
 
 # log error informations
 printf "%s\\n" "${ERROR_STATUS}" >> "${INFO_LOG}"
-printf "Error: %s at: %s.\\n" "${1}" "${NOW}" >> "${STATUS_LOG}"
+printf "Error: %s\\n" "${ERROR_STATUS}" >> "${STATUS_LOG}"
 
 # store relevant error informations
 cd "${LOG_PATH}" || exit 1
@@ -29,6 +28,12 @@ cp "${WRF_DIR}/test/em_real/real_error.log" "${ERROR_DIR}"
 cp "${WRF_DIR}/test/em_real/rsl.error.0000" "${ERROR_DIR}"
 
 # generate error mail
-cd "${SCRIPT_PATH}/notification" || exit 1
 sh create_mail.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${ERROR_STATUS}" "Fail"
+
+# check for error log and append error
+if [ ! -f "${ERROR_LOG}" ]; then
+  touch "${ERROR_LOG}"
+fi
+printf "Failed model run %s-%s-%s %s:00 at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%F %R")" >> "${ERROR_LOG}"
+
 echo "${1}" 1>&2
