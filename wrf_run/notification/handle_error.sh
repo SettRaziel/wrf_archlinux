@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2021-03-08 19:29:37
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-03-11 18:41:54
+# @Last Modified time: 2021-03-12 18:49:31
 
 ERROR_STATUS="${1} at: $(date +"%T")."
 YEAR=${2}
@@ -9,6 +9,7 @@ MONTH=${3}
 DAY=${4}
 HOUR=${5}
 
+SCRIPT_PATH=$(pwd)
 # log error informations
 printf "%s\\n" "${ERROR_STATUS}" >> "${INFO_LOG}"
 printf "Error: %s\\n" "${ERROR_STATUS}" >> "${STATUS_LOG}"
@@ -28,12 +29,20 @@ cp "${WRF_DIR}/test/em_real/real_error.log" "${ERROR_DIR}"
 cp "${WRF_DIR}/test/em_real/rsl.error.0000" "${ERROR_DIR}"
 
 # generate error mail
+cd "${SCRIPT_PATH}" || exit 1
 sh create_mail.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${ERROR_STATUS}" "Fail"
 
 # check for error log and append error
 if [ ! -f "${ERROR_LOG}" ]; then
   touch "${ERROR_LOG}"
 fi
-printf "Failed model run %s-%s-%s %s:00 at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%F %R")" >> "${ERROR_LOG}"
+
+# check for empty hour
+if [ -z "${HOUR}" ]; then
+  HOUR="unknown hour"
+else
+  HOUR="${HOUR}:00"
+fi
+printf "Failed model run %s-%s-%s %s at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%F %R")" >> "${ERROR_LOG}"
 
 echo "${1}" 1>&2
