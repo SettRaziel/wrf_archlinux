@@ -2,36 +2,15 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-01-24 09:26:22
+# @Last Modified time: 2021-03-14 17:38:02
 
 # main script for starting a wrf model run
 # Version 0.5.0
 # created by Benjamin Held and other sources, June 2017
 
 error_exit () {
-  NOW=$(date +"%T")
-  ERROR_STATUS="${1} at: ${NOW}."
-  # log error informations
-  printf "%s\\n" "${ERROR_STATUS}" >> "${INFO_LOG}"
-  printf "Error: %s at: %s.\\n" "${1}" "${NOW}" >> "${STATUS_LOG}"
-
-  # store relevant error informations
-  cd "${LOG_PATH}" || exit 1
-  ERROR_DIR="error_${YEAR}_${MONTH}_${DAY}_${HOUR}"
-  if ! [ -d "${ERROR_DIR}" ]; then
-    mkdir "${ERROR_DIR}"
-  fi
-  mv "${INFO_LOG}" "${ERROR_DIR}"
-  mv "${DEBUG_LOG}" "${ERROR_DIR}"
-  # copy wrf run files independent from the error source, it if breaks before the model run
-  # it is possible to get the files from the previous run
-  cp "${WRF_DIR}/test/em_real/real_error.log" "${ERROR_DIR}"
-  cp "${WRF_DIR}/test/em_real/rsl.error.0000" "${ERROR_DIR}"
-
-  # generate error mail
-  cd "${SCRIPT_PATH}" || exit 1
-  sh create_mail.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${ERROR_STATUS}" "Fail"
-  echo "${1}" 1>&2
+  cd "${SCRIPT_PATH}/notification" || exit 1
+  sh handle_error.sh "${1}" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}"
   exit 1
 }
 
@@ -71,6 +50,10 @@ done
 
 source "${SCRIPT_PATH}/set_env.sh" "${BUILD_PATH}" "${SCRIPT_PATH}"
 
+# preparing status file
+printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%T")" > "${STATUS_LOG}"
+printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%T")" > "${INFO_LOG}"
+
 cd "${SCRIPT_PATH}/validate" || error_exit "Failed cd parameter validation"
 sh validate_parameter.sh "${BUILD_PATH}" "${PERIOD}" "${RESOLUTION}"; RET=${?}
 if ! [ ${RET} -eq 0 ]; then
@@ -81,10 +64,6 @@ fi
 LCK="${SCRIPT_PATH}/lock.file";
 exec 42>"${LCK}";
 flock -x 42;
-
-# preparing status file
-printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%T")" > "${STATUS_LOG}"
-printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%T")" > "${INFO_LOG}"
 
 # adjusting namelist for next run
 cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd namelist"
@@ -151,6 +130,7 @@ if [ ${RET} -ne 0 ]; then
 fi
 
 # finish up model run and send notification mail
-cd "${SCRIPT_PATH}" || error_exit "Failed cd finish mail"
-sh create_mail.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "Finished model run without error." "Success"
-printf "Finished model run without error at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
+cd "${SCRIPT_PATH}/notification" || error_exit "Failed cd finish mail"
+SUCCESS_MESSAGE="Finished model run without error"
+sh create_mail.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${SUCCESS_MESSAGE}." "Success"
+printf "${SUCCESS_MESSAGE} at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
