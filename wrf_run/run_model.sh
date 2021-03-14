@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2017-03-18 09:40:15
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-03-09 17:05:39
+# @Last Modified time: 2021-03-14 17:38:02
 
 # main script for starting a wrf model run
 # Version 0.5.0
@@ -50,6 +50,10 @@ done
 
 source "${SCRIPT_PATH}/set_env.sh" "${BUILD_PATH}" "${SCRIPT_PATH}"
 
+# preparing status file
+printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%T")" > "${STATUS_LOG}"
+printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%T")" > "${INFO_LOG}"
+
 cd "${SCRIPT_PATH}/validate" || error_exit "Failed cd parameter validation"
 sh validate_parameter.sh "${BUILD_PATH}" "${PERIOD}" "${RESOLUTION}"; RET=${?}
 if ! [ ${RET} -eq 0 ]; then
@@ -60,10 +64,6 @@ fi
 LCK="${SCRIPT_PATH}/lock.file";
 exec 42>"${LCK}";
 flock -x 42;
-
-# preparing status file
-printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%T")" > "${STATUS_LOG}"
-printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%T")" > "${INFO_LOG}"
 
 # adjusting namelist for next run
 cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd namelist"
