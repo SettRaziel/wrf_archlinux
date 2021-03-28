@@ -1,8 +1,4 @@
 #!/bin/sh
-# @Author: Benjamin Held
-# @Date:   2017-03-06 19:18:17
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-09-06 16:52:46
 
 # This script loads the required input data for a 180 h forecast run
 # ${1} matches the required date yyyymmdd
@@ -24,7 +20,7 @@ gfs_fetch_curl () {
 	for i in $(seq -f %03g 0 3 "${5}"); do
 	  while true; do
       # -f fail silenty, -C continue if interrupted, -o define output; loop breaks if file was loaded successfully
-	    curl -f -C - -o "${3}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}" "${GFS_URL}"gfs."${1}"/"${2}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}" && break
+	    curl -f -C - -o "${3}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}" "${GFS_URL}"gfs."${1}"/"${2}"/atmos/gfs.t"${2}"z.pgrb2."${4}".f"${i}" && break
 	  done
 	done
 }
@@ -33,12 +29,12 @@ gfs_fetch_curl () {
 gfs_fetch_wget () {
   # Fetch the new input files
   for i in $(seq -f %03g 0 3 "${5}"); do
-    wget -q -P "${3}" "${GFS_URL}"gfs."${1}"/"${2}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}"
+    wget -q -P "${3}" "${GFS_URL}"gfs."${1}"/"${2}"/atmos/gfs.t"${2}"z.pgrb2."${4}".f"${i}"
   done
 
   # Check and continue broken files
   for i in $(seq -f %03g 0 3 "${5}"); do
-    wget -c -q -P "${3}" "${GFS_URL}"gfs."${1}"/"${2}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}"
+    wget -c -q -P "${3}" "${GFS_URL}"gfs."${1}"/"${2}"/atmos/gfs.t"${2}"z.pgrb2."${4}".f"${i}"
   done
 }
 
