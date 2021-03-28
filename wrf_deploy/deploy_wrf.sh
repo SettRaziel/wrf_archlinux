@@ -5,7 +5,7 @@
 # @Last Modified time: 2020-12-31 11:25:52
 
 # main script to deploy a pre compiled version of wrf
-# Version 0.5.0
+# Version 0.6.0
 # created by Benjamin Held and other sources, June 2017
 # possible parameter:
 # --default

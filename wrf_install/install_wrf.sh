@@ -6,7 +6,7 @@
 
 # main installation script: start the installation of the wrf model on a
 # minimal arch linux installation
-# Version 0.5.0
+# Version 0.6.0
 # created by Benjamin Held and other sources, June 2017
 
 # setting -e to abort on error
