@@ -1,7 +1,4 @@
-# @Author: Benjamin Held
-# @Date:   2020-12-30 22:22:02
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-12-30 22:33:21
+#!/bin/sh
 
 printf "%bscript usage:%b ./deploy_wrf.sh [parameter]\\n" "${GREEN}" "${NC}"
 printf "%bDeploy parameter:\\n%b" "${YELLOW}" "${NC}"

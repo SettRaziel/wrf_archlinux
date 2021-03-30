@@ -1,8 +1,4 @@
 #!/bin/sh
-# @Author: Benjamin Held
-# @Date:   2018-10-23 09:09:29
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-10-17 15:20:40
 
 # Script that loads the WRF model specified by argument or 
 # selectable index

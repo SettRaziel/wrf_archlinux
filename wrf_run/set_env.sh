@@ -1,8 +1,4 @@
 #!/bin/sh
-# @Author: Benjamin Held
-# @Date:   2017-03-03 17:20:53
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-03-11 18:19:23
 
 # Script that sets the required variables for the model run
 # ${1}: the build path relativ from ${HOME} where the required wrf files

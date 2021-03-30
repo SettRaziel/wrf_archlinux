@@ -1,7 +1,4 @@
-# @Author: Benjamin Held
-# @Date:   2020-12-18 19:31:13
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-12-18 19:50:16
+#!/bin/sh
 
 printf "%bscript usage:%b ./install.sh [parameter]\\n" "${GREEN}" "${NC}"
 printf "%bInstall parameter:\\n%b" "${YELLOW}" "${NC}"

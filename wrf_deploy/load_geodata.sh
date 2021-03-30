@@ -1,8 +1,4 @@
 #!/bin/sh
-# @Author: Benjamin Held
-# @Date:   2018-09-04 11:57:18
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-08-26 10:34:36
 
 # Script that loads the WPS geodata specified by argument or 
 # selectable index

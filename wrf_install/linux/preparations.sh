@@ -1,8 +1,4 @@
 #!/bin/sh
-# @Author: Benjamin Held
-# @Date:   2017-02-26 14:21:00
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-30 17:17:37
 
 # ${1}: the folder relative to the home path where the files should be installed
 # ${2}: the marker if the installation should use local libraries

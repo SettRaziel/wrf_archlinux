@@ -1,8 +1,4 @@
 #!/bin/sh
-# @Author: Benjamin Held
-# @Date:   2017-02-18 15:39:54
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-27 09:14:43
 
 # Script to compile the required netcdf-fortran package
 # ${1}: path to the installation folder

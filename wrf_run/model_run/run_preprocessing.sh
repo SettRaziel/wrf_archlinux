@@ -1,8 +1,4 @@
 #!/bin/sh
-# @Author: Benjamin Held
-# @Date:   2017-03-12 09:26:31
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-28 13:39:19
 
 # script to run the necessary preprocessing steps before starting the wrf run
 

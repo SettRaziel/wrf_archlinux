@@ -1,7 +1,4 @@
-# @Author: Benjamin Held
-# @Date:   2020-12-14 17:54:56
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-12-16 18:57:29
+#!/bin/sh
 
 . "${COLOR_PATH}"
 

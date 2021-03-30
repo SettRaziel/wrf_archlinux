@@ -1,7 +1,4 @@
-# @Author: Benjamin Held
-# @Date:   2020-12-15 19:11:26
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-12-15 19:33:20
+#!/bin/sh
 
 # Script that validates if the given parameter are valid
 # ${1}: the build path relativ from ${HOME} where the required wrf files

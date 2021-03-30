@@ -1,8 +1,4 @@
 #!/bin/sh
-# @Author: Benjamin Held
-# @Date:   2017-07-03 18:01:23
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-10-26 12:17:36
 
 # script to generate output meteograms from a model run
 # ${1}: the year for the model run

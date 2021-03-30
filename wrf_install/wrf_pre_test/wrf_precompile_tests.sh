@@ -1,8 +1,4 @@
 #!/bin/sh
-# @Author: Benjamin Held; based on the WRF OnlineTutorial
-# @Date:   2017-02-18 21:23:08
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-27 09:14:24
 
 # script with pre compile function tests
 # ${1}: path to the installation folder
