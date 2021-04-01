@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Script to start the model run
 # ${1}: the path to the gfs data

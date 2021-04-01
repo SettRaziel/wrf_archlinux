@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # main script for starting a wrf model run
 # Version 0.6.0

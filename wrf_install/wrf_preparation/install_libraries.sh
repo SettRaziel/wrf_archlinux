@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Script to compile the required libraries
 # ${1}: path to the installation folder

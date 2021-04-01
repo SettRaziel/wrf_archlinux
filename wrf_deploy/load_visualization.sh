@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # enable termination on error
 set -e

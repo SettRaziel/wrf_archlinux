@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Script that sets the required variables for the model installation
 # ${1}: the build path where the wrf model should be installed

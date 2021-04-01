@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # script to generate a notification email if the model run ends
 # ${1}: the year for the model run

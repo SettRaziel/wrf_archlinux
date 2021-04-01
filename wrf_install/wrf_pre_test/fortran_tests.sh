@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # define terminal colors
 . ../../libs/terminal_color.sh

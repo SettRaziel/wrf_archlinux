@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # define terminal colors
 export RED='\033[0;31m'

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # main script to deploy a pre compiled version of wrf
 # Version 0.6.0

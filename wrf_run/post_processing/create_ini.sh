@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # define terminal colors
 . "${COLOR_PATH}"

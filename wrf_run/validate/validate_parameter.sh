@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Script that validates if the given parameter are valid
 # ${1}: the build path relativ from ${HOME} where the required wrf files

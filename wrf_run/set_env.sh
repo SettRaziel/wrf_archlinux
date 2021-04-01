@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Script that sets the required variables for the model run
 # ${1}: the build path relativ from ${HOME} where the required wrf files

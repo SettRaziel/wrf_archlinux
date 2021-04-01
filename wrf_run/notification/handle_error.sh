@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ERROR_STATUS="${1} at: $(date +"%T")."
 YEAR=${2}

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # script to update the input parameter for a model run
 # ${1}: the year for the model run

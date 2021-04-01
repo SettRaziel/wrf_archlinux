@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # ${1}: the folder relative to the home path where the files should be installed
 # ${2}: the marker if the installation should use local libraries

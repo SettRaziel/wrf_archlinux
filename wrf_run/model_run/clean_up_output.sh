@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Script to clean up the model results from the last model run in the output folder
 

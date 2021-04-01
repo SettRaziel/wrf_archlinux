@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 printf "%bscript usage:%b ./deploy_wrf.sh [parameter]\\n" "${GREEN}" "${NC}"
 printf "%bDeploy parameter:\\n%b" "${YELLOW}" "${NC}"

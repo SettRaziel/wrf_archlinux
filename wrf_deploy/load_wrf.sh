@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Script that loads the WRF model specified by argument or 
 # selectable index

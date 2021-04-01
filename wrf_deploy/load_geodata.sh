@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Script that loads the WPS geodata specified by argument or 
 # selectable index

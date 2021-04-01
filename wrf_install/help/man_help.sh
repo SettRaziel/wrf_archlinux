@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 printf "%bscript usage:%b ./install.sh [parameter]\\n" "${GREEN}" "${NC}"
 printf "%bInstall parameter:\\n%b" "${YELLOW}" "${NC}"

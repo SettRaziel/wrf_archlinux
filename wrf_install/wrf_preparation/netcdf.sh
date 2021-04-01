@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # installation of the netcdf package
 # ${1}: path to the installation folder

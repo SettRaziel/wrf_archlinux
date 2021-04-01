@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # main installation script: start the installation of the wrf model on a
 # minimal arch linux installation

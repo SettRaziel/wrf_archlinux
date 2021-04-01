@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # script to generate output meteograms from a model run
 # ${1}: the year for the model run

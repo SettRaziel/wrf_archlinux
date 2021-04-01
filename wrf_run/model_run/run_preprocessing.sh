@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # script to run the necessary preprocessing steps before starting the wrf run
 

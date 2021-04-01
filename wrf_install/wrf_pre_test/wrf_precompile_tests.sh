@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # script with pre compile function tests
 # ${1}: path to the installation folder

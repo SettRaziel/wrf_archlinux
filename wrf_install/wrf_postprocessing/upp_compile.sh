@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Script to compile the upp library for output visualization
 # ${1}: the path to the folder where the upp program should be installed
