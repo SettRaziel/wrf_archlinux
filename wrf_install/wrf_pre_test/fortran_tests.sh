@@ -1,8 +1,4 @@
-#!/bin/sh
-# @Author: Benjamin Held; based on the WRF OnlineTutorial
-# @Date:   2017-02-18 21:23:08
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-27 09:13:10
+#!/bin/bash
 
 # define terminal colors
 . ../../libs/terminal_color.sh

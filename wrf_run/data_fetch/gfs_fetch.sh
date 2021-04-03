@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # This script loads the required input data for a 180 h forecast run
 # ${1} matches the required date yyyymmdd

@@ -1,8 +1,4 @@
-#!/bin/sh
-# @Author: Benjamin Held
-# @Date:   2017-04-09 19:25:16
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-01-28 11:59:49
+#!/bin/bash
 
 # define terminal colors
 . "${COLOR_PATH}"

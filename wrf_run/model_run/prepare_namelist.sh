@@ -1,8 +1,4 @@
-#!/bin/sh
-# @Author: Benjamin Held
-# @Date:   2017-03-15 18:22:35
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-10-11 19:11:44
+#!/bin/bash
 
 # script to update the input parameter for a model run
 # ${1}: the year for the model run

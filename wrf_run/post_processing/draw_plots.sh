@@ -1,8 +1,4 @@
-#!/bin/sh
-# @Author: Benjamin Held
-# @Date:   2017-03-12 16:04:54
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-07-05 11:11:35
+#!/bin/bash
 
 # script to generate output pictures from a model run
 # ${1}: the year for the model run

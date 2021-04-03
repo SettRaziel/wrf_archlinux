@@ -1,8 +1,4 @@
-#!/bin/sh
-# @Author: Benjamin Held
-# @Date:   2017-06-30 19:23:56
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-27 19:24:49
+#!/bin/bash
 
 # define terminal colors
 export RED='\033[0;31m'

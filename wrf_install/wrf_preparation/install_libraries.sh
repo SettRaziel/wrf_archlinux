@@ -1,8 +1,4 @@
-#!/bin/sh
-# @Author: Benjamin Held
-# @Date:   2017-02-16 21:06:12
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-06-27 09:15:24
+#!/bin/bash
 
 # Script to compile the required libraries
 # ${1}: path to the installation folder

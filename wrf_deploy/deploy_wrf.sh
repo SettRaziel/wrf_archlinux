@@ -1,8 +1,4 @@
-#!/bin/sh
-# @Author: Benjamin Held
-# @Date:   2018-11-15 18:08:23
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-12-31 11:25:52
+#!/bin/bash
 
 # main script to deploy a pre compiled version of wrf
 # Version 0.6.0

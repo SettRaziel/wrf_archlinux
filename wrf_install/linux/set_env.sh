@@ -1,8 +1,4 @@
-#!/bin/sh
-# @Author: Benjamin Held
-# @Date:   2017-03-03 17:20:53
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-07-27 18:25:41
+#!/bin/bash
 
 # Script that sets the required variables for the model installation
 # ${1}: the build path where the wrf model should be installed

@@ -1,8 +1,4 @@
-#!/bin/sh
-# @Author: Benjamin Held
-# @Date:   2017-03-07 19:02:57
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-28 13:39:25
+#!/bin/bash
 
 # Script to start the model run
 # ${1}: the path to the gfs data
