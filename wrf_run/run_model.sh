@@ -41,6 +41,8 @@ while [[ $# -gt 0 ]]; do
       PERIOD="${2}"; shift; shift;;
       -r|--resolution)
       RESOLUTION="${2}"; shift; shift;;
+      -a|--archive)
+      ARCHIVE="${2}"; shift; shift;;
       --help)
       sh help/man_help.sh; exit 0;;
       *)
