@@ -52,6 +52,7 @@ You have access to the following migration scripts:
 ## Troubleshooting
 * check if the copied namelist.wps works for your geo data, the WRFV4 lowres data needs the lowres data instead of default
 * check the correct build path
+* if you run into problems deploying the python based visualization, check the [readme](https://github.com/SettRaziel/wrf_visualization)
 * (DEPRECATED) check for correct ggc-fortran libraries if the output with ncl causes any trouble
 
 ## NCL usage (DROPPED)
