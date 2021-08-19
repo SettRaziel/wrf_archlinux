@@ -1,8 +1,4 @@
-#!/bin/sh
-# @Author: Benjamin Held
-# @Date:   2017-03-12 09:26:31
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-07-05 11:13:21
+#!/bin/bash
 
 # Script to clean up the model results from the last model run in the output folder
 

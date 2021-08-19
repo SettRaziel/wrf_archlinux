@@ -1,7 +1,4 @@
-# @Author: Benjamin Held
-# @Date:   2021-03-08 19:29:37
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-03-12 18:49:31
+#!/bin/bash
 
 ERROR_STATUS="${1} at: $(date +"%T")."
 YEAR=${2}

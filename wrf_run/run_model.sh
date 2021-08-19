@@ -1,8 +1,4 @@
-#!/bin/sh
-# @Author: Benjamin Held
-# @Date:   2017-03-18 09:40:15
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-03-14 17:38:02
+#!/bin/bash
 
 # main script for starting a wrf model run
 # Version 0.6.0

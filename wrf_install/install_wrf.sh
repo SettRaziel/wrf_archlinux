@@ -1,8 +1,4 @@
-#!/bin/sh
-# @Author: Benjamin Held
-# @Date:   2017-02-19 13:25:49
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-12-25 16:42:41
+#!/bin/bash
 
 # main installation script: start the installation of the wrf model on a
 # minimal arch linux installation

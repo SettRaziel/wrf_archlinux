@@ -1,8 +1,4 @@
-#!/bin/sh
-# @Author: Benjamin Held
-# @Date:   2017-03-05 17:52:09
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-10-11 19:13:05
+#!/bin/bash
 
 # Script to compile the upp library for output visualization
 # ${1}: the path to the folder where the upp program should be installed
