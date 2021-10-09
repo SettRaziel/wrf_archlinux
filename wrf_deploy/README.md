@@ -34,7 +34,8 @@ If no values are provided it will be asked during the deployment process.
 Depending on the deployed wrf_model a few manual steps are required to do before running the model:
 * build directory: set correct directory in run_model.sh
 * namelist file for WPS: update path to the geo data if a non default directory is used (it will be set to default as /home/user/geo_data)
-* wrf_output directory: adjust destination folder and destination suffix for the output files in draw_plots.sh
+* wrf_output directory: adjust destination folder and destination suffix for the output files in draw_plots.sh or move them in the post hook script. 
+  The default will store the files in a data directory in the post processing folder
 * configure e-mail settings:
 	* configure mail text and default sender in create_mail.sh
 	* configure .msmtp file for correct mail settings
