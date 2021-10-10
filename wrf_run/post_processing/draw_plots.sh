@@ -26,7 +26,7 @@ move_files () {
 create_directory () {
   DESTINATION=${1}
   if ! [ -d "${DESTINATION}" ]; then
-    mkdir "${DESTINATION}"
+    mkdir -p "${DESTINATION}"
   fi
 }
 
@@ -51,7 +51,7 @@ PERIOD=${5}
 
 # optional addition to the storage path
 DEST_SUFFIX='_test'
-DEST_FOLDER="${SCRIPT_PATH}/${MONTH}_${DAY}_${HOUR}${DEST_SUFFIX}"
+DEST_FOLDER="${SCRIPT_PATH}/data/${MONTH}_${DAY}_${HOUR}${DEST_SUFFIX}"
 
 # create parent folder for time stamp
 create_directory "${DEST_FOLDER}"
@@ -80,6 +80,7 @@ create_directory "${DEST_FOLDER}/thunderstorm_index"
 
 # Check for moveable file and move them if present
 cd "${WRF_OUTPUT}"
+# move file folders to project local timestamp destination
 move_files "comp_*.png" "${DEST_FOLDER}/comp"
 move_files "rain_3h_*.png" "${DEST_FOLDER}/rain_3h"
 move_files "rain_total_*.png" "${DEST_FOLDER}/rain_tot"
