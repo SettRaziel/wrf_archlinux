@@ -54,3 +54,11 @@ printf "Starting gfs data fetching at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
 
 # use fetch via curl at this point
 gfs_fetch_curl "${1}" "${2}" "${3}" "${4}" "${5}"
+
+# check file count
+LOADED_FILE=$(ls "${3}" | wc -l)
+
+if ![[ $(((LOADED_FILE - 1) * 3)) -eq "${5}" ]]; then
+  printf "Wrong number of files for given period loaded at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
+  exit 1
+fi
