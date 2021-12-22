@@ -117,8 +117,10 @@ sh draw_plots.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${PERIOD}"; RET=${?}
 if [ ${RET} -eq 0 ]; then
   printf "Starting archive generation at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
   cd "${WRF_OUTPUT}" || error_exit "Failed cd to model_output"
-  #tar czf wrfout_${YEAR}_${MONTH}_${DAY}_${HOUR}.tar.gz wrfout_d01_* Han.d01.* Ith.d01.*
-  #mv wrfout_${YEAR}_${MONTH}_${DAY}_${HOUR}.tar.gz history/
+  if ! [ -z "${ARCHIVE}" ]; then
+    tar -czf wrfout_${YEAR}_${MONTH}_${DAY}_${HOUR}.tar.gz .
+    mv wrfout_${YEAR}_${MONTH}_${DAY}_${HOUR}.tar.gz "${ARCHIVE}"
+  fi
 else
   error_exit "Error while creating output files"
 fi
