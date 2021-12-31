@@ -27,7 +27,7 @@ if [ -z "${WRF_GEODATA_INDEX}" ]; then
   done
 else
   case ${WRF_GEODATA_INDEX} in
-    [1234]* ) ;;
+    [12]* ) ;;
     ['--help']* ) printf "%bUsage:\\n%b" "${LIGHT_BLUE}" "${NC}"; print_options;;
     * ) printf "%bError: False argument. Please use a numeric value in [1-2] or --help.%b\\n" "${RED}" "${NC}"; exit 1;;
   esac
