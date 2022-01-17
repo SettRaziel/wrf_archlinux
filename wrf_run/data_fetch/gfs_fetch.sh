@@ -18,10 +18,16 @@ GFS_URL="https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/"
 gfs_fetch_curl () {
   # Define a number of retries and try to download the files
 	for i in $(seq -f %03g 0 3 "${5}"); do
-	  while true; do
+    RETRIES=0
+	  while [ "${RETRIES}" -lt 10 ]; do
       # -f fail silenty, -C continue if interrupted, -o define output; loop breaks if file was loaded successfully
 	    curl -f -C - -o "${3}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}" "${GFS_URL}"gfs."${1}"/"${2}"/atmos/gfs.t"${2}"z.pgrb2."${4}".f"${i}" && break
+      $((RETRIES++))
 	  done
+    if ![[ "${RETRIES}" -eq 10 ]]; then
+      printf "Error while downlaoding %d at %s.\\n" "${i}" "$(date +"%T")" >> "${INFO_LOG}"
+      exit 1
+    fi
 	done
 }
 
