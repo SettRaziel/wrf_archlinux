@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # main script for starting a wrf model run
-# Version 0.6.0
+# Version 0.6.1
 # created by Benjamin Held and other sources, June 2017
 
 error_exit () {

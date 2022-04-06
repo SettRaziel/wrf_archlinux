@@ -32,7 +32,7 @@ export NETCDF_VERSION="4.7.4"         # latest: 4.7.4
 export NETCDF_FORTRAN_VERSION="4.5.3" # latest: 4.5.3
 export MPI_VERSION="3.3"              # latest: 3.4a3
 export LIBPNG_VERSION="1.6.37"        # latest: 1.6.37
-export ZLIB_VERSION="1.2.11"          # latest: 1.2.11
+export ZLIB_VERSION="1.2.12"          # latest: 1.2.12 (CVE-2018-25032)
 export JASPER_VERSION="1.900.2"       # latest: 1.900.29 / 2.0.14
 
 export WRF_DIR="${1}/WRF-${WRF_VERSION}"
