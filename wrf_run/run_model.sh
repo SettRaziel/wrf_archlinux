@@ -16,6 +16,7 @@ export COLOR_PATH="${SCRIPT_PATH}/../libs/terminal_color.sh"
 
 # default parameters
 BUILD_PATH="<wrf path>"
+START_TIME=$(date +"%T")
 GFS_PATH=${HOME}/gfs_data
 YEAR=$(date '+%Y')
 MONTH=$(date '+%m')
@@ -46,20 +47,20 @@ done
 
 source "${SCRIPT_PATH}/set_env.sh" "${BUILD_PATH}" "${SCRIPT_PATH}"
 
+# Check and lock control file
+LCK="${SCRIPT_PATH}/lock.file";
+exec 42>"${LCK}";
+flock -x 42;
+
 # preparing status file
-printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%T")" > "${STATUS_LOG}"
-printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "$(date +"%T")" > "${INFO_LOG}"
+printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${START_TIME}" > "${STATUS_LOG}"
+printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${START_TIME}" > "${INFO_LOG}"
 
 cd "${SCRIPT_PATH}/validate" || error_exit "Failed cd parameter validation"
 sh validate_parameter.sh "${BUILD_PATH}" "${PERIOD}" "${RESOLUTION}"; RET=${?}
 if ! [ ${RET} -eq 0 ]; then
   error_exit "Input parameter are invalid, check script call"
 fi
-
-# Check and lock control file
-LCK="${SCRIPT_PATH}/lock.file";
-exec 42>"${LCK}";
-flock -x 42;
 
 # adjusting namelist for next run
 cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd namelist"
