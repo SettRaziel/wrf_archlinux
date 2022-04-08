@@ -65,6 +65,7 @@ cd "${WRF_VISUALIZATION}/lib/composite" || exit 1
 # source conda to use in subshell (https://github.com/conda/conda/issues/7980)
 . /opt/miniconda3/etc/profile.d/conda.sh
 # generate output
+printf "Calling python code for composites at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
 conda activate wrf_env
 python plot_composites.py >> "${DEBUG_LOG}"
 conda deactivate
@@ -73,6 +74,7 @@ conda deactivate
 find . -maxdepth 1 -name '*.png' -exec optipng {} \;
 
 # create folder and move output
+printf "Creating directories and moving results at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
 create_directory "${DEST_FOLDER}/comp"
 create_directory "${DEST_FOLDER}/rain_3h"
 create_directory "${DEST_FOLDER}/rain_tot"
