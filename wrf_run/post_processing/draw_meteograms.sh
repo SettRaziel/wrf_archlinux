@@ -58,6 +58,7 @@ move_files "${WRF_DIR}/test/em_real/*.WW" "${WRF_OUTPUT}"
 . /opt/miniconda3/etc/profile.d/conda.sh
 # call python script for meteogram creation
 printf "Calling python code for meteograms at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
+printf "%b\\nCreating meteogram output: %b\\n" "${YELLOW}" "${NC}" >> "${DEBUG_LOG}"
 conda activate wrf_env
 python plot_meteograms.py "${START_DATE}" >> "${DEBUG_LOG}"
 conda deactivate

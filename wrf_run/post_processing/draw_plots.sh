@@ -66,6 +66,7 @@ cd "${WRF_VISUALIZATION}/lib/composite" || exit 1
 . /opt/miniconda3/etc/profile.d/conda.sh
 # generate output
 printf "Calling python code for composites at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
+printf "%b\\nCreating composite output: %b\\n" "${YELLOW}" "${NC}" >> "${DEBUG_LOG}"
 conda activate wrf_env
 python plot_composites.py >> "${DEBUG_LOG}"
 conda deactivate
