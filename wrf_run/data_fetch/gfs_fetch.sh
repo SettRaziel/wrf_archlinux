@@ -20,11 +20,25 @@ gfs_fetch_curl () {
 	for i in $(seq -f %03g 0 3 "${5}"); do
     RETRIES=0
 	  while [ "${RETRIES}" -lt 10 ]; do
-      # -f fail silenty, -C continue if interrupted, -o define output; loop breaks if file was loaded successfully
-	    curl -f -C - -o "${3}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}" "${GFS_URL}"gfs."${1}"/"${2}"/atmos/gfs.t"${2}"z.pgrb2."${4}".f"${i}" && break
-      $((RETRIES++))
+      # -w return http code, -C continue if interrupted, -o define output; loop breaks if file was loaded successfully
+      RETURN_CODE=$(curl -w "%{http_code}\n" -C - -o "${3}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}" "${GFS_URL}"gfs."${1}"/"${2}"/atmos/gfs.t"${2}"z.pgrb2."${4}".f"${i}")
+      if [[ "${RETURN_CODE}" -eq 200 ]]; then
+        break
+      fi
+
+      ((RETRIES++))
+
+      # in addition to the http codes curl returns 000 if it ran into a timeout
+      if [[ "${RETURN_CODE}" =~ [4-5][0-9]{2}$ ]] || [[ "${RETURN_CODE}" =~ [0]{3}$ ]]; then
+        if [[ "${RETURN_CODE}" =~ [0]{3}$ ]]; then
+          RETURN_CODE="Timeout"
+        fi
+        printf "Inputfile for %d failed with %s at %s.\\n" "${i}" "${RETURN_CODE}" "$(date +"%T")" >> "${INFO_LOG}"
+      fi
+
 	  done
-    if ![[ "${RETRIES}" -eq 10 ]]; then
+
+    if [[ "${RETRIES}" -eq 10 ]]; then
       printf "Error while downlaoding %d at %s.\\n" "${i}" "$(date +"%T")" >> "${INFO_LOG}"
       exit 1
     fi
@@ -60,11 +74,3 @@ printf "Starting gfs data fetching at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
 
 # use fetch via curl at this point
 gfs_fetch_curl "${1}" "${2}" "${3}" "${4}" "${5}"
-
-# check file count
-LOADED_FILE=$(ls "${3}" | wc -l)
-
-if ![[ $(((LOADED_FILE - 1) * 3)) -eq "${5}" ]]; then
-  printf "Wrong number of files for given period loaded at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
-  exit 1
-fi
