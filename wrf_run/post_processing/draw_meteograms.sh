@@ -44,6 +44,7 @@ WRF_VISUALIZATION="${5}"
 
 cd "${WRF_VISUALIZATION}/lib/meteogram" || exit 1
 # move required meteogram files to output folder
+printf "Moving data for meteograms at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
 move_files "${WRF_DIR}/test/em_real/*.PH" "${WRF_OUTPUT}"
 move_files "${WRF_DIR}/test/em_real/*.PR" "${WRF_OUTPUT}"
 move_files "${WRF_DIR}/test/em_real/*.QV" "${WRF_OUTPUT}"
@@ -56,14 +57,17 @@ move_files "${WRF_DIR}/test/em_real/*.WW" "${WRF_OUTPUT}"
 # source conda to use in subshell (https://github.com/conda/conda/issues/7980)
 . /opt/miniconda3/etc/profile.d/conda.sh
 # call python script for meteogram creation
+printf "Calling python code for meteograms at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
+printf "%b\\nCreating meteogram output: %b\\n" "${YELLOW}" "${NC}" >> "${DEBUG_LOG}"
 conda activate wrf_env
-python plot_meteograms.py "${START_DATE}" 
+python plot_meteograms.py "${START_DATE}" >> "${DEBUG_LOG}"
 conda deactivate
 
 # optimize png size
 find . -maxdepth 1 -name '*.png' -exec optipng {} \;
 
 # move files to output folder
+printf "Moving meteogram results at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
 move_files "${WRF_OUTPUT}/*.png" "${DEST_FOLDER}/"
 
 # logging time stamp

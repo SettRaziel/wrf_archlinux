@@ -27,11 +27,11 @@ printf "Starting preprocessing at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
 cd "${WPS_DIR}" || exit 1
 
 # preprocessing static data: elevation data and geo data
-printf "%bpreprocessing static data (geogrid.exe): %b\\n" "${YELLOW}" "${NC}"
-./geogrid.exe > "${DEBUG_LOG}"
+printf "%bpreprocessing static data (geogrid.exe): %b\\n" "${YELLOW}" "${NC}" > "${DEBUG_LOG}"
+./geogrid.exe >> "${DEBUG_LOG}"
 
 # processing initial data and boundary data
-printf "%bpreprocessing initial and boundary data: %b\\n" "${YELLOW}" "${NC}"
+printf "%b\\npreprocessing initial and boundary data: %b\\n" "${YELLOW}" "${NC}" >> "${DEBUG_LOG}"
 ./link_grib.csh "${GFS_PATH}"/gfs.*.pgrb2."${RESOLUTION}".f*
 ln -sf ungrib/Variable_Tables/Vtable.GFS ./Vtable
 LD_LIBRARY_PATH="${DIR}/grib2/lib" ./ungrib.exe >> "${DEBUG_LOG}"
