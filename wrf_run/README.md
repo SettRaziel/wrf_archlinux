@@ -43,6 +43,7 @@ Use the script with the follwing settings, mandatory values are hour, period and
 script usage: ./run_model.sh [parameter]
 Model run parameter:
      --help         show help text
+ -a, --archive      argument: <path>; signals, that the forecast data should be stored at the given path
  -b, --build        argument: <path>; specifies the wrf path
  -y, --year         argument: <year>; the model year
  -m, --month        argument: <month>; the model month
