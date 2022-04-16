@@ -22,7 +22,7 @@ while [[ $# -gt 0 ]]; do
   case ${1} in
       --default)
       WRF_VERSION_INDEX=1
-      WRF_GEODATA_INDEX=4
+      WRF_GEODATA_INDEX=2
       shift;;
       -v|--version)
       WRF_VERSION_INDEX="${2}"; shift; shift;;

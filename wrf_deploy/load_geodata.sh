@@ -3,16 +3,12 @@
 # Script that loads the WPS geodata specified by argument or 
 # selectable index
 # the index of the chosen geo data:
-# 1: WRFV3 high resolution data
-# 2: WRFV3 low resolution data
-# 3: WRFV4 high resolution data
-# 4: WRFV4 low resolution data
+# 1: WRFV4 high resolution data
+# 2: WRFV4 low resolution data
 
 print_options () {
-  printf "%b 1: WRFV3 high resolution data\\n%b" "${YELLOW}" "${NC}"
-  printf "%b 2: WRFV3 low resolution data\\n%b" "${YELLOW}" "${NC}"
-  printf "%b 3: WRFV4 high resolution data\\n%b" "${YELLOW}" "${NC}"
-  printf "%b 4: WRFV4 low resolution data\\n%b" "${YELLOW}" "${NC}"
+  printf "%b 1: WRFV4 high resolution data\\n%b" "${YELLOW}" "${NC}"
+  printf "%b 2: WRFV4 low resolution data\\n%b" "${YELLOW}" "${NC}"
 }
 
 # define terminal colors
@@ -25,24 +21,22 @@ if [ -z "${WRF_GEODATA_INDEX}" ]; then
     print_options        
     read -r INPUT
     case ${INPUT} in
-      [1234]* ) WRF_GEODATA_INDEX=${INPUT}; break;;
-      * ) printf "%bPlease use a numeric value in [1-4].%b\\n" "${RED}" "${NC}";;
+      [12]* ) WRF_GEODATA_INDEX=${INPUT}; break;;
+      * ) printf "%bPlease use a numeric value in [1-2].%b\\n" "${RED}" "${NC}";;
   	esac
   done
 else
   case ${WRF_GEODATA_INDEX} in
-    [1234]* ) ;;
+    [12]* ) ;;
     ['--help']* ) printf "%bUsage:\\n%b" "${LIGHT_BLUE}" "${NC}"; print_options;;
-    * ) printf "%bError: False argument. Please use a numeric value in [1-4] or --help.%b\\n" "${RED}" "${NC}"; exit 1;;
+    * ) printf "%bError: False argument. Please use a numeric value in [1-2] or --help.%b\\n" "${RED}" "${NC}"; exit 1;;
   esac
 fi
 
 # select the geodata
 case ${WRF_GEODATA_INDEX} in
-  [1]* ) FILE_NAME='geog_complete.tar.gz';;
-  [2]* ) FILE_NAME='geog_minimum.tar.bz2';;
-  [3]* ) FILE_NAME='geog_high_res_mandatory.tar.gz';;
-  [4]* ) FILE_NAME='geog_low_res_mandatory.tar.gz';;
+  [1]* ) FILE_NAME='geog_high_res_mandatory.tar.gz';;
+  [2]* ) FILE_NAME='geog_low_res_mandatory.tar.gz';;
 esac
 
 # load and deploy the geodata
@@ -68,11 +62,6 @@ cd "${HOME}/geo_data" || exit 1
 printf "%b\\nLoading data files: %b\\n" "${YELLOW}" "${NC}"
 wget "${URL_PATH}"
 printf "%b\\nUnpacking archive: %b\\n" "${YELLOW}" "${NC}"
-if [ ${WRF_GEODATA_INDEX} -eq 2 ]
-then
-  tar -xjf ${FILE_NAME}
-else
-  tar -xzf ${FILE_NAME}
-fi
+tar -xzf ${FILE_NAME}
 rm ${FILE_NAME}
 printf "%b\\nFinished loading geodata.%b\\n" "${YELLOW}" "${NC}"

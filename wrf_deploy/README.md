@@ -7,8 +7,8 @@ required to start a model run. The main script will be extended to accept
 parameters to customize the deployment process.
 
 ## Parameters
-* WRF version, currently available for deployment: 3.9.1, 4.0.2, 4.1.5, 4.2.0
-* older versions that need manual deployment or older wrf_archlinux versions: 3.8.0, 3.9.0
+* WRF version, currently available for deployment: 4.0.2, 4.1.5, 4.2.0
+* older versions that need manual deployment or older wrf_archlinux versions: 3.8.0, 3.9.0, 3.9.1
 * Geodata: 
 	* WRFV3 lowres (~200 mb), WRFV3 highres (~50 gb)
 	* additional resolutions can the downloaded manually from [Link](http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog_V3.html)
@@ -24,9 +24,9 @@ Deploy parameter:
      --help         show help text
      --default      runs the deployment with default settings WRF 4.2 low data
  -v, --version      argument: <index>; specifies the wrf version
-                    1: 4.2, 2: 4.1, 3: 4.0, 4: 3.9.1
+                    1: 4.2, 2: 4.1, 3: 4.0
  -g, --geodata      argument: <index>; specifies the wrf geodata
-                    1: WRF3 high, 2: WRF3 low, 3: WRF4 high, 4: WRF4 low
+                    1: WRF4 high, 2: WRF4 low
 ```
 If no values are provided it will be asked during the deployment process.
 
