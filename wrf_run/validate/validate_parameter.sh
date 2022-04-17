@@ -9,15 +9,24 @@
 BUILD_PATH="${1}" 
 PERIOD="${2}"
 RESOLUTION="${3}"
+HOUR="${4}"
 
+# check for modified build path
 if [[ ${BUILD_PATH} == "<wrf path>" ]]; then
   exit 1
 fi
 
+# check if period parameter with value is given
 if [ -z "${PERIOD}" ]; then
   exit 1
 fi
 
+# check if resolution parameter with value is given
 if [ -z "${RESOLUTION}" ]; then
+  exit 1
+fi
+
+# check if hour parameter with value is given
+if [ -z "${HOUR}" ]; then
   exit 1
 fi

@@ -13,6 +13,8 @@ error_exit () {
 # required variables
 SCRIPT_PATH=$(pwd)
 export COLOR_PATH="${SCRIPT_PATH}/../libs/terminal_color.sh"
+# define terminal colors
+. "${COLOR_PATH}"
 
 # default parameters
 BUILD_PATH="<wrf path>"
@@ -47,9 +49,18 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-source "${SCRIPT_PATH}/set_env.sh" "${BUILD_PATH}" "${SCRIPT_PATH}"
+source "${SCRIPT_PATH}/environment/set_logging_env.sh" "${SCRIPT_PATH}"
+# check for mandatory input parameter
+cd "${SCRIPT_PATH}/validate" || error_exit "Failed cd parameter validation"
+sh validate_parameter.sh "${BUILD_PATH}" "${PERIOD}" "${RESOLUTION}" "${HOUR}"; RET=${?}
+if ! [ ${RET} -eq 0 ]; then
+  printf "%bInput parameter are invalid, check script call. Aborting ...%b\\n" "${RED}" "${NC}"
+  exit 1
+fi
 
-# Check and lock control file
+source "${SCRIPT_PATH}/environment/set_model_env.sh" "${BUILD_PATH}"
+
+# check and lock control file
 LCK="${SCRIPT_PATH}/lock.file";
 exec 42>"${LCK}";
 flock -x 42;
@@ -57,12 +68,6 @@ flock -x 42;
 # preparing status file
 printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${START_TIME}" > "${STATUS_LOG}"
 printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${START_TIME}" > "${INFO_LOG}"
-
-cd "${SCRIPT_PATH}/validate" || error_exit "Failed cd parameter validation"
-sh validate_parameter.sh "${BUILD_PATH}" "${PERIOD}" "${RESOLUTION}"; RET=${?}
-if ! [ ${RET} -eq 0 ]; then
-  error_exit "Input parameter are invalid, check script call"
-fi
 
 # adjusting namelist for next run
 cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd namelist"
