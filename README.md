@@ -33,16 +33,16 @@ folders for subsidiary license files.
 * wrf tutorial: [here](http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php)
 * ncl output: [here](https://www.ncl.ucar.edu/Applications/)
 
-## Software components (last query: 2020-12-28)
-* WRF model: [Source](https://github.com/wrf-model/WRF/releases), used version: 4.2; newest 4.2.1
-* WPS component: [Source](https://github.com/wrf-model/WPS/releases), used version: 4.2; newest 4.2
-* Network Common Data Form (NetCDF): [Source](https://github.com/Unidata/netcdf-c/releases) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.7.4; newest 4.7.4
-* Hierarchical Data Format 5 (HDF5): [Source](https://support.hdfgroup.org/products/hdf5_tools/index.html) and [Terms of use](https://support.hdfgroup.org/ftp/HDF5/releases/COPYING) used version: 1.12.0; newest 1.12.0
-* NetCDF-Fortran Library: [Source](https://github.com/Unidata/netcdf-fortran/releases) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.5.3; newest: 4.5.3
-* Message Passing Interface (mpich): [Source](https://www.mpich.org/) and [License](http://git.mpich.org/mpich.git/blob/HEAD:/COPYRIGHT), used version: 3.3; newest: 3.3.2 (latest stable)
+## Software components (last query: 2022-04-18)
+* WRF model: [Source](https://github.com/wrf-model/WRF/releases), used version: 4.3; newest 4.3.3
+* WPS component: [Source](https://github.com/wrf-model/WPS/releases), used version: 4.3; newest 4.3.1
+* Network Common Data Form (NetCDF): [Source](https://github.com/Unidata/netcdf-c/releases) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.8.1; newest 4.8.1
+* Hierarchical Data Format 5 (HDF5): [Source](https://support.hdfgroup.org/products/hdf5_tools/index.html) and [Terms of use](https://support.hdfgroup.org/ftp/HDF5/releases/COPYING) used version: 1.13.0; newest 1.13.0
+* NetCDF-Fortran Library: [Source](https://github.com/Unidata/netcdf-fortran/releases) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.5.4; newest: 4.5.4
+* Message Passing Interface (mpich): [Source](https://www.mpich.org/) and [License](http://git.mpich.org/mpich.git/blob/HEAD:/COPYRIGHT), used version: 3.3; newest: 4.0.2 (latest stable)
 * PNG reference library (libpng): [Source](http://www.libpng.org/pub/png/libpng.html) and [License](http://www.libpng.org/pub/png/src/libpng-LICENSE.txt), used version: 1.6.37; newest: 1.6.37
 * A Massively Spiffy Yet Delicately Unobtrusive Compression Library (zlib): [Source](http://www.zlib.net) and [License](http://www.zlib.net/zlib_license.html), used version: 1.2.12; newest: 1.2.12
-* JasPer Project (JasPer): [Source](https://www.ece.uvic.ca/~frodo/jasper/) and [License](https://www.ece.uvic.ca/~frodo/jasper/LICENSE), used version: 1.900.2; newest: 2.0.14
+* JasPer Project (JasPer): [Source](https://www.ece.uvic.ca/~frodo/jasper/) and [License](https://www.ece.uvic.ca/~frodo/jasper/LICENSE), used version: 1.900.2; newest: 3.0.3
 * Optional postprocessing tools:
   - (DEFAULT) wrf_visualization based on pyngl, pynio: [Source](https://github.com/SettRaziel/wrf_visualization)
   - Unified Post Processor (UPP): [Source](http://www.dtcenter.org/wrf-nmm/users/downloads/index.php), needs email validation
