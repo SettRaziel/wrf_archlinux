@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # main script to deploy a pre compiled version of wrf
-# Version 0.7.0
+# Version 0.7.1
 # created by Benjamin Held and other sources, June 2017
 # possible parameter:
 # --default
