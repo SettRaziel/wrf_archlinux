@@ -31,9 +31,5 @@ export HDF_VERSION="1.13"             # latest: 1.13.0
 export PNETCDF_VERSION="1.12.3"       # latest: 1.12.3
 export NETCDF_VERSION="4.8.1"         # latest: 4.8.1
 export NETCDF_FORTRAN_VERSION="4.5.4" # latest: 4.5.4
-export MPI_VERSION="3.3"              # latest: 4.0.2
-export LIBPNG_VERSION="1.6.37"        # latest: 1.6.37
-export ZLIB_VERSION="1.2.12"          # latest: 1.2.12 (CVE-2018-25032)
-export JASPER_VERSION="1.900.2"       # latest: 1.900.29 / 3.0.2
 
 export WRF_DIR="${1}/WRF-${WRF_VERSION}"
