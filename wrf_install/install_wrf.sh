@@ -60,20 +60,12 @@ sh ./netcdf.sh "${BUILD_PATH}"
 export LDFLAGS="${LDFLAGS} -L${DIR}/netcdf/lib"
 export CPPFLAGS="${CPPFLAGS} -I${DIR}/netcdf/include"
 # setting library path while building with shared libraries
-export LD_LIBRARY_PATH="${DIR}/hdf5/lib:${DIR}/netcdf/lib:${LD_LIBRARY_PATH}"
+export LD_LIBRARY_PATH="${DIR}/hdf5/lib:${DIR}/netcdf/lib:${DIR}/pnetcdf/lib:${LD_LIBRARY_PATH}"
 
 # compiling fortran binding for netcdf
 printf "%bStarting fortran bindings in 5 seconds ... %b" "${YELLOW}" "${NC}"
 sleep 5
 sh ./fortran_bindings.sh "${BUILD_PATH}"
-
-# compiling required libraries
-printf "%bStarting library compilation in 5 seconds ... %b" "${YELLOW}" "${NC}"
-sleep 5
-sh ./install_libraries.sh "${BUILD_PATH}"
-# exporting required environment parameters
-export LDFLAGS="${LDFLAGS} -L${DIR}/grib2/lib"
-export CPPFLAGS="${CPPFLAGS} -I${DIR}/grib2/include"
 
 # running system environment test
 printf "%bStarting fortran tests. Press any key ... %b" "${YELLOW}" "${NC}"
