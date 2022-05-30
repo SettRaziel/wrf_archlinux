@@ -15,7 +15,7 @@ SCRIPT_PATH=$(pwd)
 
 # creating required folders and loading tests
 mkdir "${HOME}/${1}/fortran_test"
-cd "${HOME}/${1}/fortran_test" || exit 1
+cd "${HOME}/${1}/fortran_test"
 wget http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compile_tutorial/tar_files/Fortran_C_tests.tar
 
 # unpacking test files
@@ -64,6 +64,6 @@ printf "%b\\nRunning seventh test: shell functionality %b\\n" "${YELLOW}" "${NC}
 printf "%bfinished test. %b\\n" "${LIGHT_BLUE}" "${NC}"
 
 # rleaning up
-cd .. || exit 1
+cd ..
 rm -r "${HOME}/${1}/fortran_test"
-cd "${SCRIPT_PATH}" || exit 1
+cd "${SCRIPT_PATH}"

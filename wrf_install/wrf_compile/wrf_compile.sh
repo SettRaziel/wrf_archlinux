@@ -42,7 +42,7 @@ sed -r -i 's#-L\$\(WRF_SRC_ROOT_DIR\)\/external\/io_netcdf -lwrfio_nf#-L\$\(WRF_
 # copy compiling log
 cp compile.log "${SCRIPT_PATH}/../logs/wrf_compile.log" || exit 1
 
-cd .. || exit 1
+cd ..
 
 #clean up
 rm "WRFV${WRF_VERSION}.tar.gz"
