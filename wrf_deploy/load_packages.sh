@@ -31,6 +31,9 @@ yay -S --noconfirm --needed tcsh wget curl findutils gcc-fortran
 # dependency required with WRF 4.2.0
 yay -S --noconfirm --needed libpciaccess libunwind
 
+printf "%bInstalling wrf required packages... \\n%b" "${YELLOW}" "${NC}"
+yay -S --needed openmpi zlib libpng jasper
+
 # installing required packages: 
 # optipng for optimizing png size and unzip for loading high res coastlines
 printf "%b\\nInstalling required packages for output visualization: %b\\n" "${YELLOW}" "${NC}"
