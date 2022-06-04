@@ -21,7 +21,7 @@ tar xfv "WPSV${WPS_VERSION}.tar.gz"
 # installing wps
 printf "%b\\nInstaling wps: %b\\n" "${YELLOW}" "${NC}"
 cd "WPS-${WPS_VERSION}"
-./configure
+./configure --build-grib2-libs
 
 # add additional libraries
 sed -r -i 's#-L\$\(NETCDF\)\/lib -lnetcdff -lnetcdf#-L\$\(NETCDF\)\/lib -lnetcdff -lnetcdf -ltirpc -lgomp#g' configure.wps
