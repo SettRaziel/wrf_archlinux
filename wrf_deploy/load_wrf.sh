@@ -81,7 +81,10 @@ fi
 # copying the config files from the repository to its destination
 printf "%b\\nDeploying repository config files: %b\\n" "${YELLOW}" "${NC}"
 cd "${SCRIPT_PATH}"
-cp ../additions/config/namelist.wps "${HOME}/${FILE_NAME}/${WPS_FOLDER}"
+case ${WRF_GEODATA_INDEX} in
+    [1]* ) cp ../additions/config/namelist.wps "${HOME}/${FILE_NAME}/${WPS_FOLDER}";;
+    [2]* ) cp ../additions/config/namelist_low_res.wps "${HOME}/${FILE_NAME}/${WPS_FOLDER}/namelist.wps";;
+esac
 cp ../additions/config/namelist.input "${HOME}/${FILE_NAME}/${WRF_FOLDER}/test/em_real/"
 cp ../additions/config/tslist "${HOME}/${FILE_NAME}/${WRF_FOLDER}/test/em_real/"
 
