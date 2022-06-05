@@ -43,7 +43,10 @@ yay -S --noconfirm --needed optipng unzip git
 printf "%b\\nInstalling required mail libraries: %b\\n" "${YELLOW}" "${NC}"
 yay -S --noconfirm --needed msmtp
 
-# package clean up
-sudo pacman --noconfirm -Rsn $(sudo pacman -Qdtq)
+# package clean up if possible
+PACKAGES=$(sudo pacman -Qdtq)
+if ! [ -z "${PACKAGES}" ]; then
+  sudo pacman --noconfirm -Rsn "${PACKAGES}"
+fi
 
 cd "${SCRIPT_PATH}" || exit 1
