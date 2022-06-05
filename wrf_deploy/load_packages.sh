@@ -9,18 +9,18 @@ set -e
 # prepare Folders
 SCRIPT_PATH=$(pwd)
 
-cd "${HOME}" || exit 1
+cd "${HOME}"
 # Prepare Folders
 if ! [ -d "aur_packages" ]; then
   mkdir aur_packages
 fi
-cd aur_packages || exit 1
+cd aur_packages
 
 # Getting yay
 if ! [ -d "yay" ]; then
   git clone https://aur.archlinux.org/yay.git
 fi
-cd yay || exit 1
+cd yay
 git pull
 makepkg -si --noconfirm --needed
 
@@ -43,10 +43,4 @@ yay -S --noconfirm --needed optipng unzip git
 printf "%b\\nInstalling required mail libraries: %b\\n" "${YELLOW}" "${NC}"
 yay -S --noconfirm --needed msmtp
 
-# package clean up if possible
-PACKAGES=$(sudo pacman -Qdtq)
-if ! [ -z "${PACKAGES}" ]; then
-  sudo pacman --noconfirm -Rsn "${PACKAGES}"
-fi
-
-cd "${SCRIPT_PATH}" || exit 1
+cd "${SCRIPT_PATH}"
