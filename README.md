@@ -33,23 +33,32 @@ folders for subsidiary license files.
 * wrf tutorial: [here](http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php)
 * ncl output: [here](https://www.ncl.ucar.edu/Applications/)
 
-## Software components (last query: 2022-04-18)
-* WRF model: [Source](https://github.com/wrf-model/WRF/releases), used version: 4.3; newest 4.3.3
-* WPS component: [Source](https://github.com/wrf-model/WPS/releases), used version: 4.3; newest 4.3.1
+## Software components (last query: 2022-06-06)
+Starting with the compilation of WRFV4.4 some dependencies that were manually compiled for the model are now
+installed through the package repositories provided by the ArchLinux operating system. The used software components will
+now be separated to list the selfcompiled sources and the packaged ones.
+
+### Selfcompiled
+* WRF model: [Source](https://github.com/wrf-model/WRF/releases), used version: 4.4; newest 4.4
+* WPS component: [Source](https://github.com/wrf-model/WPS/releases), used version: 4.4; newest 4.4
 * Network Common Data Form (NetCDF): [Source](https://github.com/Unidata/netcdf-c/releases) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.8.1; newest 4.8.1
-* Hierarchical Data Format 5 (HDF5): [Source](https://support.hdfgroup.org/products/hdf5_tools/index.html) and [Terms of use](https://support.hdfgroup.org/ftp/HDF5/releases/COPYING) used version: 1.13.0; newest 1.13.0
+* Parallel NetCDF File Access (PnetCDT): [Soruce](https://parallel-netcdf.github.io/wiki/Download.html) and [Terms and use](https://github.com/Parallel-NetCDF/PnetCDF/blob/master/COPYRIGHT), used version: 1.12.3; newest: 1.12.3
+* Hierarchical Data Format 5 (HDF5): [Source](https://portal.hdfgroup.org/display/support) and [Terms of use](https://portal.hdfgroup.org/display/support/Licenses) used version: 1.13.0; newest 1.13.0
 * NetCDF-Fortran Library: [Source](https://github.com/Unidata/netcdf-fortran/releases) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.5.4; newest: 4.5.4
-* Message Passing Interface (mpich): [Source](https://www.mpich.org/) and [License](http://git.mpich.org/mpich.git/blob/HEAD:/COPYRIGHT), used version: 3.3; newest: 4.0.2 (latest stable)
-* PNG reference library (libpng): [Source](http://www.libpng.org/pub/png/libpng.html) and [License](http://www.libpng.org/pub/png/src/libpng-LICENSE.txt), used version: 1.6.37; newest: 1.6.37
-* A Massively Spiffy Yet Delicately Unobtrusive Compression Library (zlib): [Source](http://www.zlib.net) and [License](http://www.zlib.net/zlib_license.html), used version: 1.2.12; newest: 1.2.12
-* JasPer Project (JasPer): [Source](https://www.ece.uvic.ca/~frodo/jasper/) and [License](https://www.ece.uvic.ca/~frodo/jasper/LICENSE), used version: 1.900.2; newest: 3.0.3
-* Optional postprocessing tools:
-  - (DEFAULT) wrf_visualization based on pyngl, pynio: [Source](https://github.com/SettRaziel/wrf_visualization)
-  - Unified Post Processor (UPP): [Source](http://www.dtcenter.org/wrf-nmm/users/downloads/index.php), needs email validation
-  - (DEPRECATED) NCAR Command Language (NCL): [Source](https://www.ncl.ucar.edu/Download/) and [Terms of use](https://www2.ucar.edu/terms-of-use), 
-    used version: 6.4.0_nodap Binaries; newest version 6.6.2; 
-      * no longer developed [Source](https://www.ncl.ucar.edu/Document/Pivot_to_Python/september_2019_update.shtml)
-      * usage only with wrf_archlinux below v0.5.0; support will be dropped with v0.5.0.
+
+### ArchLinux Packages
+* Message Passing Interface (mpich): [Source](https://www.mpich.org/) and [License](http://git.mpich.org/mpich.git/blob/HEAD:/COPYRIGHT), used version: ArchLinux package; newest: 4.0.2 (latest stable)
+* PNG reference library (libpng): [Source](http://www.libpng.org/pub/png/libpng.html) and [License](http://www.libpng.org/pub/png/src/libpng-LICENSE.txt), used version: ArchLinux package; newest: 1.6.37
+* A Massively Spiffy Yet Delicately Unobtrusive Compression Library (zlib): [Source](http://www.zlib.net) and [License](http://www.zlib.net/zlib_license.html), used version: ArchLinux package; newest: 1.2.12
+* JasPer Project (JasPer): [Source](https://www.ece.uvic.ca/~frodo/jasper/) and [License](https://www.ece.uvic.ca/~frodo/jasper/LICENSE), used version: ArchLinux package; newest: 3.0.4
+
+### Optional postprocessing tools:
+* (DEFAULT) wrf_visualization based on pyngl, pynio: [Source](https://github.com/SettRaziel/wrf_visualization)
+* Unified Post Processor (UPP): [Source](http://www.dtcenter.org/wrf-nmm/users/downloads/index.php), needs email validation
+* (DEPRECATED) NCAR Command Language (NCL): [Source](https://www.ncl.ucar.edu/Download/) and [Terms of use](https://www2.ucar.edu/terms-of-use), 
+  used version: 6.4.0_nodap Binaries; newest version 6.6.2; 
+    - no longer developed [Source](https://www.ncl.ucar.edu/Document/Pivot_to_Python/september_2019_update.shtml)
+    - usage only with wrf_archlinux below v0.5.0; support will be dropped with v0.5.0.
 
 ## Working setup and testing setups
 This section describes the current working setup based under the condition that the installation is
@@ -68,7 +77,10 @@ WRFV4 uses the latest version of gcc/gcc-gfortran avaiable at the time of testin
     - mpi v3.3, libpng v1.6.37, zlib v1.2.11, JasPer v1.900.2
     - gcc/gfortran: 10.2
 * testing setup:
-  - none at the moment
+  - WRF Model v4.4.0 and WPS v4.4 [compiling, normal_build, running]
+  - NetCDF v4.8.1 / NetCDF-Fortran Library v4.5.4, HDF 1.13.0
+  - mpi, libpng, zlib, JasPer as ArchLinux package
+  - gcc/gfortran: 12.1
 * tested setups:
   - WRF Model and WPS v3.8.1 [compiling, normal_build, unstable]
     - NetCDF v4.4.1.1 / NetCDF-Fortran Library v4.4.4

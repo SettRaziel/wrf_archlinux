@@ -1,12 +1,15 @@
 # WRF installation scripts
 
 ## License
-The installation scripts are based on the the tutorial of the wrf model that can be found
+The installation scripts started based on the tutorial of the WRF model that can be found
 [here](http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php).
-The installation scripts are for the compilation of new versions or different WRF configurations.
-If you want to run the WRF model and chose to compile it on your own be advised that serveral manual steps are required to run it afterwards.
-For running the model without compiling everything from scratch try the deployment scripts. They minimize the manual configuration steps that
-are requried to run the model on your own hardware.
+The scripts are for the compilation of new versions or different WRF configurations.
+With the development of the model versions and additional knowledge of compiling and dependencies
+the presented script collection will increasingly differ from the basic tutorial.
+If you want to run the WRF model and chose to compile it on your own be advised that serveral manual
+steps are required to run it afterwards. For running the model without compiling everything from scratch 
+try the deployment scripts. They minimize the manual configuration steps that are requried to run the model 
+on your own hardware.
 
 ## Additional install configurations
 * install_wrf.sh: Set the correct file paths
@@ -25,7 +28,7 @@ are requried to run the model on your own hardware.
     Since it was set to maintance mode in Sep. 2019 is is considered DEPRECATED. 
     If you still want to use it you need to install a version of gcc 6, e.g. 
     ```
-    yay -S --needed gcc-fortran 
+    yay -S --needed gcc6-fortran 
     ```
     that will compile the latest gcc 6 version. 
     This is not included in the installation process since the compilation can take several hours. 
