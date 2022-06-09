@@ -57,7 +57,7 @@ else
   done
 fi
 
-cd "${HOME}/geo_data" || exit 1
+cd "${HOME}/geo_data"
 
 printf "%b\\nLoading data files: %b\\n" "${YELLOW}" "${NC}"
 wget "${URL_PATH}"
