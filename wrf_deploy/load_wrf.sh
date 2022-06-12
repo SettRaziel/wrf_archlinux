@@ -19,7 +19,7 @@ print_options () {
 
 # downloading and unpacking archive
 load_wrf_model () {
-  ARCHIVE="${FILE_NAME}.tar.gz"
+  ARCHIVE="${DEPLOY_DIR}.tar.gz"
   printf "%b\\nLoading wrf archive: %b\\n" "${YELLOW}" "${NC}"
   wget "${URL_PATH}"
   printf "%b\\nUnpacking archive: %b\\n" "${YELLOW}" "${NC}"
@@ -50,25 +50,25 @@ else
 fi
 
 case ${WRF_VERSION_INDEX} in
-  [1]* ) FILE_NAME='wrf_420'; WRF_FOLDER='WRF-4.2'; WPS_FOLDER='WPS-4.2';;
-  [2]* ) FILE_NAME='wrf_410'; WRF_FOLDER='WRF-4.1.5'; WPS_FOLDER='WPS-4.1';;
-  [3]* ) FILE_NAME='wrf_400'; WRF_FOLDER='WRF'; WPS_FOLDER='WPS';;
+  [1]* ) DEPLOY_DIR='wrf_420'; WRF_FOLDER='WRF-4.2'; WPS_FOLDER='WPS-4.2';;
+  [2]* ) DEPLOY_DIR='wrf_410'; WRF_FOLDER='WRF-4.1.5'; WPS_FOLDER='WPS-4.1';;
+  [3]* ) DEPLOY_DIR='wrf_400'; WRF_FOLDER='WRF'; WPS_FOLDER='WPS';;
 esac
 
 # creating url for the selectied wrf tar
-URL_PATH="https://bheld.eu/data/wrf_deploy/${FILE_NAME}.tar.gz"
+URL_PATH="https://bheld.eu/data/wrf_deploy/${DEPLOY_DIR}.tar.gz"
 SCRIPT_PATH=$(pwd)
 cd "${HOME}" || exit 1
 
 # checking if wrf directory is already there and ask for replacement
-if ! [ -d "${HOME}/${FILE_NAME}" ]; then
+if ! [ -d "${HOME}/${DEPLOY_DIR}" ]; then
   load_wrf_model
 else
   while true; do
-    printf "%b${FILE_NAME} folder already exists, overwrite it? [y/n]\\n%b" "${YELLOW}" "${NC}"        
+    printf "%b${DEPLOY_DIR} folder already exists, overwrite it? [y/n]\\n%b" "${YELLOW}" "${NC}"        
     read -r INPUT
     case ${INPUT} in
-      [y]* ) rm -rf "${HOME:?}/${FILE_NAME}"; load_wrf_model; break;;
+      [y]* ) rm -rf "${HOME:?}/${DEPLOY_DIR}"; load_wrf_model; break;;
       [n]* ) break;;
       * ) printf "%bWrong input Please use [y]es oder [n]o.%b\\n" "${RED}" "${NC}";;
     esac
@@ -78,11 +78,11 @@ fi
 # copying the config files from the repository to its destination
 printf "%b\\nDeploying repository config files: %b\\n" "${YELLOW}" "${NC}"
 cd "${SCRIPT_PATH}" || exit 1
-cp ../additions/config/namelist.wps "${HOME}/${FILE_NAME}/${WPS_FOLDER}"
-cp ../additions/config/namelist.input "${HOME}/${FILE_NAME}/${WRF_FOLDER}/test/em_real/"
-cp ../additions/config/tslist "${HOME}/${FILE_NAME}/${WRF_FOLDER}/test/em_real/"
+cp ../additions/config/namelist.wps "${HOME}/${DEPLOY_DIR}/${WPS_FOLDER}"
+cp ../additions/config/namelist.input "${HOME}/${DEPLOY_DIR}/${WRF_FOLDER}/test/em_real/"
+cp ../additions/config/tslist "${HOME}/${DEPLOY_DIR}/${WRF_FOLDER}/test/em_real/"
 
 # adjust geo data folder in namelist.wps to default /home/user/geo_data of load_geodata.sh
-sed -r -i "s#/home/raziel/geo_data#${HOME}/geo_data#g" "${HOME}/${FILE_NAME}/${WPS_FOLDER}/namelist.wps"
+sed -r -i "s#/home/raziel/geo_data#${HOME}/geo_data#g" "${HOME}/${DEPLOY_DIR}/${WPS_FOLDER}/namelist.wps"
 
 printf "%b\\nFinished wrf deployment.%b\\n" "${YELLOW}" "${NC}"

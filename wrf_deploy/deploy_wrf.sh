@@ -13,10 +13,7 @@ set -e
 . ../libs/terminal_color.sh
 
 SCRIPT_PATH=$(pwd)
-# default WRFV4 model
-export WRF_VERSION_INDEX
-# default low resolution WRFV4 geo data
-export WRF_GEODATA_INDEX
+source "./set_env.sh"
 
 while [[ $# -gt 0 ]]; do
   case ${1} in
