@@ -29,3 +29,10 @@ if ! [ -d "${HOME}/${DEPLOY_DIR}" ]; then
   printf "%bDirectory for wrf data cannot be found.%b\\n" "${RED}" "${NC}";
   exit 1
 fi
+
+# checking if visualization is present
+printf "%bChecking for visualization folder...\\n%b" "${YELLOW}" "${NC}"        
+if ! [ -d "${HOME}/wrf_visualization" ]; then
+  printf "%bDirectory for visualization cannot be found.%b\\n" "${RED}" "${NC}";
+  exit 1
+fi
