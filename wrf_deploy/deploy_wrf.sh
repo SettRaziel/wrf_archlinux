@@ -51,3 +51,6 @@ cd "${SCRIPT_PATH}" || exit 1
 
 # load and unpack the wrf archive, default version 4.2.0
 sh ./load_wrf.sh
+
+# check if directories exists
+sh ./check_deployment.sh "${DEPLOY_DIR}"
