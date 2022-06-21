@@ -10,7 +10,7 @@ set -e
 . ../../libs/terminal_color.sh
 
 # jump in folder and extract tar
-cd "${HOME}/${1}" || exit 1
+cd "${HOME}/${1}"
 printf "%b\\nUnpacking netcdf-fortran.tar files: %b\\n" "${YELLOW}" "${NC}"
 tar xfv "netcdf-fortran-${NETCDF_FORTRAN_VERSION}.tar.gz"
 
@@ -21,9 +21,10 @@ cd "netcdf-fortran-${NETCDF_FORTRAN_VERSION}"
 ./configure --prefix="${NETCDF}" 
 make -j 2 && make -j 2 install
 
-cd .. || exit 1
+cd ..
 
 # clean up
 rm "netcdf-fortran-${NETCDF_FORTRAN_VERSION}.tar.gz"
+rm -rf "netcdf-fortran-${NETCDF_FORTRAN_VERSION}"
 
 printf "%b\\nFinished installing netcdf fortran bindings. %b\\n" "${YELLOW}" "${NC}"

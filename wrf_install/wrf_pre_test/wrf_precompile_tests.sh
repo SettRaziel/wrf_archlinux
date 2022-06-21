@@ -18,7 +18,7 @@ printf "%bRequires: netcdf and openmpi.%b\\n" "${RED}" "${NC}"
 
 # creating required folders
 mkdir "${HOME}/${1}/lib_test"
-cd "${HOME}/${1}/lib_test" || exit 1
+cd "${HOME}/${1}/lib_test"
 wget http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compile_tutorial/tar_files/Fortran_C_NETCDF_MPI_tests.tar
 
 # unpacking test files
@@ -27,7 +27,7 @@ tar -xf Fortran_C_NETCDF_MPI_tests.tar
 
 # running first test
 printf "%bRunning first test: TEST_1_fortran_only_fixed %b\\n" "${YELLOW}" "${NC}"
-cp "${NETCDF}/include/netcdf.inc" . || exit 1
+cp "${NETCDF}/include/netcdf.inc" . 
 gfortran -c 01_fortran+c+netcdf_f.f
 gcc -c 01_fortran+c+netcdf_c.c
 gfortran 01_fortran+c+netcdf_f.o 01_fortran+c+netcdf_c.o -L${NETCDF}/lib -lnetcdff -lnetcdf
@@ -44,6 +44,6 @@ cat out.log
 printf "%bfinished test. %b\\n" "${LIGHT_BLUE}" "${NC}"
 
 # cleaning up
-cd .. || exit 1
+cd .. 
 rm -r "${HOME}/${1}/lib_test"
-cd "${SCRIPT_PATH}" || exit 1
+cd "${SCRIPT_PATH}"
