@@ -9,7 +9,7 @@ set -e
 # Script to get the required basic packages after installing the base system
 
 # start from home directory
-cd "${HOME}" || exit 1
+cd "${HOME}"
 
 sudo pacman -Sy --needed make pkg-config fakeroot m4
 
@@ -21,16 +21,19 @@ sudo pacman -S --needed git
 if ! [ -d "aur_packages" ]; then
   mkdir aur_packages
 fi
-cd aur_packages || exit 1
+cd aur_packages
 
 # getting yay
 if ! [ -d "yay" ]; then
   git clone https://aur.archlinux.org/yay.git
 fi
-cd yay || exit 1
+cd yay
 git pull
 makepkg -si --noconfirm --needed
 
-printf "%bInstalling basic packages... \\n%b" "${YELLOW}" "${NC}"
 # installing required packages
+printf "%bInstalling basic packages... \\n%b" "${YELLOW}" "${NC}"
 yay -S --needed tcsh time curl wget gcc-fortran
+
+printf "%bInstalling wrf required packages... \\n%b" "${YELLOW}" "${NC}"
+yay -S --needed openmpi zlib libpng jasper

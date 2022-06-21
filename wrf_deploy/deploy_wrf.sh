@@ -43,14 +43,17 @@ fi
 # load and unpack the neccessary geodata, WRFV4 minimal
 # using source to get the environment variable for WRF_GEODATA_INDEX
 source ./load_geodata.sh
-cd "${SCRIPT_PATH}" || exit 1
+cd "${SCRIPT_PATH}"
 
 # setting up output visualization
 sh ./load_visualization.sh
-cd "${SCRIPT_PATH}" || exit 1
+cd "${SCRIPT_PATH}"
 
-# load and unpack the wrf archive, default version 4.2.0
+# load and unpack the wrf archive, default version 4.4.0
 sh ./load_wrf.sh
 
 # check if directories exists
 sh ./check_deployment.sh "${DEPLOY_DIR}"
+
+# clean up packages
+sh ./clean_up.sh

@@ -34,7 +34,7 @@ printf "%bpreprocessing static data (geogrid.exe): %b\\n" "${YELLOW}" "${NC}" > 
 printf "%b\\npreprocessing initial and boundary data: %b\\n" "${YELLOW}" "${NC}" >> "${DEBUG_LOG}"
 ./link_grib.csh "${GFS_PATH}"/gfs.*.pgrb2."${RESOLUTION}".f*
 ln -sf ungrib/Variable_Tables/Vtable.GFS ./Vtable
-LD_LIBRARY_PATH="${DIR}/grib2/lib" ./ungrib.exe >> "${DEBUG_LOG}"
+LD_LIBRARY_PATH="/usr/lib" ./ungrib.exe >> "${DEBUG_LOG}"
 ./metgrid.exe >> "${DEBUG_LOG}"
 
 # vertical interpolation preprocessing

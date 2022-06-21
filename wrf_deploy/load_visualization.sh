@@ -9,7 +9,7 @@ set -e
 SCRIPT_PATH=$(pwd)
 
 # switch to home folder
-cd "${HOME}" || exit 1
+cd "${HOME}"
 
 # clone wrf_visualization project
 if ! [ -d "${HOME}/wrf_visualization" ]; then
@@ -18,7 +18,7 @@ if ! [ -d "${HOME}/wrf_visualization" ]; then
 fi
 
 # checkout master, since it holds the latest version tag
-cd wrf_visualization || exit 1
+cd wrf_visualization
 printf "%b\\nChecking wrf_visualization: %b\\n" "${YELLOW}" "${NC}"
 git checkout master  
 git pull
@@ -29,4 +29,4 @@ cd init || exit 1
 sh ./init_environment.sh
 
 printf "%b\\nFinished setup for wrf_visualization.%b\\n" "${YELLOW}" "${NC}"
-cd "${SCRIPT_PATH}" || exit 1
+cd "${SCRIPT_PATH}"
