@@ -9,18 +9,18 @@ set -e
 # prepare Folders
 SCRIPT_PATH=$(pwd)
 
-cd "${HOME}" || exit 1
+cd "${HOME}"
 # Prepare Folders
 if ! [ -d "aur_packages" ]; then
   mkdir aur_packages
 fi
-cd aur_packages || exit 1
+cd aur_packages
 
 # Getting yay
 if ! [ -d "yay" ]; then
   git clone https://aur.archlinux.org/yay.git
 fi
-cd yay || exit 1
+cd yay
 git pull
 makepkg -si --noconfirm --needed
 
@@ -31,6 +31,9 @@ yay -S --noconfirm --needed tcsh wget curl findutils gcc-fortran
 # dependency required with WRF 4.2.0
 yay -S --noconfirm --needed libpciaccess libunwind
 
+printf "%bInstalling wrf required packages... \\n%b" "${YELLOW}" "${NC}"
+yay -S --needed openmpi zlib libpng jasper
+
 # installing required packages: 
 # optipng for optimizing png size and unzip for loading high res coastlines
 printf "%b\\nInstalling required packages for output visualization: %b\\n" "${YELLOW}" "${NC}"
@@ -40,7 +43,4 @@ yay -S --noconfirm --needed optipng unzip git
 printf "%b\\nInstalling required mail libraries: %b\\n" "${YELLOW}" "${NC}"
 yay -S --noconfirm --needed msmtp
 
-# package clean up
-sudo pacman --noconfirm -Rsn $(sudo pacman -Qdtq)
-
-cd "${SCRIPT_PATH}" || exit 1
+cd "${SCRIPT_PATH}"
