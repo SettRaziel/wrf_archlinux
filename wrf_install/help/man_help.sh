@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# script to print out a help message
+
 printf "%bscript usage:%b ./install.sh [parameter]\\n" "${GREEN}" "${NC}"
 printf "%bInstall parameter:\\n%b" "${YELLOW}" "${NC}"
 printf "%b     --help      %b   show help text\\n" "${LIGHT_BLUE}" "${NC}"

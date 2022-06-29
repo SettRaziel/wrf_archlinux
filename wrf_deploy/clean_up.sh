@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# script to clean up linux packages
+
 # define terminal colors
 . ../libs/terminal_color.sh
 

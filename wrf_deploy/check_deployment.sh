@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# script to check if the deployment directories are present
 
 # enable termination on error
 set -e

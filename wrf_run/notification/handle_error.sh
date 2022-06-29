@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# script to generate an error message when the model run throws an error
+# ${1}: the error text
+# ${2}: the year for the model run
+# ${3}: the month for the model run
+# ${4}: the day for the model run
+# ${5}: the hour of the model run
+
 ERROR_STATUS="${1} at: $(date +"%T")."
 YEAR=${2}
 MONTH=${3}
