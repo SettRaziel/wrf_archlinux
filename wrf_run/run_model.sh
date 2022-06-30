@@ -82,7 +82,7 @@ cd "${SCRIPT_PATH}/data_fetch" || error_exit "Failed cd data_fetch"
 printf "Starting data fetching at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
 sh gfs_fetch.sh "${YEAR}${MONTH}${DAY}" "${HOUR}" "${GFS_PATH}" "${RESOLUTION}" "${PERIOD}"; RET=${?}
 if ! [ ${RET} -eq 0 ]; then
-  error_exit "Failed to prepare the namelist files"
+  error_exit "Failed to fetch the gfs data files"
 fi
 
 # start model run

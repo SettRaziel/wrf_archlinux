@@ -39,7 +39,7 @@ gfs_fetch_curl () {
 	  done
 
     if [[ "${RETRIES}" -eq 10 ]]; then
-      printf "Error while downlaoding %d at %s.\\n" "${i}" "$(date +"%T")" >> "${INFO_LOG}"
+      printf "Error while downloading %d at %s.\\n" "${i}" "$(date +"%T")" >> "${INFO_LOG}"
       exit 1
     fi
 	done
