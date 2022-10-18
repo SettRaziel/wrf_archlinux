@@ -13,7 +13,7 @@ set -e
 . ../libs/terminal_color.sh
 
 SCRIPT_PATH=$(pwd)
-source "./set_env.sh"
+source "./linux/set_env.sh"
 
 while [[ $# -gt 0 ]]; do
   case ${1} in
