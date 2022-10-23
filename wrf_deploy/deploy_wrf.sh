@@ -33,7 +33,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 # check and load required packages
-sh ./load_packages.sh
+sh ./linux/load_packages.sh
 
 # create storage folder for the gfs input data
 if ! [ -d "${HOME}/gfs_data" ]; then
