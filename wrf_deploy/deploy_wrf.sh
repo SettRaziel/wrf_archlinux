@@ -46,7 +46,7 @@ source ./load_geodata.sh
 cd "${SCRIPT_PATH}"
 
 # setting up output visualization
-sh ./load_visualization.sh
+sh ./visualization/load_visualization.sh
 cd "${SCRIPT_PATH}"
 
 # load and unpack the wrf archive, default version 4.4.0
