@@ -30,7 +30,7 @@ load_wrf_model () {
 }
 
 # define terminal colors
-. ../libs/terminal_color.sh
+. ../../libs/terminal_color.sh
 
 # check for script arguments
 if [ -z "${WRF_VERSION_INDEX}" ]; then
