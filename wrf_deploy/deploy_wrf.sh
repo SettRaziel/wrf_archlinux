@@ -26,6 +26,7 @@ while [[ $# -gt 0 ]]; do
       -g|--geodata)
       WRF_GEODATA_INDEX="${2}"; shift; shift;;
       --help)
+      cd "${SCRIPT_PATH}/help"
       sh "./help/man_help.sh"; exit 0;;
       *)
       shift;;
@@ -33,7 +34,8 @@ while [[ $# -gt 0 ]]; do
 done
 
 # check and load required packages
-sh ./linux/load_packages.sh
+cd "${SCRIPT_PATH}/linux"
+sh ./load_packages.sh
 
 # create storage folder for the gfs input data
 if ! [ -d "${HOME}/gfs_data" ]; then
@@ -46,7 +48,8 @@ source ./load_geodata.sh
 cd "${SCRIPT_PATH}"
 
 # setting up output visualization
-sh ./visualization/load_visualization.sh
+cd "${SCRIPT_PATH}/visualization"
+sh ./load_visualization.sh
 cd "${SCRIPT_PATH}"
 
 # load and unpack the wrf archive, default version 4.4.0
