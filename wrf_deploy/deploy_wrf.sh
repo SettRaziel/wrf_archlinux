@@ -59,8 +59,8 @@ cd "${SCRIPT_PATH}/wrf"
 sh ./load_wrf.sh
 cd "${SCRIPT_PATH}"
 
+cd "${SCRIPT_PATH}/post_processing"
 # check if directories exists
 sh ./check_deployment.sh "${DEPLOY_DIR}"
-
 # clean up packages
 sh ./clean_up.sh

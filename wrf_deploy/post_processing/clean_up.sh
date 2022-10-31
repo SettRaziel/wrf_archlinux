@@ -3,7 +3,7 @@
 # script to clean up linux packages
 
 # define terminal colors
-. ../libs/terminal_color.sh
+. ../../libs/terminal_color.sh
 
 # package clean up if possible
 printf "%b\\nLooking for removeable packages... %b\\n" "${YELLOW}" "${NC}"
