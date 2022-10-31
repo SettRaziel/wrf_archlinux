@@ -36,6 +36,7 @@ done
 # check and load required packages
 cd "${SCRIPT_PATH}/linux"
 sh ./load_packages.sh
+cd "${SCRIPT_PATH}"
 
 # create storage folder for the gfs input data
 if ! [ -d "${HOME}/gfs_data" ]; then
@@ -44,6 +45,7 @@ fi
 
 # load and unpack the neccessary geodata, WRFV4 minimal
 # using source to get the environment variable for WRF_GEODATA_INDEX
+cd "${SCRIPT_PATH}/wrf"
 source ./load_geodata.sh
 cd "${SCRIPT_PATH}"
 

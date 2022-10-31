@@ -12,7 +12,7 @@ print_options () {
 }
 
 # define terminal colors
-. ../libs/terminal_color.sh
+. ../../libs/terminal_color.sh
 
 # check for script arguments
 if [ -z "${WRF_GEODATA_INDEX}" ]; then
