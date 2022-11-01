@@ -13,7 +13,7 @@ set -e
 . ../libs/terminal_color.sh
 
 SCRIPT_PATH=$(pwd)
-source "./set_env.sh"
+source "./linux/set_env.sh"
 
 while [[ $# -gt 0 ]]; do
   case ${1} in
@@ -26,14 +26,17 @@ while [[ $# -gt 0 ]]; do
       -g|--geodata)
       WRF_GEODATA_INDEX="${2}"; shift; shift;;
       --help)
-      sh man_help.sh; exit 0;;
+      cd "${SCRIPT_PATH}/help"
+      sh "./help/man_help.sh"; exit 0;;
       *)
       shift;;
   esac
 done
 
 # check and load required packages
+cd "${SCRIPT_PATH}/linux"
 sh ./load_packages.sh
+cd "${SCRIPT_PATH}"
 
 # create storage folder for the gfs input data
 if ! [ -d "${HOME}/gfs_data" ]; then
@@ -42,18 +45,22 @@ fi
 
 # load and unpack the neccessary geodata, WRFV4 minimal
 # using source to get the environment variable for WRF_GEODATA_INDEX
+cd "${SCRIPT_PATH}/wrf"
 source ./load_geodata.sh
 cd "${SCRIPT_PATH}"
 
 # setting up output visualization
+cd "${SCRIPT_PATH}/visualization"
 sh ./load_visualization.sh
 cd "${SCRIPT_PATH}"
 
 # load and unpack the wrf archive, default version 4.4.0
+cd "${SCRIPT_PATH}/wrf"
 sh ./load_wrf.sh
+cd "${SCRIPT_PATH}"
 
+cd "${SCRIPT_PATH}/post_processing"
 # check if directories exists
 sh ./check_deployment.sh "${DEPLOY_DIR}"
-
 # clean up packages
 sh ./clean_up.sh

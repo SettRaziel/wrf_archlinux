@@ -30,7 +30,7 @@ load_wrf_model () {
 }
 
 # define terminal colors
-. ../libs/terminal_color.sh
+. ../../libs/terminal_color.sh
 
 # check for script arguments
 if [ -z "${WRF_VERSION_INDEX}" ]; then
@@ -82,11 +82,11 @@ fi
 printf "%b\\nDeploying repository config files: %b\\n" "${YELLOW}" "${NC}"
 cd "${SCRIPT_PATH}"
 case ${WRF_GEODATA_INDEX} in
-    [1]* ) cp ../additions/config/namelist.wps "${HOME}/${DEPLOY_DIR}/${WPS_FOLDER}";;
-    [2]* ) cp ../additions/config/namelist_low_res.wps "${HOME}/${DEPLOY_DIR}/${WPS_FOLDER}/namelist.wps";;
+    [1]* ) cp ../../additions/config/namelist.wps "${HOME}/${DEPLOY_DIR}/${WPS_FOLDER}";;
+    [2]* ) cp ../../additions/config/namelist_low_res.wps "${HOME}/${DEPLOY_DIR}/${WPS_FOLDER}/namelist.wps";;
 esac
-cp ../additions/config/namelist.input "${HOME}/${DEPLOY_DIR}/${WRF_FOLDER}/test/em_real/"
-cp ../additions/config/tslist "${HOME}/${DEPLOY_DIR}/${WRF_FOLDER}/test/em_real/"
+cp ../../additions/config/namelist.input "${HOME}/${DEPLOY_DIR}/${WRF_FOLDER}/test/em_real/"
+cp ../../additions/config/tslist "${HOME}/${DEPLOY_DIR}/${WRF_FOLDER}/test/em_real/"
 
 # adjust geo data folder in namelist.wps to default /home/user/geo_data of load_geodata.sh
 sed -r -i "s#/home/raziel/geo_data#${HOME}/geo_data#g" "${HOME}/${DEPLOY_DIR}/${WPS_FOLDER}/namelist.wps"
