@@ -58,6 +58,24 @@ gfs_fetch_wget () {
   done
 }
 
+# function to fetch the input data with curl
+gfs_ftp_fetch_curl () {
+  GFS_URL="ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/"
+  # Define a number of retries and try to download the files
+  for i in $(seq -f %03g 0 3 "${5}"); do
+    RETRIES=0
+    while [ "${RETRIES}" -lt 10 ]; do
+      # -f fail silenty, -C continue if interrupted, -o define output; loop breaks if file was loaded successfully
+      curl -f -C - -o "${3}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}" "${GFS_URL}"gfs."${1}"/"${2}"/atmos/gfs.t"${2}"z.pgrb2."${4}".f"${i}" && break
+      $((RETRIES++))
+    done
+    if ![[ "${RETRIES}" -eq 10 ]]; then
+      printf "Error while downlaoding %d at %s.\\n" "${i}" "$(date +"%T")" >> "${INFO_LOG}"
+      exit 1
+    fi
+  done
+}
+
 # error handling for input parameter
 if [ "$#" -ne 5 ]; then
   printf "%bWrong number of arguments. Must be one for <DATE> <TIMESTAMP> <STORAGE_PATH> <GEO_RESOLUTION> <PERIOD>.%b\\n" "${RED}" "${NC}"
