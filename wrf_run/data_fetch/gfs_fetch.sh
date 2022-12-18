@@ -10,7 +10,7 @@
 # define terminal colors
 . "${COLOR_PATH}"
 
-# parent url to the noaa ftp server as of 2020-06-01
+# parent url to the noaa data server as of 2020-06-01
 # source: https://www.nco.ncep.noaa.gov/pmb/products/gfs/#GFS
 GFS_URL="https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/"
 
@@ -58,7 +58,7 @@ gfs_fetch_wget () {
   done
 }
 
-# function to fetch the input data with curl
+# backup function to fetch the input data from the ftp server with curl
 gfs_ftp_fetch_curl () {
   GFS_URL="ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/"
   # Define a number of retries and try to download the files
