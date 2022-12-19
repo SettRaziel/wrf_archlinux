@@ -69,7 +69,8 @@ gfs_ftp_fetch_curl () {
       curl -f -C - -o "${3}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}" "${GFS_URL}"gfs."${1}"/"${2}"/atmos/gfs.t"${2}"z.pgrb2."${4}".f"${i}" && break
       $((RETRIES++))
     done
-    if ![[ "${RETRIES}" -eq 10 ]]; then
+
+    if [[ "${RETRIES}" -eq 10 ]]; then
       printf "Error while downlaoding %d at %s.\\n" "${i}" "$(date +"%T")" >> "${INFO_LOG}"
       exit 1
     fi
