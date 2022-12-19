@@ -67,7 +67,7 @@ gfs_ftp_fetch_curl () {
     while [ "${RETRIES}" -lt 10 ]; do
       # -f fail silenty, -C continue if interrupted, -o define output; loop breaks if file was loaded successfully
       curl -f -C - -o "${3}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}" "${GFS_URL}"gfs."${1}"/"${2}"/atmos/gfs.t"${2}"z.pgrb2."${4}".f"${i}" && break
-      $((RETRIES++))
+      ((RETRIES++))
     done
 
     if [[ "${RETRIES}" -eq 10 ]]; then
