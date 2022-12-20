@@ -10,7 +10,7 @@
 # define terminal colors
 . "${COLOR_PATH}"
 
-# parent url to the noaa ftp server as of 2020-06-01
+# parent url to the noaa data server as of 2020-06-01
 # source: https://www.nco.ncep.noaa.gov/pmb/products/gfs/#GFS
 GFS_URL="https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/"
 
@@ -55,6 +55,25 @@ gfs_fetch_wget () {
   # Check and continue broken files
   for i in $(seq -f %03g 0 3 "${5}"); do
     wget -c -q -P "${3}" "${GFS_URL}"gfs."${1}"/"${2}"/atmos/gfs.t"${2}"z.pgrb2."${4}".f"${i}"
+  done
+}
+
+# backup function to fetch the input data from the ftp server with curl
+gfs_ftp_fetch_curl () {
+  GFS_URL="ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/"
+  # Define a number of retries and try to download the files
+  for i in $(seq -f %03g 0 3 "${5}"); do
+    RETRIES=0
+    while [ "${RETRIES}" -lt 10 ]; do
+      # -f fail silenty, -C continue if interrupted, -o define output; loop breaks if file was loaded successfully
+      curl -f -C - -o "${3}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}" "${GFS_URL}"gfs."${1}"/"${2}"/atmos/gfs.t"${2}"z.pgrb2."${4}".f"${i}" && break
+      ((RETRIES++))
+    done
+
+    if [[ "${RETRIES}" -eq 10 ]]; then
+      printf "Error while downlaoding %d at %s.\\n" "${i}" "$(date +"%T")" >> "${INFO_LOG}"
+      exit 1
+    fi
   done
 }
 

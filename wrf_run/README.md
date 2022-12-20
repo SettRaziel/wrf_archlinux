@@ -99,29 +99,7 @@ According to the ncep noaa [website](https://www.nco.ncep.noaa.gov/pmb/products/
   `ftp://ftp.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/`. If its available a temporary workaround to load the data via
   unsecure ftp can be achieved by changing the curl command to
   `curl -f -o "${3}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}" "${GFS_URL}"gfs."${1}"/"${2}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}"`
-  You also need to revert the changes made with (#84) which introduced the check for the http code to catch timeouts or
-  other error codes:
-  ```
-  +    # -f fail silenty, -C continue if interrupted, -o define output; loop breaks if file was loaded successfully
-  +    curl -f -C - -o "${3}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}" "${GFS_URL}"gfs."${1}"/"${2}"/atmos/gfs.t"${2}"z.pgrb2."${4}".f"${i}" && break
-  +    $((RETRIES++))
-  -    # -w return http code, -C continue if interrupted, -o define output; loop breaks if file was loaded successfully
-  -    RETURN_CODE=$(curl -w "%{http_code}\n" -C - -o "${3}"/gfs.t"${2}"z.pgrb2."${4}".f"${i}" "${GFS_URL}"gfs."${1}"/"${2}"/atmos/gfs.t"${2}"z.pgrb2."${4}".f"${i}")
-  -    if [[ "${RETURN_CODE}" -eq 200 ]]; then
-  -      break
-  -    fi
-  -
-  -    ((RETRIES++))
-  -
-  -    # in addition to the http codes curl returns 000 if it ran into a timeout
-  -    if [[ "${RETURN_CODE}" =~ [4-5][0-9]{2}$ ]] || [[ "${RETURN_CODE}" =~ [0]{3}$ ]]; then
-  -      if [[ "${RETURN_CODE}" =~ [0]{3}$ ]]; then
-  -        RETURN_CODE="Timeout"
-  -      fi
-  -      printf "Inputfile for %d failed with %s at %s.\\n" "${i}" "${RETURN_CODE}" "$(date +"%T")" >> "${INFO_LOG}"
-  -    fi
-  ```
-  This issue will be addressed in (#122).
+  This can be achived by using the function `gfs_ftp_fetch_curl` in the gfs_fetch script instead of the normal curl fetch.
 
 ## Todos:
 check issues with wrf_run label
