@@ -33,24 +33,24 @@ folders for subsidiary license files.
 * wrf tutorial: [here](http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php)
 * ncl output: [here](https://www.ncl.ucar.edu/Applications/)
 
-## Software components (last query: 2022-06-06)
+## Software components (last query: 2022-12-31)
 Starting with the compilation of WRFV4.4 some dependencies that were manually compiled for the model are now
 installed through the package repositories provided by the ArchLinux operating system. The used software components will
 now be separated to list the selfcompiled sources and the packaged ones.
 
 ### Selfcompiled
-* WRF model: [Source](https://github.com/wrf-model/WRF/releases), used version: 4.4; newest 4.4
+* WRF model: [Source](https://github.com/wrf-model/WRF/releases), used version: 4.4; newest 4.4.2
 * WPS component: [Source](https://github.com/wrf-model/WPS/releases), used version: 4.4; newest 4.4
-* Network Common Data Form (NetCDF): [Source](https://github.com/Unidata/netcdf-c/releases) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.8.1; newest 4.8.1
-* Parallel NetCDF File Access (PnetCDT): [Soruce](https://parallel-netcdf.github.io/wiki/Download.html) and [Terms and use](https://github.com/Parallel-NetCDF/PnetCDF/blob/master/COPYRIGHT), used version: 1.12.3; newest: 1.12.3
+* Network Common Data Form (NetCDF): [Source](https://github.com/Unidata/netcdf-c/releases) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.8.1; newest 4.9.1
+* Parallel NetCDF File Access (PnetCDT): [Source](https://parallel-netcdf.github.io/wiki/Download.html) and [Terms and use](https://github.com/Parallel-NetCDF/PnetCDF/blob/master/COPYRIGHT), used version: 1.12.3; newest: 1.12.3
 * Hierarchical Data Format 5 (HDF5): [Source](https://portal.hdfgroup.org/display/support) and [Terms of use](https://portal.hdfgroup.org/display/support/Licenses) used version: 1.13.0; newest 1.13.0
-* NetCDF-Fortran Library: [Source](https://github.com/Unidata/netcdf-fortran/releases) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.5.4; newest: 4.5.4
+* NetCDF-Fortran Library: [Source](https://github.com/Unidata/netcdf-fortran/releases) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.5.4; newest: 4.6.0
 
 ### ArchLinux Packages
-* Message Passing Interface (mpich): [Source](https://www.mpich.org/) and [License](http://git.mpich.org/mpich.git/blob/HEAD:/COPYRIGHT), used version: ArchLinux package; newest: 4.0.2 (latest stable)
-* PNG reference library (libpng): [Source](http://www.libpng.org/pub/png/libpng.html) and [License](http://www.libpng.org/pub/png/src/libpng-LICENSE.txt), used version: ArchLinux package; newest: 1.6.37
-* A Massively Spiffy Yet Delicately Unobtrusive Compression Library (zlib): [Source](http://www.zlib.net) and [License](http://www.zlib.net/zlib_license.html), used version: ArchLinux package; newest: 1.2.12
-* JasPer Project (JasPer): [Source](https://www.ece.uvic.ca/~frodo/jasper/) and [License](https://www.ece.uvic.ca/~frodo/jasper/LICENSE), used version: ArchLinux package; newest: 3.0.4
+* Message Passing Interface (mpich): [Source](https://www.mpich.org/) and [License](http://git.mpich.org/mpich.git/blob/HEAD:/COPYRIGHT), used version: ArchLinux package; newest: 4.0.3 (latest stable)
+* PNG reference library (libpng): [Source](http://www.libpng.org/pub/png/libpng.html) and [License](http://www.libpng.org/pub/png/src/libpng-LICENSE.txt), used version: ArchLinux package; newest: 1.6.39
+* A Massively Spiffy Yet Delicately Unobtrusive Compression Library (zlib): [Source](http://www.zlib.net) and [License](http://www.zlib.net/zlib_license.html), used version: ArchLinux package; newest: 1.2.13
+* JasPer Project (JasPer): [Source](https://www.ece.uvic.ca/~frodo/jasper/) and [License](https://www.ece.uvic.ca/~frodo/jasper/LICENSE), used version: ArchLinux package; newest: 4.0.0
 
 ### Optional postprocessing tools:
 * (DEFAULT) wrf_visualization based on pyngl, pynio: [Source](https://github.com/SettRaziel/wrf_visualization)
