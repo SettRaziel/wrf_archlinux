@@ -89,10 +89,5 @@ move_files "rain_3h_*.png" "${DEST_FOLDER}/rain_3h"
 move_files "rain_total_*.png" "${DEST_FOLDER}/rain_tot"
 move_files "cape_*.png" "${DEST_FOLDER}/thunderstorm_index"
 
-# generate meta.ini file
-printf "Starting generation of meta.ini at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
-cd "${SCRIPT_PATH}" || exit 1
-sh create_ini.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${PERIOD}" "${DEST_FOLDER}"
-
 # logging time stamp
 printf "Finished output generation at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
