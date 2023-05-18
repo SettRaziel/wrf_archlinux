@@ -10,3 +10,7 @@ want to use the stored config files you also need to load and unpack the additio
 from [here](http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog_V3.html). If you don't
 have that the model run will fail stating missing geo_data in the debug.log. You can also adjust 
 the used geodata in the namelist.wps to used only available data.
+
+## Mailtemplate
+When sending mails on a finished model run a mail is sent with msmtp. The given config file
+states the required informations needed for sending mails containing the result of the model run.
