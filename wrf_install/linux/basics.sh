@@ -36,4 +36,4 @@ printf "%bInstalling basic packages... \\n%b" "${YELLOW}" "${NC}"
 yay -S --needed tcsh time curl wget gcc-fortran
 
 printf "%bInstalling wrf required packages... \\n%b" "${YELLOW}" "${NC}"
-yay -S --needed openmpi zlib libpng jasper
+yay -S --needed zlib libpng jasper
