@@ -23,6 +23,8 @@ wget -O "pnetcdf-${PNETCDF_VERSION}.tar.gz" "https://parallel-netcdf.github.io/R
 wget -O "netcdf-${NETCDF_VERSION}.tar.gz" "https://github.com/Unidata/netcdf-c/archive/v${NETCDF_VERSION}.tar.gz"
 # wget specified netcdf fortran bindings
 wget -O "netcdf-fortran-${NETCDF_FORTRAN_VERSION}.tar.gz" "https://github.com/Unidata/netcdf-fortran/archive/v${NETCDF_FORTRAN_VERSION}.tar.gz"
+# wget specified mpich version
+wget "http://www.mpich.org/static/downloads/${MPI_VERSION}/mpich-${MPI_VERSION}.tar.gz"
 }
 
 # checks if the given library exists before copying it
@@ -56,6 +58,7 @@ if [ "${2}" = '--local' -a -d "${LIBRARY_PATH}" ]; then
 	check_library "${LIBRARY_PATH}" "pnetcdf-${PNETCDF_VERSION}.tar.gz"
 	check_library "${LIBRARY_PATH}" "netcdf-${NETCDF_VERSION}.tar.gz"
 	check_library "${LIBRARY_PATH}" "netcdf-fortran-${NETCDF_FORTRAN_VERSION}.tar.gz"
+	check_library "${LIBRARY_PATH}" "mpich-${MPI_VERSION}.tar.gz"
 
 	cp -r "${LIBRARY_PATH}"/* .
 else

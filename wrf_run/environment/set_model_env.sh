@@ -23,6 +23,7 @@ export F77="gfortran"
 export FFLAGS="-m64"
 export PATH="${PATH}:${DIR}/netcdf/bin"
 export NETCDF="${DIR}/netcdf"
+export PATH="${PATH}:${DIR}/mpich/bin"
 export WRFIO_NCD_LARGE_FILE_SUPPORT=1
 export JASPERLIB="/usr/lib"
 export JASPERINC="/usr/include"
