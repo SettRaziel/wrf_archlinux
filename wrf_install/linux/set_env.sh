@@ -27,7 +27,7 @@ export NETCDF_classic=1
 # setting library versions for usage (last checked: 2023-05-27)
 export WRF_VERSION="4.4"              # latest: 4.4
 export WPS_VERSION="4.4"              # latest: 4.4
-export HDF_VERSION="1.13"             # latest: 1.13.0
+export HDF_VERSION="1.14.1"           # latest: 1.14.1
 export PNETCDF_VERSION="1.12.3"       # latest: 1.12.3
 export NETCDF_VERSION="4.8.1"         # latest: 4.8.1
 export NETCDF_FORTRAN_VERSION="4.5.4" # latest: 4.5.4

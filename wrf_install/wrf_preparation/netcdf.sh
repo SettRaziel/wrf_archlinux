@@ -14,11 +14,11 @@ cd "${HOME}/${1}"
 
 # installing the hdf 5 dependency
 printf "%b\\nUnpacking hdf5.tar files: %b\\n" "${YELLOW}" "${NC}"
-tar xfv "hdf5-${HDF_VERSION}.0.tar.gz"
+tar xfv "hdf5-${HDF_VERSION}.tar.gz"
 
 # installing hdf5 library
 printf "%b\\nInstalling hdf5: %b\\n" "${YELLOW}" "${NC}"
-cd "hdf5-${HDF_VERSION}.0"
+cd "hdf5-${HDF_VERSION}"
 LIBS="-lgcc_s" ./configure --enable-shared --enable-parallel --enable-fortran --enable-fortran2003 --prefix="${DIR}/hdf5"
 make -j 2 && make install -j 2
 
