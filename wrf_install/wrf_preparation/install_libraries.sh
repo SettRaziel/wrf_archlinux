@@ -28,3 +28,4 @@ printf "%b\\nFinished installing mpich. %b\\n" "${LIGHT_BLUE}" "${NC}"
 
 # cleanup
 rm "mpich-${MPI_VERSION}.tar.gz"
+rm -rf "mpich-${MPI_VERSION}"
