@@ -37,3 +37,6 @@ yay -S --needed tcsh time curl wget gcc-fortran
 
 printf "%bInstalling wrf required packages... \\n%b" "${YELLOW}" "${NC}"
 yay -S --needed zlib libpng jasper
+
+printf "%bInstalling mpich required packages... \\n%b" "${YELLOW}" "${NC}"
+yay -S --needed python
