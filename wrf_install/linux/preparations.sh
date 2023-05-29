@@ -53,7 +53,6 @@ if [ "${2}" = '--local' -a -d "${LIBRARY_PATH}" ]; then
 	check_library "${LIBRARY_PATH}" "WRFV${WRF_VERSION}.tar.gz"
 	check_library "${LIBRARY_PATH}" "WPSV${WPS_VERSION}.tar.gz"
 	check_library "${LIBRARY_PATH}" "hdf5-${HDF_VERSION}.tar.gz"
-	check_library "${LIBRARY_PATH}" "pnetcdf-${PNETCDF_VERSION}.tar.gz"
 	check_library "${LIBRARY_PATH}" "netcdf-${NETCDF_VERSION}.tar.gz"
 	check_library "${LIBRARY_PATH}" "netcdf-fortran-${NETCDF_FORTRAN_VERSION}.tar.gz"
 	check_library "${LIBRARY_PATH}" "mpich-${MPI_VERSION}.tar.gz"
