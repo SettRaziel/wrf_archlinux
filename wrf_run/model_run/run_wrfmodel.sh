@@ -49,7 +49,7 @@ cp rsl.error.0000 real_error.log
 printf "%bstarting wrf run ... %b\\n" "${YELLOW}" "${NC}"
 printf "Starting wrf run at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
 cd "${WRF_DIR}/test/em_real" || exit 1
-./wrf.exe
+mpirun ./wrf.exe
 
 # logging time stamp
 printf "Finished wrf run at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"

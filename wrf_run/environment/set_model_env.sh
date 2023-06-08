@@ -23,11 +23,12 @@ export F77="gfortran"
 export FFLAGS="-m64"
 export PATH="${PATH}:${DIR}/netcdf/bin"
 export NETCDF="${DIR}/netcdf"
+export PATH="${PATH}:${DIR}/mpich/bin"
 export WRFIO_NCD_LARGE_FILE_SUPPORT=1
 export JASPERLIB="/usr/lib"
 export JASPERINC="/usr/include"
 # Adding shared libraries
-export LD_LIBRARY_PATH="${DIR}/hdf5/lib:${DIR}/netcdf/lib:${DIR}/pnetcdf/lib:${LD_LIBRARY_PATH}"
+export LD_LIBRARY_PATH="${DIR}/hdf5/lib:${DIR}/netcdf/lib:${LD_LIBRARY_PATH}"
 
 # Version and directory variables
 export WRF_VERSION="4.4"

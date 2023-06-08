@@ -32,7 +32,7 @@ yay -S --noconfirm --needed tcsh wget curl findutils gcc-fortran
 yay -S --noconfirm --needed libpciaccess libunwind
 
 printf "%bInstalling wrf required packages... \\n%b" "${YELLOW}" "${NC}"
-yay -S --needed openmpi zlib libpng jasper
+yay -S --needed zlib libpng jasper
 
 # installing required packages: 
 # optipng for optimizing png size and unzip for loading high res coastlines

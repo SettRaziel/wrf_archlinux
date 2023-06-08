@@ -67,6 +67,11 @@ printf "%bStarting fortran bindings in 5 seconds ... %b" "${YELLOW}" "${NC}"
 sleep 5
 sh ./fortran_bindings.sh "${BUILD_PATH}"
 
+# compiling required libraries
+printf "%bStarting library compilation in 5 seconds ... %b" "${YELLOW}" "${NC}"
+sleep 5
+sh ./install_libraries.sh "${BUILD_PATH}"
+
 # running system environment test
 printf "%bStarting fortran tests. Press any key ... %b" "${YELLOW}" "${NC}"
 read

@@ -16,13 +16,13 @@ wget -O "WRFV${WRF_VERSION}.tar.gz" "https://github.com/wrf-model/WRF/archive/v$
 # wget specified wps version
 wget -O "WPSV${WPS_VERSION}.tar.gz" "https://github.com/wrf-model/WPS/archive/v${WPS_VERSION}.tar.gz"
 # wget specific hdf 5 version
-wget "https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-${HDF_VERSION}/hdf5-${HDF_VERSION}.0/src/hdf5-${HDF_VERSION}.0.tar.gz"
-# wget specified pnetcdf version
-wget -O "pnetcdf-${PNETCDF_VERSION}.tar.gz" "https://parallel-netcdf.github.io/Release/pnetcdf-${PNETCDF_VERSION}.tar.gz"
+wget -O "hdf5-${HDF_VERSION}.tar.gz" "https://github.com/HDFGroup/hdf5/archive/refs/tags/hdf5-${HDF_VERSION}.tar.gz"
 # wget specified netcdf version
 wget -O "netcdf-${NETCDF_VERSION}.tar.gz" "https://github.com/Unidata/netcdf-c/archive/v${NETCDF_VERSION}.tar.gz"
 # wget specified netcdf fortran bindings
 wget -O "netcdf-fortran-${NETCDF_FORTRAN_VERSION}.tar.gz" "https://github.com/Unidata/netcdf-fortran/archive/v${NETCDF_FORTRAN_VERSION}.tar.gz"
+# wget specified mpich version
+wget "http://www.mpich.org/static/downloads/${MPI_VERSION}/mpich-${MPI_VERSION}.tar.gz"
 }
 
 # checks if the given library exists before copying it
@@ -52,10 +52,10 @@ if [ "${2}" = '--local' -a -d "${LIBRARY_PATH}" ]; then
 	# check if required libraries are present
 	check_library "${LIBRARY_PATH}" "WRFV${WRF_VERSION}.tar.gz"
 	check_library "${LIBRARY_PATH}" "WPSV${WPS_VERSION}.tar.gz"
-	check_library "${LIBRARY_PATH}" "hdf5-${HDF_VERSION}.0.tar.gz"
-	check_library "${LIBRARY_PATH}" "pnetcdf-${PNETCDF_VERSION}.tar.gz"
+	check_library "${LIBRARY_PATH}" "hdf5-${HDF_VERSION}.tar.gz"
 	check_library "${LIBRARY_PATH}" "netcdf-${NETCDF_VERSION}.tar.gz"
 	check_library "${LIBRARY_PATH}" "netcdf-fortran-${NETCDF_FORTRAN_VERSION}.tar.gz"
+	check_library "${LIBRARY_PATH}" "mpich-${MPI_VERSION}.tar.gz"
 
 	cp -r "${LIBRARY_PATH}"/* .
 else
