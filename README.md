@@ -33,7 +33,7 @@ folders for subsidiary license files.
 * wrf tutorial: [here](http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php)
 * ncl output: [here](https://www.ncl.ucar.edu/Applications/)
 
-## Software components (last query: 2023-06-09)
+## Software components (last query: 2023-06-10)
 Starting with the compilation of WRFV4.4 some dependencies that were manually compiled for the model are now
 installed through the package repositories provided by the ArchLinux operating system. The used software components are
 now separated: one list the selfcompiled sources and the other list the packaged ones.
@@ -44,7 +44,7 @@ now separated: one list the selfcompiled sources and the other list the packaged
 * Network Common Data Form (NetCDF): [Source](https://github.com/Unidata/netcdf-c/releases) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.9.2; newest 4.9.2
 * Hierarchical Data Format 5 (HDF5): [Source](https://github.com/HDFGroup/hdf5/) and [Terms of use](https://github.com/HDFGroup/hdf5/blob/develop/COPYING) used version: 1.14.1; newest 1.14.1
 * NetCDF-Fortran Library: [Source](https://github.com/Unidata/netcdf-fortran/releases) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.6.1; newest: 4.6.1
-* Message Passing Interface (mpich): [Source](https://www.mpich.org/) and [License](http://git.mpich.org/mpich.git/blob/HEAD:/COPYRIGHT), used version: 4.1.1; newest: 4.1.1
+* Message Passing Interface (mpich): [Source](https://www.mpich.org/) and [License](http://git.mpich.org/mpich.git/blob/HEAD:/COPYRIGHT), used version: 4.1.2; newest: 4.1.2
 
 ### ArchLinux Packages
 * PNG reference library (libpng): [Source](http://www.libpng.org/pub/png/libpng.html) and [License](http://www.libpng.org/pub/png/src/libpng-LICENSE.txt), used version: ArchLinux package; newest: 1.6.39
