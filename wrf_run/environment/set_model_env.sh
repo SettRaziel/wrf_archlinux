@@ -31,8 +31,8 @@ export JASPERINC="/usr/include"
 export LD_LIBRARY_PATH="${DIR}/hdf5/lib:${DIR}/netcdf/lib:${LD_LIBRARY_PATH}"
 
 # Version and directory variables
-export WRF_VERSION="4.4"
-export WPS_VERSION="4.4"
+export WRF_VERSION="4.5"
+export WPS_VERSION="4.5"
 export WRF_DIR="${BUILD_PATH}/WRF-${WRF_VERSION}"
 export WPS_DIR="${BUILD_PATH}/WPS-${WPS_VERSION}"
 
