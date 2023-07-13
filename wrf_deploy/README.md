@@ -2,12 +2,12 @@
 
 This scripts can deploy a already precompiled version of the WRF model in the
 home directory of the user calling this script. On default it will download the
-latest version of WRFV4 (currently: 4.4.0) and the minimal geodata (~200 mb) 
+latest version of WRFV4 (currently: 4.5.0) and the minimal geodata (~200 mb) 
 required to start a model run. The main script will be extended to accept
 parameters to customize the deployment process.
 
 ## Parameters
-* WRF version, currently available for deployment: 4.0.2, 4.1.5, 4.2.0, 4.4.0
+* WRF version, currently available for deployment: 4.0.2, 4.1.5, 4.2.0, 4.4.0, 4.5.0
 * older versions that need manual deployment or older wrf_archlinux versions: 3.8.0, 3.9.0, 3.9.1
 * Geodata: 
 	* WRFV3 lowres (~200 mb), WRFV3 highres (~50 gb)
@@ -24,7 +24,7 @@ Deploy parameter:
      --help         show help text
      --default      runs the deployment with default settings WRF 4.2 low data
  -v, --version      argument: <index>; specifies the wrf version
-                    1: 4.4, 2: 4.2, 3: 4.1, 4: 4.0
+                    1: 4.5, 2: 4.4, 3: 4.2, 4: 4.1, 5: 4.0
  -g, --geodata      argument: <index>; specifies the wrf geodata
                     1: WRF4 high, 2: WRF4 low
 ```

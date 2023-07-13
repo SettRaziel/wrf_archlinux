@@ -54,7 +54,7 @@ cd "${SCRIPT_PATH}/visualization"
 sh ./load_visualization.sh
 cd "${SCRIPT_PATH}"
 
-# load and unpack the wrf archive, default version 4.4.0
+# load and unpack the wrf archive, default version 4.5.0
 cd "${SCRIPT_PATH}/wrf"
 sh ./load_wrf.sh
 cd "${SCRIPT_PATH}"

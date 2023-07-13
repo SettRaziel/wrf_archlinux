@@ -23,12 +23,12 @@ export WRFIO_NCD_LARGE_FILE_SUPPORT=1
 # since the WRF source still thinks we do not support netcdf4 we set this flag to compile the model
 export NETCDF_classic=1
 
-# setting library versions for usage (last checked: 2023-05-27)
-export WRF_VERSION="4.4"              # latest: 4.4
-export WPS_VERSION="4.4"              # latest: 4.4
+# setting library versions for usage (last checked: 2023-06-10)
+export WRF_VERSION="4.5"              # latest: 4.5
+export WPS_VERSION="4.5"              # latest: 4.5
 export HDF_VERSION="1_14_1"           # latest: 1.14.1
-export NETCDF_VERSION="4.8.1"         # latest: 4.8.1
-export NETCDF_FORTRAN_VERSION="4.5.4" # latest: 4.5.4
-export MPI_VERSION="4.1.1"            # latest: 4.1.1
+export NETCDF_VERSION="4.9.2"         # latest: 4.9.2
+export NETCDF_FORTRAN_VERSION="4.6.1" # latest: 4.6.1
+export MPI_VERSION="4.1.2"            # latest: 4.1.2
 
 export WRF_DIR="${1}/WRF-${WRF_VERSION}"
