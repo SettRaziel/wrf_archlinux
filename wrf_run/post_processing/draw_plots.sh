@@ -84,7 +84,7 @@ create_directory "${DEST_FOLDER}/rain_tot"
 create_directory "${DEST_FOLDER}/thunderstorm_index"
 
 # Check for moveable file and move them if present
-cd "${WRF_OUTPUT}"
+cd "${WRF_OUTPUT}" || error 1
 # move file folders to project local timestamp destination
 move_files "${MONTH}_${DAY}_${HOUR}_meteogram_*.png" "${DEST_FOLDER}"
 move_files "comp_*.png" "${DEST_FOLDER}/comp"
