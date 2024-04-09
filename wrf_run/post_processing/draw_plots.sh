@@ -83,6 +83,10 @@ create_directory "${DEST_FOLDER}/rain_3h"
 create_directory "${DEST_FOLDER}/rain_tot"
 create_directory "${DEST_FOLDER}/thunderstorm_index"
 
+# archive model run output
+cd "${SCRIPT_PATH}" || exit 1 
+sh ./create_archive.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}"
+
 # Check for moveable file and move them if present
 cd "${WRF_OUTPUT}" || error 1
 # move file folders to project local timestamp destination
