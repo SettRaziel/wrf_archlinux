@@ -33,18 +33,18 @@ folders for subsidiary license files.
 * wrf tutorial: [here](http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php)
 * ncl output: [here](https://www.ncl.ucar.edu/Applications/)
 
-## Software components (last query: 2023-06-10)
+## Software components (last query: 2024-05-12)
 Starting with the compilation of WRFV4.4 some dependencies that were manually compiled for the model are now
 installed through the package repositories provided by the ArchLinux operating system. The used software components are
 now separated: one list the selfcompiled sources and the other list the packaged ones.
 
 ### Selfcompiled
-* WRF model: [Source](https://github.com/wrf-model/WRF/releases), used version: 4.5; newest 4.5
+* WRF model: [Source](https://github.com/wrf-model/WRF/releases), used version: 4.6; newest 4.6
 * WPS component: [Source](https://github.com/wrf-model/WPS/releases), used version: 4.5; newest 4.5
 * Network Common Data Form (NetCDF): [Source](https://github.com/Unidata/netcdf-c/releases) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.9.2; newest 4.9.2
-* Hierarchical Data Format 5 (HDF5): [Source](https://github.com/HDFGroup/hdf5/) and [Terms of use](https://github.com/HDFGroup/hdf5/blob/develop/COPYING) used version: 1.14.1; newest 1.14.1
+* Hierarchical Data Format 5 (HDF5): [Source](https://github.com/HDFGroup/hdf5/) and [Terms of use](https://github.com/HDFGroup/hdf5/blob/develop/COPYING) used version: 1.14.2; newest 1.14.2
 * NetCDF-Fortran Library: [Source](https://github.com/Unidata/netcdf-fortran/releases) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.6.1; newest: 4.6.1
-* Message Passing Interface (mpich): [Source](https://www.mpich.org/) and [License](http://git.mpich.org/mpich.git/blob/HEAD:/COPYRIGHT), used version: 4.1.2; newest: 4.1.2
+* Message Passing Interface (mpich): [Source](https://www.mpich.org/) and [License](http://git.mpich.org/mpich.git/blob/HEAD:/COPYRIGHT), used version: 4.2.1; newest: 4.2.1
 
 ### ArchLinux Packages
 * PNG reference library (libpng): [Source](http://www.libpng.org/pub/png/libpng.html) and [License](http://www.libpng.org/pub/png/src/libpng-LICENSE.txt), used version: ArchLinux package; newest: 1.6.39
@@ -77,10 +77,10 @@ WRFV4 uses the latest version of gcc/gcc-gfortran avaiable at the time of testin
     - mpi v3.3, libpng v1.6.37, zlib v1.2.11, JasPer v1.900.2
     - gcc/gfortran: 13.2
 * testing setup:
-  - WRF Model v4.5.0 and WPS v4.5 [compiling, normal_build, running]
-    - NetCDF v4.9.2 / NetCDF-Fortran Library v4.6.1, HDF 1.14.1
-    - mpi, libpng, zlib, JasPer as ArchLinux packages
-    - gcc/gfortran: 13.1.1
+  - WRF Model v4.6.0 and WPS v4.5 [compiling, normal_build, running]
+    - NetCDF v4.9.2 / NetCDF-Fortran Library v4.6.1, HDF 1.14.2, mpi 4.2.1
+    - libpng, zlib, JasPer as ArchLinux packages
+    - gcc/gfortran: 14.1.0
 * tested setups:
   - WRF Model and WPS v3.8.1 [compiling, normal_build, unstable]
     - NetCDF v4.4.1.1 / NetCDF-Fortran Library v4.4.4
@@ -102,9 +102,13 @@ WRFV4 uses the latest version of gcc/gcc-gfortran avaiable at the time of testin
     - mpi v3.3, libpng v1.6.37, zlib v1.2.11, JasPer v1.900.2
     - gcc/gfortran: 9.3
   - WRF Model v4.4.0 and WPS v4.4 [compiling, normal_build, running]
-    - NetCDF v4.8.1 / NetCDF-Fortran Library v4.5.4, HDF 1.13.0
-    - mpi, libpng, zlib, JasPer as ArchLinux packages
+    - NetCDF v4.8.1 / NetCDF-Fortran Library v4.5.4, HDF 1.13.0 mpi 4.1.2
+    - libpng, zlib, JasPer as ArchLinux packages
     - gcc/gfortran: 12.1
+  - WRF Model v4.5.0 and WPS v4.5 [compiling, normal_build, running]
+    - NetCDF v4.9.2 / NetCDF-Fortran Library v4.6.1, HDF 1.14.1, mpi 4.1.2
+    - libpng, zlib, JasPer as ArchLinux packages
+    - gcc/gfortran: 13.1.1    
 
 ## Deprecated WRF versions
 * WRF v3.8.0, v3.8.1: last supported release wrf_archlinux v0.4.6
