@@ -42,6 +42,8 @@ while [[ $# -gt 0 ]]; do
       RESOLUTION="${2}"; shift; shift;;
       -a|--archive)
       ARCHIVE="${2}"; shift; shift;;
+      --rerun)
+      RERUN_MODEL=1; shift;;
       --help)
       sh help/man_help.sh; exit 0;;
       *)
@@ -71,18 +73,26 @@ printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${M
 
 # adjusting namelist for next run
 cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd namelist"
-printf "Starting namelist preparation at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
-sh prepare_namelist.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${PERIOD}"; RET=${?}
-if ! [ ${RET} -eq 0 ]; then
-  error_exit "Failed to prepare the namelist files"
+if ! [ ${RERUN_MODEL} -eq 1 ]; then
+  printf "Starting namelist preparation at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
+  sh prepare_namelist.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${PERIOD}"; RET=${?}
+  if ! [ ${RET} -eq 0 ]; then
+    error_exit "Failed to prepare the namelist files"
+  fi
+else
+  printf "Model rerun, skipping namelist preparation at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"  
 fi
 
 # fetching input data
 cd "${SCRIPT_PATH}/data_fetch" || error_exit "Failed cd data_fetch"
-printf "Starting data fetching at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
-sh gfs_fetch.sh "${YEAR}${MONTH}${DAY}" "${HOUR}" "${GFS_PATH}" "${RESOLUTION}" "${PERIOD}"; RET=${?}
-if ! [ ${RET} -eq 0 ]; then
-  error_exit "Failed to fetch the gfs data files"
+if ! [ ${RERUN_MODEL} -eq 1 ]; then
+  printf "Starting data fetching at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
+  sh gfs_fetch.sh "${YEAR}${MONTH}${DAY}" "${HOUR}" "${GFS_PATH}" "${RESOLUTION}" "${PERIOD}"; RET=${?}
+  if ! [ ${RET} -eq 0 ]; then
+    error_exit "Failed to fetch the gfs data files"
+  fi
+else
+  printf "Model rerun, skipping data fetching at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"  
 fi
 
 # start model run
