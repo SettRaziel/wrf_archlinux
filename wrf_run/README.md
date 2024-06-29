@@ -43,8 +43,9 @@ Use the script with the follwing settings, mandatory values are hour, period and
 script usage: ./run_model.sh [parameter]
 Model run parameter:
      --help         show help text
- -a, --archive      argument: <path>; signals, that the forecast data should be stored at the given path
- -b, --build        argument: <path>; specifies the wrf path
+     --rerun        the model does a rerun skipping namelist preparation and data fetching
+ -a, --archive      argument: <path>; stores the results at the given path
+ -b, --build        argument: <path>; specifies the wrf path relative from the home directory
  -y, --year         argument: <year>; the model year
  -m, --month        argument: <month>; the model month
  -d, --day          argument: <day>; the model day
@@ -55,6 +56,7 @@ Model run parameter:
 * input_model_run: {00, 06, 12, 18}
 * forecast_time: hours as integer, no whole days (see known issues)
 * input_resolution: {0p25, 0p50, 1p00}
+* an example call could look like this: `./run_model.sh -b wrf_420 -h 18 -p 96 -r 0p50`
 
 ## Data source
 According to the ncep noaa [website](https://www.nco.ncep.noaa.gov/pmb/products/gfs/#GFS) the input data can be downloaded as of

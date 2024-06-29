@@ -30,7 +30,7 @@ Deploy parameter:
 ```
 If no values are provided it will be asked during the deployment process.
 
-## Additional manual prepartions
+## Additional manual preparations
 Depending on the deployed wrf_model a few manual steps are required to do before running the model:
 * build directory: set correct directory in run_model.sh
 * namelist file for WPS: update path to the geo data if a non default directory is used (it will be set to default as /home/user/geo_data)
