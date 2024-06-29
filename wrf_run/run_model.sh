@@ -55,7 +55,7 @@ source "${SCRIPT_PATH}/environment/set_logging_env.sh" "${SCRIPT_PATH}"
 # check for mandatory input parameter
 cd "${SCRIPT_PATH}/validate" || error_exit "Failed cd parameter validation"
 sh validate_parameter.sh "${BUILD_PATH}" "${PERIOD}" "${RESOLUTION}" "${HOUR}"; RET=${?}
-if ! [ ${RET} -eq 0 ]; then
+if [[ ${RET} -ne 0 ]]; then
   printf "%bInput parameter are invalid, check script call. Aborting ...%b\\n" "${RED}" "${NC}"
   exit 1
 fi
@@ -73,10 +73,10 @@ printf "Starting new model run for: %s/%s/%s %s:00 UTC at %s.\\n" "${YEAR}" "${M
 
 # adjusting namelist for next run
 cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd namelist"
-if ! [ ${RERUN_MODEL} -eq 1 ]; then
+if [[ ${RERUN_MODEL} -ne 1 ]]; then
   printf "Starting namelist preparation at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
   sh prepare_namelist.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${PERIOD}"; RET=${?}
-  if ! [ ${RET} -eq 0 ]; then
+  if [[ ${RET} -ne 0 ]]; then
     error_exit "Failed to prepare the namelist files"
   fi
 else
@@ -85,10 +85,10 @@ fi
 
 # fetching input data
 cd "${SCRIPT_PATH}/data_fetch" || error_exit "Failed cd data_fetch"
-if ! [ ${RERUN_MODEL} -eq 1 ]; then
+if [[ ${RERUN_MODEL} -ne 1 ]]; then
   printf "Starting data fetching at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
   sh gfs_fetch.sh "${YEAR}${MONTH}${DAY}" "${HOUR}" "${GFS_PATH}" "${RESOLUTION}" "${PERIOD}"; RET=${?}
-  if ! [ ${RET} -eq 0 ]; then
+  if [[ ${RET} -ne 0 ]]; then
     error_exit "Failed to fetch the gfs data files"
   fi
 else
@@ -99,7 +99,7 @@ fi
 cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd start model_run"
 printf "Starting model run preparation at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
 sh run_preprocessing.sh; RET=${?}
-if ! [ ${RET} -eq 0 ]; then
+if [[ ${RET} -ne 0 ]]; then
   error_exit "Failed preparations for the model run"
 fi
 
@@ -107,7 +107,7 @@ cd "${SCRIPT_PATH}/model_run" || error_exit "Failed cd start model_run"
 printf "Starting model run at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
 sh run_wrfmodel.sh "${GFS_PATH}" "${RESOLUTION}"; RET=${?}
 cd "${SCRIPT_PATH}" || error_exit "Failed cd to script path"
-if ! [ ${RET} -eq 0 ]; then
+if [[ ${RET} -ne 0 ]]; then
   cd "${WRF_DIR}/test/em_real/" || error_exit "Failed cd to WRF folder"
   rm wrfout_d01_*
   error_exit "Failed to run the model"
@@ -141,7 +141,7 @@ fi
 cd "${SCRIPT_PATH}/post_processing" || error_exit "Failed cd postprocessing"
 printf "Starting post hook activities at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
 sh post_hook.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${PERIOD}" "${RESOLUTION}"; RET=${?}
-if [ ${RET} -ne 0 ]; then
+if [[ ${RET} -ne 0 ]]; then
   error_exit "Error executing post hook activities"  
 fi
 
