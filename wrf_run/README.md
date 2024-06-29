@@ -56,6 +56,7 @@ Model run parameter:
 * input_model_run: {00, 06, 12, 18}
 * forecast_time: hours as integer, no whole days (see known issues)
 * input_resolution: {0p25, 0p50, 1p00}
+* an example call could look like this: `./run_model.sh -b wrf_420 -h 18 -p 96 -r 0p50`
 
 ## Data source
 According to the ncep noaa [website](https://www.nco.ncep.noaa.gov/pmb/products/gfs/#GFS) the input data can be downloaded as of
