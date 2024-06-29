@@ -45,7 +45,7 @@ Model run parameter:
      --help         show help text
      --rerun        the model does a rerun skipping namelist preparation and data fetching
  -a, --archive      argument: <path>; stores the results at the given path
- -b, --build        argument: <path>; specifies the wrf path
+ -b, --build        argument: <path>; specifies the wrf path relative from the home directory
  -y, --year         argument: <year>; the model year
  -m, --month        argument: <month>; the model month
  -d, --day          argument: <day>; the model day
