@@ -26,6 +26,5 @@ HOUR=${4}
 printf "Starting archive generation at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
 cd "${WRF_OUTPUT}" || exit 1
 if ! [ -z "${ARCHIVE}" ]; then
-  tar -czf wrfout_${YEAR}_${MONTH}_${DAY}_${HOUR}.tar.gz .
-  mv wrfout_${YEAR}_${MONTH}_${DAY}_${HOUR}.tar.gz "${ARCHIVE}"
+  tar -czf "${ARCHIVE}/wrfout_${YEAR}_${MONTH}_${DAY}_${HOUR}.tar.gz" .
 fi
