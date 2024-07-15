@@ -18,6 +18,11 @@ if [ "$#" -ne 4 ]; then
   exit 1
 fi
 
+YEAR=${1}
+MONTH=${2}
+DAY=${3}
+HOUR=${4}
+
 printf "Starting archive generation at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
 cd "${WRF_OUTPUT}" || exit 1
 if ! [ -z "${ARCHIVE}" ]; then
