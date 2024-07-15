@@ -51,7 +51,7 @@ else
     read -r INPUT
     case ${INPUT} in
       [y]* ) rm -rf "${HOME}/geo_data"; mkdir "${HOME}/geo_data"; break;;
-      [n]* ) break;;
+      [n]* ) return 0;;
       * ) printf "%bWrong input Please use [y]es oder [n]o.%b\\n" "${RED}" "${NC}";;
     esac
   done
