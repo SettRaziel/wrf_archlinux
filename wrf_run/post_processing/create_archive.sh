@@ -13,8 +13,8 @@ set -e
 . "${COLOR_PATH}"
 
 # error handling for input parameter
-if [ "$#" -ne 4 ]; then
-  printf "%bWrong number of arguments. Must be one for <YEAR> <MONTH> <DAY> <HOUR>.%b\\n" "${RED}" "${NC}"
+if [ "$#" -ne 5 ]; then
+  printf "%bWrong number of arguments. Must be one for <YEAR> <MONTH> <DAY> <HOUR> <DEST_FOLDER>.%b\\n" "${RED}" "${NC}"
   exit 1
 fi
 
@@ -22,9 +22,9 @@ YEAR=${1}
 MONTH=${2}
 DAY=${3}
 HOUR=${4}
+DEST_FOLDER=${5}
 
 printf "Starting archive generation at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
-cd "${WRF_OUTPUT}" || exit 1
-if ! [ -z "${ARCHIVE}" ]; then
-  tar -czf "${ARCHIVE}/wrfout_${YEAR}_${MONTH}_${DAY}_${HOUR}.tar.gz" .
+if ! [ -z "${ARCHIVE}" ] && [ -d "${DEST_FOLDER}" ]; then
+  tar -czf "${ARCHIVE}/wrfout_${YEAR}_${MONTH}_${DAY}_${HOUR}.tar.gz" "${DEST_FOLDER}"
 fi

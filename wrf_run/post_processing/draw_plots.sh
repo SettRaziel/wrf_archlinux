@@ -83,10 +83,6 @@ create_directory "${DEST_FOLDER}/rain_3h"
 create_directory "${DEST_FOLDER}/rain_tot"
 create_directory "${DEST_FOLDER}/thunderstorm_index"
 
-# archive model run output
-cd "${SCRIPT_PATH}" || exit 1 
-sh ./create_archive.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}"
-
 # Check for moveable file and move them if present
 cd "${WRF_OUTPUT}" || exit 1
 # move file folders to project local timestamp destination
@@ -95,6 +91,10 @@ move_files "comp_*.png" "${DEST_FOLDER}/comp"
 move_files "rain_3h_*.png" "${DEST_FOLDER}/rain_3h"
 move_files "rain_total_*.png" "${DEST_FOLDER}/rain_tot"
 move_files "cape_*.png" "${DEST_FOLDER}/thunderstorm_index"
+
+# archive model run output
+cd "${SCRIPT_PATH}" || exit 1 
+sh ./create_archive.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${DEST_FOLDER}"
 
 # logging time stamp
 printf "Finished output generation at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
