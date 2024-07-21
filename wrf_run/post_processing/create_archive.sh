@@ -26,5 +26,6 @@ DEST_FOLDER=${5}
 
 printf "Starting archive generation at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
 if ! [ -z "${ARCHIVE}" ] && [ -d "${DEST_FOLDER}" ]; then
+  cd ${DEST_FOLDER} || exit 1
   tar -czf "${ARCHIVE}/wrfout_${YEAR}_${MONTH}_${DAY}_${HOUR}.tar.gz" "${DEST_FOLDER}"
 fi
