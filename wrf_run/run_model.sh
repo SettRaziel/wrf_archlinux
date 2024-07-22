@@ -41,7 +41,7 @@ while [[ $# -gt 0 ]]; do
       -r|--resolution)
       RESOLUTION="${2}"; shift; shift;;
       -a|--archive)
-      ARCHIVE="${2}"; shift; shift;;
+      export ARCHIVE="${2}"; shift; shift;;
       --rerun)
       RERUN_MODEL=1; shift;;
       --help)
@@ -126,14 +126,7 @@ fi
 cd "${SCRIPT_PATH}/post_processing" || error_exit "Failed cd postprocessing"
 printf "Starting postprocessing at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
 sh draw_plots.sh "${YEAR}" "${MONTH}" "${DAY}" "${HOUR}" "${PERIOD}"; RET=${?}
-if [ ${RET} -eq 0 ]; then
-  printf "Starting archive generation at %s.\\n" "$(date +"%T")" >> "${STATUS_LOG}"
-  cd "${WRF_OUTPUT}" || error_exit "Failed cd to model_output"
-  if ! [ -z "${ARCHIVE}" ]; then
-    tar -czf wrfout_${YEAR}_${MONTH}_${DAY}_${HOUR}.tar.gz .
-    mv wrfout_${YEAR}_${MONTH}_${DAY}_${HOUR}.tar.gz "${ARCHIVE}"
-  fi
-else
+if [ ${RET} -ne 0 ]; then
   error_exit "Error while creating output files"
 fi
 
