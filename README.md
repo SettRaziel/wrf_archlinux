@@ -107,9 +107,9 @@ WRFV4 uses the latest version of gcc/gcc-gfortran avaiable at the time of testin
     - gcc/gfortran: 12.1
 
 ## Deprecated WRF versions
-* WRF v3.8.0, v3.8.1: last supported release wrf_archlinux v0.4.6
-* WRF v3.9.0: last supported release wrf_archlinux v0.5.0
+* WRF v3.8.0, v3.8.1, v3.9.0: last supported release wrf_archlinux v0.4.6
 * WRF v3.9.1: last supported release wrf_archlinux v0.6.1
+* WRF v4.0.2: last supported release wrf_archlinux v0.8.2
 
 ## Todos
 Check the subsidiary readmes or issues for further work
