@@ -24,9 +24,9 @@ export WRFIO_NCD_LARGE_FILE_SUPPORT=1
 export NETCDF_classic=1
 
 # setting library versions for usage (last checked: 2025-01-03)
-export WRF_VERSION="4.6.1"              # latest: 4.6.1
-export WPS_VERSION="4.6"              # latest: 4.6
-export NOAHMP_VERSION="5.0"           # latest: 5.0
+export WRF_VERSION="4.6.1"            # latest: 4.6.1
+export WPS_VERSION="4.6.0"            # latest: 4.6
+export NOAHMP_VERSION="4.6-WRF"       # latest: 5.0
 export HDF_VERSION="1.14.5"           # latest: 1.14.5
 export NETCDF_VERSION="4.9.2"         # latest: 4.9.2
 export NETCDF_FORTRAN_VERSION="4.6.1" # latest: 4.6.1
