@@ -29,8 +29,8 @@ move_files () {
 . "${COLOR_PATH}"
 
 # error handling for input parameter
-if [ "$#" -ne 6 ]; then
-  printf "%bWrong number of arguments. Must be one for <YEAR> <MONTH> <DAY> <HOUR> <WRF_VIZ> <DEST_FOLDER>.%b\\n" "${RED}" "${NC}"
+if [ "$#" -ne 5 ]; then
+  printf "%bWrong number of arguments. Must be one for <YEAR> <MONTH> <DAY> <HOUR> <WRF_VIZ>.%b\\n" "${RED}" "${NC}"
   exit 1
 fi
 
@@ -38,7 +38,6 @@ fi
 printf "Starting meteograms at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
 
 START_DATE="${1}-${2}-${3} ${4}:00"
-DEST_FOLDER=${6}
 # path for external python visualization tool
 WRF_VISUALIZATION="${5}"
 
@@ -65,10 +64,6 @@ conda deactivate
 
 # optimize png size
 find . -maxdepth 1 -name '*.png' -exec optipng {} \;
-
-# move files to output folder
-printf "Moving meteogram results at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"
-move_files "${WRF_OUTPUT}/*.png" "${DEST_FOLDER}/"
 
 # logging time stamp
 printf "Finished meteograms at %s.\\n" "$(date +"%T")" >> "${INFO_LOG}"

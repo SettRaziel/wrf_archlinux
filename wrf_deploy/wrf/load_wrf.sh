@@ -7,7 +7,6 @@
 # 2: WRFV4 version 4.4
 # 3: WRFV4 version 4.2
 # 4: WRFV4 version 4.1.5
-# 5: WRFV4 version 4.0.2
 
 # enable termination on error
 set -e
@@ -18,7 +17,6 @@ print_options () {
   printf "%b 2: WRFV4 version 4.4\\n%b" "${YELLOW}" "${NC}"
   printf "%b 3: WRFV4 version 4.2\\n%b" "${YELLOW}" "${NC}"
   printf "%b 4: WRFV4 version 4.1.5\\n%b" "${YELLOW}" "${NC}"
-  printf "%b 5: WRFV4 version 4.0.2\\n%b" "${YELLOW}" "${NC}"
 }
 
 # downloading and unpacking archive
@@ -41,15 +39,15 @@ if [ -z "${WRF_VERSION_INDEX}" ]; then
     print_options        
     read -r INPUT
     case ${INPUT} in
-      [12345]* ) WRF_VERSION_INDEX=${INPUT}; break;;
+      [1234]* ) WRF_VERSION_INDEX=${INPUT}; break;;
       * ) printf "%bPlease use a numeric value in [1-4].%b\\n" "${RED}" "${NC}";;
     esac
   done
 else
   case ${WRF_VERSION_INDEX} in
-    [12345]* ) ;;
+    [1234]* ) ;;
     ['--help']* ) printf "%bUsage:\\n%b" "${LIGHT_BLUE}" "${NC}"; print_options;;
-    * ) printf "%bError: False argument. Please use a numeric value in [1-5] or --help.%b\\n" "${RED}" "${NC}"; exit 1;;
+    * ) printf "%bError: False argument. Please use a numeric value in [1-4] or --help.%b\\n" "${RED}" "${NC}"; exit 1;;
   esac
 fi
 
@@ -58,7 +56,6 @@ case ${WRF_VERSION_INDEX} in
   [2]* ) DEPLOY_DIR='wrf_440'; WRF_FOLDER='WRF-4.4'; WPS_FOLDER='WPS-4.4';;
   [3]* ) DEPLOY_DIR='wrf_420'; WRF_FOLDER='WRF-4.2'; WPS_FOLDER='WPS-4.2';;
   [4]* ) DEPLOY_DIR='wrf_410'; WRF_FOLDER='WRF-4.1.5'; WPS_FOLDER='WPS-4.1';;
-  [5]* ) DEPLOY_DIR='wrf_400'; WRF_FOLDER='WRF'; WPS_FOLDER='WPS';;
 esac
 
 # creating url for the selectied wrf tar

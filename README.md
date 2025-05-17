@@ -6,7 +6,7 @@ ArchLinux. The descriptions will grow together with the uploaded files.
 A description that summarizes the requried steps and gives additional
 information will be available shortly.
 
-Current version: v0.8.2
+Current version: v0.9.0
 
 ## License
 The scripts are licensed under the given license file. 3rd party software and
@@ -73,10 +73,10 @@ All setups for WRFV3.x use gcc/gcc-libs/gcc-gfortran 6.3.1-2 until described oth
 Please note that all versions of WRFV3 are now deprecated and need older script releases or manual adjustments to work.
 WRFV4 uses the latest version of gcc/gcc-gfortran avaiable at the time of testing:
 * current setup:
-  - WRF Model v4.2.0 and WPS v4.2 [compiling, normal_build, running]
-    - NetCDF v4.7.4 / NetCDF-Fortran Library v4.5.2, HDF 1.12.0
-    - mpi v3.3, libpng v1.6.37, zlib v1.2.11, JasPer v1.900.2
-    - gcc/gfortran: 13.2
+  - WRF Model v4.5.0 and WPS v4.5 [compiling, normal_build, running]
+    - NetCDF v4.9.2 / NetCDF-Fortran Library v4.6.1, HDF 1.14.1
+    - mpi, libpng, zlib, JasPer as ArchLinux packages
+    - gcc/gfortran: 15.1.1
 * testing setup:
   - WRF Model v4.6.0 and WPS v4.5 [compiling, normal_build, running]
     - NetCDF v4.9.2 / NetCDF-Fortran Library v4.6.1, HDF 1.14.2, mpi 4.2.1
@@ -112,9 +112,9 @@ WRFV4 uses the latest version of gcc/gcc-gfortran avaiable at the time of testin
     - gcc/gfortran: 13.1.1    
 
 ## Deprecated WRF versions
-* WRF v3.8.0, v3.8.1: last supported release wrf_archlinux v0.4.6
-* WRF v3.9.0: last supported release wrf_archlinux v0.5.0
+* WRF v3.8.0, v3.8.1, v3.9.0: last supported release wrf_archlinux v0.4.6
 * WRF v3.9.1: last supported release wrf_archlinux v0.6.1
+* WRF v4.0.2: last supported release wrf_archlinux v0.8.2
 
 ## Todos
 Check the subsidiary readmes or issues for further work
