@@ -23,7 +23,7 @@ printf "%b\\nGetting submodules: %b\\n" "${YELLOW}" "${NC}"
 cd "WRF-${WRF_VERSION}/phys/"
 git clone https://github.com/NCAR/noahmp.git
 cd "noahmp/"
-git checkout "release-v${WRF_VERSION}-WRF"
+git checkout "release-v${NOAHMP_VERSION}"
 cd "${HOME}/${1}/WRF-${WRF_VERSION}"
 
 printf "%b\\nInstaling wrf: %b\\n" "${YELLOW}" "${NC}"
