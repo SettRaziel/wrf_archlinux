@@ -2,6 +2,7 @@
 
 # ${1}: the folder relative to the home path where the files should be installed
 # ${2}: the marker if the installation should use local libraries
+# ${3}: the marker if the binaries should be stored in the libraries folder
 
 # define terminal colors
 . ../../libs/terminal_color.sh
@@ -61,4 +62,12 @@ if [ "${2}" = '--local' -a -d "${LIBRARY_PATH}" ]; then
 else
 	printf "${YELLOW}Loading libraries: ${NC}\\n"
 	load_libraries
+	if [ "${3}" = '--preserve' -a -d "${LIBRARY_PATH}" ]; then
+		cp "WRFV${WRF_VERSION}.tar.gz" "${LIBRARY_PATH}"/
+		cp "WPSV${WPS_VERSION}.tar.gz" "${LIBRARY_PATH}"/
+		cp "hdf5-${HDF_VERSION}.tar.gz" "${LIBRARY_PATH}"/
+		cp "netcdf-${NETCDF_VERSION}.tar.gz" "${LIBRARY_PATH}"/
+		cp "netcdf-fortran-${NETCDF_FORTRAN_VERSION}.tar.gz" "${LIBRARY_PATH}"/
+		cp "mpich-${MPI_VERSION}.tar.gz" "${LIBRARY_PATH}"/
+	fi
 fi
