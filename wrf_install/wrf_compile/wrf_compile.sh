@@ -24,6 +24,10 @@ cd "WRF-${WRF_VERSION}/phys/"
 git clone https://github.com/NCAR/noahmp.git
 cd "noahmp/"
 git checkout "release-v${NOAHMP_VERSION}"
+
+cd ".."
+git clone https://github.com/NCAR/MYNN-EDMF.git
+
 cd "${HOME}/${1}/WRF-${WRF_VERSION}"
 
 printf "%b\\nInstaling wrf: %b\\n" "${YELLOW}" "${NC}"
