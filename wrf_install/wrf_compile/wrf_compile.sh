@@ -27,6 +27,8 @@ git checkout "release-v${NOAHMP_VERSION}"
 
 cd ".."
 git clone https://github.com/NCAR/MYNN-EDMF.git
+cd "MYNN-EDMF/"
+git checkout "90f36c2" # commit id of the submodule checked out for the tagged wrf version
 
 cd "${HOME}/${1}/WRF-${WRF_VERSION}"
 
