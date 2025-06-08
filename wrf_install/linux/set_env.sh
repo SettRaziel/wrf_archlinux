@@ -19,7 +19,9 @@ export CPPFLAGS="-I/usr/include/tirpc"
 export PATH="${PATH}:${DIR}/mpich/bin"
 export CFLAGS="-fPIC"
 export WRFIO_NCD_LARGE_FILE_SUPPORT=1
-# no JASPERLIB or JASPERINC here since WPS stores japser, libpng and zlib on its own with --build-grib2-libs
+
+export JASPERLIB="/usr/lib"
+export JASPERINC="/usr/include"
 # since the WRF source still thinks we do not support netcdf4 we set this flag to compile the model
 export NETCDF_classic=1
 
