@@ -54,7 +54,7 @@ else
 fi
 
 case ${WRF_VERSION_INDEX} in
-  [1]* ) DEPLOY_DIR='wrf_460'; WRF_FOLDER='WRF-4.7.1'; WPS_FOLDER='WPS-4.6.0';;  
+  [1]* ) DEPLOY_DIR='wrf_470'; WRF_FOLDER='WRF-4.7.1'; WPS_FOLDER='WPS-4.6.0';;  
   [2]* ) DEPLOY_DIR='wrf_460'; WRF_FOLDER='WRF-4.6.1'; WPS_FOLDER='WPS-4.6.0';;  
   [3]* ) DEPLOY_DIR='wrf_450'; WRF_FOLDER='WRF-4.5'; WPS_FOLDER='WPS-4.5';;  
   [4]* ) DEPLOY_DIR='wrf_440'; WRF_FOLDER='WRF-4.4'; WPS_FOLDER='WPS-4.4';;
