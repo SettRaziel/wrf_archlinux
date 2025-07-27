@@ -39,9 +39,9 @@ installed through the package repositories provided by the ArchLinux operating s
 now separated: one list the selfcompiled sources and the other list the packaged ones.
 
 ### Selfcompiled
-* WRF model: [Source](https://github.com/wrf-model/WRF/releases), used version: 4.7.0; newest: 4.7.0
+* WRF model: [Source](https://github.com/wrf-model/WRF/releases), used version: 4.7.1; newest: 4.7.1
 * WPS component: [Source](https://github.com/wrf-model/WPS/releases), used version: 4.6; newest: 4.6
-* Noah-MP Community Model Repository: [Source](https://github.com/NCAR/noahmp), used version: 5.0; newest: 5.0
+* Noah-MP Community Model Repository: [Source](https://github.com/NCAR/noahmp), used version: v4.7-WRF; newest: 5.0
 * Network Common Data Form (NetCDF): [Source](https://github.com/Unidata/netcdf-c/releases) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.9.3; newest: 4.9.3
 * Hierarchical Data Format 5 (HDF5): [Source](https://github.com/HDFGroup/hdf5/) and [Terms of use](https://github.com/HDFGroup/hdf5/blob/develop/COPYING) used version: 1.14.6; newest: 1.14.6
 * NetCDF-Fortran Library: [Source](https://github.com/Unidata/netcdf-fortran/releases) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.6.2; newest: 4.6.2
@@ -78,10 +78,11 @@ WRFV4 uses the latest version of gcc/gcc-gfortran avaiable at the time of testin
     - mpi, libpng, zlib, JasPer as ArchLinux packages
     - gcc/gfortran: 15.1.1
 * testing setup:
-  - WRF Model v4.6.0 and WPS v4.5 [compiling, normal_build, running]
-    - NetCDF v4.9.2 / NetCDF-Fortran Library v4.6.1, HDF 1.14.2, mpi 4.2.1
+  - WRF Model v4.7.1 and WPS v4.6.0 [compiling, normal_build, running]
+    - NoahMP v4.7-WRF, MYNN-EDMF checkout "90f36c2"
+    - NetCDF v4.9.2 / NetCDF-Fortran Library v4.6.1, HDF 1.14.5, mpi 4.3.0
     - libpng, zlib, JasPer as ArchLinux packages
-    - gcc/gfortran: 15.1.0
+    - gcc/gfortran: 15.1.1
 * tested setups:
   - WRF Model and WPS v3.8.1 [compiling, normal_build, unstable]
     - NetCDF v4.4.1.1 / NetCDF-Fortran Library v4.4.4
