@@ -49,7 +49,7 @@ mkdir "${HOME}/${1}"
 cd "${HOME}/${1}"
 
 
-if [ "${2}" = '--local' -a -d "${LIBRARY_PATH}" ]; then
+if [ "${2}" = '--local' ] && [ -d "${LIBRARY_PATH}" ]; then
 	# check if required libraries are present
 	check_library "${LIBRARY_PATH}" "WRFV${WRF_VERSION}.tar.gz"
 	check_library "${LIBRARY_PATH}" "WPSV${WPS_VERSION}.tar.gz"
@@ -62,7 +62,7 @@ if [ "${2}" = '--local' -a -d "${LIBRARY_PATH}" ]; then
 else
 	printf "${YELLOW}Loading libraries: ${NC}\\n"
 	load_libraries
-	if [ "${3}" = '--preserve' -a -d "${LIBRARY_PATH}" ]; then
+	if [ "${3}" = '--preserve' ] && [ -d "${LIBRARY_PATH}" ]; then
 		cp "WRFV${WRF_VERSION}.tar.gz" "${LIBRARY_PATH}"/
 		cp "WPSV${WPS_VERSION}.tar.gz" "${LIBRARY_PATH}"/
 		cp "hdf5-${HDF_VERSION}.tar.gz" "${LIBRARY_PATH}"/
