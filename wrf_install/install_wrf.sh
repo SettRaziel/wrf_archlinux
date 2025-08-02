@@ -20,6 +20,8 @@ while [[ $# -gt 0 ]]; do
       BUILD_PATH="${2}"; shift; shift;;
       -l|--local)
       LOCAL="--local"; shift;;
+      -p|--preserve)
+      PRESERVE="--preserve"; shift;;
       --help)
       sh help/man_help.sh; exit 0;;
       *)
@@ -51,7 +53,7 @@ sh ./basics.sh
 
 # preaparing files and folder
 cd "${SCRIPT_PATH}/linux"
-sh ./preparations.sh "${BUILD_PATH}" "${LOCAL}"
+sh ./preparations.sh "${BUILD_PATH}" "${LOCAL}" "${PRESERVE}"
 
 # compiling netcdf bindings
 cd "${SCRIPT_PATH}/wrf_preparation"
