@@ -62,7 +62,10 @@ if [ "${2}" = '--local' ] && [ -d "${LIBRARY_PATH}" ]; then
 else
 	printf "${YELLOW}Loading libraries: ${NC}\\n"
 	load_libraries
-	if [ "${3}" = '--preserve' ] && [ -d "${LIBRARY_PATH}" ]; then
+	if [ "${3}" = '--preserve' ]; then
+		if [ ! -d "${LIBRARY_PATH}" ]; then
+			mkdir ${LIBRARY_PATH}
+		fi
 		cp "WRFV${WRF_VERSION}.tar.gz" "${LIBRARY_PATH}"/
 		cp "WPSV${WPS_VERSION}.tar.gz" "${LIBRARY_PATH}"/
 		cp "hdf5-${HDF_VERSION}.tar.gz" "${LIBRARY_PATH}"/
