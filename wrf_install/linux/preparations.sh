@@ -43,7 +43,7 @@ LIBRARY_PATH="${SCRIPT_PATH}/../../libraries"
 # Create destination folder and change to that
 if [ -d "${HOME}/${1}" ]; then
   printf "%bDirectory already exists, removing content... %b\\n" "${YELLOW}" "${NC}"
-  rm -rf "${HOME}/${1}"
+  rm -rf "${HOME:?}/${1:?}"
 fi
 mkdir "${HOME}/${1}"
 cd "${HOME}/${1}"
