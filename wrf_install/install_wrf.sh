@@ -76,18 +76,18 @@ sh ./install_libraries.sh "${BUILD_PATH}"
 
 # running system environment test
 printf "%bStarting fortran tests. Press any key ... %b" "${YELLOW}" "${NC}"
-read
+read -r
 cd "${SCRIPT_PATH}/wrf_pre_test"
 sh ./fortran_tests.sh "${BUILD_PATH}"
 
 # running library compatibility test
 printf "%bStarting precompile tests. Press any key ... %b" "${YELLOW}" "${NC}"
-read
+read -r
 sh ./wrf_precompile_tests.sh "${BUILD_PATH}"
 
 # compiling the wrf-model
 printf "%bStarting WRF compilation. Press any key ... %b" "${YELLOW}" "${NC}"
-read
+read -r
 cd "${SCRIPT_PATH}/wrf_compile"
 sh ./wrf_compile.sh "${BUILD_PATH}"
 
