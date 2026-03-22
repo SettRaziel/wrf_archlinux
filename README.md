@@ -33,7 +33,7 @@ folders for subsidiary license files.
 * wrf tutorial: [here](http://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php)
 * ncl output: [here](https://www.ncl.ucar.edu/Applications/)
 
-## Software components (last query: 2025-05-18)
+## Software components (last query: 2026-03-22)
 Starting with the compilation of WRFV4.4 some dependencies that were manually compiled for the model are now
 installed through the package repositories provided by the ArchLinux operating system. The used software components are
 now separated: one list the selfcompiled sources and the other list the packaged ones.
@@ -41,16 +41,16 @@ now separated: one list the selfcompiled sources and the other list the packaged
 ### Selfcompiled
 * WRF model: [Source](https://github.com/wrf-model/WRF/releases), used version: 4.7.1; newest: 4.7.1
 * WPS component: [Source](https://github.com/wrf-model/WPS/releases), used version: 4.6; newest: 4.6
-* Noah-MP Community Model Repository: [Source](https://github.com/NCAR/noahmp), used branch v4.7-WRF: ; newest release: 5.0
-* Network Common Data Form (NetCDF): [Source](https://github.com/Unidata/netcdf-c/releases) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.9.3; newest: 4.9.3
-* Hierarchical Data Format 5 (HDF5): [Source](https://github.com/HDFGroup/hdf5/) and [Terms of use](https://github.com/HDFGroup/hdf5/blob/develop/COPYING) used version: 1.14.6; newest: 1.14.6
+* Noah-MP Community Model Repository: [Source](https://github.com/NCAR/noahmp), used branch v4.7-WRF: ; newest release: 5.2.0
+* Network Common Data Form (NetCDF): [Source](https://github.com/Unidata/netcdf-c/releases) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.9.3; newest: 4.10.0
+* Hierarchical Data Format 5 (HDF5): [Source](https://github.com/HDFGroup/hdf5/) and [Terms of use](https://github.com/HDFGroup/hdf5/blob/develop/COPYING) used version: 1.14.6; newest: 2.1.0
 * NetCDF-Fortran Library: [Source](https://github.com/Unidata/netcdf-fortran/releases) and [Terms of use](https://www2.ucar.edu/terms-of-use), used version: 4.6.2; newest: 4.6.2
-* Message Passing Interface (mpich): [Source](https://www.mpich.org/) and [License](http://git.mpich.org/mpich.git/blob/HEAD:/COPYRIGHT), used version: 4.3.0; newest: 4.3.0
+* Message Passing Interface (mpich): [Source](https://www.mpich.org/) and [License](http://git.mpich.org/mpich.git/blob/HEAD:/COPYRIGHT), used version: 4.3.0; newest: 5.0.0
 
 ### ArchLinux Packages
-* PNG reference library (libpng): [Source](http://www.libpng.org/pub/png/libpng.html) and [License](http://www.libpng.org/pub/png/src/libpng-LICENSE.txt), used version: ArchLinux package; newest: 1.6.48
-* A Massively Spiffy Yet Delicately Unobtrusive Compression Library (zlib): [Source](http://www.zlib.net) and [License](http://www.zlib.net/zlib_license.html), used version: ArchLinux package; newest: 1.3.1
-* JasPer Project (JasPer): [Source](https://github.com/jasper-software/jasper) and [License](https://github.com/jasper-software/jasper/blob/master/LICENSE.txt), used version: ArchLinux package; newest: 4.2.5
+* PNG reference library (libpng): [Source](http://www.libpng.org/pub/png/libpng.html) and [License](http://www.libpng.org/pub/png/src/libpng-LICENSE.txt), used version: ArchLinux package; newest: 1.6.55
+* A Massively Spiffy Yet Delicately Unobtrusive Compression Library (zlib): [Source](http://www.zlib.net) and [License](http://www.zlib.net/zlib_license.html), used version: ArchLinux package; newest: 1.3.2
+* JasPer Project (JasPer): [Source](https://github.com/jasper-software/jasper) and [License](https://github.com/jasper-software/jasper/blob/master/LICENSE.txt), used version: ArchLinux package; newest: 4.2.9
 
 ### Optional postprocessing tools:
 * (DEFAULT) wrf_visualization based on pyngl, pynio: [Source](https://github.com/SettRaziel/wrf_visualization)
