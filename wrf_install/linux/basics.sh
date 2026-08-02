@@ -11,7 +11,10 @@ set -e
 # start from home directory
 cd "${HOME}"
 
+# as build system for other dependencies
 sudo pacman -Sy --needed make pkg-config fakeroot m4
+# as build system for hdf5 version 2
+sudo pacman -Sy --needed cmake ninja
 
 printf "%bInstalling yay as package helper... \\n%b" "${YELLOW}" "${NC}"
 # prepare git package
