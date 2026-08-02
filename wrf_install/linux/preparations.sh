@@ -45,9 +45,11 @@ if [ -d "${HOME}/${1}" ]; then
   printf "%bDirectory already exists, removing content... %b\\n" "${YELLOW}" "${NC}"
   rm -rf "${HOME:?}/${1:?}"
 fi
+# Create parent folder for wrf binary
 mkdir "${HOME}/${1}"
+# Create libraries folder within the parent folder
+mkdir "${DIR}"
 cd "${HOME}/${1}"
-
 
 if [ "${2}" = '--local' ] && [ -d "${LIBRARY_PATH}" ]; then
 	# check if required libraries are present
