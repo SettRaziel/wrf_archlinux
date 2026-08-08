@@ -13,7 +13,7 @@ set -e
 # loads the majority of the required library, no jasper since version 2 has other buildsystem
 load_libraries() {
 # wget specified wrf version
-wget -O "WRFV${WRF_VERSION}.tar.gz" "https://github.com/wrf-model/WRF/archive/v${WRF_VERSION}.tar.gz"
+wget -O "WRFV${WRF_VERSION}.tar.gz" "https://github.com/wrf-model/WRF/releases/download/v${WRF_VERSION}/v${WRF_VERSION}.tar.gz"
 # wget specified wps version
 wget -O "WPSV${WPS_VERSION}.tar.gz" "https://github.com/wrf-model/WPS/archive/v${WPS_VERSION}.tar.gz"
 # wget specific hdf 5 version
