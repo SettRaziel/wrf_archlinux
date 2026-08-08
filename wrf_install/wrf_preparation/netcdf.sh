@@ -18,9 +18,11 @@ tar xfv "hdf5-${HDF_VERSION}.tar.gz"
 
 # installing hdf5 library
 printf "%b\\nInstalling hdf5: %b\\n" "${YELLOW}" "${NC}"
-cd "hdf5-hdf5_${HDF_VERSION}"
-LIBS="-lgcc_s" ./configure --enable-fortran --enable-fortran2003 --prefix="${DIR}/hdf5"
-make -j 2 && make install -j 2
+mkdir "${DIR}/hdf5"
+cd "hdf5-${HDF_VERSION}"
+cmake --preset ci-StdShar-GNUC -DHDF5_BUILD_FORTRAN=ON -DHDF5_BUILD_JAVA=OFF -DHDF5_INSTALL_BIN_DIR="${DIR}/hdf5/bin" -DHDF5_INSTALL_LIB_DIR="${DIR}/hdf5/lib" -DHDF5_INSTALL_INCLUDE_DIR="${DIR}/hdf5/include"
+cmake --build --preset ci-StdShar-GNUC -DHDF5_BUILD_FORTRAN=ON -DHDF5_BUILD_JAVA=OFF -DHDF5_INSTALL_BIN_DIR="${DIR}/hdf5/bin" -DHDF5_INSTALL_LIB_DIR="${DIR}/hdf5/lib" -DHDF5_INSTALL_INCLUDE_DIR="${DIR}/hdf5/include"
+cpack --preset ci-StdShar-GNUC -DHDF5_BUILD_FORTRAN=ON -DHDF5_BUILD_JAVA=OFF -DHDF5_INSTALL_BIN_DIR="${DIR}/hdf5/bin" -DHDF5_INSTALL_LIB_DIR="${DIR}/hdf5/lib" -DHDF5_INSTALL_INCLUDE_DIR="${DIR}/hdf5/include"
 
 cd ..
 
