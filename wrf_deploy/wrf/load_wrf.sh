@@ -3,22 +3,22 @@
 # Script that loads the WRF model specified by argument or 
 # selectable index
 # the index of the chosen wrf model:
-# 1: WRFV4 version 4.7
-# 2: WRFV4 version 4.6
-# 3: WRFV4 version 4.5
-# 4: WRFV4 version 4.4
-# 5: WRFV4 version 4.2
+# 1: WRFV4 version 4.8
+# 2: WRFV4 version 4.7
+# 3: WRFV4 version 4.6
+# 4: WRFV4 version 4.5
+# 5: WRFV4 version 4.4
 
 # enable termination on error
 set -e
 
 # option output
 print_options () {
-  printf "%b 1: WRFV4 version 4.7\\n%b" "${YELLOW}" "${NC}"
-  printf "%b 2: WRFV4 version 4.6\\n%b" "${YELLOW}" "${NC}"  
-  printf "%b 3: WRFV4 version 4.5\\n%b" "${YELLOW}" "${NC}"  
-  printf "%b 4: WRFV4 version 4.4\\n%b" "${YELLOW}" "${NC}"
-  printf "%b 5: WRFV4 version 4.2\\n%b" "${YELLOW}" "${NC}"
+  printf "%b 1: WRFV4 version 4.8\\n%b" "${YELLOW}" "${NC}"
+  printf "%b 2: WRFV4 version 4.7\\n%b" "${YELLOW}" "${NC}"
+  printf "%b 3: WRFV4 version 4.6\\n%b" "${YELLOW}" "${NC}"  
+  printf "%b 4: WRFV4 version 4.5\\n%b" "${YELLOW}" "${NC}"  
+  printf "%b 5: WRFV4 version 4.4\\n%b" "${YELLOW}" "${NC}"
 }
 
 # downloading and unpacking archive
@@ -54,11 +54,11 @@ else
 fi
 
 case ${WRF_VERSION_INDEX} in
-  [1]* ) DEPLOY_DIR='wrf_470'; WRF_FOLDER='WRF-4.7.1'; WPS_FOLDER='WPS-4.6.0';;  
-  [2]* ) DEPLOY_DIR='wrf_460'; WRF_FOLDER='WRF-4.6.1'; WPS_FOLDER='WPS-4.6.0';;  
-  [3]* ) DEPLOY_DIR='wrf_450'; WRF_FOLDER='WRF-4.5'; WPS_FOLDER='WPS-4.5';;  
-  [4]* ) DEPLOY_DIR='wrf_440'; WRF_FOLDER='WRF-4.4'; WPS_FOLDER='WPS-4.4';;
-  [5]* ) DEPLOY_DIR='wrf_420'; WRF_FOLDER='WRF-4.2'; WPS_FOLDER='WPS-4.2';;
+  [1]* ) DEPLOY_DIR='wrf_480'; WRF_FOLDER='WRFV4.8.0'; WPS_FOLDER='WPS-4.7.0';;
+  [2]* ) DEPLOY_DIR='wrf_470'; WRF_FOLDER='WRF-4.7.1'; WPS_FOLDER='WPS-4.6.0';;  
+  [3]* ) DEPLOY_DIR='wrf_460'; WRF_FOLDER='WRF-4.6.1'; WPS_FOLDER='WPS-4.6.0';;  
+  [4]* ) DEPLOY_DIR='wrf_450'; WRF_FOLDER='WRF-4.5'; WPS_FOLDER='WPS-4.5';;  
+  [5]* ) DEPLOY_DIR='wrf_440'; WRF_FOLDER='WRF-4.4'; WPS_FOLDER='WPS-4.4';;
 esac
 
 # creating url for the selectied wrf tar
