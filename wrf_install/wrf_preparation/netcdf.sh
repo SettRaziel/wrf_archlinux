@@ -45,6 +45,7 @@ cd ..
 rm "netcdf-${NETCDF_VERSION}.tar.gz"
 rm -rf "netcdf-c-${NETCDF_VERSION}"
 rm "hdf5-${HDF_VERSION}.tar.gz"
-rm -rf "hdf5-hdf5-${HDF_VERSION}"
+rm -rf "hdf5-${HDF_VERSION}"
+rm -rf build
 
 printf "%b\\nFinished installing netcdf. %b\\n" "${LIGHT_BLUE}" "${NC}"
