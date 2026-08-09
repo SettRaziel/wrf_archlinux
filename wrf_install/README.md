@@ -42,6 +42,7 @@ Install parameter:
      --help         show help text
  -b, --build        argument: <path>; specifies the wrf path
  -l, --local        uses local libraries for installation
+ -p, --preserve     stores archives as local libraries
 ```
 
 ## Compile Options, that worked for me
