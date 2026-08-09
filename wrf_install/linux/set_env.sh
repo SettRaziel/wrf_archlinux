@@ -34,4 +34,4 @@ export NETCDF_VERSION="4.10.1"        # latest: 4.10.1
 export NETCDF_FORTRAN_VERSION="4.6.4" # latest: 4.6.4
 export MPI_VERSION="5.0.1"            # latest: 5.0.1
 
-export WRF_DIR="${1}/WRF-${WRF_VERSION}"
+export WRF_DIR="${1}/WRFV${WRF_VERSION}"
