@@ -31,9 +31,9 @@ export JASPERINC="/usr/include"
 export LD_LIBRARY_PATH="${DIR}/hdf5/lib:${DIR}/netcdf/lib:${LD_LIBRARY_PATH}"
 
 # Version and directory variables
-export WRF_VERSION="4.7.1"
-export WPS_VERSION="4.6.0"
-export WRF_DIR="${BUILD_PATH}/WRF-${WRF_VERSION}"
+export WRF_VERSION="4.8.0"
+export WPS_VERSION="4.7.0"
+export WRF_DIR="${BUILD_PATH}/WRFV${WRF_VERSION}"
 export WPS_DIR="${BUILD_PATH}/WPS-${WPS_VERSION}"
 
 # output folder for the result images
