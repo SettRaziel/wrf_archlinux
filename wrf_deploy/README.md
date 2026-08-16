@@ -22,7 +22,7 @@ Simply call the deployment script
 script usage: ./deploy_wrf.sh [parameter]
 Deploy parameter:
      --help         show help text
-     --default      runs the deployment with default settings WRF 4.6 low data
+     --default      runs the deployment with default settings: version with index argument 1 and low data
  -v, --version      argument: <index>; specifies the wrf version
                     1: 4.8, 2: 4.7, 3: 4.6, 4: 4.5, 5: 4.4
  -g, --geodata      argument: <index>; specifies the wrf geodata

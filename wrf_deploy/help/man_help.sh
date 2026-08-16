@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # define terminal colors
-. ../../libs/terminal_color.sh
+. ../libs/terminal_color.sh
 
 printf "%bscript usage:%b ./deploy_wrf.sh [parameter]\\n" "${GREEN}" "${NC}"
 printf "%bDeploy parameter:\\n%b" "${YELLOW}" "${NC}"
