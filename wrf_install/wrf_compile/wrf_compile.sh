@@ -19,18 +19,7 @@ printf "%b\\nUnpacking wrf.tar files: %b\\n" "${YELLOW}" "${NC}"
 tar xfv "WRFV${WRF_VERSION}.tar.gz"
 
 # build wrf
-printf "%b\\nGetting submodules: %b\\n" "${YELLOW}" "${NC}"
-cd "WRF-${WRF_VERSION}/phys/"
-git clone https://github.com/NCAR/noahmp.git
-cd "noahmp/"
-git checkout "release-v${NOAHMP_VERSION}"
-
-cd ".."
-git clone https://github.com/NCAR/MYNN-EDMF.git
-cd "MYNN-EDMF/"
-git checkout "90f36c2" # commit id of the submodule checked out for the tagged wrf version
-
-cd "${HOME}/${1}/WRF-${WRF_VERSION}"
+cd "${HOME}/${1}/WRFV${WRF_VERSION}"
 
 printf "%b\\nInstaling wrf: %b\\n" "${YELLOW}" "${NC}"
 # link the cpp file to the correct folder or configure will fail in not finding it

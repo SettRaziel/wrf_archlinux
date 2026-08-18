@@ -26,7 +26,6 @@ while [[ $# -gt 0 ]]; do
       -g|--geodata)
       WRF_GEODATA_INDEX="${2}"; shift; shift;;
       --help)
-      cd "${SCRIPT_PATH}/help"
       sh "./help/man_help.sh"; exit 0;;
       *)
       shift;;

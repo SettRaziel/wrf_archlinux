@@ -13,11 +13,11 @@ set -e
 # loads the majority of the required library, no jasper since version 2 has other buildsystem
 load_libraries() {
 # wget specified wrf version
-wget -O "WRFV${WRF_VERSION}.tar.gz" "https://github.com/wrf-model/WRF/archive/v${WRF_VERSION}.tar.gz"
+wget -O "WRFV${WRF_VERSION}.tar.gz" "https://github.com/wrf-model/WRF/releases/download/v${WRF_VERSION}/v${WRF_VERSION}.tar.gz"
 # wget specified wps version
 wget -O "WPSV${WPS_VERSION}.tar.gz" "https://github.com/wrf-model/WPS/archive/v${WPS_VERSION}.tar.gz"
 # wget specific hdf 5 version
-wget -O "hdf5-${HDF_VERSION}.tar.gz" "https://github.com/HDFGroup/hdf5/archive/refs/tags/hdf5_${HDF_VERSION}.tar.gz"
+wget -O "hdf5-${HDF_VERSION}.tar.gz" "https://github.com/HDFGroup/hdf5/releases/download/${HDF_VERSION}/hdf5-${HDF_VERSION}.tar.gz"
 # wget specified netcdf version
 wget -O "netcdf-${NETCDF_VERSION}.tar.gz" "https://github.com/Unidata/netcdf-c/archive/v${NETCDF_VERSION}.tar.gz"
 # wget specified netcdf fortran bindings
@@ -45,9 +45,11 @@ if [ -d "${HOME}/${1}" ]; then
   printf "%bDirectory already exists, removing content... %b\\n" "${YELLOW}" "${NC}"
   rm -rf "${HOME:?}/${1:?}"
 fi
+# Create parent folder for wrf binary
 mkdir "${HOME}/${1}"
+# Create libraries folder within the parent folder
+mkdir "${DIR}"
 cd "${HOME}/${1}"
-
 
 if [ "${2}" = '--local' ] && [ -d "${LIBRARY_PATH}" ]; then
 	# check if required libraries are present

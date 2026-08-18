@@ -25,13 +25,13 @@ export JASPERINC="/usr/include"
 # since the WRF source still thinks we do not support netcdf4 we set this flag to compile the model
 export NETCDF_classic=1
 
-# setting library versions for usage (last checked: 2025-06-07)
-export WRF_VERSION="4.7.1"            # latest: 4.7.1
-export WPS_VERSION="4.6.0"            # latest: 4.6.0
-export NOAHMP_VERSION="4.7-WRF"       # latest: 5.0
-export HDF_VERSION="1.14.6"           # latest: 1.14.6
-export NETCDF_VERSION="4.9.3"         # latest: 4.9.3
-export NETCDF_FORTRAN_VERSION="4.6.2" # latest: 4.6.2
-export MPI_VERSION="4.3.0"            # latest: 4.3.0
+# setting library versions for usage (last checked: 2026-08-02)
+export WRF_VERSION="4.8.0"            # latest: 4.8.0
+export WPS_VERSION="4.7.0"            # latest: 4.7.0
+export NOAHMP_VERSION="4.8-WRF"       # latest: 5.2.1
+export HDF_VERSION="2.2.0"            # latest: 2.2.0
+export NETCDF_VERSION="4.10.1"        # latest: 4.10.1
+export NETCDF_FORTRAN_VERSION="4.6.4" # latest: 4.6.4
+export MPI_VERSION="5.0.1"            # latest: 5.0.1
 
-export WRF_DIR="${1}/WRF-${WRF_VERSION}"
+export WRF_DIR="${1}/WRFV${WRF_VERSION}"
